@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <title>Event registration assignment 4</title>
+      <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+      <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+      <style>
+         .bd-placeholder-img {
+         font-size: 1.125rem;
+         text-anchor: middle;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+         }
+         @media (min-width: 768px) {
+         .bd-placeholder-img-lg {
+         font-size: 3.5rem;
+         }
+         }
+      </style>
+      <link href="form-validation.css" rel="stylesheet">
+   </head>
+   <body class="bg-light">
+      <div class="container" id="app">
+         <div class="py-5 text-center">
+            <h2>Event registration</h2>
+         </div>
+         <form class="needs-validation" novalidate>
+            <div class="row">
+               <div class="col-md-6 order-md-2 mb-4">
+                  <h4 class="d-flex justify-content-between align-items-center mb-3">
+                     <span class="text-muted">Location Map</span>
+                  </h4>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22564.048603881693!2d103.78184408620263!3d1.2958369709660242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19a0ba4217fb%3A0x5213c91433e6d4e9!2sSingapore%20Institute%20of%20Technology!5e0!3m2!1sen!2ssg!4v1598702991039!5m2!1sen!2ssg" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                  <h5>Singapore Institute of Technology</h5>
+                  <p>10 Dover Dr, Singapore 138683</p>
+               </div>
+               <div class="col-md-6 order-md-1">
+                  <h4 class="mb-3">Personal Details</h4>
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" placeholder="" value="" required v-model="form.firstName"></input>
+                        <div class="invalid-feedback">
+                           Valid first name is required.
+                        </div>
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required v-model="form.lastName">
+                        <div class="invalid-feedback">
+                           Valid last name is required.
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="email">Email</span></label>
+                     <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                     <div class="invalid-feedback">
+                        Please enter a valid email address.
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="address1">Address</label>
+                     <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                     <div class="invalid-feedback">
+                        Please enter your address.
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                     <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                  </div>
+                  <div class="row">
+                     <div class="col-md-5 mb-4">
+                        <label for="country">Country</label>
+                        <select class="custom-select d-block w-100" id="country" required>
+                           <option value="">Choose...</option>
+                           <option>Singapore</option>
+                        </select>
+                        <div class="invalid-feedback">
+                           Please select a valid country.
+                        </div>
+                     </div>
+                     <div class="col-md-5 mb-4">
+                        <label for="zip">Postal Code</label>
+                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                           Zip code required.
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="profession">Profession</label>
+                     <select class="custom-select d-block w-100" id="profession" required>
+                        <option value="">Choose...</option>
+                        <option>Frontend Engineer</option>
+                        <option>Underpaid Lab TA</option>
+                        <option>Other</option>
+                     </select>
+                     <div class="invalid-feedback">
+                        Please select valid profession.
+                     </div>
+                  </div>
+                  <hr class="mb-4">
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" @click="submitForm">Submit details</button>
+               </div>
+            </div>
+         </form>
+         
+         <div class="py-5 text-center">
+            <h2>Submissions</h2>
+         </div>
+         
+         <div class="row">
+            <table id="eventTable" class="table">
+               <thead class="thead-dark">
+                  <tr>
+                     <th scope="col">#</th>
+                     <th scope="col">Name</th>
+                     <th scope="col">Email</th>
+                     <th scope="col">Address</th>
+                     <th scope="col">Country</th>
+                     <th scope="col">Postal Code</th>
+                     <th scope="col">Profession</th>
+                     <th scope="col">Action</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <!-- Write in the template Vue code here to render the table rows -->
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <script src="form-validation.js"></script>
+      <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+      <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+      <script>
+         var app = new Vue({
+           el: "#app",
+           data: {
+             /* Add in whatever data fields you want to bind to the view. */
+             form :{
+                 firstName: "",
+                 lastName: ""
+             }
+           },
+           computed: {
+             /* Add in any computed variables you want here. */
+           },
+           methods: {
+             /* Write in the logic that occurs when you define and run certain methods. */
+             submitForm: function() {
+                console.log("Submit has been run!");
+             }
+           },
+           mounted: function() {
+             /* Probably not necessary but you may want to do something here. */
+             console.log("Vue virtual DOM mounted!");
+           }
+         })
+         
+      </script>
+   </body>
+</html>

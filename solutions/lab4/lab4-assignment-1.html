@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Event registration assignment 4</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+<body class="bg-light">
+<div class="container">
+
+  <div class="py-5 text-center">
+    <h1>Event registration</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-2 mb-4">
+          <div class="py-5 text-center">
+            <h2>Synopsis</h2>
+          </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis accumsan ante. Donec tempor massa et lobortis fringilla. Donec rhoncus fringilla dapibus. Proin eu faucibus orci. Praesent nulla massa, elementum in lacus ut, volutpat eleifend orci. Donec commodo mauris ut sapien euismod aliquam.</p>
+        <p>Praesent venenatis felis arcu, at aliquet nisl congue vel. Duis ac massa quis erat malesuada tincidunt. Sed augue lacus, eleifend a suscipit sit amet, hendrerit vitae dolor. Vivamus a augue sed leo imperdiet pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum ligula diam, iaculis a viverra vel, semper vel leo. Donec in lectus eu dolor placerat pharetra eget ut mi. Vestibulum sem magna, congue at sem sed, congue iaculis turpis.</p>
+    </div>
+    <div class="col-md-6 order-md-2 mb-4">
+          <div class="py-5 text-center">
+            <h2>About Speaker</h2>
+          </div>
+        <p>Sed id efficitur velit. Maecenas eu mauris vitae diam facilisis ultricies eu vel nisi. Vestibulum commodo eu urna sit amet hendrerit. Phasellus auctor, est vel laoreet tempus, ex eros facilisis odio, nec cursus elit ex porta tortor. Cras ultricies magna non massa elementum, vel fermentum risus euismod.</p>
+          <div class="py-5 text-center">
+            <img src="assets/img/antelope.svg" width ="100"/>
+          </div>
+    </div>
+  </div>
+
+  <hr class="mb-4">
+
+  <form class="needs-validation" novalidate>
+  <div class="row">
+    <div class="col-md-6 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Location Map</span>
+      </h4>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6708.115779803529!2d103.84762795736833!3d1.3749796305643511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da16e96db0a1ab%3A0x3d0be54fbbd6e1cd!2sSingapore%20Institute%20of%20Technology%20(SIT%40NYP)!5e0!3m2!1sen!2ssg!4v1599977538983!5m2!1sen!2ssg" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> 
+      <h5>Singapore Institute of Technology (SIT@NYP)</h5>
+      <p>172 Ang Mo Kio Avenue 8, 567739</p>
+    </div>
+    <div class="col-md-6 order-md-1">
+      <h4 class="mb-3">Personal Details</h4>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+          <div class="invalid-feedback">
+            Please enter your shipping address.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-4">
+            <label for="country">Country</label>
+            <select class="custom-select d-block w-100" id="country" required>
+              <option value="">Choose...</option>
+              <option>Singapore</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid country.
+            </div>
+          </div>
+          <div class="col-md-5 mb-4">
+            <label for="zip">Postal Code</label>
+            <input type="text" class="form-control" id="zip" placeholder="" required>
+            <div class="invalid-feedback">
+              Zip code required.
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="profession">Profession</label>
+            <select class="custom-select d-block w-100" id="profession" required>
+              <option value="">Choose...</option>
+              <option>Frontend Engineer</option>
+              <option>Underpaid Lab TA</option>
+              <option>Other</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select valid profession.
+            </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit details</button>
+    </div>
+  </div>
+  </form>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="form-validation.js"></script>
+
+</body>
+</html>

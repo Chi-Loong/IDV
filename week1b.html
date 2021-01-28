@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>1b: The big picture</title>
+
+        <meta name="description" content="02.526 Interactive Data Viz, Introduction">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">1b: The big picture</h1>
+                    <h3>Data visualization questions</h3>
+                </section>
+                
+                <section>
+                    <h2>Big picture questions 1</h2>
+                    <ul>
+                    <li>Why have a human in the decsision making loop?</li>
+                    <li>Why have a computer in the loop?</li>
+                    <li>Why use an external representation?</li>
+                    <li>Why depend on vision?</li>
+                    <li>Why show data in detail?</li>
+                    <li>Why use interactivity?</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Big picture questions 2</h2>
+                    <ul>
+                    <li>Why is the viz idiom design space huge?</li>
+                    <li>Why focus on tasks?</li>
+                    <li>Why focus on effectiveness?</li>
+                    <li>Why are most designs ineffective?</li>
+                    <li>Why is validation difficult?</li>
+                    <li>Why are there resource limitations?</li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Why have a human in the decision making loop?</h3>
+                    </section>
+
+                    <section>
+                        <p>Visualizations allow people to analyze data when they don't know exactly what questions need to be asked in advance.</p>
+                        <p>Machine learning allows for automation of repeated tasks, but these tasks need to specified (to a certain extent).</p>
+                    </section>
+                    
+                    <section>
+                        <img src="img/SchoemakerHumanVsComputer.jpg" />
+                        <p class="smallfont">Paul Schoemaker and Phillip Tetlock, <a href="https://sloanreview.mit.edu/article/building-a-more-intelligent-enterprise/">Building a More Intelligent Enterprise</a></p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why have a computer in the loop?</h3>
+                    </section>
+
+                    <section>
+                        <p>Speed and data size. Huge amounts of data can be processed and displayed in real-time that wouldn't be feasible for human beings to do.</p>
+                        <p>Computer interfaces also allow new forms of interactivity in a visualization.</p>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h3>Why use an external representation?</h3>
+                    </section>
+
+                    <section>
+                        <p>Duh. Human beings have been using maps and diagrams for millenia to surpass our own internal cognition and memory.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why depend on vision?</h3>
+                    </section>
+
+                    <section>
+                        <p>Because the visual system provides a very high bandwidth channel to our brains.</p>
+                        <p>Even though we can only see a tiny part of our visual field in high resolution at any point, our brains fill in the rest. We are good at seeing the big picture.</p>
+                        <p><i>Sonification</i> has never taken off, as sound is not good at providing overviews of large information spaces compared with vision. We think of sound as sequential.</p>
+                        <p>Taste, smell, and haptic touch are even more limited in terms of communicating abstract information.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why show data in detail?</h3>
+                    </section>
+
+                    <section>
+                        <p>Visualization helps people understand the dataset structure better than only seeing a brief summary of it.</p>
+                        <p><a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet" target="_blank">Anscombe's Quartet</a> is an extremely powerful example why.</p>
+                        <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Frank_Anscombe" target="_blank">Francis John Abscombe</a> (1918-2001)</p>
+                    </section>
+                    
+                    <section>
+                        <img src="img/anscombe_quartet_data.jpg" />
+                    </section>
+                    
+                    <section>
+                        <img src="img/anscombe_quartet_charts.jpg" />
+                    </section>
+                    
+                    <section>
+                        <video controls width="600">
+                            <source src="img/datasaurus.mp4"
+                                    type="video/mp4">
+                        </video>
+                        <p>A more recent example: <a href="https://www.autodesk.com/research/publications/same-stats-different-graphs" target="_blank">Datasaurus dozen</a></p>
+                        <p class="smallfont">"Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing" (Justin Matejka, George Fitzmaurice, 2017)</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why use interactivity?</h3>
+                    </section>
+
+                    <section>
+                        <p>The bigger and more complex the dataset, the harder it is to show it all at once given the limitations of both people and display.</p>
+                        <p>Computer systems allow us new viz idioms by allowing interaction, changing the view when an action (search, filter, etc.) is taken.</p>
+                        <p>Interactivity often is key to being able to visualize complex datasets &mdash; from high level overviews to nitty gritty data details &mdash; allowing users to go up and down the <a href="https://www.toolshero.com/communication-skills/ladder-of-abstraction/" targt="_blank">ladder of abstraction</a> easily.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why is the viz idiom design space huge?</h3>
+                    </section>
+
+                    <section>
+                        <p>Although there are just a few standard charts that we as humans are familiar with (e.g. bar, line, pie, scatterplot, etc.), you can combine basic chart types (especially with interaction) and make complex viz idioms.</p>
+                        <p>Like music with the same basic 12 tones, or writing with the same grammar and vocabulary, by combining the basics, you can produce complex data visualizations.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why focus on tasks?</h3>
+                    </section>
+
+                    <section>
+                        <p>Because <b>why</b> the user is interacting with the data is important.</p>
+                        <p>Visualizations for exploratory analysis vs for presentation / enjoyment is vastly different.</p>
+                        <p>Are you creating a visualization that is a once-off (to get an idea of the data), putting together a nice presentation to explain insights, or building a tool to automate this process?</p>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h3>Why focus on effectiveness?</h3>
+                    </section>
+
+                    <section>
+                        <p>Because we should measure how effective the visualization is in supporting user tasks.</p>
+                        <p>If you're doing storytelling, the story should be measured on how effective it was as a communication channel.</p>
+                        <p>If you're doing exploratory analysis, what insights have you gained to help aid whatever model you're doing?</p>
+                        <p>If you're doing a tool, how much time / effort have you saved by creating said tool?</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why are most designs ineffective?</h3>
+                    </section>
+
+                    <section>
+                        <p>I feel Tamara's position here is a little pedantic, but I understand her point of view.</p>
+                        <p>Because there are so many ways to mash-up data and viz idioms, the likelihood you'll get a bad design far outstrips a good one.</p>
+                        <p>Like in the music analogy, you can randomly throw notes together, but it most likley won't make a good song.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why is validation difficult?</h3>
+                    </section>
+
+                    <section>
+                        <p>Tamara's argument is that there could be many ways to ask if the visualization has met your user's needs.</p>
+                        <p>Whilst labels like <i>effective communication</i> and <i>insight engagement</i> are not hard science, I believe that this can still be measured (via surveys).</p>
+                        <p>A good user-centric experience design process can help with validating some of these issues. We'll look into this in later parts of the course.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Why are there resource limitations?</h3>
+                    </section>
+
+                    <section>
+                        <p>Of course there are resource limitations. Tamara states three: Human perceptual / cognitive capacity, computational capacity and display capacity.</p>
+                        <p>Interaction helps solve some of the perceptual / cognitive load, but we're still vulberable to human quirks like <b>change blindness</b>.</p>
+                        <p>On the technical front, we will be going through some of the limitations of drawing for the web later in the course.</p>
+                    </section>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Important figures</h1>
+                    <h3>Aka literature review</h3>
+                </section>
+
+                <section>
+                    <h3><a href="https://en.wikipedia.org/wiki/Jacques_Bertin" target="_blank">Jacques Bertin</a></h3>
+                    <h5>1918-2010</h5>
+                    <p><i>Semiology of Graphics (1967)</i></p>
+                    <p>Key ideas:</p>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Visual_variable" target="_blank">Visual variables</a> (marks)</li>
+                        <li>Early taxinomy of network layouts - arc diagram, treemap, etc.</li>
+                        <li><a href="https://www.aviz.fr/diyMatrix/" target="_blank">Bertin's matrix</a> (precursor to the modern heatmap!)</li>
+                        <li>Interaction ideas (before computers!) on "reordering" rows before presenting results</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3><a href="https://en.wikipedia.org/wiki/Edward_Tufte" target="_blank">Edward Tufte</a></h3>
+                    <p><i>Principles for visualizing quantitative information (1983)</i></p>
+                    <p>Key ideas:</p>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Small_multiple" target="_blank">Small multiples</a> (facets). Well-known for <a href="https://en.wikipedia.org/wiki/Sparkline" target="_blank">sparklines</a></li>
+                        <li><a href="https://infovis-wiki.net/wiki/Data-Ink_Ratio" target="_blank">Data-ink ratio</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Chartjunk" target="_blank">Chartjunk</a></li>
+                        <li>
+                            <p><a href="https://www.linkedin.com/pulse/edward-tuftes-six-principles-graphical-integrity-radhika-raghu" target="_blank">Principles of graphical integrity</a></p>
+                            <p class="smallfont">Bonus links: <a href="https://viz.wtf/" target="_blank">WTF Viz</a></p>
+                            <p class="smallfont">Bonus example: <a href="https://indianexpress.com/article/india/twitter-abuzz-over-bjps-graph-on-fuel-prices-congress-fixes-it-5349311/" target="_blank">Truth of hike in petroleum prices</a></p>
+                        </li>
+                        <li>Tufte <b>hates</b> pie charts with a passion</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3><a href="https://en.wikipedia.org/wiki/Hans_Rosling" target="_blank">Hans Rosling (1948-2017)</a></h3>
+                    <p>TrendAnalyzer and <a href="https://www.gapminder.org/" target="_blank">Gapminder</a></p>
+                    <p>Key ideas:</p>
+                    <ul>
+                        <li>Popularized data visualization and animation</li>
+                        <li><a href="http://www.gapminder.org/world" target="_blank">Gapminder World</a></li>
+                        <li><a href="https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen" target="_blank">TED talk: Hans Rosling - the best stats you've ever seen</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3><a href="https://en.wikipedia.org/wiki/Ben_Shneiderman" target="_blank">Ben Shneiderman</a></h3>
+                    <p>Human Computer Interface, information visualization</p>
+                    <p>Key ideas:</p>
+                    <ul>
+                        <li><a href="http://www.cs.umd.edu/~ben/goldenrules.html" target="_blank">Eight golden rules for interface design</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Treemapping" target="_blank">Recursive treemaps</a> ObservableHQ <a href="https://observablehq.com/@d3/treemap" target="_blank">example</a></li>
+                        <li><a href="https://homes.cs.washington.edu/~jheer/files/idfva-draft.pdf" target="_blank">Taxonomy of interactive dynamics for visual analysis</a></li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3><a href="https://en.wikipedia.org/wiki/Ben_Shneiderman" target="_blank">Leland Wilkinson</a></h3>
+                    <p><i>Grammar of Graphics, 1999</i></p>
+                    <p>Key ideas:</p>
+                    <ul>
+                        <li>Influential in describing a framework for charting graphs.</li>
+                        <li>Influenced R's ggplot2, Python's Bokeh, and D3 visualization libraries.</li>
+                        <li><p>Readings:</p>
+                            <p class="smallfont"><a href="https://codewords.recurse.com/issues/six/telling-stories-with-data-using-the-grammar-of-graphics" target="_blank">Telling stories with data using the grammar of graphics</a>, Liz Sander</p>
+                            <p class="smallfont"><a href="https://medium.com/tdebeus/think-about-the-grammar-of-graphics-when-improving-your-graphs-18e3744d8d18" target="_blank">Think about the grammar of graphics when improving your graphs</a>, Thomas de Beus</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3><a href="https://en.wikipedia.org/wiki/Hadley_Wickham" target="_blank">Handley Wickham</a>, <a href="https://en.wikipedia.org/wiki/Mike_Bostock" target="_blank">Mike Bostock</a></h3>
+                    <p>Ggplot2 (Handley) and  D3 (Bostock)</p>
+                    <p>Bostock is also the founder of <a href="https://observablehq.com/" target="_blank">Observable HQ</a></p>
+                    <p class="smallfont">This <a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html" target="_blank">NYT visualization</a> by Bostock started me down my rabbit hole.</p>
+                </section>
+
+                <section>
+                    <h3>Others: (mainly blogs)</h3>
+                    <p><a href="https://flowingdata.com/" target="_blank">Flowing Data</a> (Nathan Yau)</p>
+                    <p><a href="https://informationisbeautiful.net/" target="_blank">Information is Beautiful</a> (David McCandless)</p>
+                    <p><a href="https://www.visualisingdata.com/" target="_blank">Visualizing Data</a> (Andy Kirk)</p>
+                    <p><a href="https://junkcharts.typepad.com/" target="_blank">Junk Charts</a> (Kaiser Fung)</p>
+                    <p><a href="https://alignedleft.com/work/d3-book" target="_blank">Interactive Data Visualization</a> (book) (Scott Murray)</p>
+                </section>
+                
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>

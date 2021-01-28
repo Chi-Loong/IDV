@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<title>Lab 3 Assignment</title>
+<style>
+
+  /* CSS goes here 
+  
+    E.g. table {
+    }
+  
+  */
+
+</style>
+</head>
+<body>
+
+<h2>Singapore carpark availability table</h2>
+<table id="carparkTable">
+    <tr>
+        <th>Carpark Number</th>
+        <th>Timestamp</th>
+        <th>Total Lots</th>
+        <th>Lots available</th>
+        <th>Utilization</th>
+    </tr>
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
+  .then(response => response.json())
+  .then(data => {
+
+    /* JS code goes here.
+    
+    */
+  
+    let carpark = data.items[0].carpark_data;
+    console.log(carpark);
+  
+  });
+
+
+</script>
+</body>
+</html>
