@@ -18,9 +18,6 @@
         <link rel="stylesheet" href="css/style.css">
         
         <style>
-            .reveal ul, .reveal ol {
-                width: 60vw;
-            }
         </style>
         
         <!-- If the query includes 'print-pdf', use the PDF print sheet -->
@@ -46,7 +43,7 @@
                 </section>
                 
                 <section>
-                    <h3>Data overview</h3>
+                    <h3>Overview</h3>
                     <a href="img/data_overview.jpg" target="_blank"><img src="img/data_overview.jpg"></a>
                 </section>
 
@@ -115,7 +112,7 @@
                         <li>May be subject to projections</li>
                         <li>E.g. a district on a map, a 3D architectural diagram</li>
                     </ul>
-                    <p><b>Grid</b></p>
+                    <p><b>Fields / Grids</b></p>
                     <ul>
                         <li>A <a href="https://en.wikipedia.org/wiki/Regular_grid" target="_blank">grid</a> specifies how data is sampled geometrically / topologically</li>
                         <li>Necessary for sampling continuous data</li>
@@ -128,21 +125,33 @@
                     <p><a href="https://www.d3indepth.com/geographic/" target="_blank">D3 Geographic</a></p>
                     <p><a href="https://developers.google.com/maps/documentation/ios-sdk/tiles" target="_blank">Google Map tiles</a></p>
                 </section>
-
+                
                 <section>
-                    <h2>Dataset types</h2>
-                    <img src="img/dataset_types.jpg"/>
-                    <p class="smallfont">Beyond these general dataset types by Munzer, I would add one more &mdash;  hierarchies.</p>
-                    <p class="smallfont">Many datasets are hierarchical, and lend themselves well to interactive visualizations that allow you to traverse the ladder of abstraction.</p>
+                    <h2>Data Types 4</h2>
+                    <p><b>Clusters / Sets / Lists</b></p>
+                    <ul>
+                        <li>A <b>set</b> is simply an unordered group of items.</li>
+                        <li>A <b>list</b> is a group of items with a specified ordering.</li>
+                        <li>A <b>cluster</b> is a grouping based on attribute similarity, where items within a cluster are more similar to each other than to ones in another cluster.</li>
+                    </ul>
                 </section>
 
                 <section>
-                    <h2>On Hierarchies</h2>
+                    <h3>Data types &rarr; dataset types</h3>
+                    <img src="img/dataset_types.jpg"/>
+                </section>
+
+                <section>
+                    <h2>Data Availability</h2>
+                    <p>Static or dynamic?</p>
+                </section>
+
+                <section>
+                    <h2>Data Hierarchies</h2>
                     <p>More on <a href="https://github.com/d3/d3-hierarchy" target="_blank">hierarchies</a> in D3</p>
                     <p>Hierarchical datasets lend themselves very well to visualizations like dendograms, trees, treemaps, packed circles.</p>
                     <hr/>
-                    <p class="smallfont">We'll talk more about specific  visualization idioms in a later lecture.</p>
-                    <p class="smallfont">Many visualizations (especially more niche ones) don't fall cleanly into the categories listed, but still this is a useful framework for understanding viz.</p>
+                    <p class="smallfont">We'll talk more about specific visualization idioms in a later lecture.</p>
                 </section>
 
                 <section>
@@ -155,13 +164,67 @@
                 <section>
                     <h3>Why are data scales important?</h3>
                     <p>Because they highly influence the type of encodings and visualizations possible.</p>
-                    <p class="smallfont">It roughly maps to the qualitative (nominal / categorical) &mdash; ordinal &mdash; quantitative scale by French cartographer Jacques Bertin (1918-2010), best known for his book Semiology of Graphics.</p>
+                    <p class="smallfont">It roughly maps to the qualitative (nominal / categorical) &mdash; ordinal &mdash; quantitative scale by French cartographer Jacques Bertin (1918-2010).</p>
+                    <hr/>
+                    <p class="smallfont">Qualitative data: represented by groupings</p>
+                    <p class="smallfont">Quantitative data: represented by amounts</p>
+                </section>
+                
+                <section>
+                    <h3>Nominal data</h3>
+                    <p>Or <i>categorical</i> data. Data is <b>qualitative</b>.</p>
+                    <ul>
+                    <li>Categories can only distinguish whether two things are the same (apples) or different (apples versus oranges).</li>
+                    <li>Often no implicit ordering, but is part of a hierarchical structure.</li>
+                    <li>Of course, any arbitrary external ordering can be imposed upon categorical data - e.g. alphabetically - but only if this auxillary information is available. It is not <i>intrinsic</i> to the data.</li>
+                    <li>Examples: City names, file types, music genres.</li>
+                    </ul>
                 </section>
 
+                <section>
+                    <h3>Ordinal data</h3>
+                    <ul>
+                    <p>Ordinal data can have a qualitative or quantitative quality.</p>
+                    <li>Data where there is often an implicit ordering in the structure.</li>
+                    <li>Examples: T-shirt sizes, rankings of university, etc.</li>
+                    <li>Note: You cannot do arthimetic on these because it has no meaning. E.g. What is the difference between rank 5 and rank 4? Is it the same as between rank 2 and 1? (nope).</li>
+                    </ul>
+                </section>
 
-https://thedoublethink.com/tuftes-principles-for-visualizing-quantitative-information/
-https://indianexpress.com/article/india/twitter-abuzz-over-bjps-graph-on-fuel-prices-congress-fixes-it-5349311/
-https://vega.github.io/vega/
+                <section>
+                    <h3>Quantitative data</h3>
+                    <p>Typically <i>interval</i> or <i>ratio</i> data.</p>
+                    <p></p>
+                    <ul>
+                    <li>Data where arthimetic has meaning.</li>
+                    <li>For example where you can say one month you sold 50 units, and the next 100, so you doubled your sales.</li>
+                    <li>Examples: amount of inventory, temperature, length, weight, etc.</li>
+                    </ul>
+                    <hr/>
+                    <p class="smallfont">There are more specific distinctions between interval and ratio, but it does not really affect visualization principles as much.</p>
+                </section>
+
+                <section>
+                    <h3>Ordering: Sequential, diverging, cyclic</h3>
+                    <img src="img/ordering_direction.jpg"/>
+                    <p class="smallfont">Like qualitative data variables, qualitative graphic variables (e.g., shape or color hue) have no intrinsic ordering.</p>
+                    <p class="smallfont">In contrast, quantitative graphic variables (e.g., size or color intensity) can have different ordering directions, such as sequential, diverging, or cyclic</p>
+                    <p class="smallfont">For the qualitative data, color is used as an <i>identity</i> channel. For quantitative, it is often a <i>magnitude</i> channel. We'll discuss color more in later lectures.</p>
+                </section>
+
+                <section>
+                    <h3>So what scale of measure is each attribute?</h3>
+                    <img src="img/carpark_table.jpg"/>
+                    <p class="smallfont">More reading: <a href="https://statisticalanalysisconsulting.com/is-time-nominal-ordinal-interval-or-ratio-is-it-categorical-or-continuous/" target="_blank">Is time nominal, ordinal, interval or ratio? Is it categorical or continuous?</a> Peter Flom, Statistical Analysis Consulting</p>
+                </section>
+
+                <section>
+                    <h3>A more detaild example</h3>
+                    <a href="https://elections.viz.sg/" target="_blank"><img src="img/SGelections.jpg"></a>
+                    <p>Elections SG2020</p>
+                    <a href="https://www.eld.gov.sg/elections_map_electoral.html" target="_blank"><img src="img/eld_bad.jpg"></a>
+                    <p>Eelectoral Divisions</p>
+                </section>
 
                 <section>
                     <h2>Questions?</h2>
