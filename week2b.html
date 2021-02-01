@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>2b: All HTML, CSS, JS</title>
+
+        <meta name="description" content="02.526 Interactive Data Viz, Introduction">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">2b: HTML, CSS, JS</h1>
+                </section>
+                
+                <section>
+                    <h2>Objective</h2>
+                    <p>Understand the basics of web core technologies - HTML, CSS and JS - and how these work together to render websites in browsers.</p>
+                    <p>This is a quick grounding on a core technology area, and something that CS students should know.</p>
+                    <p class="smallfont"><b>We will quickly go over some basics (and hopefully you have some exposure), and then dive deeper into JS later.</b></p>
+                </section>
+                                
+                <section>
+                    <h2>Introduction</h2>
+                    <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a> (HyperText Markup Language) is the language that provides the <b>structure</b> for websites.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a> (Cascading Stylesheets) is a language specification that helps define the <b>presentation</b> of a markup language like HTML.</li>
+                    <li>Finally, <a href="https://en.wikipedia.org/wiki/JavaScript">JS</a> (Javascript) is the high-level language that enables <b>interactivity</b> for websites.</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>HTML</h2>
+                    <p>A very, very simple basic HTML template.</p>
+                    <pre><code>
+&lt;!DOCTYPE html>
+&lt;html> 
+&lt;head>
+  &lt;title>Hello World&lt;/title>
+&lt;/head>
+&lt;body>
+  &lt;h1>Hello World!&lt;/h1>
+&lt;/body>
+&lt;/html>
+                    </code></pre>
+                    <p class="smallfont">Hopefully you have seen this before.</p>
+                </section>
+
+                <section>
+                    <h2>HTML 2</h2>
+                    <p>A quick selection of tags you should know:</p>
+                    <ul>
+                    <li>Paragraphs: <b>&lt;p></b></li>
+                    <li>Headings: <b>&lt;h1></b> to <b>&lt;h6></b></li>
+                    <li>Ordered and unordered lists: <b>&lt;ul></b>, <b>&lt;ol></b> and <b>&lt;li></b></li>
+                    <li>Links: <b>&lt;a href="..."></b></li>
+                    <li>Images: <b>&lt;img src="..."></b></li>
+                    <li>Divs and spans: <b>&lt;div></b> and <b>&lt;span></b></li>
+                    </ul>
+                    <p>Other useful ones: <b>iframe</b>, <b>table</b>, <b>form</b>, etc.</p>
+                    <p class="smallfont"><a href="https://www.w3schools.com/">Resource: W3schools</a></p>
+                    <p class="smallfont"><a href="https://html.com/">Resource: HTML.com</a></p>
+                </section>
+                
+                <section>
+                    <h2>CSS</h2>
+                    <p>Sample CSS code snippet:</p>
+                    <pre><code>
+/* this are classes */
+.term-grid {
+  max-width: 1000px;
+  margin: auto;
+  color: #222;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+}
+
+.term-grid label:first-child {
+  text-align: right;
+}
+
+/* this is an id */
+#helloWorld {
+  color: #fff;
+}
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h2>CSS 2</h2>
+                    <p>Some basic things that CSS can specify:</p>
+                    <ul>
+                    <li>Colors, backgrounds, borders</li>
+                    <li>Basic box model: margins, paddings, height, width, overflow</li>
+                    <li>Images, media, forms styling</li>
+                    <li>Fonts styling</li>
+                    <li>Transformations - translations, rotations, etc.</li>
+                    <li>Interface properties: visibility, hidden, hover, etc.</li>
+                    <li>Layout: flexbox, grid</li>
+                    </ul>
+                    <p class="smallfont"><a href="https://www.w3schools.com/">Resource: W3schools</a></p>
+                </section>
+
+                <section>
+                    <h2>CSS 3</h2>
+                    <p>Things you should know:</p>
+                    <ul>
+                    <li>Specifying selectors: By <b>class</b>, <b>id</b>, <b>attribute</b>, etc. (here's a <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors#Types_of_selectors">list</a>)</li>
+                    <li>Cascade and inheritance. Basically a later rule overwrites earlier ones, and a tag can inherit various rules (more <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">details</a>)</li>
+                    <li>Data types, especially specifying units. Most common: <b>px</b>, <b>em</b> (more <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units#Numeric_data_types">details</a>)</li>
+                    <li>Debugging: code inspector (use Chrome)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>CSS 4</h2>
+                    <p><b>Responsitivity</b>: Because you want the code to work across multiple form factors.</p>
+                    <p>Sample media query CSS code on div class:</p>
+                    <pre><code>
+/* If the screen size is 601px or more, set font-size to 80px */
+@media (min-width: 601px) {
+  div.example {
+    font-size: 80px;
+  }
+}
+
+/* If the screen size is 600px or less, set font-size to 30px */
+@media (max-width: 600px) {
+  div.example {
+    font-size: 30px;
+  }
+}
+                    </code></pre>
+                    <p class="smallfont">Other useful responsive tags: <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">grid</a>, <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">flexbox</a></p>
+                </section>
+
+                <section>
+                    <h2>Javascript</h2>
+                    <p>JS is everywhere. Originally used for website client-side page behavior, its popularity has led to it being used on backend tech stacks / frameworks like node.js.</p>
+                    <p>JS is a multi-paradigm mix and match of functional, object-oriented and procedural language.</p>
+                    <p class="smallfont"><a href="https://javascript.info/">Comprehensive Resource: javascript.info</a></p>
+                </section>
+
+                <section>
+                    <h2>JS 2</h2>
+                    <p>Things you should know:</p>
+                    <ul>
+                    <li>Conditionals, loops, variables, functions</li>
+                    <li>Objects, arrays</li>
+                    <li>Basic debugging. Console.log is your friend!</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>DOM</h2>
+                    <ul>
+                    <li>The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.</li>
+                    <li>The backbone of HTML is tags, and every tag is an object in the DOM.</li>
+                    <li>Nested tags are children of the enclosing one.</li>
+                    <li>All these objects are accessible using JS, and we can use these to modify the page.</li>
+                    <li>For example you can access the body tag with document.body</li>
+                    </ul>
+                    <p class="smallfont"><a href="https://javascript.info/dom-nodes">Resource: DOM nodes</a></p>
+                    <p class="smallfont"><a href="https://javascript.info/dom-navigation">Resource: Walking the DOM</a></p>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">JS in more depth</h1>
+                    <h5>Useful design patterns / things to know</h5>
+                </section>
+
+                <section>
+                    <h2>Objective</h2>
+                    <p>This is a quick primer into useful <b>javascript design patterns</b>.</p>
+                    <p>These concepts will be useful because you will see them everywhere in frontend work.</p>
+                </section>
+
+                <section>
+                    <h2>Function chaining</h2>
+                    <p>Or why JQuery became popular</p>
+                    <p>You could write this in plain vanilla JS:</p>
+                    <pre><code>
+var node = document.createElement("p");
+var textnode = document.createTextNode("Test");
+node.appendChild(textnode);
+document.getElementById("main").appendChild(node);
+                    </code></pre>
+                    <p>OR in JQuery</p>
+                    <pre><code>
+$("#main").append("<p>Test</p>");
+                    </code></pre>
+                    <p class="smallfont"><a href="https://medium.com/@saginadir/native-function-chaining-in-javascript-what-we-can-learn-from-jquery-3b42d5d4a0d">Function chaining makes reading / writing code easier.</a></p>
+                </section>
+
+
+                <section>
+                    <h2>Function chaining 2</h2>
+                    <p class="smallfont">You'll see this everywhere in D3.</p>
+                    <pre><code>
+chart.selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("x", function(d) {return xScale(d.student);})
+    .attr("y", function(d) { return yScale(d.score); })
+    .attr("width", function(d) {return xScale.bandwidth();})
+    .attr("height", function(d) { return height - yScale(d.score); })
+    .attr("class", "svgRect");
+                    </code></pre>
+                </section>
+
+
+                <section>
+                    <h2>JSON</h2>
+                    <p>JSON (Javascript Object Notation), sample code snippet:</p>
+                    <pre><code>
+                    let classroom = [
+                        {name: "Alfred", math: 90, english: 70 },
+                        {name: "Betty", math: 85, english: 30 },
+                        {name: "Cindy", math: 35, english: 60 }
+                    ];
+                    </code></pre>
+                    <p class="smallfont">JSON &mdash; a collection of key / value pairs &mdash; has overtaken XML as a data structure for backend to communicate with frontend. You will see this everywhere.</p>
+                    <p class="smallfont">Know how to access JSON <a href="https://www.w3schools.com/js/js_json_objects.asp">key / value pairs</a>.</p>
+                </section>
+                
+                <section>
+                    <h2>Anonymous functions</h2>
+                    <p><a href="https://en.wikibooks.org/wiki/JavaScript/Anonymous_functions">Anonymous functions</a> are functions without names.</p>
+                    <p class="smallfont">It is usually not accessible after its initial creation. Often seen as arguments to other functions.</p>
+                    <pre><code>
+                    classroom.forEach(function(ele) {
+                        console.log(ele);
+                    });
+                    </code></pre>
+                    <p>OR you can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow notation</a> (ES6):</p>
+                    <pre><code>
+                    classroom.forEach(ele => console.log(ele));
+                    </code></pre>
+                    <p class="smallfont">Arrow notation is a shorthand for anonymous functions. Note that the two methods are not exactly synonomous (e.g. function scope). Most use cases it does not matter though.</p>
+                </section>
+                
+                <section>
+                    <h3>Data manipulation - map, reduce, filter, etc.</h3>
+                    <p>Array functions for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">handling data</a>(ES6). Or use a library like <a href="https://lodash.com/">loadash</a> for more use cases.</p>
+                    <pre><code>
+                    const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+                    console.log(words.filter(word => word.length > 6));
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>AJAX, fetch, Axios</h2>
+                    <p>Different methods / design patterns of accessing HTTP resources, e.g. reading and writing (GET/POST) to a web API.</p>
+                    <p class="smallfont">More detail: <a href="https://www.sitepoint.com/use-jquerys-ajax-function/">JQuery AJAX</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, <a href="https://github.com/axios/axios">Axios</a></p>
+                    <p class="smallfont">For <a href="https://www.w3schools.com/xml/ajax_intro.asp">AJAX</a> you can also use vanilla JS to write. Fetch is newer JS specification (ES6), and Axios is a popular promise-based HTTP client.</p>
+                    <p class="smallfont">Simple code snippet for fetch:</p>
+                    <pre><code>
+                    fetch('https://api.data.gov.sg/v1/environment/psi')
+                      .then(response => response.json())
+                      .then(data => console.log(data));
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h2>Callbacks, promises, async / await</h2>
+                    <p>Design patterns for handling the asynchronous nature of JS.</p>
+                    <p class="smallfont">More detail: <a href="https://javascript.info/callbacks">Callbacks</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a>(ES6), <a href="https://javascript.info/async-await">Async / Await</a> (ES6)</p>
+                    <p class="smallfont">You will mainly encounter asynchronous errors typically when you do get / post operations.</p>
+                    <p class="smallfont">For example:</p>
+                    <pre><code>
+                    let myData = {};
+                    fetch('https://api.data.gov.sg/v1/environment/psi')
+                      .then(response => response.json())
+                      .then(data => {myData = data});
+                    console.log(myData);
+                    </code></pre>
+                    <p class="smallfont">What is wrong with this code?</p>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Git</h1>
+                </section>
+
+                <section>
+                    <h2>GitHub Desktop: Git GUI</h2>
+                    <p>The easiest is probably <a href="https://desktop.github.com/">GitHub Desktop</a>.</p>
+                    <p>Document for GitHUb Desktop is excellent, and you can find it <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop">here</a>.</p>
+                    <p>The Git functions that you need to know are probably just <b>clone</b>, <b>fork</b>, <b>pull</b>, <b>push</b> and <b>commit</b>.</p>
+                    <p>GitHub desktop makes this easy as it already has a UX walkthrough designed to guide you in the setup (with Git).</p>
+                     <p>I'll do a quick walkthrough on how to setup a repo from scratch and commit a change.</p>
+                </section>
+                
+                <section>
+                    <h2>Git GUI: Alternatives</h2>
+                    <p>I also like <a href="https://www.sourcetreeapp.com/">Sourcetree</a>, which is another free Git GUI client.</p>
+                    <p>It has some useful functions, notably a graph view of the repo changes.</p>
+                    <img src="img/hero-mac-screenshot.png"/>
+                    <p class="smallfont">There are other Git GUIs like <a href="https://tortoisegit.org/">TortoiseGit</a>, etc. What client or even command line is up to you. But no excuse in not knowing how to work with Git repos.</p>
+                </section>
+
+                <section>
+                    <h2>GitPages</h2>
+                    <p>Under the <b>settings</b> tab in your repo, turn on GitHub Pages.</p>
+                    <p>You need to have an index.html file in your main repo page.</p>
+                    <p>Read up on the <a href="https://docs.github.com/en/github/working-with-github-pages">docs</a>.</p>
+                    <img src="img/gitpages_settings.jpg"/>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 1</h1>
+                    <h3>Carpark utilization table</h3>
+                </section>
+
+                <section>
+                    <h3>Part 1: Setup</h3>
+                    <p>To be completed by <b>25-2-2021</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment1</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Part 1a: Problem</h3>
+                    <ul>
+                    <li>Connect to the data.gov.sg carpark API and get the realtime dataset. It is detailed <a href="https://data.gov.sg/dataset/carpark-availability">here</a>.</li>
+                    <li>The URI for the API is: <a href="https://api.data.gov.sg/v1/transport/carpark-availability">https://api.data.gov.sg/v1/transport/carpark-availability</a></li>
+                    <li>Print out all the data into a table - carpark number, timestamp, lot type, total lots, lot availability, and utilization.</li>
+                    <li>Utilization is a <i>derived attribute</i> and calculated. It is (total lots - available lots) / total lots.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Part 1a: Extra Challenge</h3>
+                    <ul>
+                    <li>Theme the layout of the table nicely - centralize text, use font classes, etc.</li>
+                    <li>If the utilization of the carpark is more than 80%, highlight it in <span style="color:red">red</span>.</li>
+                    <li>Note that the dataset may be full of data that does not make sense - carpark lots with 0 total lots, more lot availability than carpark lots.</li>
+                    <li>You can ignore these, or you can write code to weed out / highlight these rows!</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Part 1a: Screenshot</h3>
+                    <p class="smallfont">To prevent copying code, here's a screenshot of my solution:</p>
+                    <img src="img/carpark_table_screenshot.jpg"/>
+                    <p class="smallfont">Lots more rows below. Over 2000, in fact.</p>
+                    <p class="smallfont">I also added quite a bit of CSS theming to make the table look nicer.</p>
+                </section>
+
+                <section>
+                    <h3>Part 1a: Hints</h3>
+                    <ul>
+                    <li>This portion is not a design challenge.</li>
+                    <li>It is to show you can connect to an API, pull out and manipulate the data, and list the table.</li>
+                    <li>Be sure you know what you are manipulating in the JSON schema - the key-value pairs you need are nested in deeper array / objects. <b>Console.log</b> it to inspect the JSON structure.</li>
+                    <li>Take note that some carpark numbers have more than 1 lot type.</li>
+                    <li>The total lots and lot availability values are strings - you need to convert them to integers. Round off divided numbers.</li>
+                    <li>You can use JQuery to append the HTML elements you need.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Part 1a: More help please!</h3>
+                    <ul>
+                    <li>You sure?</li>
+                    <li>It's better if you challenge yourself to write from scratch. <img src="img/smile.svg" width="20" /></li>
+                    <li>All right, here's a basic starter <a href="assignments/lab3-assignment-starter.html">template</a>.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Assignment 1b: Viz design</h3>
+                    <p>Based on this API data, how would you visualize it?</p>
+                    <p>Any other datasets that you might need?</p>
+                    <p>What are the data scales (levels of measurement) - nominal, ordinal, quantitative - for the data you are visualizing?</p>
+                </section>
+
+                <section>
+                    <h3>Assignment 1b: Designing a visualization</h3>
+                    <p>Write a quick report (a few paragraphs / points) summarizing what you think and add this to the repository.</p>
+                    <p>You do not have to come up with a visualization at this point. Description is enough, or a simple hand-drawn mock will do.</p>
+                    <p>Idea is to think about what the data is like for your proposed viz.</p>
+                    <hr/>
+                    <p class="smallfont"> Assume you're doing this for <i>presentation</i>. What would be interesting to you?</p>
+                    <p class="smallfont">Assume you can mash-up with other datasets, as necessary.</p>
+                    <p class="smallfont">You can use <i>derived</i> attributes instead of what was given. E.g. Utilization in the technical challenge above is a <i>derived</i> attribute.</p>
+                    <p class="smallfont">Please link your report / ideas to your index.html page (easily clickable). Thanks.</p>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
