@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>3a: User - why do data viz?</title>
+
+        <meta name="description" content="02.526 User - why do data viz?">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">3a: Task abstraction</h1>
+                    <h3>Why do data viz?</h3>
+                </section>
+                
+                <section>
+                    <h3>Why: An overview</h3>
+                    <a href="img/user_why_viz.jpg" target="_blank"><img src="img/user_why_viz.jpg"></a>
+                </section>
+                
+                <section>
+                    <h3>Why task abstraction?</h3>
+                    <p>Thinking about <i>why</i> in an abstract form, rather than the domain specific way users often talk about data viz.</p>
+                    <p>This will allow us a framework to discuss use cases, which may on surface look different.</p>
+                </section>
+
+                <section>
+                    <h3>Actions / Targets</h3>
+                    <p>This proposed taxonomy is from Munzner's framework (Visualization Analysis and Design, chapter 3)</p>
+                    <p><b>Actions</b> in this case is a verb, and targets are <b>nouns</b>.</p>
+                    <hr/>
+                    <p class="smallfont">Reading: <i><a href="https://www.cs.ubc.ca/labs/imager/tr/2013/MultiLevelTaskTypology/brehmer_infovis13.pdf" target="_blank">A multi-level typology of abstract visualization tasks</a></i>, Bremmer, Munzner</p>
+                    <p class="smallfont">Reading: <i><a href="https://homes.cs.washington.edu/~jheer/files/idfva-draft.pdf" target="_blank">Taxonomy of interactive dynamics for visual analysis</a></i>, Schneiderman, Heer</p>
+                </section>
+
+                <section>
+                    <h3>Design choice: viz designer or user?</h3>
+                    <p>Vis tools fall somewhere along a continuum from specific to general.</p>
+                    <p class="smallfont">On the general side, tools are flexible and allow users many choices what to make.</p>
+                    <p class="smallfont">On the specific side, the tool is curated and choices are limited in how an end user can interact with the data set.</p>
+                </section>
+                
+                <section>
+                    <h3>3-levels of actions</h3>
+                    <a href="img/3-levels-actions.jpg" target="_blank"><img src="img/3-levels-actions.jpg"></a>
+                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
+                </section>
+
+                <section>
+                    <h3>Targets</h3>
+                    <a href="img/why-targets.jpg" target="_blank"><img src="img/why-targets.jpg"></a>
+                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
+                </section>
+
+                <section>
+                    <h4>Exploratory vs Explainatory</h4>
+                    <a href="img/ticket-trends.jpg" target="_blank"><img src="img/ticket-trends.jpg"></a>
+                    <p class="smallfont"><i>Storytelling with data, chapter 1, Nussbaumer</i></p>
+                </section>
+
+                <section>
+                    <h4>How: An overview</h4>
+                    <a href="img/how-idioms.jpg" target="_blank"><img src="img/how-idioms.jpg"></a>
+                </section>
+                
+                
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 1b</h1>
+                    <h3>Carpark utilization viz ideas</h3>
+                </section>
+                
+                <section>
+                    <h3>Workshop discussion: Viz design</h3>
+                    <p>Recall the carpark data set for the 1st assignment.</p>
+                    <p>Based on carpark API data, how would you visualize it beyond a tabular form?</p>
+                    <p>Any other datasets that you might need?</p>
+                    <p>What are the data scales (levels of measurement) - nominal, ordinal, quantitative - for the data you are visualizing?</p>
+                </section>
+
+                <section>
+                    <h3>Workshop discussion: Designing a visualization</h3>
+                    <p>Think about this and come up with some ideas to present for next week's Thursday workshop.</p>
+                    <p>You do not have to come up with a visualization at this point. Description is enough, or a simple hand-drawn mock will do.</p>
+                    <p>Idea is to think about what the data is like for your proposed viz.</p>
+                    <hr/>
+                    <p class="smallfont"> Assume a use case - exploring the dataset, presentation, etc.</p>
+                    <p class="smallfont">Assume you can mash-up with other datasets, as necessary.</p>
+                    <p class="smallfont">You can use <i>derived</i> attributes instead of what was given. E.g. Utilization in the technical challenge above is a <i>derived</i> attribute.</p>
+                </section>
+                
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>

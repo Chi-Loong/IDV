@@ -6,7 +6,7 @@
 
         <title>2b: All HTML, CSS, JS</title>
 
-        <meta name="description" content="02.526 Interactive Data Viz, Introduction">
+        <meta name="description" content="02.526 HTML, CSS, JS">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -61,8 +61,9 @@
                     <p>A very, very simple basic HTML template.</p>
                     <pre><code>
 &lt;!DOCTYPE html>
-&lt;html> 
+&lt;html>
 &lt;head>
+  &lt;meta charset="UTF-8">
   &lt;title>Hello World&lt;/title>
 &lt;/head>
 &lt;body>
@@ -93,7 +94,7 @@
                     <h2>CSS</h2>
                     <p>Sample CSS code snippet:</p>
                     <pre><code>
-/* this are classes */
+/* these are classes */
 .term-grid {
   max-width: 1000px;
   margin: auto;
@@ -133,7 +134,7 @@
                     <p>Things you should know:</p>
                     <ul>
                     <li>Specifying selectors: By <b>class</b>, <b>id</b>, <b>attribute</b>, etc. (here's a <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors#Types_of_selectors">list</a>)</li>
-                    <li>Cascade and inheritance. Basically a later rule overwrites earlier ones, and a tag can inherit various rules (more <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">details</a>)</li>
+                    <li>Cascade, sepcificity and inheritance. Basically a later rule overwrites earlier ones, and a tag can inherit various rules (more <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">details</a>)</li>
                     <li>Data types, especially specifying units. Most common: <b>px</b>, <b>em</b> (more <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units#Numeric_data_types">details</a>)</li>
                     <li>Debugging: code inspector (use Chrome)</li>
                     </ul>
@@ -203,39 +204,45 @@
                 </section>
 
                 <section>
+                    <h3>Loading libraries via CDN</h3>
+                    <p>Easiest way import libraries is via a CDN (content delivery network)</p>
+                    <p><b>JQuery:</b></p>
+                    <pre><code>
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">&lt;/script>
+                    </code></pre>
+                    <p><b>D3:</b></p>
+                    <pre><code>
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.5.0/d3.min.js">&lt;/script>
+                    </code></pre>
+                    <p class="smallfont">Other methods: downloading and importing yourself</p>
+                    <p class="smallfont">Install as a package, using some module bundler to manage (e.g. webpack)</p>
+                </section>
+
+                <section>
                     <h2>Function chaining</h2>
                     <p>Or why JQuery became popular</p>
                     <p>You could write this in plain vanilla JS:</p>
                     <pre><code>
 var node = document.createElement("p");
-var textnode = document.createTextNode("Test");
+var textnode = document.createTextNode("Hello World");
 node.appendChild(textnode);
 document.getElementById("main").appendChild(node);
                     </code></pre>
                     <p>OR in JQuery</p>
                     <pre><code>
-$("#main").append("<p>Test</p>");
+$("#main").append("&lt;p>"Hello World&lt;/p>");
                     </code></pre>
                     <p class="smallfont"><a href="https://medium.com/@saginadir/native-function-chaining-in-javascript-what-we-can-learn-from-jquery-3b42d5d4a0d">Function chaining makes reading / writing code easier.</a></p>
                 </section>
 
-
                 <section>
                     <h2>Function chaining 2</h2>
-                    <p class="smallfont">You'll see this everywhere in D3.</p>
+                    <p>OR in D3</p>
                     <pre><code>
-chart.selectAll("rect")
-    .data(data)
-    .enter()
-    .append("rect")
-    .attr("x", function(d) {return xScale(d.student);})
-    .attr("y", function(d) { return yScale(d.score); })
-    .attr("width", function(d) {return xScale.bandwidth();})
-    .attr("height", function(d) { return height - yScale(d.score); })
-    .attr("class", "svgRect");
+d3.select("#main").append(p).text("Hello World");
                     </code></pre>
+                    <p class="smallfont">You'll see function chaining everywhere in D3. Actually lots and lots of popular libraries (lodash, etc.) support function chaining.</p>
                 </section>
-
 
                 <section>
                     <h2>JSON</h2>
@@ -312,7 +319,7 @@ chart.selectAll("rect")
                 <section>
                     <h2>GitHub Desktop: Git GUI</h2>
                     <p>The easiest is probably <a href="https://desktop.github.com/">GitHub Desktop</a>.</p>
-                    <p>Document for GitHUb Desktop is excellent, and you can find it <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop">here</a>.</p>
+                    <p>Document for GitHub Desktop is excellent, and you can find it <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop">here</a>.</p>
                     <p>The Git functions that you need to know are probably just <b>clone</b>, <b>fork</b>, <b>pull</b>, <b>push</b> and <b>commit</b>.</p>
                     <p>GitHub desktop makes this easy as it already has a UX walkthrough designed to guide you in the setup (with Git).</p>
                      <p>I'll do a quick walkthrough on how to setup a repo from scratch and commit a change.</p>
@@ -335,12 +342,12 @@ chart.selectAll("rect")
                 </section>
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Assignment 1</h1>
+                    <h1 class="shadowfont white">Assignment 1a</h1>
                     <h3>Carpark utilization table</h3>
                 </section>
 
                 <section>
-                    <h3>Part 1: Setup</h3>
+                    <h3>Part 1a: Setup</h3>
                     <p>To be completed by <b>25-2-2021</b>(Thurs) 1200hrs</p>
                     <ul>
                     <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment1</li>
@@ -371,7 +378,6 @@ chart.selectAll("rect")
 
                 <section>
                     <h3>Part 1a: Screenshot</h3>
-                    <p class="smallfont">To prevent copying code, here's a screenshot of my solution:</p>
                     <img src="img/carpark_table_screenshot.jpg"/>
                     <p class="smallfont">Lots more rows below. Over 2000, in fact.</p>
                     <p class="smallfont">I also added quite a bit of CSS theming to make the table look nicer.</p>
@@ -392,29 +398,9 @@ chart.selectAll("rect")
                 <section>
                     <h3>Part 1a: More help please!</h3>
                     <ul>
-                    <li>You sure?</li>
-                    <li>It's better if you challenge yourself to write from scratch. <img src="img/smile.svg" width="20" /></li>
-                    <li>All right, here's a basic starter <a href="assignments/lab3-assignment-starter.html">template</a>.</li>
+                    <li>If you can, write from scratch. <img src="img/smile.svg" width="20" /></li>
+                    <li>But here's a basic starter <a href="assignments/lab3-assignment-starter.html">template</a> if you need one.</li>
                     </ul>
-                </section>
-
-                <section>
-                    <h3>Assignment 1b: Viz design</h3>
-                    <p>Based on this API data, how would you visualize it?</p>
-                    <p>Any other datasets that you might need?</p>
-                    <p>What are the data scales (levels of measurement) - nominal, ordinal, quantitative - for the data you are visualizing?</p>
-                </section>
-
-                <section>
-                    <h3>Assignment 1b: Designing a visualization</h3>
-                    <p>Write a quick report (a few paragraphs / points) summarizing what you think and add this to the repository.</p>
-                    <p>You do not have to come up with a visualization at this point. Description is enough, or a simple hand-drawn mock will do.</p>
-                    <p>Idea is to think about what the data is like for your proposed viz.</p>
-                    <hr/>
-                    <p class="smallfont"> Assume you're doing this for <i>presentation</i>. What would be interesting to you?</p>
-                    <p class="smallfont">Assume you can mash-up with other datasets, as necessary.</p>
-                    <p class="smallfont">You can use <i>derived</i> attributes instead of what was given. E.g. Utilization in the technical challenge above is a <i>derived</i> attribute.</p>
-                    <p class="smallfont">Please link your report / ideas to your index.html page (easily clickable). Thanks.</p>
                 </section>
 
                 <section>
