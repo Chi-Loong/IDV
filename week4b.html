@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>4b: SVG Basics</title>
+
+        <meta name="description" content="02.526 SVG Basics">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">4b: SVG Basics</h1>
+                </section>
+                
+                <section>
+                    <h2>Objective</h2>
+                    <p>We'll start by looking at the fundamentals of how graphics are drawn in the browser.</p>
+                    <p>This is to build a foundation such that we can manipulate them using D3.js later in the module.</p>
+                    <p>We will start by looking at SVG tags, see how to manipulate them using text attributes, look at CSS stylings, and then put it all together by opening up and manipulating a SVG (icon, chart, etc.)</p>
+                    <p class="smallfont">If we have time we will also learn to do some light animation using CSS keyframe animations.</p>
+                </section>
+
+                <section>
+                    <h3>Drawing for web</h3>
+                    <ul>
+                    <li><b>SVG</b>: Has a DOM-like structure, easy to register events for interaction, scale invariant, can be themed with CSS, and easy to manipulate.</li>
+                    <li><b>Canvas (2D)</b>: Is low level and event firing is far trickier. However, canvas is useful for code art work, when you need to draw lots of shapes on the screen and animate quickly.</li>
+                    <li><b>HTML elements</b>: Elements like divs and imgs can be used, but more painful to manipulate.</li>
+                    <li><b>WebGL (3D)</b>: Use libraries like three.js or babylon.js rather than native as they have excellent design patterns (camera, lighting, etc.)</li>
+                    </ul>
+                    <p class="smallfont">When in doubt, go SVG for all the reasons listed above. It has great support by modern browsers (post IE9)</p>
+                </section>
+
+                <section>
+                    <h2>SVG specifications</h2>
+                    <p>SVG specifications from W3C are <a href="https://www.w3.org/TR/SVG11/" target="_blank">here</a>.</p>
+                    <p class="smallfont">Like HTML and CSS, there are many, many tags. I will only go through some of the more common basic tags. Google when you need it!</p>
+                </section>
+
+                <section>
+                    <h2>SVG</h2>
+                    <p>Let's start with a simple HTML template with an empty SVG tag embedded in it.</p>
+                    <pre><code>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+  &lt;meta charset="UTF-8">
+&lt;/head>
+&lt;body>
+  &lt;svg>&lt;/svg>
+&lt;/body>
+&lt;/html>
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h2>SVG 2</h2>
+                    <p class="smallfont">Inspect the SVG tag. You can see it under the Chrome inspector. Change the width and height so that it is easier to see.</p>
+                    <pre><code>
+  &lt;svg width="1000" height="1000">&lt;/svg>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Technically you should add in the XML namespace attribute, e.g. xmlns="http://www.w3.org/2000/svg". Required for standalone images, but for inline HTML, browsers will ignore.</p>
+                </section>
+                
+                <section>
+                    <h3>Circle</h3>
+                    <p>Draw a circle</p>
+                    <pre><code>
+&lt;circle cx="500" cy="500" r="300">&lt;/circle>
+                    </code></pre>
+                    <p class="smallfont">Add in fill and stroke attributes, e.g: stroke="red" and fill="blue"</p>
+                    <p class="smallfont">Make stroke-width more visible, e.g: stroke-width="5"</p>
+                    <hr/>
+                    <p class="smallfont">If not defined, the units are in px. You can also use em.</p>
+                </section>
+
+                <section>
+                    <h3>Rectangles</h3>
+                    <p>Rectangle syntax</p>
+                    <pre><code>
+&lt;rect x="700" y="700" width="100" height="100" fill="#aa7755">&lt;/rect>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Can you create an empty (not filled) rectangle, and the stroke is by dashed lines? Google the syntax for this.</p>
+                </section>
+
+                <section>
+                    <h3>Lines</h3>
+                    <p>Line syntax</p>
+                    <pre><code>
+&lt;line x1="50" y1="50 x2="900" y2="900" stroke="#0f0">&lt;/line>
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>CSS styling</h3>
+                    <p class="smallfont">SVG can be styled using using CSS (it is DOM-like). For example, add the CSS class tag:</p>
+                    <pre><code>
+&lt;style>
+rect {
+  fill: #777;
+}
+&lt;/style>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">What happens when you have an attribute and style tag for that element?</p>
+                    <p class="smallfont">Because elements can be styled by CSS, that means they follows CSS rules. CSS style selectors like <b>id</b> and <b>class</b> can be used. Try it.</p>
+                    <p class="smallfont">You can move many attributes to the CSS, but it only makes sense as a design pattern to only move out styling attributes.</p>
+                </section>
+
+                <section>
+                    <h3>Grouping</h3>
+                    <p>You can group elements together using the <b>&lt;g></b> tag. All attributes then also apply to the child tags. Example:</p>
+                    <pre><code>
+&lt;g fill="#0f0" stroke="#f00">
+&lt;circle cx="500" cy="500" r="300">&lt;/circle>
+&lt;rect class="rect" x="700" y="100" width="100" height="100">&lt;/rect>
+&lt;/g>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Recap: In CSS child tags inherit styles from the parent tag.</p>
+                    <p class="smallfont">Cascade and specificity rules of course also apply.</p>
+                </section>
+
+                <section>
+                    <h3>Exercise 1</h3>
+                    <ol>
+                    <li>Create 2 circles, 2 rectangles and 2 lines anywhere on the SVG canvas.</li>
+                    <li>Group the circles together. Also group the rectangles together, and then group all the groups.</li>
+                    <li>Then use CSS to style the group elements so that it is inherited by child elements (fill, stroke, stroke-width, etc.).</li>
+                    <li>Show that group styles do not overide elements inside the groups when these elements have their own specific styles (specificity).</li>
+                    </ol>
+                    <hr/>
+                    <p class="smallfont">SVG has no z-index property. Whatever is drawn the latest will be drawn on top of the last tag.</p>
+                </section>
+
+                <section>
+                    <h3>Path</h3>
+                    <p>Path syntax</p>
+                    <pre><code>
+&lt;path d="M100,200 L300,600 L500,200Z">&lt;/path>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">This is a simple example to draw shapes using the path tag. There are lots of other commands in the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths" target="_blank">path</a> tag</p>
+                    <p class="smallfont">The Z tag closes the path. Try it with and without and see the difference.</p>
+                    <p class="smallfont">The commas can be just spaces. But this accepted syntax makes it easier for humans to understand the code. Default is spaces.</p>
+                </section>
+
+                <section>
+                    <h3>Path 2</h3>
+                    <p>Many of the lines you will see on a visualization are going to be paths. You can draw quadratic/bezier curves, or portions of arcs. E.g:</p>
+                    <pre><code>
+&lt;path d="M10 500 C 900 100, 100 900, 990 500" stroke="#000" fill="none">&lt;/path>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Can you draw in the control path lines for the above so we can see more clearly the control points?</p>
+                    <p class="smallfont">There are many commands to draw shapes in SVGs, and you probably only need to Google for the command if you have a specific use case.</p>
+                    <p class="smallfont">Still, it is useful to have some idea of how paths are built.</p>
+                </section>
+                
+                <section>
+                    <h3>Exercise 2</h3>
+                    <p>Draw a 5 pointed star or hexagon.</p>
+                </section>
+                
+                <section>
+                    <h3>Text</h3>
+                    <p>Text is part and parcel of the SVG specification. Syntax:</p>
+                    <pre><code>
+&lt;text x="100" y="100">Hello World&lt;/text>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">What happens when you try to style with both fill and stroke? Try it. Also try setting a thicker stroke width.</p>
+                    <p class="smallfont">Can you style the font-family, font-style? Use CSS.</p>
+                </section>
+
+                <section>
+                    <h3>Text 2</h3>
+                    <p>SVG text has a lot of properties you can play with, e.g. text-anchor, tspan (text breaks), textpath, etc. Example:</p>
+                    <pre><code>
+&lt;path id="helloworld" d="M10 500 C 900 100, 100 900, 990 500" stroke="#000" fill="none">&lt;/path>
+
+  &lt;text font-size="60px">
+    &lt;textPath xlink:href="#helloworld">
+        Hello World. Ipsum Lorem dolor sit amet.
+    &lt;/textPath>
+  &lt;/text>
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h3>Transforms</h3>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform" target="_blank">Transform</a> is very, very useful to know, as it help you position elements (especially when grouped) correctly.</p>
+                    <pre><code>
+&lt;g transform="translate(200, 200)">
+&lt;circle cx="500" cy="500" r="100">&lt;/circle>
+&lt;rect x="700" y="100" width="100" height="100">&lt;/rect>
+&lt;/g>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Translate, scale, rotate are probably some of the more common transforms you will probably use. You can also try out others like skew and matrix.</p>
+                    <p class="smallfont">Try setting the transform-origin attribute to "50% 50%". Otherwise by default it will transform from the top-left corner (i.e. "0% 0%").</p>
+                </section>
+
+                <section>
+                    <h3>ViewBox</h3>
+                    <p>Another extremely useful SVG property. Auto resizes chart to a specific viewBox view port. Example:</p>
+                    <pre><code>
+  &lt;svg viewBox="0 0 1000 1000">&lt;/svg>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">How is this different from setting SVG height and width?</p>
+                </section>
+                
+                <section>
+                    <h3>Exercise 3</h3>
+                    <ol>
+                    <li>Download a SVG icon from anywhere (e.g. flaticon)</li>
+                    <li>Open up the file in a text-editor, strip out erroneous tags, and add the code to an inline SVG.</li>
+                    <li>Rotate the entire icon 45 degrees in your SVG.</li>
+                    <li>Feel free to tranfrom different elements any way you want to.</li>
+                    </ol>
+                </section>
+                
+                <section>
+                    <h3>Extra: CSS keyframe animation</h3>
+                    <p>Add the below animate class to a path or SVG element and add the code snippet to the CSS.</p>
+                    <pre><code>
+.animate {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
