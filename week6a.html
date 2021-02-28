@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>6a: All about color</title>
+        <title>6a: Color</title>
 
-        <meta name="description" content="02.526 All about color">
+        <meta name="description" content="02.526 Color">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -38,171 +38,162 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">6a: All about Color</h1>
+                    <h1 class="shadowfont white">6a: Color</h1>
                 </section>
                 
                 <section>
-                    <h3>Marks</h3>
-                    <p><b>Marks</b> are your basic graphical geometric elements.</p>
-                    <p>E.g. points, bars, circles, lines, etc.</p>
-                    <img src="img/marks_primitives.jpg"/>
-                </section>
-                
-                <section>
-                    <h3>Channels</h3>
-                    <h5> (aka <a href="https://en.wikipedia.org/wiki/Visual_variable" target="_blank">Visual variables</a>)</h5>
-                    <p><b>Channels</b> encode information as attributes / properties of a mark.</p>
-                    <p>E.g. Position, shape, size, color, etc.</p>
-                    <img src="img/channels.jpg"/>
-                </section>
-                
-                <section>
-                    <h3>Visualization:</h3>
-                    <h5>Collection of marks (expressed via channels)</h5>
-                    <p>A visualization represents data using a collection of graphical <b>marks</b> such as bars, lines, and point symbols.</p>
-                    <p>The attributes of a mark — such as its position, shape, size, or color — serve as <b>channels</b> in which we can encode underlying data values.</p>
-                </section>
-                
-                <section>
-                    <h3>Channel: Identity vs Magnitude</h3>
-                    <img src="img/channels-identity-magnitude.jpg"/>
-                </section>
-
-                <section>
-                    <img src="img/fruit-chart.jpg"/>
-                    <p>This fruit chart encodes two data attributes as bar marks.</p>
+                    <h3>Color</h3>
                     <ul>
-                    <li>It encodes number of people - a quantitative data set - as a vertical spatial magnitude channel.</li>
-                    <li>It encodes type of fruit - a nominal data set - as a horizontal spatial identity channel.</li>
-                    <li>Type of fruit is also encoded as a redundant color identity channel.</li>
+                    <li><b>Perception</b>: How the eye perceives color</li>
+                    <li><b>Specification</b>: How we specify color</li>
+                    <li><b>Use</b>: Use of color in visualizations</li>
                     </ul>
                 </section>
-
+                
                 <section>
-                    <p>How many channels are there in this chart? What data scales are encoded?</p>
-                    <img src="img/scatterplot-channels.png"/>
+                    <h3>Visible electromagenetic spectrum</h3>
+                    <img src="img/EMS_visible_light.jpg"/>
+                    <p class="smallfont">Visible light is roughly in the wavelengths of 400nm (4 x 10<sup>-7</sup>m) to 700nm (7 x 10<sup>-7</sup>m).</p>
                 </section>
 
                 <section>
-                    <p>How many channels are there in this chart? What data scales are encoded?</p>
-                    <a href="https://viz.vslashr.com/attilatech/attila-force-6.html" target="_blank"><img src="img/network_diagram.jpg"/></a>
+                    <h3>Eye Structure</h3>
+                    <img src="img/eye_diagram.jpg"/>
                 </section>
 
                 <section>
-                    <h3>Channel: Expressiveness</h3>
-                    <p>The <b>expressiveness</b> principle dictates that the visual encoding should express all of, and only, the information in the dataset attributes.</p>
-                    <p>Color channel violation of expressiveness principle:</p>
-                    <a href="https://www.eld.gov.sg/elections_map_electoral.html" target="_blank"><img src="img/eld_bad.jpg"></a>
+                    <h3>Eye: Rods and Cones</h3>
+                    <img src="img/rods_cones_table.jpg"/>
+                    <img src="img/fovea_density.jpg"/>
+                </section>
+                
+                <section>
+                    <h3>Cones: photoreceptor wavelength</h3>
+                    <img src="img/photoreceptor_sensitivity.jpg"/>
+                    <p class="smallfont">Red cones, or L-cones. 64% of total cones, maximally sensitive to long-wave light</p>
+                    <p class="smallfont">Green cones, or M-cones. 32% of total cones, maximally sensitive to medium-wave light</p>
+                    <p class="smallfont">Blue cones, or S-cones. 2 – 7% of total cones, maximally sensitive to short-wave light</p>
                 </section>
 
                 <section>
-                    <h3>Channel: Effectiveness</h3>
-                    <p>The <b>effectiveness</b> principle dictates that the importance of the attribute should match the salience of the channel; that is, its noticeability.</p>
-                    <p>The most important attributes should be encoded with the most effective channels to be noticeable, and so on and so forth.</p>
-                    <p>Channel effectiveness can be described by these principles:</p>
+                    <h3>Cones: distribution</h3>
+                    <img src="img/conemosaics.jpg"/>
+                    <p class="smallfont">Left: Illustration of distribution of cones in fovea of human with normal color vision.</p>
+                    <p class="smallfont">Right: Illustration of distribution of cones in fovea of human with protanopic vision, i.e. no L-cones (red cones)</p>
+                </section>
+                
+                <section>
+                    <h3>Color blindness</h3>
+                    <img src="img/color_blindness_chart.jpg"/>
+                    <p class="smallfont">Color blindness is genetically inherited. About 8% men, 0.5% women around the world</p>
+                    <p class="smallfont">Red-green color blindness is passed down on the X chromosome, of which men have only 1 X chromosome (women have 2).</p>
+                    <p class="smallfont">Common: red-green deficiency, deuteronomaly. Uncommon: protonomaly.</p>
+                    <p class="smallfont">Rare: blue-yellow deficiency, tritanomaly.</p>
+                    <p class="smallfont">More info on <a href="https://en.wikipedia.org/wiki/Color_blindness" target="_blank">color blindness</a></p>
+                </section>
+                
+                <section>
+                    <h3>Color blindness 2</h3>
+                    <img src="img/color_blindness_balloons.jpg" target="_blank"/>
+                    <p class="smallfont"><a href="http://vischeck.com/" target="_blank">Vischeck</a>: color blindness simulation and correction</p>
+                </section>
+                
+                <section>
+                    <h3>Colorspace</h3>
+                    <p>A colorspace is a system for describing color numerically.</p>
                     <ul>
-                        <li>Accuracy</li>
-                        <li>Discriminability</li>
-                        <li>Separability</li>
-                        <li>Salience (pop-out)</li>
-                        <li>Grouping</li>
+                        <li>RGB</li>
+                        <li>CMYK</li>
+                        <li>HSV/HSL</li>
+                        <li>CIE Lab</li>
+                        <li>CIE HCL</li>
                     </ul>
-                </section>
-
-                <section>
-                    <h3>Channel ranking (based on effectiveness)</h3>
-                    <img src="img/channels-identity-magnitude.jpg"/>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 5, Marks and Channels, Munzner</i></p>
-                </section>
-
-                <section>
-                    <h3>Human perception</h3>
-                    <h5><a href="https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law" target="_blank">Weber-Fechner Law</a></h5>
-                    <p>The amount of change that is necessary to be noticed is systematically related to the size of the stimulus.</p>
-                    <p>The stronger the initial stimulus, the greater a change must be for it to be noticed.</p>
-                    <img src="img/weber-law-formula.jpg"/>
-                </section>
-
-                <section>
-                    <h3>Weber-Fechner Law</h3>
-                    <img src="img/weber-law-example.jpg"/>
-                    <p><a href="https://www.youtube.com/watch?v=hHG8io5qIU8" target="_blank">Numberphile's video on Weber's Law</a></p>
-                    <p>Implication: The human perceptual system is fundamentally based on relative judgements, not absolute ones.</p>
-                </section>
-
-                <section>
-                    <h3><a href="https://en.wikipedia.org/wiki/Stevens%27s_power_law" target="_blank">Steven's Power Law</a></h3>
-                    <p class="smallfont"><b>Psychophysics</b>: the subfield of psychology devoted to the systematic measurement of general human perception.</p>
-                    <img src="img/steven-psychophysical-power-law.jpg"/>
+                    <p>There are many more: XYZ, Munsell, CMS, etc.</p>
                 </section>
                 
                 <section>
-                    <h4>Graphical Perception: Cleveland and McGill</h4>
-                    <img src="img/cleveland_and_mcgill.jpg"/>
-                    <p class="smallfont">Reading: <a href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1984.10478080" target="_blank">Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods</a></p>
-                    <p class="smallfont">Reading: <a href="https://visualthinking.psych.northwestern.edu/publications/Harrison-weberlaw-infovis2014.pdf" target="_blank">Ranking Visualizations of Correlation Using Weber's Law</a></p>
-                </section>
-                
-                <section>
-                    <h3>Channel effectiveness: Accuracy</h3>
-                    <p>Pick higher ranking channels (with reason).</p>
-                    <p>E.g. Position > length, Angles > area</p>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/RGB_color_model" target="_blank">RGB</a></h3>
+                    <img src="img/monitor_magnified.jpg"/>
+                    <img src="img/rgbcube.png"/>
+                    <p class="smallfont">Left: Magnification of pixels on a screen. Right: RGB color cube.</p>
+                    <p class="smallfont">RGB colorspace is additive.</p>
+                    <p class="smallfont">Problems: Not intuitive, not <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/" target="_blank">perceptually uniform</a>.</p>
+                    <p class="smallfont">Reading: <a href="https://observablehq.com/@mattdesl/perceptually-smooth-multi-color-linear-gradients" target="_blank">Perceptually Smooth Multi-Color Linear Gradients</a></p>
                 </section>
 
                 <section>
-                    <section>
-                        <h3>Channel effectiveness: Accuracy</h3>
-                        <p>Example: Analyze profit over time for 3 categories</p>
-                        <img src="img/accuracy_implications1.jpg"/>
-                    </section>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/RGB_color_model" target="_blank">CMYK</a></h3>
+                    <img src="img/CMYK-vs-RGB.jpg"/>
+                    <p class="smallfont">CMYK colorspace is subtractive. For print only.</p>
+                    <p class="smallfont">Reading: <a href="https://www.printplace.com/blog/reasons-for-cmyk-printing/" target="_blank">Why printing uses CMYK</a></p>
+                </section>
 
-                    <section>
-                        <img src="img/accuracy_implications2.jpg"/>
-                    </section>
-                </section>
-                
+
                 <section>
-                    <h3>Channel effectiveness: Discriminability</h3>
-                    <p>Must be able to discriminate between a reasonable number of bins (typically max 5 to 7)</p>
-                    <img src="img/flawed-piechart.jpg"/>
-                    <p class="smallfont">So how to deal with lots of data? You use techniques like grouping, filtering or faceting (we'll cover in later lectures)</p>
-                </section>
-                
-                <section>
-                    <h3>Channel effectiveness: Separability</h3>
-                    <p>This ranges from the <b>seperable</b> (e.g. channels: position and hue) to the <b>integral</b> (e.g. channels: red and green color scales)</p>
-                    <img src="img/trivariate_map.jpg"/>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/HSL_and_HSV" target="_blank">HSV/HSL</a></h3>
+                    <p>H = Hue, S = Saturation (vividness of color), V/L = Value / Lightness</p>
+                    <img src="img/colorWheel.jpeg"/>
+                    <img src="img/HSV_cylinder.png"/>
+                    <p class="smallfont">Left: Hue described radially. Right: HSV color cylinder</p>
+                    <p class="smallfont">Problems: More intuitive, but also not <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/" target="_blank">perceptually uniform</a>.</p>
                 </section>
 
                 <section>
-                    <section>
-                        <h3>Channel effectiveness: Salience (popout)</h3>
-                        <p>Many visual channels provide visual <b>popout</b>, where a distinct item stands out from many others immediately.</p>
-                        <img src="img/threes1.jpg"/>
-                        <p class="smallfont">Count the number of threes</p>
-                    </section>
-                    
-                    <section>
-                        <img src="img/threes2.jpg"/>
-                        <p class="smallfont">Far easier, right? Using the color channel to popout elements.</p>
-                        <p><a href="https://www.csc2.ncsu.edu/faculty/healey/PP/" target="_blank">Perception in visualization, Healey</a></p>
-                        <p class="smallfont">Concepts: Pre-attention in vision, change blindness</p>
-                        <p class="smallfont"><a href="https://www.youtube.com/watch?v=bh_9XFzbWV8" target="_blank">Change blindness demo</a></p>
-                        <p class="smallfont">Many pairs of channels do not support popout, and 3 or more channels definitely do not. As a general rule, use popout for one channel only.</p>
-                    </section>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/CIELAB_color_space" target="_blank">CIE Lab</a> (or Lab)</h3>
+                    <p>L = Lightness, a = red-green scale, b = yellow-blue scale</p>
+                    <img src="img/CIELab_model.jpg"/>
+                    <p class="smallfont">CIE (Commission internationale de l'éclairage, or International Commission on Illumination) - international authority on light, illumination, colour, and colour spaces.</p>
+                    <p class="smallfont">Designed to better approximate human perception of color.</p>
+                    <p class="smallfont">Perceptually linear (or close).</p>
                 </section>
 
                 <section>
-                    <h3>Channel effectiveness: Salience (popout)</h3>
-                    <img src="img/color_preattention.jpg"/>
-                    <p class="smallfont"><i>Storytelling with Data: A Data Visualization Guide for Business Professionals, chapter 4, Nussbaumer</i></p>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/HCL_color_space" target="_blank">CIE HCL</a> (or HCL)</h3>
+                    <p>H = Hue, C = Chroma, L = Luminance</p>
+                    <p class="smallfont">H and C are transformations of a and b in the Lab model.</p>
+                    <img src="img/CIEHCL_model.jpg"/>
+                    <img src="img/CIEHCL_circle.jpg"/>
+                    <p class="smallfont">Perceptually linear, and more intuitive.</p>
                 </section>
 
                 <section>
-                    <h3>Channel effectiveness: Grouping</h3>
-                    <p><a href="https://en.wikipedia.org/wiki/Principles_of_grouping" target="_blank">Gestalt principles of grouping</a></p>
-                    <img src="img/gestalt_principles.jpg"/>
-                    <p class="smallfont">Reading: <a href="http://driftlessdata.space/post/income-gestalt/" target="_blank">Gestalt principles and income inequality, Silas Bergen</a></p>
+                    <h3>Recap: Color channels</h3>
+                    <p>Magnitude channel (quantitative) or identity (qualitative)?</p>
+                    <img src="img/ordering_direction.jpg"/>
+                    <img src="img/hue-saturation-luminance.jpg"/>
+                    <p>4th channel: Transparency (used as layer for interaction)</p>
+                    <p><a href="https://github.com/d3/d3-scale-chromatic" target="_blank">D3: Color scales (aka as a channel)</a></p>
+                    <p><a href="https://github.com/d3/d3-color" target="_blank">D3: Colorspace</a></p>
+                </section>
+
+                <section>
+                    <h3>Viridis color palette</h3>
+                    <p>Recap: color blindness</p>
+                    <ul>
+                    <li>Colorful (spans wide palette)</li>
+                    <li>Perceptually uniform</li>
+                    <li>Robust to color blindness</li>
+                    <li>Pretty!</li>
+                    </ul>
+                    <p><a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html" target="_blank">Viridis color palette</a></p>
+                    <p class="smallfont">Reading: <a href="https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" target="_blank">5 tips on designing colorblind-friendly visualizations</a></p>
+                    <p class="smallfont">Redundantly encode channels - shape, tooltip, etc.</p>
+                </section>
+
+                <section>
+                    <h3>Color Tools</h3>
+                    <p>Recap: Channel effectiveness: Discriminability.</p>
+                    <p>Not too many color bins. Perceptually distinct colors.</p>
+                    <p><a href="http://medialab.github.io/iwanthue/" target="_blank">I want hue</a></p>
+                    <p><a href="https://colorbrewer2.org/" target="_blank">Color Brewer 2.0</a></p>
+                </section>
+
+                <section>
+                    <h3>Color: Implications</h3>
+                    <p>Channel: separability - luminance and saturation are not the most separable. Also not separable from transparency. For separability, pick hue vs saturation / luminance.</p>
+                    <p>Channel: salience (popout) - very small number of bins.</p>
+                    <p>Rainbow color maps: <a href="https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html" target="_blank">Pros</a> and <a href="https://agilescientific.com/blog/2017/12/14/no-more-rainbows" target="_blank">cons</a></p>
+                    <p>Reading: <a href="https://cambridge-intelligence.com/choosing-colors-for-your-data-visualization/" target="_blank">Choosing colors for your visualization</a></p>
                 </section>
 
                 <section>
