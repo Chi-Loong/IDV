@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>8a: Chart Types</title>
+
+        <meta name="description" content="02.526 Color">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+tr:nth-child(odd) {
+    background: #777;
+}
+
+tr:nth-child(even) {
+    background: #333;
+}
+
+.reveal td {
+  font-size: 0.8em;
+}
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">8a: Chart types</h1>
+                    <h3>Tabular data</h3>
+                </section>
+
+                <section>
+                    <h3>Recap: How to design viz idioms</h3>
+                    <img src="img/how-idioms.jpg"/>
+                </section>
+
+                <section>
+                    <h3>Recap: Data Types</h3>
+                    <ul>
+                        <li>Tabular data</li>
+                        <li>Networks</li>
+                        <li>Geographic / spatial</li>
+                        <li>Fields</li>
+                        <li>Hierarchical</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Tabular data</h3>
+                    <img src="img/arrange_tables.jpg"/>
+                </section>
+
+                <section>
+                    <h3>Tabular data 2</h3>
+                    <img src="img/carpark_table.jpg"/>
+                </section>
+
+                <section>
+                    <h3>D3 Graph Gallery</h3>
+                    <p>But there are other ways to categorize charts.</p>
+                    <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg"/></a>
+                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
+                    <p><a href="https://www.data-to-viz.com/" target="_blank">Data to Viz</a></p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Bar Chart</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>1 quantitative value attribute, 1 categorical key attribute</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Encode bar marks, express value attribute with aligned vertical position, separate key attribute with horizontal position</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Task lookup and compare values</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Key attribute: Up to hundreds</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - Barplots</a></p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Stacked Bar Chart</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Multidimensional table: 1 quantitative value attribute, 2 categorical key attributes</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Bar glyph with length-coded subcomponents of value attribute for each category of secondary key attribute (typically using color as an identity channel). Separate bars by category of primary key attribute.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Part-to-whole relationship, lookup values, find trends.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Key attribute (main axis): dozens to hundreds of levels. Key attribute (stacked glyph axis): several to one dozen</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - Stacked Barplots</a></p>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Recap: which viz?</h3>
+                        <img src="img/accuracy_implications1.jpg"/>
+                    </section>
+
+                    <section>
+                        <img src="img/accuracy_implications2.jpg"/>
+                        <p>Part-of-whole relationship: <a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - 100% Stacked Barplots</a></p>
+                    </section>
+                </section>
+
+
+                <section>
+                    <h3>Idiom: Pie Chart</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table: one quantitative attribute, one categorical attribute</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Encode Area marks (wedges) with angle channel; radial layout</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Part-to-whole relationship</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>One dozen categories</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/pie.html" target="_blank">D3 Graph Gallery - Pie Chart</a></p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Stacked Area / Streamgraph</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Multidimensional table: one quantitative value attribute (often counts / amount), one orindal key attribute (often time), one categorical key attribute</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Use derived geometry to show layers across time, layer height encodes counts.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Show holistic view, part-to-whole relationship, trends.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Key attributes (time): up to hundreds of time points. Key attributes (each area): several to one dozen</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/stackedarea.html" target="_blank">D3 Graph Gallery - Stacked Area</a></p>
+                    <p class="smallfont">Example: <a href="https://viz.sg/viz/budget2020/" target="_blank">Budget 2020</a></p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Scatterplot</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table: 2 quantitative value attributes</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Express values with horizontal and vertical spatial position and point marks.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Task Find trends, outliers, distribution, correlation; locate clusters.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Items: Hundreds</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/scatter.html" target="_blank">D3 Graph Gallery - Scatterplot</a></p>
+                    <p class="smallfont">You can add in a 3rd quantitative attribute (size of mark). You can also add in categorical attributes (color, shape of mark).</p>
+                    <p class="smallfont">Example: <a href="https://www.visualcinnamon.com/2015/07/voronoi/" target="_blank">Using a d3 voronoi grid for better interactive experience</a>, Visual Cinnamon (Nadieh Bremmer)</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Heatmap</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table: two categorical key attributes. One quantitative value attribute</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Encode length channel along radial spokes; radial layout</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Find clusters, outliers, summarize</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Items: Up to a million. Categorical attribute levels: hundreds. Color quantitative attribute levels: 3 to 11</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/heatmap.html" target="_blank">D3 Graph Gallery - Heatmap</a></p>
+                    <p class="smallfont">Example: <a href="https://gym-tracker.data.gov.sg/" target="_blank">ActiveSG Gym Tracker</a></p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Scatterplot Matrix</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table with a whole bunch of attributes</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Scatterplots in 2D matrix alignment</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Find corrletation, clusters, outliers</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Attributes: Up to a dozen. Items: up to hundreds</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/correlogram.html" target="_blank">D3 Graph Gallery - Scatterplot Matrix / Correlogram</a></p>
+                    <p class="smallfont">Reading: <a href="https://www.data-to-viz.com/graph/correlogram.html" target="_blank">Correlogram - variations, data-to-viz</a></p>
+                </section>
+                
+                <section>
+                    <h3>Idiom: Radar</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table with 3 to 12 quantitative attributes. 1 categorical key attribute (color)</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Scatterplots in 2D matrix alignment</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Comparison, find outliers</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Quantitative attributes: 3 to 12. Categorical key attribute: 2 to 5 (the less the better)</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/spider.html" target="_blank">D3 Graph Gallery - Radar</a></p>
+                    <p class="smallfont">Example: <a href="https://viz.vslashr.com/mci/results.html?id=5d11f61da51f48680555c79a" target="_blank">MCI radar</a></p>
+                </section>
+                
+                <section>
+                    <h3>A quick walkthrough:</h3>
+                    <h4>Other charts - tabular data</h4>
+                    <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg"/></a>
+                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
+                </section>
+
+                <section>
+                    <h3>TR Examples</h3>
+                    <p>Area to Boxplot: <a href="https://www.temasekreview.com.sg/investor/12-month-returns-simulation.html#volatility-of-returns" target="_blank">Modified boxplot explorable</a></p>
+                    <p>Area Chart counterexample: <a href="https://www.temasekreview.com.sg/investor/12-month-returns-simulation.html#volatility-of-returns" target="_blank">Value Since Inception Explorable</a></p>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
