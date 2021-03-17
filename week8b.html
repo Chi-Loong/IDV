@@ -41,29 +41,86 @@
                 </section>
                 
                 <section>
-                    <h3>Objective: Basic D3 primer</h3>
-                    <p>We'll first start by going through some other open source charting libraries / resources that you might want to consider for web-based interactive visualizations.</p>
-                    <p>We'll then do selection and data binding to a simple data structure. We'll also go through axes, domains and ranges.</p>
-                    <p>We'll then put it all together in a simple bar / scatterplot chart.</p>
+                    <h2>Objectives</h2>
+                    <ul>
+                    <li>Discuss libraries beyond D3.</li>
+                    <li>Go through selection and data binding. Also: axes, domains and ranges.</li>
+                    <li>Put together a simple bar / scatterplot chart.</li>
+                    </ul>
                 </section>
 
                 <section>
-                    <h3>Drawing for web</h3>
-                    vega
-                    echarts
-                    Amelia's How to learn D3
-                    
+                    <h3>Why <a href="https://d3js.org/" target="_blank">D3</a>?</h3>
+                    <h4>(Data Driven Documents)</h4>
+                    <p>It is a comprehensive framework for building any sort (almost literally) of interactive visualizations for the web.</p>
+                    <p>It is however, not a simple high-level graphing template library.</p>
+                    <p>One of the main design patterns in this library is <b>binding</b> the data to DOM elements.</p>
                 </section>
 
                 <section>
-                    <h2>SVG specifications</h2>
-                    <p>SVG specifications from W3C are <a href="https://www.w3.org/TR/SVG11/" target="_blank">here</a>.</p>
-                    <p class="smallfont">Like HTML and CSS, there are many, many tags. I will only go through some of the more common basic tags. Google when you need it!</p>
+                    <h3>How to learn D3</h3>
+                    <p><a href="https://wattenberger.com/blog/d3" target="_blank">How to learn D3.js</a>, Amelia Watterberger</p>
+                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, Yan Holtz</p>
+                    <p><a href="https://bl.ocks.org/" target="_blank">bl.ocks.org</a></p>
+                    <p><a href="https://observablehq.com/" target="_blank">ObservableHQ</a></p>
                 </section>
 
                 <section>
-                    <h2>SVG</h2>
-                    <p>Let's start with a simple HTML template with an empty SVG tag embedded in it.</p>
+                    <h3>Sample libraries built on top of D3</h3>
+                    <ul>
+                    <li><a href="https://vega.github.io/vega-lite/" target="_blank">Vega 5.0</a></li>
+                    <li><a href="https://nvd3.org/" target="_blank">NVD3</a></li>
+                    <li><a href="https://c3js.org/" target="_blank">C3</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Other charting libraries</h3>
+                    <ul>
+                    <li><a href="https://echarts.apache.org/en/index.html" target="_blank">Apache e-charts</a></li>
+                    <li><a href="https://www.chartjs.org/" target="_blank">Chart.js</a></li>
+                    <li><a href="https://developers.google.com/chart/" target="_blank">Google Charts</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Animation and 3D libraries</h3>
+                    <p>Animation</p>
+                    <ul>
+                    <li><a href="https://greensock.com/gsap/" target="_blank">GSAP</a></li>
+                    <li><a href="https://animejs.com/" target="_blank">Anime.js</a></li>
+                    </ul>
+                    <hr/>
+                    <p>3D</p>
+                    <ul>
+                    <li><a href="https://threejs.org/" target="_blank">three.js</a></li>
+                    <li><a href="https://www.babylonjs.com/" target="_blank">Babylon</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Utility Libraries</h3>
+                    <ul>
+                    <li><a href="https://lodash.com/" target="_blank">Lodash / Underscore</a></li>
+                    <li><a href="https://pbeshai.github.io/tidy/" target="_blank">Tidy.js</a></li>
+                    <li><a href="https://www.papaparse.com/" target="_blank">Papaparse</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>D3 installation / data binding</h3>
+                    <p>I'll be including D3 the easiest way - embedding as a script pulled from a CDN. You can of course use npm / <b>import</b> and design a more modern way of scaffolding your projects.</p>
+                    <p>One thing to note is that for <b>reactivity</b>, we'll be using D3's default data binding functions.</p>
+                    <p>If you use a JS framework / compiler &mdash; Vue, React, Angular, Svelte, etc. &mdash; it is a good idea that your data binding does not clash with D3's one.</p>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">D3 code workshop</h1>
+                </section>
+
+                <section>
+                    <h2>Hello World</h2>
+                    <p>Let's start with a simple template. We'll go through <b>selections</b>, which is a core component of D3.</p>
                     <pre><code>
 &lt;!DOCTYPE html>
 &lt;html>
@@ -71,200 +128,291 @@
   &lt;meta charset="UTF-8">
 &lt;/head>
 &lt;body>
-  &lt;svg>&lt;/svg>
+&lt;script src="https://d3js.org/d3.v6.min.js">&lt;/script>
+&lt;script>
+  d3.select("body").append("p").text("Hello World!");
+&lt;/script>
 &lt;/body>
 &lt;/html>
                     </code></pre>
+                    <hr/>
+                    <p class="smallfont">Note: We're appending a paragraph tag of "Hello World" to the body.</p>
                 </section>
                 
                 <section>
-                    <h2>SVG 2</h2>
-                    <p class="smallfont">Inspect the SVG tag. You can see it under the Chrome inspector. Change the width and height so that it is easier to see.</p>
+                    <h2>Hello Worlds</h2>
                     <pre><code>
-  &lt;svg width="1000" height="1000">&lt;/svg>
+&lt;div id="hellos">
+    &lt;p>Hello World!&lt;/p>
+    &lt;p>Hello World 2!&lt;/p>
+    &lt;p>Hello World 3!&lt;/p>
+&lt;/div>
+
+&lt;script>
+    d3.select("#hellos p").style("color", "green");
+    d3.selectAll("#hellos p").style("color", "green");
+&lt;/script>
                     </code></pre>
                     <hr/>
-                    <p class="smallfont">Technically you should add in the XML namespace attribute, e.g. xmlns="http://www.w3.org/2000/svg". Required for standalone images, but for inline HTML, browsers will ignore.</p>
+                    <p class="smallfont">Notice the difference between the select and selectAll statements.</p>
                 </section>
                 
                 <section>
-                    <h3>Circle</h3>
-                    <p>Draw a circle</p>
+                    <h3>Data Binding</h3>
                     <pre><code>
-&lt;circle cx="500" cy="500" r="300">&lt;/circle>
-                    </code></pre>
-                    <p class="smallfont">Add in fill and stroke attributes, e.g: stroke="red" and fill="blue"</p>
-                    <p class="smallfont">Make stroke-width more visible, e.g: stroke-width="5"</p>
-                    <hr/>
-                    <p class="smallfont">If not defined, the units are in px. You can also use em.</p>
-                </section>
-
-                <section>
-                    <h3>Rectangles</h3>
-                    <p>Rectangle syntax</p>
-                    <pre><code>
-&lt;rect x="700" y="700" width="100" height="100" fill="#aa7755">&lt;/rect>
+let data = [10, 20, 30];
+let hellos = d3.select("#hellos");
+hellos.selectAll("p")
+.data(data)
+.enter()
+.append("p")
+.text("Hello World");
                     </code></pre>
                     <hr/>
-                    <p class="smallfont">Can you create an empty (not filled) rectangle, and the stroke is by dashed lines? Google the syntax for this.</p>
-                </section>
-
-                <section>
-                    <h3>Lines</h3>
-                    <p>Line syntax</p>
-                    <pre><code>
-&lt;line x1="50" y1="50 x2="900" y2="900" stroke="#0f0">&lt;/line>
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h3>CSS styling</h3>
-                    <p class="smallfont">SVG can be styled using using CSS (it is DOM-like). For example, add the CSS class tag:</p>
-                    <pre><code>
-&lt;style>
-rect {
-  fill: #777;
-}
-&lt;/style>
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">What happens when you have an attribute and style tag for that element?</p>
-                    <p class="smallfont">Because elements can be styled by CSS, that means they follows CSS rules. CSS style selectors like <b>id</b> and <b>class</b> can be used. Try it.</p>
-                    <p class="smallfont">You can move many attributes to the CSS, but it only makes sense as a design pattern to only move out styling attributes.</p>
-                </section>
-
-                <section>
-                    <h3>Grouping</h3>
-                    <p>You can group elements together using the <b>&lt;g></b> tag. All attributes then also apply to the child tags. Example:</p>
-                    <pre><code>
-&lt;g fill="#0f0" stroke="#f00">
-&lt;circle cx="500" cy="500" r="300">&lt;/circle>
-&lt;rect class="rect" x="700" y="100" width="100" height="100">&lt;/rect>
-&lt;/g>
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">Recap: In CSS child tags inherit styles from the parent tag.</p>
-                    <p class="smallfont">Cascade and specificity rules of course also apply.</p>
+                    <p class="smallfont">Notice the design pattern: Select a bunch of elements (that don't exist), bind that to the data, and then append said elements.</p>
+                    <p class="smallfont">One style to write javascript is to use <a href="https://medium.com/backticks-tildes/understanding-method-chaining-in-javascript-647a9004bd4f" target="_blank">method chaining</a>, which is a design pattern you will see in many javascript libraries, like JQuery or Lodash. D3 also follows this style, and it makes your code more readable.</p>
                 </section>
 
                 <section>
                     <h3>Exercise 1</h3>
+                    <pre><code>
+let data = [
+    {text: "Hello World 1", size: 10, color: "green"},
+    {text: "Hello World 2", size: 20, color: "blue"},
+    {text: "Hello World 3", size: 30, color: "red"},
+];                  
+                    </code></pre>
+                    <p class="smallfont">Given this dataset, can you print out each individual text, and style the elements?</p>
+                </section>
+
+                <section>
+                    <h3>Fun with transitions</h3>
+                    <pre><code>
+hellos.selectAll("p")
+.data(data)
+.enter()
+.append("p")
+.text(d => d.text)
+.transition()
+.duration((d,i) => i * 1000)
+.style("font-size", d => d.size + "px")
+.style("color", d => d.color);
+                    </code></pre>
+                </section>
+
+
+                <section>
+                    <h3>Recap: SVG</h3>
+                    <h4>Exercise 1b</h4>
+                    <p class="smallfont">Remember how to draw shapes using SVGs?</p>
+                    <pre><code>
+&lt;svg width="800" height="800">&lt;/svg>
+let data = [
+    {x: 400, y: 700, r:150, color: "green"},
+    {x: 100, y: 300, r:50, color: "blue"},
+    {x: 850, y: 400, r:100, color: "red"}
+]
+                    </code></pre>
+                    <p class="smallfont">Given this dataset, can you add these as circles, with the appropriate theming?</p>
+                </section>
+
+                <section>
+                    <h3>Domains and ranges</h3>
+                    <p>How do we map our quantitative data scale to the SVG drawing scale? Use <b>domain / range</b>.</p>
+                    <pre><code>
+let xScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([0,800]);
+
+let yScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([800,0]);
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Note that the y-axis (the range) is typically inverted.</p>
+                </section>
+
+                <section>
+                    <h3>Setup Dimensions / Margins</h3>
+                    <pre><code>
+let margin = {top: 20, right: 20, bottom: 60, left: 60},
+    width = 800 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+let chart = d3.select("svg")
+    .attr("width", 800)
+    .attr("height", 800)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+let xScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([0,width]);
+let yScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([height,0]);
+    
+chart.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xScale(d.x))
+    .attr("cy", d => yScale(d.y))
+    .attr("r", d => d.r)
+    .attr("fill", d => d.color);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Add axes</h3>
+                    <pre><code>
+chart
+    .append("g")
+    .call(d3.axisBottom(xScale));
+chart
+    .append("g")
+    .call(d3.axisLeft(yScale));
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Axes are added to origin point (0,0). Use a transform to translate the xAxis to the bottom of the chart.</p>
+                    <pre><code>
+chart
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Add labels</h3>
+                    <pre><code>
+chart
+    .append("text")
+    .attr("transform", "translate(" + (width / 2) + "," + (height + 40) + ")")
+    .text("X-axis label")
+    .attr("text-align", "middle");
+
+chart
+    .append("text")
+    .attr("transform", "translate(-40, " + (height / 2) + ") rotate(-90)")
+    .text("Y-axis label")
+    .attr("text-align", "middle");
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Add colorscale</h3>
+                    <p>Let's map radius to a sequential colorscale.</p>
+                    <pre><code>
+let colorScale = d3.scaleLinear()
+    .domain([0, 300])
+    .range([0,1]);
+                    </code></pre>
+                    <hr/>
+                    <pre><code>
+    ...
+    .attr("fill", d => d3.interpolateViridis(colorScale(d.r)));
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Event firing</h3>
+                    <h4>Mouseover / mouseout</h4>
+                    <pre><code>
+    ...
+    .on("mouseover", (event, d) => {
+        d3.select(event.currentTarget)
+        .attr("stroke", "black")
+        .attr("stroke-width", 2);
+    }) 
+    .on("mouseout", (event, d) => {
+        d3.select(event.currentTarget)
+        .attr("stroke", "none");
+    })
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Do note that this event firing is syntax for the latest D3 v6. <a href="https://observablehq.com/@d3/d3v6-migration-guide" target="_blank">Migration docs here</a>. Syntax for event firing is different for previous versions.</p>
+                </section>
+
+                <section>
+                    <h3>Clean-up / Ideas</h3>
+                    <h4>Things to consider</h4>
                     <ol>
-                    <li>Create 2 circles, 2 rectangles and 2 lines anywhere on the SVG canvas.</li>
-                    <li>Group the circles together. Also group the rectangles together, and then group all the groups.</li>
-                    <li>Then use CSS to style the group elements so that it is inherited by child elements (fill, stroke, stroke-width, etc.).</li>
-                    <li>Show that group styles do not overide elements inside the groups when these elements have their own specific styles (specificity).</li>
-                    </ol>
-                    <hr/>
-                    <p class="smallfont">SVG has no z-index property. Whatever is drawn the latest will be drawn on top of the last tag.</p>
-                </section>
-
-                <section>
-                    <h3>Path</h3>
-                    <p>Path syntax</p>
-                    <pre><code>
-&lt;path d="M100,200 L300,600 L500,200Z">&lt;/path>
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">This is a simple example to draw shapes using the path tag. There are lots of other commands in the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths" target="_blank">path</a> tag</p>
-                    <p class="smallfont">The Z tag closes the path. Try it with and without and see the difference.</p>
-                    <p class="smallfont">The commas can be just spaces. But this accepted syntax makes it easier for humans to understand the code. Default is spaces.</p>
-                </section>
-
-                <section>
-                    <h3>Path 2</h3>
-                    <p>Many of the lines you will see on a visualization are going to be paths. You can draw quadratic/bezier curves, or portions of arcs. E.g:</p>
-                    <pre><code>
-&lt;path d="M10 500 C 900 100, 100 900, 990 500" stroke="#000" fill="none">&lt;/path>
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">Can you draw in the control path lines for the above so we can see more clearly the control points?</p>
-                    <p class="smallfont">There are many commands to draw shapes in SVGs, and you probably only need to Google for the command if you have a specific use case.</p>
-                    <p class="smallfont">Still, it is useful to have some idea of how paths are built.</p>
-                </section>
-                
-                <section>
-                    <h3>Exercise 2</h3>
-                    <p>Draw a 5 pointed star or hexagon.</p>
-                </section>
-                
-                <section>
-                    <h3>Text</h3>
-                    <p>Text is part and parcel of the SVG specification. Syntax:</p>
-                    <pre><code>
-&lt;text x="100" y="100">Hello World&lt;/text>
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">What happens when you try to style with both fill and stroke? Try it. Also try setting a thicker stroke width.</p>
-                    <p class="smallfont">Can you style the font-family, font-style? Use CSS.</p>
-                </section>
-
-                <section>
-                    <h3>Text 2</h3>
-                    <p>SVG text has a lot of properties you can play with, e.g. text-anchor, tspan (text breaks), textpath, etc. Example:</p>
-                    <pre><code>
-&lt;path id="helloworld" d="M10 500 C 900 100, 100 900, 990 500" stroke="#000" fill="none">&lt;/path>
-
-  &lt;text font-size="60px">
-    &lt;textPath xlink:href="#helloworld">
-        Hello World. Ipsum Lorem dolor sit amet.
-    &lt;/textPath>
-  &lt;/text>
-                    </code></pre>
-                </section>
-                
-                <section>
-                    <h3>Transforms</h3>
-                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform" target="_blank">Transform</a> is very, very useful to know, as it help you position elements (especially when grouped) correctly.</p>
-                    <pre><code>
-&lt;g transform="translate(200, 200)">
-&lt;circle cx="500" cy="500" r="100">&lt;/circle>
-&lt;rect x="700" y="100" width="100" height="100">&lt;/rect>
-&lt;/g>
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">Translate, scale, rotate are probably some of the more common transforms you will probably use. You can also try out others like skew and matrix.</p>
-                    <p class="smallfont">Try setting the transform-origin attribute to "50% 50%". Otherwise by default it will transform from the top-left corner (i.e. "0% 0%").</p>
-                </section>
-
-                <section>
-                    <h3>ViewBox</h3>
-                    <p>Another extremely useful SVG property. Auto resizes chart to a specific viewBox view port. Example:</p>
-                    <pre><code>
-  &lt;svg viewBox="0 0 1000 1000">&lt;/svg>
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">How is this different from setting SVG height and width?</p>
-                </section>
-                
-                <section>
-                    <h3>Exercise 3</h3>
-                    <ol>
-                    <li>Download a SVG icon from anywhere (e.g. flaticon)</li>
-                    <li>Open up the file in a text-editor, strip out erroneous tags, and add the code to an inline SVG.</li>
-                    <li>Rotate the entire icon 45 degrees in your SVG.</li>
-                    <li>Feel free to tranfrom different elements any way you want to.</li>
+                        <li>Group, order, and label things for you to understand if you need to inspect the SVG</li>
+                        <li>Consider moving your theming to CSS as this is easier to change.</li>
+                        <li>Consider adding legends, labels, etc.</li>
+                        <li>Consider adding interactivity for tooltips and feedback.</li>
+                        <li>You can make the SVG form factor responsive if needed.</li>
+                        <li>Transitions for the bling.</li>
                     </ol>
                 </section>
-                
-                <section>
-                    <h3>Extra: CSS keyframe animation</h3>
-                    <p>Add the below animate class to a path or SVG element and add the code snippet to the CSS.</p>
-                    <pre><code>
-.animate {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: dash 5s linear forwards;
-}
 
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-                    </code></pre>
+                <section>
+                    <h2>Basic D3 bar chart</h2>
+                    <a href="https://bl.ocks.org/chi-loong/c36e1cf66502faa45f8dd8102a5c5531" target="_blank"><img width="600" src="img/preview1.png"/></a>
+                    <p><a href="https://bl.ocks.org/chi-loong/c36e1cf66502faa45f8dd8102a5c5531" target="_blank">Bl.ocks.org: Simple D3 bar chart</a></p>
+                    <p class="small">https://bl.ocks.org/chi-loong/c36e1cf66502faa45f8dd8102a5c5531</p>
                 </section>
                 
+                <section>
+                    <h2>D3 bar chart 2</h2>
+                    <p>Transitions. Enter, update and exit design pattern</p>
+                    <a href="https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4" target="_blank"><img width="600" src="img/preview2.png"/></a>
+                    <p><a href="https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4" target="_blank">Bl.ocks.org: D3 bar chart part 2</a></p>
+                    <p class="small">https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4</p>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 2</h1>
+                    <h3>Tabular data - D3 visualization</h3>
+                </section>
+
+                <section>
+                    <h3>Setup</h3>
+                    <p>To be completed before <b>8-4-2021</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment2</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What: Dataset</h3>
+                    <ul>
+                    <li>We'll be looking at a SG crime dataset - <a href="https://data.gov.sg/dataset/victims-of-selected-major-selected-offences?resource_id=50ce8b97-6f2e-4a0c-95b4-2477ab281846" target="_blank">Victims of Selected Major Offences (by Age Group)</a>.
+                    <li>Connect to the dataset &mdash; via API, or via download of the CSV &mdash; up to you.</li>
+                    <li>You probably have to do some data manipulation. Whether it is in the CSV or via code, it's up to you.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Why: Presentation</h3>
+                    <ul>
+                    <li>Your boss has asked you to take a look at the dataset and give a short presentation on what is <b>interesting</b> about the dataset.</li>
+                    <li>Are there trends over the years? Outliers worth talking about? Etc.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How: Encoding</h3>
+                    <ul>
+                    <li>Up to you. Do you want to put everything into one complicated chart (e.g. a scatterplot with multiple dimensions)?</li>
+                    <li>Or would you want to break into multiple charts to tell your story?</li>
+                    <li>Have a very, very simple writeup (a few lines) to justify, together with your assumptions. You probably want to do some exploration, and then decide to do at least one (or more) charts for storytelling.</li>
+                    <li>Feel free to come up with derived columns, and/or filter away data that is not interesting. E.g. rows with 0 cases.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How: Execution / Expectations</h3>
+                    <ul>
+                    <li>For multiple charts on one page if you're worried about code pollution (CSS/JS) just use iFrames. Or even images / links. Am not expecting a complicated framework &mdash; e.g. JS framework componentization (unless you want to).</li>
+                    <li>Up to you how much interactivity you want to put into the piece.</li>
+                    <li>You may even prefer not to use D3 although I would suggest at least doing so for one chart (or use a library built on top of D3).</li>
+                    <li>We'll be doing small code assignments for the next 4 weeks, so I'm not expecting a complicated project.</li>
+                    <li><b>Minimum expectations:</b> At least one chart. Simple explanation (labels and titles) so we know what we're seeing.</li>
+                    </ul>
+                </section>
+
                 <section>
                     <h2>Questions?</h2>
                     <div class="plain">
