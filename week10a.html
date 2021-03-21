@@ -70,8 +70,15 @@ tr:nth-child(even) {
                 </section>
 
                 <section>
-                    <h3>Spatial</h3>
+                    <h3>Network / Spatial</h3>
+                    <img src="img/arrange_networks.jpg"/>
                     <img src="img/arrange_spatial.jpg"/>
+                </section>
+
+                <section>
+                    <h3>Network data</h3>
+                    <img src="img/node_json_data.jpg"/>
+                    <p>Recap: A collection of nodes and links.</p>
                 </section>
                 
                 <section>
@@ -85,40 +92,15 @@ tr:nth-child(even) {
                 
                 <section>
                     <h3>D3 Graph Gallery</h3>
+                    <p>But there are other ways to categorize charts.</p>
                     <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg"/></a>
                     <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
+                    <p><a href="https://www.data-to-viz.com/" target="_blank">Data to Viz</a></p>
                 </section>
 
-                <section>
-                    <h3>Geospatial (2D)</h3>
-                    <p>Libraries</p>
-                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a></p>
-                    <p><a href="https://openlayers.org/" target="_blank">Open Layers</a></p>
-                    <hr/>
-                    <p>Map Tiles</p>
-                    <p><a href="https://www.openstreetmap.org/" target="_blank">Open street map</a></p>
-                    <p><a href="https://openmaptiles.org/" target="_blank">Open map tiles</a></p>
-                    <p><a href="https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3" target="_blank">SLA OneMap API</a></p>
-                </section>
-
-                <section>
-                    <h3>Geospatial (2D)</h3>
-                    <p>Tools</p>
-                    <p><a href="https://mapshaper.org/" target="_blank">Mapshaper</a></p>
-                    <p><a href="https://geojson.io/#map=2/20.0/0.0" target="_blank">GeoJSON.io</a></p>
-                    <p><a href="https://www.qgis.org/en/site/about/index.html" target="_blank">QGIS</a></p>
-                    <hr/>
-                    <p>Platforms</p>
-                    <p><a href="https://carto.com/" target="_blank">Carto</a> (formerly cartoDB)</p>
-                    <p><a href="https://www.esri.com/en-us/arcgis/products/arcgis-online/overview" target="_blank">ArcGIS</a>, Esri</p>
-                    <p><a href="https://developers.google.com/maps/documentation/javascript/overview" target="_blank">Google Maps API</a></p>
-                </section>
-
-                <section>
-                    <h3>Geospatial (3D)</h3>
-                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a>, MapboxGL</p>
-                    <p><a href="https://deck.gl/" target="_blank">deck.gl</a></p>
-                    <p><a href="https://cesium.com/" target="_blank">Cesium</a></p>
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Spatial</h1>
+                    <h3>Chart types</h3>
                 </section>
 
                 <section>
@@ -146,6 +128,37 @@ tr:nth-child(even) {
                 </section>
 
                 <section>
+                    <h3>Geospatial (2D)</h3>
+                    <p>Libraries</p>
+                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a></p>
+                    <p><a href="https://openlayers.org/" target="_blank">Open Layers</a></p>
+                    <hr/>
+                    <p>Map Tiles</p>
+                    <p><a href="https://www.openstreetmap.org/" target="_blank">Open street map</a></p>
+                    <p><a href="https://openmaptiles.org/" target="_blank">Open map tiles</a></p>
+                    <p><a href="https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3" target="_blank">SLA OneMap API</a></p>
+                </section>
+
+                <section>
+                    <h3>Geospatial (2D)</h3>
+                    <p>Tools</p>
+                    <p><a href="https://mapshaper.org/" target="_blank">Mapshaper</a></p>
+                    <p><a href="https://geojson.io/#map=2/20.0/0.0" target="_blank">GeoJSON.io</a></p>
+                    <hr/>
+                    <p>Platforms</p>
+                    <p><a href="https://carto.com/" target="_blank">Carto</a> (formerly cartoDB)</p>
+                    <p><a href="https://www.esri.com/en-us/arcgis/products/arcgis-online/overview" target="_blank">ArcGIS</a>, Esri</p>
+                    <p><a href="https://developers.google.com/maps/documentation/javascript/overview" target="_blank">Google Maps API</a></p>
+                </section>
+
+                <section>
+                    <h3>Geospatial (3D)</h3>
+                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a>, MapboxGL</p>
+                    <p><a href="https://deck.gl/" target="_blank">deck.gl</a></p>
+                    <p><a href="https://cesium.com/" target="_blank">Cesium</a></p>
+                </section>
+
+                <section>
                     <h3>Idiom: Choropleth Map</h3>
                     <table width="100%">
                     <tr>
@@ -166,9 +179,7 @@ tr:nth-child(even) {
                     </tr>
                     </table>
                     <p><a href="https://www.d3-graph-gallery.com/choropleth.html" target="_blank">D3 Graph Gallery - Choropleth Map</a></p>
-                    <p><a href="https://viz.sg/viz/map_age_gender/" target="_blank">SG Population by Subzone</a> vs <a href="https://popquery.onemap.sg/" target="_blank">OneMap Population Query</a></p>
-                    <p><a href="https://elections.viz.sg/" target="_blank">SG Elections</a></p>
-                    <p><a href="https://viz.vslashr.com/telco/transactions.html" target="_blank">Telco transactions</a></p>
+                    <p><a href="https://viz.sg/viz/map_age_gender/" target="_blank">SG Population by Subzone</a></p>
                 </section>
 
                 <section>
@@ -268,6 +279,11 @@ tr:nth-child(even) {
                     <p><a href="https://www.onemap3d.gov.sg/main/3dwebclient/" target="_blank">One Map 3D</a>, SLA Singapore, (Cesium - I think)</p>
                     <p><a href="https://nationalmap.gov.au/" target="_blank">National Map</a> Australia, (Cesium)</p>
                     <p><a href="https://viz.vslashr.com/earth/" target="_blank">Urban City Visualization</a>, (three.js)</p>
+                </section>
+                
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Network</h1>
+                    <h3>Chart types</h3>
                 </section>
                 
                 <section>
