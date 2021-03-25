@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>9b: Chropleth Maps (D3)</title>
+
+        <meta name="description" content="02.526 D3: Choropleth Maps">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">9b: Choropleth Maps</h1>
+                </section>
+                
+                <section>
+                    <h2>Objectives</h2>
+                    <ul>
+                    <li>Build a simple Choropleth map.</li>
+                    <li>Overlay this map with a Leaflet overlay on a map tiling platform (e.g. Open Street Maps)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>GeoJSON world map</h3>
+                    <p>Let's start with a simple HTML template.</p>
+                    <p>We're going to load a basic GeoJSON<a href="https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson" target="_blank"> world map.</a></p>
+                    <pre><code>
+&lt;html>
+&lt;head>
+  &lt;style>&lt;/style>
+&lt;/head>
+&lt;body>
+  &lt;svg>&lt;/svg>
+&lt;script src="https://d3js.org/d3.v6.min.js">&lt;/script>
+&lt;/body>
+&lt;/html>
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <p>Add in this JS code.</p>
+                    <pre><code>
+let width = 1000, height = 600;
+
+let svg = d3.select("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// Map and projection
+let projection = d3.geoEquirectangular();
+let geopath = d3.geoPath().projection(projection);
+
+// Load GeoJSON data
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(data => {
+
+    // Draw the map
+    svg.append("g")
+        .attr("id", "countries")
+        .selectAll("path")
+        .data(data.features)
+        .enter()
+        .append("path")
+            .attr("d",  d => geopath(d))
+            .attr("fill", "#777")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 0.5);
+})
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Projections</h3>
+                    <p>Add in a simple HTML tooltip.</p>
+                    <pre><code>
+&lt;div class="tooltip">&lt;/div>
+                    </code></pre>
+                    <hr/>
+                    <pre><code>
+.on("mouseover", (event, d) => {
+    d3.select(".tooltip")
+    .text(d.properties.name)
+    .style("position", "absolute")
+    .style("background", "#fff")
+    .style("left", (event.pageX) + "px")
+    .style("top", (event.pageY) + "px");
+})
+.on("mouseout", (event, d) => {
+    d3.select(".tooltip")
+    .text("");
+})
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Recap exercise</h3>
+                    <ol>
+                        <li>Can you make move all the styling into CSS classes? E.g. the country path fills, the tool tip, etc.</li>
+                        <li>Can you make the width and height responsively sized to the screen size? Use the SVG viewBox command.</li>
+                        <li>On mouseover, can you highlight the path with a colored stroke? E.g. d3.select(event.currentTarget) returns the object.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>Projections</h3>
+                    <p>The current projection that we're using is equirectangular.</p>
+                    <p>There are many, many projections, and you can find a list in the <a href="https://github.com/d3/d3-geo-projection" target="_blank">D3 projections</a> module.</p>
+                    <p>Try something like switching it to orthographic (i.e. globe) or some other projection.</p>
+                    <p>Bl.ocks.org: <a href="https://bl.ocks.org/d3indepth/f7ece0ab9a3df06a8cecd2c0e33e54ef" target="_blank">Projection explorer</a></p>
+                </section>
+
+                <section>
+                    <h3>Color the oceans</h3>
+                    <code><pre>
+svg.append("path")
+    .datum({type: "Sphere"})
+    .attr("id", "ocean")
+    .attr("d", geopath)
+    .attr("fill", "lightBlue");
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">You can define gradients in SVGs. Typically they are under the <b>defs</b> tag. You can of course do this programatically via JS, but you can add this in the SVG tag.</p>
+                    <code><pre>
+  &lt;defs>
+    &lt;linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      &lt;stop offset="0%" style="stop-color:rgb(0,0,27);stop-opacity:1" />
+      &lt;stop offset="100%" style="stop-color:rgb(51,122,183);stop-opacity:1" />
+    &lt;/linearGradient>
+  &lt;/defs>
+                    </code></pre>
+                    <hr/>
+                    <code><pre>
+    ...
+    .attr("fill", "url(#oceanGradient)");
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h3>Projections</h3>
+                    <h4>Scale, rotate, translate, center</h4>
+                    <p class="smallfont">Bl.ocks.org: <a href="https://bl.ocks.org/d3indepth/f7ece0ab9a3df06a8cecd2c0e33e54ef" target="_blank">Projection explorer</a></p>
+                    <pre><code>
+d3.geoEquirectangular()
+    .center([-0.118092, 51.509865]) // London's longitude / latitude;
+    .scale(500)
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Can you center the map to around Singapore and zoom in?</p>
+                </section>
+
+                <section>
+                    <h3>Graticules</h3>
+                    <p>A graticule is a network of lines representing meridians and parallels, on which a map or plan can be represented.</p>
+                    <pre><code>
+let graticule = d3.geoGraticule()
+      .step([10, 10]);
+
+svg.append("g")
+    .attr("id", "graticules")
+    .selectAll("path")
+    .data([graticule()])
+    .enter()
+    .append("path")
+    .attr("d", d => geopath(d))
+    .attr("fill", "none")
+    .attr("stroke", "#aaa")
+    .attr("stroke-width", 0.2);
+                    </code></pre>
+                    <p class="smallfont"><a href="https://github.com/d3/d3-geo#geoGraticule" target="_blank">D3 geoGraticule docs</a></p>
+                </section>
+
+                <section>
+                    <h3>Projecting a point</h3>
+                    <pre><code>
+let singapore = [103.851959, 1.290270] // longitude = x, latitude = y
+            
+svg.append("circle")
+        .attr("cx", projection(singapore)[0])
+        .attr("cy", projection(singapore)[1])
+        .attr("r", 5)
+        .attr("fill", "yellow");
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Exercise: Cities</h3>
+                    <pre><code>
+// List of cities
+var cities = [
+    {name: "Singapore", longitude: 103.851959, latitude: 1.290270},
+    {name: "London", longitude: -0.118092, latitude: 51.509865},
+    {name: "Tokyo", longitude: 139.839478, latitude: 35.652832}
+]
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Given this list of cities, can you add them to the map as small coloured circles?</p>
+                    <p class="smallfont">Create a SVG group called cities, and put them there.</p>
+                </section>
+
+
+                <section>
+                    <h3>Animate the map</h3>
+                    <pre><code>
+let time = Date.now();
+
+d3.timer(function() {
+    let angle = (Date.now() - time) * 0.02;
+    projection.rotate([angle, 0, 0]);
+    svg.select("g#countries").selectAll("path")
+      .attr("d", geopath.projection(projection));
+    svg.select("g#graticules").selectAll("path")
+      .attr("d", geopath.projection(projection));
+    svg.select("g#cities").selectAll("circle")
+        .attr("cx", d => projection([d.longitude, d.latitude])[0])
+        .attr("cy", d => projection([d.longitude, d.latitude])[1]);
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Orthographic projection</h3>
+                    <p class="smallfont">In orthographic projection (globe) you can see the cities even when it goes behind the globe. How do we solve this?</p>
+                    <p class="smallfont">Add a test to see whether the point is visible or not:</p>
+                    <pre><code>
+    svg.select("g#cities").selectAll("circle")
+        .attr("cx", d => projection([d.longitude, d.latitude])[0])
+        .attr("cy", d => projection([d.longitude, d.latitude])[1])
+        .attr("visibility", d => {
+            var point = {type: 'Point', coordinates: [d.longitude, d.latitude]};
+            if (geopath(point) == null) {
+                return "hidden";
+            } else { 
+                return "visible";
+            }
+        });
+                    </code></pre>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 3</h1>
+                    <h3>Geospatial data - D3 visualization</h3>
+                </section>
+
+                <section>
+                    <h3>Setup</h3>
+                    <p>To be completed before <b>15-4-2021</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment3</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What: Dataset</h3>
+                    <ul>
+                    <li>We'll be looking at the Singstat <a href="https://www.singstat.gov.sg/publications/population/population-trends" target="_blank">Population Geospatial Timeseries</a>.</li>
+                    <li>We'll also be looking at the Data.gov <a href="https://data.gov.sg/dataset/master-plan-2014-subzone-boundary-web?resource_id=1f7498f8-0132-4e74-81b2-3fe3199afecf" target="_blank">Master Plan 2014 Subzone Boundary (Web)</a>.</li>
+                    <li>There is going to be a lot of data manipulation and preperation. I'll walk through this in class.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Template starter</h3>
+                    <p>I've cleaned the dataset on both the <a href="assignments/sgmap.json" target="_blank">GeoJSON data</a> and also the <a href="assignments/population2020.csv" target="_blank">2020 population data</a>.</p>
+                    <p>You can code your own version from scratch but I've included a simple <a href="assignments/assignment3-starter.html" target="_blank">template D3 starter</a>.</p>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
