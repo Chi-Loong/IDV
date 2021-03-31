@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>10b: Leaflet / 2.5D Maps</title>
+
+        <meta name="description" content="02.526 Leaflet /3D Maps">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">10b: Leaflet / 2.5D Maps</h1>
+                </section>
+                
+                <section>
+                    <h2>Objectives</h2>
+                    <ul>
+                    <li>Integrate D3 layers with Leaflet and a map tiling platform (e.g. Open Street Maps)</li>
+                    <li>Look at a simple 3D example using Mapbox.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Installing Leaflet</h3>
+                    <p>Let's use week 9's SG choropleth <a href="assignments/assignment3-starter" target="_blank">assignment 3 starter</a> as a base template.</p>
+                    <p>We'll also need the SG <a href="assignments/sgmap.json" target="_blank">GeoJSON dataset</a>.</p>
+                    <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a CDN.</p>
+                    <pre><code>
+&lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+&lt;script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js">&lt;/script>
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h3>Load Leaflet basemap</h3>
+                    <p class="smallfont">Ignore / comment out the D3 code for now.</p>
+                    <p class="smallfont">You'll need to create a map container for Leaflet to hook to.</p>
+                    <p class="smallfont">Make sure you can get Leaflet and the base map tiles to load.</p>
+                    <pre><code>
+#map {
+    width: 1000px;
+    height: 600px;
+}
+&lt;div id="map">&lt;/div>
+                    </code></pre>
+                    <pre><code>
+let map = new L.Map("map", {center: [1.347833, 103.809357], zoom: 12})
+    .addLayer(new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"));
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">We're using openstreetmap tiles here.</p>
+                    <p class="smallfont">Can you load <a href="https://docs.onemap.sg/" target="_blank">SLA's OneMap</a> base map tile? Do this.</p>
+                </section>
+
+                <section>
+                    <h3>Attribution, Zoom limits</h3>
+                    <p>Add attribution</p>
+                    <pre><code>
+let tiles = new L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
+  detectRetina: true,
+  maxZoom: 18,
+  minZoom: 11,
+  //Do not remove this attribution
+  attribution: '<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/>' +
+               'New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+});
+                    </code></pre>
+                    <p class="smallfont">Taken from official <a href="https://docs.onemap.sg/maps/" target="_blank">SLA OneMap Map Docs</a>.</p>
+                </section>
+
+                <section>
+                    <h3>Add maxBounds</h3>
+                    <p>SLA OneMap map tiles don't extend much past our borders.</p>
+                    <pre><code>
+let map = new L.Map("map", {
+    center: [1.347833, 103.809357], 
+    zoom: 11,
+    maxBounds: L.latLngBounds(L.latLng(1.1, 103.5), L.latLng(1.5, 104.3))
+    })
+    .addLayer(tiles);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Leaflet ideas</h3>
+                    <p>You can already do a lot of things within Leaflet and base map tiles.</p>
+                    <p><a href="https://leafletjs.com/examples.html" target="_blank">Leaflet Examples</a></p>
+                    <p>But of course it would be perfect to overlay your own SVG layers so you have 100% custom control.</p>
+                    <hr/>
+                    <p class="smallfont">Can you add a marker location at the SUTD campus on your map?</p>
+                </section>
+
+                <section>
+                    <h3>D3 - create SVG layer</h3>
+                    <p>Hook a SVG layer into Leaflet's overlayPane.</p>
+                    <pre><code>
+let svg = d3.select(map.getPanes().overlayPane)
+    .append("svg")
+    .attr("width", 1000)
+    .attr("height", 600)
+        .append("g")
+        .attr("id","svgLayer")
+        .attr("class", "leaflet-zoom-hide");
+                    </code></pre>
+                    <p class="smallfont">The leaflet-zoom-hide class is so that when you use Leaflet zoom, it turns of the layer temporarily during the zooming animation.</p>
+                    <p class="smallfont">You can try what happens when you don't include this in the final instance.</p>
+                </section>
+
+                <section>
+                    <h3>D3 - use Leaflet Projection</h3>
+                    <p class="smallfont">Leaflet uses its own geo projection, and we're going to make D3 sync with that.</p>
+                    <p class="smallfont">Recall that D3 projection is simply taking a lat/lon coordinate and turning it into a SVG x, y point.</p>
+                    <pre><code>
+function projectPoint(x, y) {
+  var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+  this.stream.point(point.x, point.y);
+}
+
+let projection = d3.geoTransform({point: projectPoint});
+let geopath = d3.geoPath().projection(projection);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>D3 - use Leaflet Projection</h3>
+                    <p class="smallfont">Notice that panning and zooming does not properly translate / scale the SVG.</p>
+                    <p class="smallfont">Add in onZoom hook.</p>
+                    <pre><code>
+map.on('zoomend', onZoom);
+
+function onZoom() {
+    var bounds = geopath.bounds(data),
+        topLeft = bounds[0],
+        bottomRight = bounds[1];
+
+    var svg = d3.select(map.getPanes().overlayPane).select("svg");
+        
+    svg.attr("width", bottomRight[0] - topLeft[0])
+       .attr("height", bottomRight[1] - topLeft[1])
+       .style("left", topLeft[0] + "px")
+       .style("top", topLeft[1] + "px");
+       
+    svg.select("g").attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+    d3.select("g#districts").selectAll("path")
+       .attr("d", geopath);
+}
+                    </code></pre>
+                    <p class="smallfont">Original <a href="https://bost.ocks.org/mike/leaflet/" target="_blank">code snippet</a> by Mike Bostock.</p>
+                </section>
+
+                <section>
+                    <h3>Dynamic sizing</h3>
+                    <p class="smallfont">Just CSS tweaks and some basic calculation to set initial width/height for SVG overlay.</p>
+                    <pre><code>
+body { margin: 0 }
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+...
+.attr("width", window.innerWidth)
+.attr("height", window.innerHeight)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Leaflet - mouse interaction</h3>
+                    <p>Leaflet turns off mouse events for all overlay SVG panes by default.</p>
+                    <p>Add the "leaflet-interactive" class to every SVG tag (the appended paths in the case of districts) that you want to make interactive.</p>
+                </section>
+
+                <section>
+                    <h3>2.5D maps using Mapbox</h3>
+                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a> isn't a true 3D solution, say unlike <a href="https://cesium.com/" target="_blank">Cesium</a>.</p>
+                    <p>Comparison <a href="https://blog.logrocket.com/cesium-vs-mapbox-which-mapping-service-is-best/" target="_blank">here</a>.</p>
+                    <p>Please go get your own <a href="https://www.mapbox.com/" target="_blank">mapbox</a> API key - it's free for low amount of usage.</p>
+                    <p>We're going to run this <a href="https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/" target="_blank">example</a> from mapbox.</p>
+                    <p>All 2.5D mapbox code will be run using your own API key!</p>
+                </section>
+
+                <section>
+                    <h3>Mapbox - transition</h3>
+                    <p>Really easy to add a pan and zoom transition.</p>
+                    <pre><code>
+    map.flyTo({
+    center: [103.849702, 1.278078],
+    zoom: 17.5,
+    bearing: 0,
+     
+    // These options control the flight curve, making it move
+    // slowly and zoom out almost completely before starting
+    // to pan.
+    speed: 0.8, // make the flying decently fast
+    curve: 1, // change the speed at which it zooms out
+          
+    // this animation is considered essential with respect to prefers-reduced-motion
+    essential: true
+    });
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Mapbox - embed 3D object</h3>
+                    <p>We're going to embed a 3D object. We'll use three.js to load it, then render it using mapboxGL canvas renderer.</p>
+                    <p>We'll run this <a href="https://docs.mapbox.com/mapbox-gl-js/example/add-3d-model/" target="_blank">example</a> from mapbox.</p>
+                    <p>Extra: Will demo an example locally, using three.js code to load animation.</p>
+                </section>
+
+                <section>
+                    <h3>3D - future perspectives</h3>
+                    <p><a href="https://medium.com/vis-gl/deckgl-and-mapbox-better-together-47b29d6d4fb1" target="_blank">deck.gl and Mapbox GL JS: Better Together</a>, Xiao Ji Chen</p>
+                    <p><a href="https://carto.com/blog/our-thoughts-as-mapboxgl-js-2-goes-proprietary/" target="_blank">Our Thoughts as MapboxGL JS v2.0 Goes Proprietary</a>, Carto</p>
+                    <p><a href="https://sandcastle.cesium.com/" target="_blank">Cesium Sandcastle</a></p>
+                    <p><a href="https://deck.gl/examples" target="_blank">deck.gl Examples</a></p>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 4</h1>
+                    <h3>Leaflet + D3 choropleth maps</h3>
+                </section>
+
+                <section>
+                    <h3>Setup</h3>
+                    <p>To be completed before <b>22-4-2021</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment4</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What: Dataset</h3>
+                    <ul>
+                    <li>We'll be looking at the Singstat <a href="https://www.singstat.gov.sg/publications/population/population-trends" target="_blank">Population Geospatial Timeseries</a>.</li>
+                    <li>We'll also be looking at the Data.gov <a href="https://data.gov.sg/dataset/master-plan-2014-subzone-boundary-web?resource_id=1f7498f8-0132-4e74-81b2-3fe3199afecf" target="_blank">Master Plan 2014 Subzone Boundary (Web)</a>.</li>
+                    <li>You probably have to do quite a bit of data manipulation. Whether it is in the CSV or via code, it's up to you.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Why + How: Encoding</h3>
+                    <p>A choropleth map visualization of the 2020 population in Singapore subdistricts.</p>
+                    <img src="img/SGassignment4.jpg"/>
+                </section>
+
+                <section>
+                    <h3>Template starter</h3>
+                    <p>I've cleaned the dataset on both the <a href="assignments/sgmap.json" target="_blank">GeoJSON data</a> and also the <a href="assignments/population2020.csv" target="_blank">2020 population data</a> (now updated with both male and female population).</p>
+                    <p>You can code your own version from scratch but I've included a simple <a href="assignments/assignment3-starter" target="_blank">template D3 starter</a>.</p>
+                    <p>This assignment is a continuation of the work done for assignment 3.</p>
+                </section>
+
+                <section>
+                    <h3>Requirements</h3>
+                    <p>You need to use SLA One Map base map, and hook your choropleth map on top of that.</p>
+                    <p>Your choropleth map can be written in D3 or you can do it in whatever platform you want (e.g. Leaflet).</p>
+                    <p>Add in interaction tooltips, a title, and a legend.</p>
+                    <p><b>Extra:</b> Add interactivity to showcase both datasets.</p>
+                    <p><b>Extra:</b> Add in transition animations.</p>
+                    <p><b>Extra:</b> Cater for mobile responsiveness.</p>
+                    <p><b>Super Extra:</b> Write a 3D version.</p>
+                    <p>I will showcase a version in class.</p>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
