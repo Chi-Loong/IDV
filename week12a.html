@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>12a: Rules of Thumb</title>
+
+        <meta name="description" content="02.526 Rules of Thumb">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+tr:nth-child(odd) {
+    background: #777;
+}
+
+tr:nth-child(even) {
+    background: #333;
+}
+
+.reveal td {
+  font-size: 0.8em;
+}
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">12a: Rules of Thumb</h1>
+                    <h3>Guidelines on 3D, animation and interaction</h3>
+                </section>
+                
+                <section>
+                    <h3>Discussion topics</h3>
+                    <ul>
+                        <li>No unjustified 3D</li>
+                        <li>Animation vs side-to-side</li>
+                        <li>Schneiderman's mantra</li>
+                        <li>Latency and feedback</li>
+                        <li>Interactivity: Power and costs</li>
+                        <li>Function over form</li>
+                        <li>Summary + future perspectives</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>No unjustified 3D</h2>
+                    <h4>Not when 2D will suffice</h4>
+                    <img src="img/steven-psychophysical-power-law.jpg"/>
+                    <p class="smallfont">According to Steven's Psychophysical Power Law, depth position judgement accuracy in 3D (0.67) is worse than 2D planar position judgement accuracy (1).</p>
+                    <p class="smallfont">It is even more inaccurate than 2D area judgements (0.7).</p>
+                </section>
+                
+                <section>
+                    <h2>The problems of 3D</h2>
+                    <p>Problem of <b>occlusion</b>: Where objects cannot be seen because they are hidden behind others.</p>
+                    <p>Problem of <b>perspective distortion</b>: Foreshortening perspective gives the scene a sense of depth, but this screws up the planar 2D spatial length and size channel.</p>
+                </section>
+
+                <section>
+                    <h3>Bad 3D</h3>
+                    <img src="img/bad_3d.jpg"/>
+                    <p class="smallfont">Beyond the 3D, are there any other problems with this chart?</p>
+                </section>
+
+                <section>
+                    <h3>The issues of 3D</h3>
+                    <p>If you're looking at things from one fixed viewpoint, objects can be hidden and distorted.</p>
+                    <p><b>Stereographic depth</b> cues in real-life &mdash; e.g. shadows &mdash; are often missing. Adding these cues can cause a bigger headache as they can screw with the color channel and also create visual clutter.</p>
+                    <p>Other issues abound: E.g. tilted text is hard to read.</p>
+                </section>
+                
+                <section>
+                    <h3>Interaction can fix 3D</h3>
+                    <p>Interactive navigation can fix this (shifting the camera around) &mdash; <b>motion parallax</b> allows us to perceive 3D properly.</p>
+                    <p>However navigation takes time and imposes cognitive load, and a 2D chart may still be easier to understand.</p>
+                </section>
+                
+                <section>
+                    <section>
+                        <h3>From this...</h3>
+                        <img src="img/3D_viz1.jpg"/>
+                    </section>
+                    <section>
+                        <h3>...to this</h3>
+                        <img src="img/3D_viz2.jpg"/>
+                         <p class="smallfont">Linked 2D views of derived aggregate curves and the calendar allow direct comparison and show more fine-grained patterns. From van Wijk and van Selow 99.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2></h2>
+                        <img src="img/3D_viz3.jpg"/>
+                        <p class="smallfont">Point-based displays were found to outperform information landscapes in an empirical study of visual encodings for dimensionally reduced data.</p>
+                        <p class="smallfont">(a) Colored points. (b) Grayscale points. (c) Colored 2D landscape. (d) Grayscale 2D landscape. (e) Colored 3D landscape. (f) Grayscale 3D landscape. (g) Height only. From Tory et al.</p>
+                </section>
+                
+                <section>
+                    <h2>To 3D, or not to 3D</h2>
+                    <p><a href="https://dataviztoday.com/blog/43" target="_blank">Is there ever a good time to use 3D?</a>, Dataviz Today</p>
+                    <p><a href="https://www.data-to-viz.com/caveat/3d.html" target="_blank">The issue with 3D in Data Visualization</a>, from Data to Viz</p>
+                    <p><a href="https://www.meetup.com/Data-Vis-Singapore/events/260083502/" target="_blank">Visualising for Space from Low-Earth Orbit</a>, Data Viz SG</p>
+                </section>
+                
+                <section>
+                    <h2>Animations or side-by-side?</h2>
+                </section>
+
+                <section>
+                    <h2>Eyes beat memory</h2>
+                    <p>Working memory is a limited resource, and once that is exhausted, people will fail to absorb all of the information.</p>
+                    <p>Using our eyes to switch between different views that are visible simultaneously has much lower cognitive load than relying on memory.</p>
+                </section>
+
+                <section>
+                    <h2>The case for faceting</h2>
+                    <p>For tasks requiring detailed comparison across many views, seeing all the views at once side by side can be more effective than animation, i.e. <b>faceting</b>, or small multiples.</p>
+                </section>
+
+                <section>
+                    <h2>So why animations in viz?</h2>
+                    <ul>
+                        <li>Narrative storytelling, guided walkthrough</li>
+                        <li>Transitions from one state to another</li>
+                        <li>Video-style playback of a multiframe sequence: play, pause, stop, rewind, step through</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Guidelines for animation</h2>
+                    <ul>
+                        <li>Careful choreography - one change in one place at a time! Too much change and it becomes too noisy.</li>
+                        <li>Transitions help the user maintain context, e.g. understanding how the data has changed.</li>
+                        <li>Animation is often used to show data in the time dimension - something that intuitively makes sense.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Overview first, zoom and filter, details on demand</h3>
+                    <p>Also known as Schneiderman's visual information-seeking mantra, an interactive visualization design pattern.</p>
+                    <p class="smallfont"><a href="https://www.mat.ucsb.edu/~g.legrady/academic/courses/11w259/schneiderman.pdf" target="_blank">The Eyes Have It: A Task by Data Type Taxonomy for Information Visualizations </a>, Ben Schneiderman</p>
+                </section>
+
+                <section>
+                    <h3>Schneiderman's mantra: why</h3>
+                    <p>This allows users to step through the ladder of abstraction for moderate dataset sizes.</p>
+                    <ul>
+                        <li>Overview: Summarize.</li>
+                        <li>Zoom and filter: Navigation / reduction.</li>
+                        <li>Details on demand: selection / filter.</li>
+                    </ul>
+                    <p>For enormous datasets, the related design pattern: <b>Search, Show Context, Expand on Demand</b> (Ivan Ham, Perer) may be more appropriate.</p>
+                </section>
+
+                <section>
+                    <h3>Schneiderman's mantra: examples</h3>
+                    <p><a href="https://hampdatavisualization.wordpress.com/2016/02/26/schneidermans-mantra/" target="_blank">Schneiderman's Mantra</a>, Hampdata Visualization</p>
+                    <p><a href="https://towardsdatascience.com/3-rules-for-interactive-data-visualizations-a-showcase-with-r-and-highcharts-e452f5c37f44" target="_blank">3 rules for interactive data visualization</a>, Vlad Kozhevnikov</p>
+                </section>
+
+                <section>
+                    <h3>Latency classes</h3>
+                    <p>The <b>latency</b> of interaction &mdash; how much time it takes for the system to respond to the user action &mdash; matters immensely for interaction design.</p>
+                    <p>Effects of perceptual psychology depends on the time scale of the phenomena, which were classified into latency and response time limits by Jakob Nielson.</p>
+                    <p><a href="https://www.nngroup.com/articles/powers-of-10-time-scales-in-ux/" target="_blank">Powers of 10: Time Scales in User Experience</a>, Jakob Nielson</p>
+                    <hr/>
+                    <p class="smallfont">Nielson is probably the most well-known for his <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank">usability heuristics</a> in interactive design.</p>
+                </section>
+
+                <section>
+                    <h3>Latency: implications</h3>
+                    <p><b>Feedback</b> is confirmation that an action was completed, and this impacts visualizations.</p>
+                    <ul>
+                        <li>For visual cues, feedback latency should be within the class of <b>1 sec</b> (E.g. tooltipping, highlighting)</li>
+                        <li>For system updates (E.g. filters), considerations on how to store / retrieve data (local cache, network, etc.) makes a difference.</li>
+                        <li>If it goes into the <b>10s class</b>, consider having a load progress bar.</li>
+                    </ul>
+                    <hr/>
+                    <p class="smallfont"><a href="https://www.youtube.com/watch?v=rDOVYO5aMSg" target="_blank">The 3 Response Time Limits in Interaction Design</a>, Jakob Nielson</p>
+                    <p class="smallfont"><a href="https://idl.cs.washington.edu/files/2014-Latency-InfoVis.pdf" target="_blank">The Effects of Interactive Latency on Exploratory Visual Analysis</a>, Zhicheng Liu and Jeffrey Heer</p>
+                </section>
+                
+                <section>
+                    <h3>Interactivity: Power and costs</h3>
+                    <p>Interaction allows users to explore information more than can be understood in a single static image frame.</p>
+                    <p>However, there is a cost to human time and attention, beyond just the effort required to come up with the interaction solution.</p>
+                    <p>For <b>exploratory</b> analysis, interaction may be a really useful tool.</p>
+                    <p>For <b>explanatory</b> work, you may be better off spending the effort to curate the story and communicate the insights, rather than letting the user do the work.</p>
+                    <p class="smallfont">Especially in media storytelling, there has been a swing back to flat graphics for data visualization.</p>
+                    <hr/>
+                    <p class="smallfont"><a href="https://observablehq.com/@mbostock/10-years-of-open-source-visualization" target="_blank">10 years of open source visualization</a>, Mike Bostock</p>
+                    <p class="smallfont"><a href="https://www.vis4.net/blog/2017/03/in-defense-of-interactive-graphics/" target="_blank">In defese of interactive graphics</a>, Gregor Aisch</p>
+                </section>
+                
+                <section>
+                    <h3>Function over form</h3>
+                    <p>The best vis designs should have both form and function &mdash; they should be both beautiful and effective.</p>
+                    <p>However, if there is a need to choose, prioritize function.</p>
+                    <p>Even if a visualization is ugly by effective, it is easier to progressively refine.</p>
+                    <p>The other way around would require more significant rework.</p>
+                </section>
+                
+                <section>
+                    <h3>Summary + future perspectives</h3>
+                    <p>What are some main takeaways from this course?</p>
+                    <ul>
+                        <li>What (data) &mdash; why (task) &mdash; how (idiom) framework</li>
+                        <li>How to validate visualizations, e.g. on <a href="https://viz.wtf/" target="_blank">WTF Visualizations</a></li>
+                    </ul>
+                    <hr/>
+                    <p><a href="https://medium.com/nightingale/the-7-biggest-issues-data-visualization-faces-today-7bf6b6457b72" target="_blank">The 7 Biggest Issues Data Visualization Faces Today</a>, Alli Torban</p>
+                </section>
+                
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
