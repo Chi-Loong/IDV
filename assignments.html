@@ -49,7 +49,8 @@ Papa.parse("data/data.csv", {
                 { title: "Full Name" },
                 { title: "Github Username" },
                 { title: "Assignment1", orderable: false },
-                { title: "Assignment2", orderable: false }
+                { title: "Assignment2", orderable: false },
+                { title: "Assignment3", orderable: false }
             ],
             pageLength: 20,
             order: [[0, "asc"]],
@@ -66,6 +67,13 @@ Papa.parse("data/data.csv", {
                 data: "Assignment2",
                 render: function ( data, type, row, meta ) {
                   return '<a href="https://' + row[2] + '.github.io/HASS-assignment2/">Assignment 2</a>';
+                }
+            },
+            {
+                targets: 5,
+                data: "Assignment3",
+                render: function ( data, type, row, meta ) {
+                  return '<a href="https://' + row[2] + '.github.io/HASS-assignment3/">Assignment 3</a>';
                 }
             }
             ]
