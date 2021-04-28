@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .highlight {
+        stroke: yellow;
+        stroke-width: 3px;
+    }
+    .label {
+        font-size: 12px;
+        fill: white;
+        pointer-events: none;
+    }
+    .title {
+        font-size: 16px;
+    }
+    .container {
+        width: 70%;
+        margin: auto;
+    }
+    .header {
+        height: 50px;
+    }
+    .center {
+        text-align: center;
+    }
+    h2, h3 {
+        margin: 0px;
+        text-align: center;
+    }
+    
+    @media only screen and (max-width: 1920px) {
+        .container {
+            width: 100%;
+        }
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="container">
+    <h4 class="center">Visualization on projected FY2021 SG Budget. Data from the Singapore <a href="https://www.mof.gov.sg/singaporebudget">Ministry of Finance</a>.</h4>
+    <div class="header">
+        <h2 id="ministry"></h1>
+        <h3 id="amount"></h1>
+    </div>
+    <svg></svg>
+</div>
+
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script>
+
+
+// set the dimensions and margins of the graph
+// super simple responsitivity
+let margin = {top: 10, right: 10, bottom: 10, left: 10},
+  width = window.innerWidth < window.innerHeight ? 1080 - margin.left - margin.right : 1920 - margin.left - margin.right,
+  height = window.innerWidth < window.innerHeight ? 1920 - margin.top - margin.bottom : 1080 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+let svg = d3.select("svg")
+  .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+.append("g")
+  .attr("transform",
+        "translate(" + margin.left + "," + margin.top + ")");
+
+// read json data
+d3.json("data/expenditure2021_sector.json").then(data =>  {
+
+  // Give the data to this cluster layout:
+  var root = d3.hierarchy(data).sum(function(d){ return d.size}) // Here the size of each leave is given in the 'value' field in input data
+
+  // Then d3.treemap computes the position of each element of the hierarchy
+  d3.treemap()
+    .tile(d3.treemapSquarify.ratio(1))
+//    .tile(d3.treemapSliceDice)
+    .size([width, height])
+   . paddingTop(20)
+    .paddingRight(10)
+    .paddingInner(3)
+    (root);
+
+  var colorScale = d3.scaleOrdinal()
+    .range(["#5a7", "#eaa", "#88c", "#cb0"]);
+
+  d3.select("svg")
+    .append("defs")
+    .selectAll("clipPath")
+    .data(root.leaves())
+    .enter()
+    .append("clipPath")
+    .attr("id", (d,i) => "clippath" + i)
+    .append("use")
+      .attr("xlink:href", (d,i) => "#rect" + i);
+    
+  // use this information to add rectangles
+  svg
+    .append("g")
+    .attr("id", "rects")
+    .selectAll("rect")
+    .data(root.leaves())
+    .enter()
+    .append("rect")
+      .attr("id", (d,i) => "rect" + i)
+      .attr('x', d => d.x0)
+      .attr('y', d => d.y0)
+      .attr('width', d => d.x1 - d.x0)
+      .attr('height', d => d.y1 - d.y0)
+      .attr("stroke", "black")
+      .attr("fill", d => colorScale(d.parent.data.name))
+    .on("mouseover", (event, d) => {
+        d3.select(event.currentTarget)
+            .classed("highlight", true);
+        d3.select("#ministry")
+            .text(d.data.name);
+        d3.select("#amount")
+            .text(d3.format("$,")(d.data.size) + " millions");
+    })
+    .on("mouseout", (event, d) => {
+        d3.select(event.currentTarget)
+            .classed("highlight", false);
+        d3.select("#ministry")
+            .text("");
+        d3.select("#amount")
+            .text("");
+    });
+
+  // and to add the text labels
+  svg
+    .append("g")
+    .attr("id", "labels")
+    .selectAll("g")
+    .data(root.leaves())
+    .enter()
+    .append("g")     // clip-paths to crop text applied to the group
+    .attr("clip-path", (d,i) => "url(#clippath" + i + ")")
+    .append("text")
+       .attr("transform", d => "translate(" + (d.x0 + 5) +"," + (d.y0 + 10) +")")
+      .classed("label", true)  // break-up the label with regex and tag it with a tspan
+       .selectAll("tspan")
+        .data(d => d.data.name.split(/(?=[A-Z][a-z])|\s+/g).concat(d3.format("$,")(d.data.size) + " millions"))
+        .join("tspan")
+        .attr("x", 0)
+        .attr("y", (d,i) => i * 10)
+        .text(d => d);
+      
+      
+  svg
+    .append("g")
+    .attr("id", "titles")
+    .selectAll("text")
+    .data(root.descendants().filter(function(d){return d.depth==1}))
+    .enter()
+    .append("text")
+      .attr("x", d => d.x0)
+      .attr("y", d => d.y0 + 15)
+      .text(d => d.data.name)
+      .classed("title", true)
+      .attr("fill",  d => colorScale(d.data.name));
+      
+})
+</script>
+
+</body>
+</html>

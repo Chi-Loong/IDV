@@ -1,0 +1,96 @@
+{
+    "name": "Expenditure",
+    "children": [{
+            "name": "Social development",
+            "children": [{
+                    "name": "Education",
+                    "size": 13620
+                },
+                {
+                    "name": "National development",
+                    "size": 5529
+                },
+                {
+                    "name": "Health",
+                    "size": 18845
+                },
+                {
+                    "name": "Environment and water resources",
+                    "size": 2904
+                },
+                {
+                    "name": "Culture, community and youth",
+                    "size": 2272
+                },
+                {
+                    "name": "Social and family development",
+                    "size": 4113
+                },
+                {
+                    "name": "Communications and information",
+                    "size": 629
+                },
+                {
+                    "name": "Manpower (financial security)",
+                    "size": 1560
+                }
+            ]
+        },
+        {
+            "name": "Security and external relations",
+            "children": [{
+                    "name": "Defence",
+                    "size": 15360
+                },
+                {
+                    "name": "Home affairs",
+                    "size": 7876
+                },
+                {
+                    "name": "Foreign affairs",
+                    "size": 434
+                }
+            ]
+        },
+        {
+            "name": "Economic development",
+            "children": [{
+                    "name": "Transport",
+                    "size": 11067
+                },
+                {
+                    "name": "Trade and industry",
+                    "size": 7176
+                },
+                {
+                    "name": "Manpower (excluding financial security)",
+                    "size": 5617
+                },
+                {
+                    "name": "Infocomms and media development",
+                    "size": 812
+                }
+            ]
+        },
+        {
+            "name": "Government administration",
+            "children": [{
+                    "name": "Finance",
+                    "size": 2067
+                },
+                {
+                    "name": "Law",
+                    "size": 481
+                },
+                {
+                    "name": "Organs of state",
+                    "size": 711
+                },
+                {
+                    "name": "Prime minister's office",
+                    "size": 1266
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin: 0 }
+    .district {
+        stroke: white;
+        stroke-width: 0.5;
+        opacity: 0.9;
+    }
+    .highlight {
+        stroke: red;
+        stroke-width: 5;
+        opacity: 0.3;
+    }
+    #title{
+        position: fixed;
+        top: 5%;
+        left: 50%;
+        margin-left: -100px;
+        width: 200px;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: white;
+        background: black;
+        border: 1px solid white;
+        border-radius: 15px;
+        z-index: 800;
+    }
+    #title h3 {
+        text-align: center;
+    }
+    #map {
+        width: 100vw;
+        height: 100vh;
+    }
+    #legend {
+        position: fixed;
+        bottom: 2%;
+        left: 2%;
+        z-index: 1000;
+    }
+    #display {
+        position: fixed;
+        background: white;
+        bottom: 12%;
+        right: 2%;
+        width: 300px;
+        height: 100px;
+        border: 1px solid black;
+        border-radius: 15px;
+        z-index: 1000;
+    }    
+    #display h3, #display h4 {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #buttonNav {
+        position: fixed;
+        top: 2%;
+        right: 2%;
+        z-index: 1000;
+    }
+    #buttonNav button {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        padding: 5px 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    #buttonNav button.picked{
+        border: 2px solid white;
+        background: steelblue;
+        color: white;
+    }
+    
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+
+<div id="map"></div>
+<div id="legend"></div>
+<div id="display">
+    <h3>DISTRICT</h3>
+    <h4>Population</h4>
+</div>
+<div id="buttonNav">
+    <button id="buttonMale" class="picked">Male</button>
+    <button id="buttonFemale">Female</button>
+</div>
+<div id="title">
+    <h3>SG gender population 2020</h3>
+</div>
+
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="lib/legend.js"></script>
+<script>
+
+let tiles = new L.tileLayer('https://maps-{s}.onemap.sg/v3/Original/{z}/{x}/{y}.png', {
+  detectRetina: true,
+  maxZoom: 18,
+  minZoom: 11,
+  //Do not remove this attribution
+  attribution: '<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;">' +
+               'New OneMap | Map data © contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+});
+
+let map = new L.Map("map", {
+    center: [1.347833, 103.809357], 
+    zoom: 12,
+    maxBounds: L.latLngBounds(L.latLng(1.5, 103.5), L.latLng(1.1, 104.3))
+    })
+    .addLayer(tiles);
+
+let svg = d3.select(map.getPanes().overlayPane)
+    .append("svg")
+    .attr("width", window.innerWidth)
+    .attr("height", window.innerHeight)
+    .append("g")
+    .attr("id","svgLayer")
+    .attr("class", "leaflet-zoom-hide");
+
+function projectPoint(x, y) {
+  var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+  this.stream.point(point.x, point.y);
+}
+
+let projection = d3.geoTransform({point: projectPoint});
+let geopath = d3.geoPath().projection(projection);
+let popType = "Male";
+
+// Load external data and boot
+Promise.all([d3.json("data/sgmap.json"), d3.csv("data/pop2020.csv")]).then(data => {
+
+let mapFeatures =[];
+
+data[0].features.forEach(d => {
+    let result = _.find(data[1], e => { return e.Subzone.toUpperCase() == d.properties.Name});
+    let mapObject = d;
+        mapObject.popMale = null;
+        mapObject.popFemale = null;
+        
+    if (result != undefined) {
+        if (result.Population != "-") {
+            mapObject.popMale = result.PopMale;
+            mapObject.popFemale = result.PopFemale;
+        }
+    }
+    mapFeatures.push(mapObject);
+})
+
+//console.log(mapFeatures.map(d => d.popMale));
+let colorScale = d3.scaleQuantize([0, 27000], d3.schemeBlues[9]);
+let colorScale2 = d3.scaleQuantize([0, 27000], d3.schemeReds[9]);
+
+svg.append("g")
+    .attr("id", "districts")
+    .selectAll("path")
+    .data(mapFeatures)
+    .enter()
+    .append("path")
+    .attr("d", geopath)
+    .classed("district", true)
+    .classed("leaflet-interactive", true)
+    .attr("fill", d => {
+        if (d.popMale != null && d.popMale != "-") { return colorScale(d.popMale); }
+        else return "#777";
+    })
+    .on("mouseover", (event, d) => {
+        d3.select(event.currentTarget)
+            .classed("highlight", true);
+        d3.select("#display").select("h3")
+        .text(d.properties.Name);
+        if (popType == "Male" && d.popMale != null && d.popMale != "-") {
+            d3.select("#display").select("h4")
+            .text(popType + " Population: " + d3.format(",.2r")(d.popMale))
+        } else if (popType == "Female" && d.popFemale != null && d.popFemale != "-") {
+            d3.select("#display").select("h4")
+            .text(popType + " Population: " + d3.format(",.2r")(d.popFemale));
+        } else {
+            d3.select("#display").select("h4")
+            .text("NA");
+        }
+    })
+    .on("mouseout", (event, d) => {
+        d3.select(event.currentTarget)
+            .classed("highlight", false);
+        d3.select("#display").select("h3")
+        .text("DISTRICT");
+        d3.select("#display").select("h4")
+        .text("Population");
+    });
+      
+    legend({ 
+        color: colorScale, 
+        title: popType + " Population", 
+        width: 260,
+        tickFormat: ".0f"
+    });
+    
+    map.on('zoomend', onZoom);
+    onZoom();
+    
+    function onZoom() {
+        var bounds = geopath.bounds(data[0]),
+            topLeft = bounds[0],
+            bottomRight = bounds[1];
+
+        var svg = d3.select(map.getPanes().overlayPane).select("svg");
+            
+        svg.attr("width", bottomRight[0] - topLeft[0])
+           .attr("height", bottomRight[1] - topLeft[1])
+           .style("left", topLeft[0] + "px")
+           .style("top", topLeft[1] + "px");
+           
+        svg.select("g").attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+        d3.select("g#districts").selectAll("path")
+           .attr("d", geopath);
+    }
+    
+    d3.select("#buttonMale").on("click", () => {
+        d3.select("g#districts")
+        .selectAll("path")
+        .transition()
+        .duration(1000)
+        .attr("fill", d => {
+            if (d.popMale != null && d.popMale != "-") { return colorScale(d.popMale); }
+            else return "#777";
+        })
+        
+        popType ="Male";
+
+        d3.select("g#legendRect")
+        .selectAll("rect")
+        .transition()
+        .duration(1000)
+        .attr("fill", (d,i) => {
+            return colorScale.range()[i];
+        })
+        
+        d3.select("#legendHeading")
+        .text(popType + " population");
+        
+        d3.select("#buttonMale")
+            .classed("picked", true);
+        d3.select("#buttonFemale")
+            .classed("picked", false);
+    })
+
+    d3.select("#buttonFemale").on("click", () => {
+        d3.select("g#districts")
+        .selectAll("path")
+        .transition()
+        .duration(1000)
+        .attr("fill", d => {
+            if (d.popFemale != null && d.popFemale != "-") { return colorScale2(d.popFemale); }
+            else return "#777";
+        })
+        
+        popType ="Female";
+
+        d3.select("g#legendRect")
+        .selectAll("rect")
+        .transition()
+        .duration(1000)
+        .attr("fill", (d,i) => {
+            return colorScale2.range()[i];
+        })
+        
+        d3.select("#legendHeading")
+        .text(popType + " population");
+        
+        d3.select("#buttonFemale")
+            .classed("picked", true);
+        d3.select("#buttonMale")
+            .classed("picked", false);
+    })
+    
+})
+
+
+
+
+</script>
+
+</body>
+</html>
