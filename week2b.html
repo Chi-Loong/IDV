@@ -209,7 +209,7 @@
                     <p>Easiest way import libraries is via a CDN (content delivery network)</p>
                     <p><b>JQuery:</b></p>
                     <pre><code>
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">&lt;/script>
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">&lt;/script>
                     </code></pre>
                     <p><b>D3:</b></p>
                     <pre><code>
@@ -231,7 +231,8 @@ document.getElementById("main").appendChild(node);
                     </code></pre>
                     <p>OR in JQuery</p>
                     <pre><code>
-$("#main").append("&lt;p>"Hello World&lt;/p>");
+let para = $("&lt;p>").text("hello world")
+$("#main").append(para);
                     </code></pre>
                     <p class="smallfont"><a href="https://medium.com/@saginadir/native-function-chaining-in-javascript-what-we-can-learn-from-jquery-3b42d5d4a0d">Function chaining makes reading / writing code easier.</a></p>
                 </section>
@@ -249,11 +250,11 @@ d3.select("#main").append(p).text("Hello World");
                     <h2>JSON</h2>
                     <p>JSON (Javascript Object Notation), sample code snippet:</p>
                     <pre><code>
-                    let classroom = [
-                        {name: "Alfred", math: 90, english: 70 },
-                        {name: "Betty", math: 85, english: 30 },
-                        {name: "Cindy", math: 35, english: 60 }
-                    ];
+let classroom = [
+    {name: "Alfred", math: 90, english: 70 },
+    {name: "Betty", math: 85, english: 30 },
+    {name: "Cindy", math: 35, english: 60 }
+];
                     </code></pre>
                     <p class="smallfont">JSON &mdash; a collection of key / value pairs &mdash; has overtaken XML as a data structure for backend to communicate with frontend. You will see this everywhere.</p>
                     <p class="smallfont">Know how to access JSON <a href="https://www.w3schools.com/js/js_json_objects.asp">key / value pairs</a>.</p>
@@ -264,13 +265,13 @@ d3.select("#main").append(p).text("Hello World");
                     <p><a href="https://en.wikibooks.org/wiki/JavaScript/Anonymous_functions">Anonymous functions</a> are functions without names.</p>
                     <p class="smallfont">It is usually not accessible after its initial creation. Often seen as arguments to other functions.</p>
                     <pre><code>
-                    classroom.forEach(function(ele) {
-                        console.log(ele);
-                    });
+classroom.forEach(function(ele) {
+    console.log(ele);
+});
                     </code></pre>
                     <p>OR you can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow notation</a> (ES6):</p>
                     <pre><code>
-                    classroom.forEach(ele => console.log(ele));
+classroom.forEach(ele => console.log(ele));
                     </code></pre>
                     <p class="smallfont">Arrow notation is a shorthand for anonymous functions. Note that the two methods are not exactly synonomous (e.g. function scope). Most use cases it does not matter though.</p>
                 </section>
@@ -279,8 +280,8 @@ d3.select("#main").append(p).text("Hello World");
                     <h3>Data manipulation - map, reduce, filter, etc.</h3>
                     <p>Array functions for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">handling data</a>(ES6). Or use a library like <a href="https://lodash.com/">loadash</a> for more use cases.</p>
                     <pre><code>
-                    const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-                    console.log(words.filter(word => word.length > 6));
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+console.log(words.filter(word => word.length > 6));
                     </code></pre>
                 </section>
 
@@ -291,27 +292,46 @@ d3.select("#main").append(p).text("Hello World");
                     <p class="smallfont">For <a href="https://www.w3schools.com/xml/ajax_intro.asp">AJAX</a> you can also use vanilla JS to write. Fetch is newer JS specification (ES6), and Axios is a popular promise-based HTTP client.</p>
                     <p class="smallfont">Simple code snippet for fetch:</p>
                     <pre><code>
-                    fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
+fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
 
-                      .then(response => response.json())
-                      .then(data => console.log(data));
+  .then(response => response.json())
+  .then(data => console.log(data));
                     </code></pre>
                 </section>
                 
                 <section>
-                    <h2>Callbacks, promises, async / await</h2>
-                    <p>Design patterns for handling the asynchronous nature of JS.</p>
-                    <p class="smallfont">More detail: <a href="https://javascript.info/callbacks">Callbacks</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a>(ES6), <a href="https://javascript.info/async-await">Async / Await</a> (ES6)</p>
-                    <p class="smallfont">You will mainly encounter asynchronous errors typically when you do get / post operations.</p>
-                    <p class="smallfont">For example:</p>
-                    <pre><code>
-                    let myData = {};
-                    fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
-                      .then(response => response.json())
-                      .then(data => {myData = data});
-                    console.log(myData);
-                    </code></pre>
-                    <p class="smallfont">What is wrong with this code?</p>
+                    <section>
+                        <h2>Callbacks, promises, async / await</h2>
+                        <p>Design patterns for handling the asynchronous nature of JS.</p>
+                        <p class="smallfont">More detail: <a href="https://javascript.info/callbacks">Callbacks</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a>(ES6), <a href="https://javascript.info/async-await">Async / Await</a> (ES6)</p>
+                        <p class="smallfont">You will mainly encounter asynchronous errors typically when you do get / post operations.</p>
+                        <p class="smallfont">For example:</p>
+                        <pre><code>
+let myData = {};
+fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
+  .then(response => response.json())
+  .then(data => {myData = data});
+console.log(myData);
+                        </code></pre>
+                        <p class="smallfont">What is wrong with this code?</p>
+                    </section>
+                    <section>
+                        <h2>Async / await example</h2>
+                        <pre><code>
+let myData = {};
+
+async function fetchdata() {
+    let response = await fetch('https://api.data.gov.sg/v1/transport/carpark-availability');
+    let data = await response.json();
+    return data;
+}
+
+fetchdata().then(data => {
+    myData = data;
+    console.log(myData);
+})
+                        </code></pre>
+                    </section>
                 </section>
                 
                 <section data-state="alert" data-transition="zoom">
