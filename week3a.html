@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>3a: Why do data viz?</title>
+        <title>3a: All about data</title>
 
-        <meta name="description" content="02.526 Why do data viz?">
+        <meta name="description" content="02.526 Interactive Data Viz, Introduction">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -38,91 +38,195 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">3a: Task abstraction</h1>
-                    <h3>Why do data viz?</h3>
+                    <h1 class="shadowfont white">3a: All about data</h1>
+                    <h3>What is the data like?</h3>
                 </section>
                 
                 <section>
-                    <h3>Why: An overview</h3>
-                    <a href="img/user_why_viz.jpg" target="_blank"><img src="img/user_why_viz.jpg"></a>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
-                </section>
-                
-                <section>
-                    <h3>Why task abstraction?</h3>
-                    <p>Thinking about <i>why</i> in an abstract form, rather than the domain specific way users often talk about data viz.</p>
-                    <p>This will allow us a framework to discuss use cases, which may on surface look different.</p>
+                    <h3>What: An overview</h3>
+                    <a href="img/data_overview.jpg" target="_blank"><img src="img/data_overview.jpg"></a>
+                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 2, Munzner</i></p>
                 </section>
 
                 <section>
-                    <h3>Actions / Targets</h3>
-                    <p>This proposed taxonomy is from Munzner's framework (Visualization Analysis and Design, chapter 3)</p>
-                    <p><b>Actions</b> in this case is a verb, and targets are <b>nouns</b>.</p>
+                    <h3>Why do data semantics and types matter?</h3>
+                    <p>What is this?</p>
+                    <img src="img/carpark_rows.jpg"/>
+                </section>
+
+                <section>
+                    <p>Better?</p>
+                    <img src="img/carpark_table.jpg"/>
+                </section>
+
+                <section>
+                    <p>Of course it matters. Would you understand what the data is like if you had to guess at what each column is like?</p>
+                    <p>Properly describing and documenting data in <b>metadata</b> allows users to understand what the data is.</p>
+                    <p>Not only expected value types, but expected range, whether a field is a derived value or not, etc.</p>
+                </section>
+
+                <section>
+                    <h2>Data Types</h2>
+                    <p><b>Items</b></p>
+                    <ul>
+                        <li>An item is an individual discrete entity</li>
+                        <li>E.g. row in a table, node in a network, a polygon area on a map</li>
+                    </ul>
+                    <p><b>Attributes</b></p>
+                    <ul>
+                        <li>An attribute is some specific property that can be measured, observed, or logged</li>
+                        <li>aka variable, dimension, metric</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>What is an item? What is an attribute?</p>
+                    <img src="img/node_json_data.jpg"/>
+                    <p class="smallfont">What is this data?</p>
+                </section>
+
+                <section>
+                    <p>Better?</p>
+                    <img src="img/network_diagram.jpg"/>
+                </section>
+
+                <section>
+                    <h2>Data Types 2</h2>
+                    <p><b>Nodes</b></p>
+                    <ul>
+                        <li>Synonym for item but in the context of networks (graphs)</li>
+                    </ul>
+                    <p><b>Links</b></p>
+                    <ul>
+                        <li>A link is a relation between two items</li>
+                        <li>E.g. social network, computer network</li>
+                    </ul>
                     <hr/>
-                    <p class="smallfont">Reading: <i><a href="https://www.cs.ubc.ca/labs/imager/tr/2013/MultiLevelTaskTypology/brehmer_infovis13.pdf" target="_blank">A multi-level typology of abstract visualization tasks</a></i>, Bremmer, Munzner</p>
-                    <p class="smallfont">Reading: <i><a href="https://homes.cs.washington.edu/~jheer/files/idfva-draft.pdf" target="_blank">Taxonomy of interactive dynamics for visual analysis</a></i>, Schneiderman, Heer</p>
+                    <p class="smallfont">Higher order data types are often compositions of more basic data types</p>
                 </section>
 
                 <section>
-                    <h3>Viz designer or user?</h3>
-                    <p>Are you consuming the visualization or producing it?</p>
-                    <p>Viz tools fall somewhere along a continuum from specific to general.</p>
-                    <p class="smallfont">On the general side, tools are flexible and allow users many choices what to make.</p>
-                    <p class="smallfont">On the specific side, the tool is curated and choices are limited in how an end user can interact with the data set.</p>
-                </section>
-                
-                <section>
-                    <h4>Exploratory vs Explainatory</h4>
-                    <a href="img/ticket-trends.jpg" target="_blank"><img src="img/ticket-trends.jpg"></a>
-                    <p class="smallfont"><i>Storytelling with data, chapter 1, Nussbaumer</i></p>
-                </section>
-
-                <section>
-                    <h3>3-levels of actions</h3>
-                    <a href="img/3-levels-actions.jpg" target="_blank"><img src="img/3-levels-actions.jpg"></a>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
+                    <h2>Data Types 3</h2>
+                    <p><b>Position / Regions</b></p>
+                    <ul>
+                        <li>A position is a location in space (typically 2D or 3D)</li>
+                        <li>May be subject to projections</li>
+                        <li>E.g. a district on a map, a 3D architectural diagram</li>
+                    </ul>
+                    <p><b>Fields / Grids</b></p>
+                    <ul>
+                        <li>A <a href="https://en.wikipedia.org/wiki/Regular_grid" target="_blank">grid</a> specifies how data is sampled geometrically / topologically</li>
+                        <li>Necessary for sampling continuous data</li>
+                        <li>E.g. Earth map tiling, CT map scans</li>
+                    </ul>
                 </section>
 
                 <section>
-                    <h3>Targets</h3>
-                    <a href="img/why-targets.jpg" target="_blank"><img src="img/why-targets.jpg"></a>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
+                    <h3>Geographic positions / grids</h3>
+                    <p><a href="https://www.d3indepth.com/geographic/" target="_blank">D3 Geographic</a></p>
+                    <p><a href="https://developers.google.com/maps/documentation/ios-sdk/tiles" target="_blank">Google Map tiles</a></p>
                 </section>
                 
                 <section>
-                    <h4>How: An overview</h4>
-                    <a href="img/how-idioms.jpg" target="_blank"><img src="img/how-idioms.jpg"></a>
-                </section>
-                
-                <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Git</h1>
+                    <h2>Data Types 4</h2>
+                    <p><b>Clusters / Sets / Lists</b></p>
+                    <ul>
+                        <li>A <b>set</b> is simply an unordered group of items.</li>
+                        <li>A <b>list</b> is a group of items with a specified ordering.</li>
+                        <li>A <b>cluster</b> is a grouping based on attribute similarity, where items within a cluster are more similar to each other than to ones in another cluster.</li>
+                    </ul>
                 </section>
 
                 <section>
-                    <h2>GitHub Desktop: Git GUI</h2>
-                    <p>The easiest is probably <a href="https://desktop.github.com/">GitHub Desktop</a>.</p>
-                    <p>Document for GitHub Desktop is excellent, and you can find it <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop">here</a>.</p>
-                    <p>The Git functions that you need to know are probably just <b>clone</b>, <b>fork</b>, <b>pull</b>, <b>push</b> and <b>commit</b>.</p>
-                    <p>GitHub desktop makes this easy as it already has a UX walkthrough designed to guide you in the setup (with Git).</p>
-                     <p>I'll do a quick walkthrough on how to setup a repo from scratch and commit a change.</p>
-                </section>
-                
-                <section>
-                    <h2>Git GUI: Alternatives</h2>
-                    <p>I also like <a href="https://www.sourcetreeapp.com/">Sourcetree</a>, which is another free Git GUI client.</p>
-                    <p>It has some useful functions, notably a graph view of the repo changes.</p>
-                    <img src="img/hero-mac-screenshot.png"/>
-                    <p class="smallfont">There are other Git GUIs like <a href="https://tortoisegit.org/">TortoiseGit</a>, etc. What client or even command line is up to you. But no excuse in not knowing how to work with Git repos.</p>
+                    <h3>Data types &rarr; dataset types</h3>
+                    <img src="img/dataset_types.jpg"/>
                 </section>
 
                 <section>
-                    <h2>GitPages</h2>
-                    <p>Under the <b>settings</b> tab in your repo, turn on GitHub Pages.</p>
-                    <p>You need to have an index.html file in your main repo page.</p>
-                    <p>Read up on the <a href="https://docs.github.com/en/github/working-with-github-pages">docs</a>.</p>
-                    <img src="img/gitpages_settings.jpg"/>
+                    <h2>Data Availability</h2>
+                    <p>Static or dynamic?</p>
+                </section>
+
+                <section>
+                    <h2>Data Hierarchies</h2>
+                    <p>More on <a href="https://github.com/d3/d3-hierarchy" target="_blank">hierarchies</a> in D3</p>
+                    <p>Hierarchical datasets lend themselves very well to visualizations like dendograms, trees, treemaps, packed circles.</p>
+                    <hr/>
+                    <p class="smallfont">We'll talk more about specific visualization idioms in a later lecture.</p>
+                </section>
+
+                <section>
+                    <h2>Data scales</h2>
+                    <img src="img/data_scales.jpg"/>
+                    <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Level_of_measurement" target="_blank">Levels of measurement</a> (or scale of measure, or data scales), a proposed typology by psychologist Stanley Smith Stevens(1906-1973). Still widely used framework, esp. now in data science.</p>
+                    <p class="smallfont">More reading: <a href="https://www.scribbr.com/statistics/levels-of-measurement/" target="_blank">Levels of measurement: Nominal, ordinal, interval, ratio</a>, Scribbr, Prita Bandari</p>
+                </section>
+
+                <section>
+                    <h3>Why are data scales important?</h3>
+                    <p>Because they highly influence the type of encodings and visualizations possible.</p>
+                    <p class="smallfont">It roughly maps to the qualitative (nominal / categorical) &mdash; ordinal &mdash; quantitative scale by French cartographer Jacques Bertin (1918-2010).</p>
+                    <hr/>
+                    <p class="smallfont">Qualitative data: represented by groupings</p>
+                    <p class="smallfont">Quantitative data: represented by amounts</p>
                 </section>
                 
+                <section>
+                    <h3>Nominal data</h3>
+                    <p>Or <i>categorical</i> data. Data is <b>qualitative</b>.</p>
+                    <ul>
+                    <li>Categories can only distinguish whether two things are the same (apples) or different (apples versus oranges).</li>
+                    <li>Often no implicit ordering, but is part of a hierarchical structure.</li>
+                    <li>Of course, any arbitrary external ordering can be imposed upon categorical data - e.g. alphabetically - but only if this auxillary information is available. It is not <i>intrinsic</i> to the data.</li>
+                    <li>Examples: City names, file types, music genres.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Ordinal data</h3>
+                    <ul>
+                    <p>Ordinal data can have a qualitative or quantitative quality.</p>
+                    <li>Data where there is often an implicit ordering in the structure.</li>
+                    <li>Examples: T-shirt sizes, rankings of university, etc.</li>
+                    <li>Note: You cannot do arthimetic on these because it has no meaning. E.g. What is the difference between rank 5 and rank 4? Is it the same as between rank 2 and 1? (nope).</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Quantitative data</h3>
+                    <p>Typically <i>interval</i> or <i>ratio</i> data.</p>
+                    <p></p>
+                    <ul>
+                    <li>Data where arthimetic has meaning.</li>
+                    <li>For example where you can say one month you sold 50 units, and the next 100, so you doubled your sales.</li>
+                    <li>Examples: amount of inventory, temperature, length, weight, etc.</li>
+                    </ul>
+                    <hr/>
+                    <p class="smallfont">There are more specific distinctions between interval and ratio, but it does not really affect visualization principles as much.</p>
+                </section>
+
+                <section>
+                    <h3>Ordering: Sequential, diverging, cyclic</h3>
+                    <img src="img/ordering_direction.jpg"/>
+                    <p class="smallfont">Like qualitative data variables, qualitative graphic variables (e.g., shape or color hue) have no intrinsic ordering.</p>
+                    <p class="smallfont">In contrast, quantitative graphic variables (e.g., size or color intensity) can have different ordering directions, such as sequential, diverging, or cyclic</p>
+                    <p class="smallfont">For the qualitative data, color is used as an <i>identity</i> channel. For quantitative, it is often a <i>magnitude</i> channel. We'll discuss color more in later lectures.</p>
+                </section>
+
+                <section>
+                    <h3>So what scale of measure is each attribute?</h3>
+                    <img src="img/carpark_table.jpg"/>
+                    <p class="smallfont">More reading: <a href="https://statisticalanalysisconsulting.com/is-time-nominal-ordinal-interval-or-ratio-is-it-categorical-or-continuous/" target="_blank">Is time nominal, ordinal, interval or ratio? Is it categorical or continuous?</a> Peter Flom, Statistical Analysis Consulting</p>
+                </section>
+
+                <section>
+                    <h3>A more detaild example</h3>
+                    <a href="https://elections.viz.sg/" target="_blank"><img src="img/SGelections.jpg"></a>
+                    <p>Elections SG2020</p>
+                    <a href="https://www.eld.gov.sg/elections_map_electoral.html" target="_blank"><img src="img/eld_bad.jpg"></a>
+                    <p>Electoral Divisions</p>
+                </section>
+
                 <section>
                     <h2>Questions?</h2>
                     <div class="plain">

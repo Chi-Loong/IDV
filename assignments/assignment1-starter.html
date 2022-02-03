@@ -15,21 +15,24 @@
 </head>
 <body>
 
-<h2>Singapore carpark availability table</h2>
-<table id="carparkTable">
+<h2>Singapore PSI table</h2>
+<h4 id="timestring"></h4>
+<table id="PSItable">
     <tr>
-        <th>Carpark Number</th>
-        <th>Timestamp</th>
-        <th>Total Lots</th>
-        <th>Lots available</th>
-        <th>Utilization</th>
+        <th>Metric</th>
+        <th>National</th>
+        <th>Central</th>
+        <th>West</th>
+        <th>East</th>
+        <th>North</th>
+        <th>South</th>
     </tr>
 </table>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
-fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
+fetch('https://api.data.gov.sg/v1/environment/psi')
   .then(response => response.json())
   .then(data => {
 
@@ -37,8 +40,12 @@ fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
     
     */
   
-    let carpark = data.items[0].carpark_data;
-    console.log(carpark);
+    let timestamp = data.items[0].update_timestamp;
+    let readings = data.items[0].readings;
+    console.log(timestamp);
+    console.log(readings);
+    
+    $("#timestring").text(timestamp);
   
   });
 

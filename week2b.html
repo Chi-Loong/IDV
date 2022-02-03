@@ -38,6 +38,7 @@
 
                 <section data-state="alert" data-transition="zoom">
                     <h1 class="shadowfont white">2b: HTML, CSS, JS</h1>
+                    <h3>Plus a Git refresher</h3>
                 </section>
                 
                 <section>
@@ -290,7 +291,8 @@ d3.select("#main").append(p).text("Hello World");
                     <p class="smallfont">For <a href="https://www.w3schools.com/xml/ajax_intro.asp">AJAX</a> you can also use vanilla JS to write. Fetch is newer JS specification (ES6), and Axios is a popular promise-based HTTP client.</p>
                     <p class="smallfont">Simple code snippet for fetch:</p>
                     <pre><code>
-                    fetch('https://api.data.gov.sg/v1/environment/psi')
+                    fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
+
                       .then(response => response.json())
                       .then(data => console.log(data));
                     </code></pre>
@@ -304,74 +306,41 @@ d3.select("#main").append(p).text("Hello World");
                     <p class="smallfont">For example:</p>
                     <pre><code>
                     let myData = {};
-                    fetch('https://api.data.gov.sg/v1/environment/psi')
+                    fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
                       .then(response => response.json())
                       .then(data => {myData = data});
                     console.log(myData);
                     </code></pre>
                     <p class="smallfont">What is wrong with this code?</p>
                 </section>
-
+                
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Assignment 1a</h1>
-                    <h3>Carpark utilization table</h3>
+                    <h1 class="shadowfont white">Git</h1>
                 </section>
 
                 <section>
-                    <h3>Part 1a: Setup</h3>
-                    <p>To be completed by <b>25-2-2021</b>(Thurs) 1200hrs</p>
-                    <ul>
-                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment1</li>
-                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
-                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
-                    </ul>
+                    <h2>GitHub Desktop: Git GUI</h2>
+                    <p>The easiest is probably <a href="https://desktop.github.com/">GitHub Desktop</a>.</p>
+                    <p>Document for GitHub Desktop is excellent, and you can find it <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop">here</a>.</p>
+                    <p>The Git functions that you need to know are probably just <b>clone</b>, <b>fork</b>, <b>pull</b>, <b>push</b> and <b>commit</b>.</p>
+                    <p>GitHub desktop makes this easy as it already has a UX walkthrough designed to guide you in the setup (with Git).</p>
+                     <p>I'll do a quick walkthrough on how to setup a repo from scratch and commit a change.</p>
                 </section>
                 
                 <section>
-                    <h3>Part 1a: Problem</h3>
-                    <ul>
-                    <li>Connect to the data.gov.sg carpark API and get the realtime dataset. It is detailed <a href="https://data.gov.sg/dataset/carpark-availability">here</a>.</li>
-                    <li>The URI for the API is: <a href="https://api.data.gov.sg/v1/transport/carpark-availability">https://api.data.gov.sg/v1/transport/carpark-availability</a></li>
-                    <li>Print out all the data into a table - carpark number, timestamp, lot type, total lots, lot availability, and utilization.</li>
-                    <li>Utilization is a <i>derived attribute</i> and calculated. It is (total lots - available lots) / total lots.</li>
-                    </ul>
+                    <h2>Git GUI: Alternatives</h2>
+                    <p>I also like <a href="https://www.sourcetreeapp.com/">Sourcetree</a>, which is another free Git GUI client.</p>
+                    <p>It has some useful functions, notably a graph view of the repo changes.</p>
+                    <img src="img/hero-mac-screenshot.png"/>
+                    <p class="smallfont">There are other Git GUIs like <a href="https://tortoisegit.org/">TortoiseGit</a>, etc. What client or even command line is up to you. But no excuse in not knowing how to work with Git repos.</p>
                 </section>
 
                 <section>
-                    <h3>Part 1a: Extra Challenge</h3>
-                    <ul>
-                    <li>Theme the layout of the table nicely - centralize text, use font classes, etc.</li>
-                    <li>If the utilization of the carpark is more than 80%, highlight it in <span style="color:red">red</span>.</li>
-                    <li>Note that the dataset may be full of data that does not make sense - carpark lots with 0 total lots, more lot availability than carpark lots.</li>
-                    <li>You can ignore these, or you can write code to weed out / highlight these rows!</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>Part 1a: Screenshot</h3>
-                    <img src="img/carpark_table_screenshot.jpg"/>
-                    <p class="smallfont">Lots more rows below. Over 2000, in fact.</p>
-                    <p class="smallfont">I also added quite a bit of CSS theming to make the table look nicer.</p>
-                </section>
-
-                <section>
-                    <h3>Part 1a: Hints</h3>
-                    <ul>
-                    <li>This portion is not a design challenge.</li>
-                    <li>It is to show you can connect to an API, pull out and manipulate the data, and list the table.</li>
-                    <li>Be sure you know what you are manipulating in the JSON schema - the key-value pairs you need are nested in deeper array / objects. <b>Console.log</b> it to inspect the JSON structure.</li>
-                    <li>Take note that some carpark numbers have more than 1 lot type.</li>
-                    <li>The total lots and lot availability values are strings - you need to convert them to integers. Round off divided numbers.</li>
-                    <li>You can use JQuery to append the HTML elements you need.</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>Part 1a: More help please!</h3>
-                    <ul>
-                    <li>If you can, write from scratch. <img src="img/smile.svg" width="20" /></li>
-                    <li>But here's a basic starter <a href="assignments/assignment1-starter.html">template</a> if you need one.</li>
-                    </ul>
+                    <h2>GitPages</h2>
+                    <p>Under the <b>settings</b> tab in your repo, turn on GitHub Pages.</p>
+                    <p>You need to have an index.html file in your main repo page.</p>
+                    <p>Read up on the <a href="https://docs.github.com/en/github/working-with-github-pages">docs</a>.</p>
+                    <img src="img/gitpages_settings.jpg"/>
                 </section>
 
                 <section>

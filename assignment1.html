@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>4a: Why do data viz?</title>
+        <title>2b: All HTML, CSS, JS</title>
 
-        <meta name="description" content="02.526 Why do data viz?">
+        <meta name="description" content="02.526 HTML, CSS, JS">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -31,69 +31,65 @@
     </head>
 
     <body>
-
         <div class="reveal">
 
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">4a: Task abstraction</h1>
-                    <h3>Why do data viz?</h3>
-                </section>
-                
-                <section>
-                    <h3>Why: An overview</h3>
-                    <a href="img/user_why_viz.jpg" target="_blank"><img src="img/user_why_viz.jpg"></a>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
-                </section>
-                
-                <section>
-                    <h3>Why task abstraction?</h3>
-                    <p>Thinking about <i>why</i> in an abstract form, rather than the domain specific way users often talk about data viz.</p>
-                    <p>This will allow us a framework to discuss use cases, which may on surface look different.</p>
+                    <h1 class="shadowfont white">Assignment 1</h1>
                 </section>
 
                 <section>
-                    <h3>Actions / Targets</h3>
-                    <p>This proposed taxonomy is from Munzner's framework (Visualization Analysis and Design, chapter 3)</p>
-                    <p><b>Actions</b> in this case is a verb, and targets are <b>nouns</b>.</p>
-                    <hr/>
-                    <p class="smallfont">Reading: <i><a href="https://www.cs.ubc.ca/labs/imager/tr/2013/MultiLevelTaskTypology/brehmer_infovis13.pdf" target="_blank">A multi-level typology of abstract visualization tasks</a></i>, Bremmer, Munzner</p>
-                    <p class="smallfont">Reading: <i><a href="https://homes.cs.washington.edu/~jheer/files/idfva-draft.pdf" target="_blank">Taxonomy of interactive dynamics for visual analysis</a></i>, Schneiderman, Heer</p>
-                </section>
-
-                <section>
-                    <h3>Viz designer or user?</h3>
-                    <p>Are you consuming the visualization or producing it?</p>
-                    <p>Viz tools fall somewhere along a continuum from specific to general.</p>
-                    <p class="smallfont">On the general side, tools are flexible and allow users many choices what to make.</p>
-                    <p class="smallfont">On the specific side, the tool is curated and choices are limited in how an end user can interact with the data set.</p>
+                    <h3>Setup</h3>
+                    <p>To be completed by <b>24-2-2021</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment1</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
                 </section>
                 
                 <section>
-                    <h4>Exploratory vs Explainatory</h4>
-                    <a href="img/ticket-trends.jpg" target="_blank"><img src="img/ticket-trends.jpg"></a>
-                    <p class="smallfont"><i>Storytelling with data, chapter 1, Nussbaumer</i></p>
+                    <h3>The Problem</h3>
+                    <ul>
+                    <li>Connect to the data.gov.sg PSI API and get the realtime dataset. It is detailed <a href="https://data.gov.sg/dataset/psi">here</a>.</li>
+                    <li>The URI for the API is: <a href="https://api.data.gov.sg/v1/environment/psi">https://api.data.gov.sg/v1/environment/psi</a></li>
+                    <li>Print out all <b>readings data</b> into a table. There are 12 readings, from o3_sub_index to psi_twenty_four_hourly.</li>
+                    </ul>
                 </section>
 
                 <section>
-                    <h3>3-levels of actions</h3>
-                    <a href="img/3-levels-actions.jpg" target="_blank"><img src="img/3-levels-actions.jpg"></a>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
+                    <h3>Extra Challenge</h3>
+                    <ul>
+                    <li>Theme the layout of the table nicely. Tweak the CSS to your liking, or use some CSS framework!</li>
+                    <li>Print out the timestamp of when the data in the reading was updated.</li>
+                    </ul>
                 </section>
 
                 <section>
-                    <h3>Targets</h3>
-                    <a href="img/why-targets.jpg" target="_blank"><img src="img/why-targets.jpg"></a>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
+                    <h3>Screenshot</h3>
+                    <img src="img/assignment1_screenshot.jpg"/>
                 </section>
-                
+
                 <section>
-                    <h4>How: An overview</h4>
-                    <a href="img/how-idioms.jpg" target="_blank"><img src="img/how-idioms.jpg"></a>
+                    <h3>Mote details</h3>
+                    <ul>
+                    <li>This portion is not a design challenge.</li>
+                    <li>It is to show you can connect to an API, pull out and understand/read the JSON data, and list the table.</li>
+                    <li>Be sure you know what you are manipulating in the JSON schema. <b>Console.log</b> to inspect the JSON structure.</li>
+                    <li>You can use JQuery to append the HTML elements you need. Or just write in plain ES5/ES6 javascript. Or whatever JS framework you prefer.</li>
+                    </ul>
                 </section>
-                
+
+                <section>
+                    <h3>More help please!</h3>
+                    <ul>
+                    <li>If you can, write from scratch. <img src="img/smile.svg" width="20" /></li>
+                    <li>But here's a basic starter <a href="assignments/assignment1-starter.html">template</a> if you need one.</li>
+                    </ul>
+                </section>
+
                 <section>
                     <h2>Questions?</h2>
                     <div class="plain">
