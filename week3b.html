@@ -51,17 +51,19 @@
                 <section>
                     <h3>Drawing for web</h3>
                     <ul>
-                    <li><b>SVG</b>: Has a DOM-like structure, easy to register events for interaction, scale invariant, can be themed with CSS, and easy to manipulate.</li>
-                    <li><b>Canvas (2D)</b>: Is low level and event firing is far trickier. However, canvas is useful for code art work, when you need to draw lots of shapes on the screen and animate quickly.</li>
-                    <li><b>HTML elements</b>: Elements like divs and imgs can be used, but more painful to manipulate.</li>
-                    <li><b>WebGL (3D)</b>: Use libraries like three.js or babylon.js rather than native as they have excellent design patterns (camera, lighting, etc.)</li>
+                    <li><b>SVG</b>: Has a DOM-like structure, easy to register events for interaction, scale invariant, can be themed with CSS, and easy to manipulate. (<a href="https://elections.viz.sg/" target="_blank">example</a>)</li>
+                    <li><b>Canvas (2D)</b>: Is low level and event firing is far trickier. However, canvas is useful for code art work, when you need to draw lots of shapes on the screen and animate quickly. (<a href="http://bl.ocks.org/syntagmatic/fc62d1de6ada1e06b803" target="_blank">example</a>)</li>
+                    <li><b>HTML elements</b>: Elements like divs and imgs can be used, but more painful to manipulate. (<a href="https://www.alexandrakhoo.com/2020-census-gender-roles/" target="_blank">example</a>)</li>
+                    <li><b>WebGL (3D)</b>: Use libraries like three.js or babylon.js rather than native as they have really useful design patterns (camera, lighting, etc.) (<a href="https://www.washingtonpost.com/graphics/2019/local/school-diversity-data/" target="_blank">example</a>, <a href="https://observablehq.com/@emamd/animating-lots-and-lots-of-circles-with-regl-js" target="_blank">explaination</a>)</li>
                     </ul>
+                    <hr/>
                     <p class="smallfont">When in doubt, go SVG for all the reasons listed above. It has great support by modern browsers (post IE9)</p>
                 </section>
 
                 <section>
                     <h2>SVG specifications</h2>
                     <p>SVG specifications from W3C are <a href="https://www.w3.org/TR/SVG11/" target="_blank">here</a>.</p>
+                    <hr/>
                     <p class="smallfont">Like HTML and CSS, there are many, many tags. I will only go through some of the more common basic tags. Google when you need it!</p>
                 </section>
 
@@ -148,7 +150,7 @@ rect {
                     </code></pre>
                     <hr/>
                     <p class="smallfont">Recap: In CSS child tags inherit styles from the parent tag.</p>
-                    <p class="smallfont">Cascade and specificity rules of course also apply.</p>
+                    <p class="smallfont">Cascade, specificity and inheritance rules of course also apply.</p>
                 </section>
 
                 <section>
@@ -167,12 +169,12 @@ rect {
                     <h3>Path</h3>
                     <p>Path syntax</p>
                     <pre><code>
-&lt;path d="M100,200 L300,600 L500,200Z">&lt;/path>
+&lt;path d="M100 200, L300 600, L500200Z">&lt;/path>
                     </code></pre>
                     <hr/>
                     <p class="smallfont">This is a simple example to draw shapes using the path tag. There are lots of other commands in the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths" target="_blank">path</a> tag</p>
                     <p class="smallfont">The Z tag closes the path. Try it with and without and see the difference.</p>
-                    <p class="smallfont">The commas can be just spaces. But this accepted syntax makes it easier for humans to understand the code. Default is spaces.</p>
+                    <p class="smallfont">The commas can be just spaces (but this is easier to read). Default is spaces.</p>
                 </section>
 
                 <section>
@@ -184,7 +186,9 @@ rect {
                     <hr/>
                     <p class="smallfont">Can you draw in the control path lines for the above so we can see more clearly the control points?</p>
                     <p class="smallfont">There are many commands to draw shapes in SVGs, and you probably only need to Google for the command if you have a specific use case.</p>
+                    <p class="smallfont">Likely you will be using a library like D3.js, which has higher-order functions in order to build your path lines.</p>
                     <p class="smallfont">Still, it is useful to have some idea of how paths are built.</p>
+                    <p class="smallfont"><a href="https://viz.vslashr.com/uiwork/uitree">Example</a>, with the <a href="https://viz.vslashr.com/uiwork/js/UItree.js" target="_blank">JS</a> code.</p>
                 </section>
                 
                 <section>
