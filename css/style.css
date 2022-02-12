@@ -39,3 +39,14 @@ b {
     -moz-transform:rotate(360deg);
     -o-transform:rotate(360deg);
 }
+
+tr:nth-child(odd) {
+    background: #777;
+}
+
+tr:nth-child(even) {
+    background: #333;
+}
+
+.reveal td {
+  font-size: 0.8em;
