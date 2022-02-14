@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>5b: Visualization validation</title>
+        <title>5b: Intro to D3</title>
 
-        <meta name="description" content="02.526 Visualization validation">
+        <meta name="description" content="02.526 Intro to D3">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -31,145 +31,388 @@
     </head>
 
     <body>
-
         <div class="reveal">
 
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">5b: Viz analysis</h1>
-                    <h3>4 levels of validation</h3>
+                    <h1 class="shadowfont white">5b: Intro to D3</h1>
                 </section>
                 
                 <section>
-                    <h3>4 levels of validation: A framework</h3>
-                    <img src="img/validation_overview.jpg"/>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 4, Munzner</i></p>
-                </section>
-                
-                <section>
-                    <h3>Domain</h3>
-                    <p>Knowledge of an area that lets you frame problems from a <i>human-centric interaction (HCI) design</i> perspective.</p>
-                    <p class="smallfont">This is similar to UX design thinking, especially the needfinding / problem definition portions.</p>
-                    <p class="smallfont">In short, questions to validate why we are tackling the problems from the domain itself (Emphatize and Define).</p>
-                    <img src="img/design_thinking.jpg"/>
-                    <p class="smallfont"><i>Standford school of design thinking</i></p>
-                </section>
-
-                <section>
-                    <h3>UX design thinking tools</h3>
-                    <p>Tools to help with user empathy / problem specification / prioritization</p>
+                    <h2>Objectives</h2>
                     <ul>
-                        <li>Needfinding tools: Observations, interviews, surveys</li>
-                        <li>Personas: User audience</li>
-                        <li>Task analysis: Flowcharts and lists</li>
-                        <li>Mindmaps: Clustering needs and prioritization</li>
-                    </ul>
-                </section>
-                
-                <section>
-                    <h3>Data / task abstraction</h3>
-                    <p><b>What</b> is the data like? <b>Why</b> are we doing the visualization?</p>
-                </section>
-                
-                <section>
-                    <h3>Visual encoding / interaction</h3>
-                    <p><b>How</b> are we designing the visualization?</p>
-                    <p class="smallfont">Each of the main dataset types - tabular, networks, spatial (plus hierarchical) lead themselves to certain common visualization types.</p>
-                    <p class="smallfont">We'll pair theory lectures when we go through the labs looking at each main dataset type in D3, so the theory and execution flow together.</p>
-                    <p class="smallfont">Concepts like marks and channels, color theory, view manipulation (interaction), faceting will all be discussed in their own lectures.</p>
-                </section>
-                
-                <section>
-                    <h3>Algorithmn / Technology</h3>
-                    <p>Execution of the visualization. For this course, it is interactive work using HTML / CSS / JS using the D3.js library.</p>
-                    <p>But even just for the web, how are you executing the piece?</p>
-                    <p>Are you using any 3rd party platform? Frontend stack? Backend stack?</p>
-                </section>
-
-                <section>
-                    <h3>Top-down or bottom up?</h3>
-                    <p>Typically either:</p>
-                    <ul>
-                        <li>Designing a viz to solve a problem (top down)</li>
-                        <li>Refining an existing solution (bottom-up)</li>
-                    </ul>
-                </section>
-                
-                <section>
-                    <h3>Threats to validity</h3>
-                    <img src="img/threats_validity.jpg"/>
-                    <ul>
-                        <li>Wrong problem: You've misunderstood the needs</li>
-                        <li>Wrong abstraction: You're showing the wrong thing.</li>
-                        <li>Wrong idiom: The way you show doesn't work</li>
-                        <li>Wrong algorithm: The code is too slow</li>
+                    <li>Discuss libraries beyond D3.</li>
+                    <li>Go through selection and data binding. Also: axes, domains and ranges.</li>
+                    <li>Put together a simple bar / scatterplot chart.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Validation approaches</h3>
-                    <img src="img/validation_approaches.jpg"/>
-                    <p class="smallfont">This is similar to the evaluation / testing phase of UX design thinking, where you iterate on a project.</p>
-                </section>
-
-               <section>
-                    <h3>More UX design thinking tools</h3>
-                    <p>Tools to help with user evaluation / testing</p>
-                    <ul>
-                        <li>"Think aloud" usability evaluation</li>
-                        <li>Heuristic checklist (e.g. <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank">10 usability heuristics</a>, Jakcob Nielson)</li>
-                        <li>Shneiderman’s <a href="http://www.cs.umd.edu/~ben/goldenrules.html" target="_blank">Eight Golden Rules</a></li>
-                    </ul>
-                </section>
-                
-                <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Case studies</h1>
-                    <h3>Stories and experiences</h3>
-                </section>
-
-                <section>
-                    <h2>Case 1</h2>
-                    <h3>Cybersecurity</h3>
-                </section>
-
-                <section>
-                    <h2>Case 2</h2>
-                    <h3>Fashion start-up</h3>
-                </section>
-
-                <section>
-                    <h2>Case 3</h2>
-                    <h3>Art project</h3>
-                </section>
-
-                <section>
-                    <h2>Case 4</h2>
-                    <h3>Transport rail</h3>
-                </section>
-
-                <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Assignment 1b</h1>
-                    <h3>Carpark utilization viz ideas</h3>
-                </section>
-
-                <section>
-                    <h3>Workshop discussion: Viz design</h3>
-                    <p>Recall the carpark data set for the 1st assignment.</p>
-                    <p>Based on carpark API data, how would you visualize it beyond a tabular form?</p>
-                    <p>Any other datasets that you might need?</p>
-                    <p>What are the data scales (levels of measurement) - nominal, ordinal, quantitative - for the data you are visualizing?</p>
-                </section>
-
-                <section>
-                    <h3>Workshop discussion: Designing a visualization</h3>
-                    <p>Think about this and come up with some ideas to present for this week's Thursday workshop.</p>
-                    <p>You do not have to come up with a visualization at this point. Description is enough, or simple hand-drawn mocks for communication will do.</p>
+                    <h3>Why <a href="https://d3js.org/" target="_blank">D3</a>?</h3>
+                    <h4>(Data Driven Documents)</h4>
+                    <p>It is a comprehensive framework for building any sort (almost literally) of interactive visualizations for the web.</p>
+                    <p>It is however, not a simple high-level graphing template library.</p>
+                    <p>One of the main design patterns in this library is <b>binding</b> the data to DOM elements.</p>
                     <hr/>
-                    <p class="smallfont"> Assume a use case - exploring the dataset, presentation, etc.</p>
-                    <p class="smallfont">Assume you can mash-up with other datasets, as necessary.</p>
-                    <p class="smallfont">You can use <i>derived</i> attributes instead of what was given. E.g. Utilization in the technical challenge above is a <i>derived</i> attribute.</p>
+                    <p class="smallfont">Reading: <a href="https://medium.com/@Elijah_Meeks/d3-is-not-a-data-visualization-library-67ba549e8520" target="_blank">D3 is not a Data Visualization Library</a>, Elijah Meeks</p>
+                </section>
+
+                <section>
+                    <h3>How to learn D3</h3>
+                    <p><a href="https://wattenberger.com/blog/d3" target="_blank">How to learn D3.js</a>, Amelia Watterberger</p>
+                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, Yan Holtz</p>
+                    <p><a href="https://bl.ocks.org/" target="_blank">bl.ocks.org</a></p>
+                    <p><a href="https://observablehq.com/" target="_blank">ObservableHQ</a></p>
+                </section>
+
+                <section>
+                    <h3>Sample libraries built on top of D3</h3>
+                    <ul>
+                    <li><a href="https://vega.github.io/vega-lite/" target="_blank">Vega 5.0</a></li>
+                    <li><a href="https://nvd3.org/" target="_blank">NVD3</a></li>
+                    <li><a href="https://c3js.org/" target="_blank">C3</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Other charting libraries</h3>
+                    <ul>
+                    <li><a href="https://echarts.apache.org/en/index.html" target="_blank">Apache e-charts</a></li>
+                    <li><a href="https://www.chartjs.org/" target="_blank">Chart.js</a></li>
+                    <li><a href="https://developers.google.com/chart/" target="_blank">Google Charts</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Animation and 3D libraries</h3>
+                    <p>Animation</p>
+                    <ul>
+                    <li><a href="https://greensock.com/gsap/" target="_blank">GSAP</a></li>
+                    <li><a href="https://animejs.com/" target="_blank">Anime.js</a></li>
+                    </ul>
+                    <hr/>
+                    <p>3D</p>
+                    <ul>
+                    <li><a href="https://threejs.org/" target="_blank">three.js</a></li>
+                    <li><a href="https://www.babylonjs.com/" target="_blank">Babylon</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Utility Libraries</h3>
+                    <ul>
+                    <li><a href="https://lodash.com/" target="_blank">Lodash / Underscore</a></li>
+                    <li><a href="https://pbeshai.github.io/tidy/" target="_blank">Tidy.js</a></li>
+                    <li><a href="https://www.papaparse.com/" target="_blank">Papaparse</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>D3 installation / data binding</h3>
+                    <p>I'll be including D3 the easiest way - embedding as a script pulled from a CDN. You can of course use npm / <b>import</b> and design a more modern way of scaffolding your projects.</p>
+                    <p>One thing to note is that for <b>reactivity</b>, we'll be using D3's default data binding functions.</p>
+                    <p>If you use a JS framework / compiler &mdash; Vue, React, Angular, Svelte, etc. &mdash; it is a good idea that your data binding does not clash with D3's one.</p>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">D3 code workshop</h1>
+                </section>
+
+                <section>
+                    <h2>Hello World</h2>
+                    <p>Let's start with a simple template. We'll go through <b>selections</b>, which is a core component of D3.</p>
+                    <pre><code>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+  &lt;meta charset="UTF-8">
+&lt;/head>
+&lt;body>
+&lt;script src="https://d3js.org/d3.v6.min.js">&lt;/script>
+&lt;script>
+  d3.select("body").append("p").text("Hello World!");
+&lt;/script>
+&lt;/body>
+&lt;/html>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Note: We're appending a paragraph tag of "Hello World" to the body.</p>
+                </section>
+                
+                <section>
+                    <h2>Hello Worlds</h2>
+                    <pre><code>
+&lt;div id="hellos">
+    &lt;p>Hello World!&lt;/p>
+    &lt;p>Hello World 2!&lt;/p>
+    &lt;p>Hello World 3!&lt;/p>
+&lt;/div>
+
+&lt;script>
+    d3.select("#hellos p").style("color", "green");
+    d3.selectAll("#hellos p").style("color", "green");
+&lt;/script>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Notice the difference between the select and selectAll statements.</p>
+                </section>
+                
+                <section>
+                    <h3>Data Binding</h3>
+                    <pre><code>
+let data = [10, 20, 30];
+let hellos = d3.select("#hellos");
+hellos.selectAll("p")
+.data(data)
+.enter()
+.append("p")
+.text("Hello World");
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Notice the design pattern: Select a bunch of elements (that don't exist), bind that to the data, and then append said elements.</p>
+                    <p class="smallfont">One style to write javascript is to use <a href="https://medium.com/backticks-tildes/understanding-method-chaining-in-javascript-647a9004bd4f" target="_blank">method chaining</a>, which is a design pattern you will see in many javascript libraries, like JQuery or Lodash. D3 also follows this style, and it makes your code more readable.</p>
+                </section>
+
+                <section>
+                    <h3>Exercise 1</h3>
+                    <pre><code>
+let data = [
+    {text: "Hello World 1", size: 10, color: "green"},
+    {text: "Hello World 2", size: 20, color: "blue"},
+    {text: "Hello World 3", size: 30, color: "red"},
+];                  
+                    </code></pre>
+                    <p class="smallfont">Given this dataset, can you print out each individual text, and style the elements?</p>
+                </section>
+
+                <section>
+                    <h3>Fun with transitions</h3>
+                    <pre><code>
+hellos.selectAll("p")
+.data(data)
+.enter()
+.append("p")
+.text(d => d.text)
+.transition()
+.duration((d,i) => i * 1000)
+.style("font-size", d => d.size + "px")
+.style("color", d => d.color);
+                    </code></pre>
+                </section>
+
+
+                <section>
+                    <h3>Recap: SVG</h3>
+                    <h4>Exercise 1b</h4>
+                    <p class="smallfont">Remember how to draw shapes using SVGs?</p>
+                    <pre><code>
+&lt;svg width="800" height="800">&lt;/svg>
+let data = [
+    {x: 400, y: 700, r:150, color: "green"},
+    {x: 100, y: 300, r:50, color: "blue"},
+    {x: 850, y: 400, r:100, color: "red"}
+]
+                    </code></pre>
+                    <p class="smallfont">Given this dataset, can you add these as circles, with the appropriate theming?</p>
+                </section>
+
+                <section>
+                    <h3>Domains and ranges</h3>
+                    <p>How do we map our quantitative data scale to the SVG drawing scale? Use <b>domain / range</b>.</p>
+                    <pre><code>
+let xScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([0,800]);
+
+let yScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([800,0]);
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Note that the y-axis (the range) is typically inverted.</p>
+                </section>
+
+                <section>
+                    <h3>Setup Dimensions / Margins</h3>
+                    <pre><code>
+let margin = {top: 20, right: 20, bottom: 60, left: 60},
+    width = 800 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+let chart = d3.select("svg")
+    .attr("width", 800)
+    .attr("height", 800)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+let xScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([0,width]);
+let yScale = d3.scaleLinear()
+    .domain([0,1000])
+    .range([height,0]);
+    
+chart.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xScale(d.x))
+    .attr("cy", d => yScale(d.y))
+    .attr("r", d => d.r)
+    .attr("fill", d => d.color);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Add axes</h3>
+                    <pre><code>
+chart
+    .append("g")
+    .call(d3.axisBottom(xScale));
+chart
+    .append("g")
+    .call(d3.axisLeft(yScale));
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Axes are added to origin point (0,0). Use a transform to translate the xAxis to the bottom of the chart.</p>
+                    <pre><code>
+chart
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Add labels</h3>
+                    <pre><code>
+chart
+    .append("text")
+    .attr("transform", "translate(" + (width / 2) + "," + (height + 40) + ")")
+    .text("X-axis label")
+    .attr("text-align", "middle");
+
+chart
+    .append("text")
+    .attr("transform", "translate(-40, " + (height / 2) + ") rotate(-90)")
+    .text("Y-axis label")
+    .attr("text-align", "middle");
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Add colorscale</h3>
+                    <p>Let's map radius to a sequential colorscale.</p>
+                    <pre><code>
+let colorScale = d3.scaleLinear()
+    .domain([0, 300])
+    .range([0,1]);
+                    </code></pre>
+                    <hr/>
+                    <pre><code>
+    ...
+    .attr("fill", d => d3.interpolateViridis(colorScale(d.r)));
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Event firing</h3>
+                    <h4>Mouseover / mouseout</h4>
+                    <pre><code>
+    ...
+    .on("mouseover", (event, d) => {
+        d3.select(event.currentTarget)
+        .attr("stroke", "black")
+        .attr("stroke-width", 2);
+    }) 
+    .on("mouseout", (event, d) => {
+        d3.select(event.currentTarget)
+        .attr("stroke", "none");
+    })
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Do note that this event firing is syntax for the latest D3 v6. <a href="https://observablehq.com/@d3/d3v6-migration-guide" target="_blank">Migration docs here</a>. Syntax for event firing is different for previous versions.</p>
+                </section>
+
+                <section>
+                    <h3>Clean-up / Ideas</h3>
+                    <h4>Things to consider</h4>
+                    <ol>
+                        <li>Group, order, and label things for you to understand if you need to inspect the SVG</li>
+                        <li>Consider moving your theming to CSS as this is easier to change.</li>
+                        <li>Consider adding legends, labels, etc.</li>
+                        <li>Consider adding interactivity for tooltips and feedback.</li>
+                        <li>You can make the SVG form factor responsive if needed.</li>
+                        <li>Transitions for the bling.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>Basic D3 bar chart</h2>
+                    <a href="https://bl.ocks.org/chi-loong/c36e1cf66502faa45f8dd8102a5c5531" target="_blank"><img width="600" src="img/preview1.png"/></a>
+                    <p><a href="https://bl.ocks.org/chi-loong/c36e1cf66502faa45f8dd8102a5c5531" target="_blank">Bl.ocks.org: Simple D3 bar chart</a></p>
+                    <p class="small">https://bl.ocks.org/chi-loong/c36e1cf66502faa45f8dd8102a5c5531</p>
+                </section>
+                
+                <section>
+                    <h2>D3 bar chart 2</h2>
+                    <p>Transitions. Enter, update and exit design pattern</p>
+                    <a href="https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4" target="_blank"><img width="600" src="img/preview2.png"/></a>
+                    <p><a href="https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4" target="_blank">Bl.ocks.org: D3 bar chart part 2</a></p>
+                    <p class="small">https://bl.ocks.org/Chi-Loong/e3389dfb6873c85caf445f0faba52ec4</p>
+                </section>
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 2</h1>
+                    <h3>Tabular data - D3 visualization</h3>
+                </section>
+
+                <section>
+                    <h3>Setup</h3>
+                    <p>To be completed before <b>8-4-2021</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment2</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What: Dataset</h3>
+                    <ul>
+                    <li>We'll be looking at a SG crime dataset - <a href="https://data.gov.sg/dataset/victims-of-selected-major-selected-offences?resource_id=50ce8b97-6f2e-4a0c-95b4-2477ab281846" target="_blank">Victims of Selected Major Offences (by Age Group)</a>.</li>
+                    <li>Connect to the dataset &mdash; via API, or via download of the CSV &mdash; up to you.</li>
+                    <li>You probably have to do some data manipulation. Whether it is in the CSV or via code, it's up to you.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Why: Presentation</h3>
+                    <ul>
+                    <li>Your boss has asked you to take a look at the dataset and give a short presentation on what is <b>interesting</b> about the dataset.</li>
+                    <li>Are there trends over the years? Outliers worth talking about? Etc.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How: Encoding</h3>
+                    <ul>
+                    <li>Up to you. Do you want to put everything into one complicated chart (e.g. a scatterplot with multiple dimensions)?</li>
+                    <li>Or would you want to break into multiple charts to tell your story?</li>
+                    <li>Have a very, very simple writeup (a few lines) to justify, together with your assumptions. You probably want to do some exploration, and then decide to do at least one (or more) charts for storytelling.</li>
+                    <li>Feel free to come up with derived columns, and/or filter away data that is not interesting. E.g. rows with 0 cases.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How: Execution / Expectations</h3>
+                    <ul>
+                    <li>For multiple charts on one page if you're worried about code pollution (CSS/JS) just use iFrames. Or even images / links. Am not expecting a complicated framework &mdash; e.g. JS framework componentization (unless you want to).</li>
+                    <li>Up to you how much interactivity you want to put into the piece.</li>
+                    <li>You may even prefer not to use D3 although I would suggest at least doing so for one chart (or use a library built on top of D3).</li>
+                    <li>We'll be doing small code assignments for the next 4 weeks, so I'm not expecting a complicated project.</li>
+                    <li><b>Minimum expectations:</b> At least one chart. Simple explanation (labels and titles) so we know what we're seeing.</li>
+                    </ul>
                 </section>
 
                 <section>

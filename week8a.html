@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>8a: Chart Types - Tabular data</title>
+        <title>8a: Color</title>
 
-        <meta name="description" content="02.526 Chart types - tabular data">
+        <meta name="description" content="02.526 Color">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -18,17 +18,6 @@
         <link rel="stylesheet" href="css/style.css">
         
         <style>
-tr:nth-child(odd) {
-    background: #777;
-}
-
-tr:nth-child(even) {
-    background: #333;
-}
-
-.reveal td {
-  font-size: 0.8em;
-}
         </style>
         
         <!-- If the query includes 'print-pdf', use the PDF print sheet -->
@@ -49,258 +38,178 @@ tr:nth-child(even) {
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">8a: Chart types</h1>
-                    <h3>Tabular data</h3>
+                    <h1 class="shadowfont white">8a: Color</h1>
                 </section>
-
+                
                 <section>
-                    <h3>Recap: How to design viz idioms</h3>
-                    <img src="img/how-idioms.jpg"/>
-                </section>
-
-                <section>
-                    <h3>Recap: Data Types</h3>
+                    <h3>Color</h3>
                     <ul>
-                        <li>Tabular data</li>
-                        <li>Networks</li>
-                        <li>Geographic / spatial</li>
-                        <li>Fields</li>
-                        <li>Hierarchical</li>
+                    <li><b>Perception</b>: How the eye perceives color</li>
+                    <li><b>Specification</b>: How we specify color</li>
+                    <li><b>Use</b>: Use of color in visualizations</li>
                     </ul>
                 </section>
-
+                
                 <section>
-                    <h3>Tabular data</h3>
-                    <img src="img/arrange_tables.jpg"/>
+                    <h3>Visible electromagenetic spectrum</h3>
+                    <img src="img/EMS_visible_light.jpg"/>
+                    <p class="smallfont">Visible light is roughly in the wavelengths of 400nm (4 x 10<sup>-7</sup>m) to 700nm (7 x 10<sup>-7</sup>m).</p>
                 </section>
 
                 <section>
-                    <h3>Tabular data 2</h3>
-                    <img src="img/carpark_table.jpg"/>
+                    <h3>Eye Structure</h3>
+                    <img src="img/eye_diagram.jpg"/>
                 </section>
 
                 <section>
-                    <h3>D3 Graph Gallery</h3>
-                    <p>But there are other ways to categorize charts.</p>
-                    <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg"/></a>
-                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
-                    <p><a href="https://www.data-to-viz.com/" target="_blank">Data to Viz</a></p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Bar Chart</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>1 quantitative value attribute, 1 categorical key attribute</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Encode bar marks, express value attribute with aligned vertical position, separate key attribute with horizontal position</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Task lookup and compare values</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Key attribute: Up to hundreds</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - Barplots</a></p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Stacked Bar Chart</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Multidimensional table: 1 quantitative value attribute, 2 categorical key attributes</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Bar glyph with length-coded subcomponents of value attribute for each category of secondary key attribute (typically using color as an identity channel). Separate bars by category of primary key attribute.</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Part-to-whole relationship, lookup values, find trends.</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Key attribute (main axis): dozens to hundreds of levels. Key attribute (stacked glyph axis): several to one dozen</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - Stacked Barplots</a></p>
-                </section>
-
-                <section>
-                    <section>
-                        <h3>Recap: which viz?</h3>
-                        <img src="img/accuracy_implications1.jpg"/>
-                    </section>
-
-                    <section>
-                        <img src="img/accuracy_implications2.jpg"/>
-                        <p>Part-of-whole relationship: <a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - 100% Stacked Barplots</a></p>
-                    </section>
-                </section>
-
-
-                <section>
-                    <h3>Idiom: Pie Chart</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Table: one quantitative attribute, one categorical attribute</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Encode Area marks (wedges) with angle channel; radial layout</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Part-to-whole relationship</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>One dozen categories</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/pie.html" target="_blank">D3 Graph Gallery - Pie Chart</a></p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Stacked Area / Streamgraph</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Multidimensional table: one quantitative value attribute (often counts / amount), one orindal key attribute (often time), one categorical key attribute</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Use derived geometry to show layers across time, layer height encodes counts.</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Show holistic view, part-to-whole relationship, trends.</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Key attributes (time): up to hundreds of time points. Key attributes (each area): several to one dozen</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/stackedarea.html" target="_blank">D3 Graph Gallery - Stacked Area</a></p>
-                    <p class="smallfont">Example: <a href="https://viz.sg/viz/budget2020/" target="_blank">Budget 2020</a></p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Scatterplot</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Table: 2 quantitative value attributes</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Express values with horizontal and vertical spatial position and point marks.</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Task Find trends, outliers, distribution, correlation; locate clusters.</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Items: Hundreds</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/scatter.html" target="_blank">D3 Graph Gallery - Scatterplot</a></p>
-                    <p class="smallfont">You can add in a 3rd quantitative attribute (size of mark). You can also add in categorical attributes (color, shape of mark).</p>
-                    <p class="smallfont">Example: <a href="https://www.visualcinnamon.com/2015/07/voronoi/" target="_blank">Using a d3 voronoi grid for better interactive experience</a>, Visual Cinnamon (Nadieh Bremmer)</p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Heatmap</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Table: two categorical key attributes. One quantitative value attribute</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Encode length channel along radial spokes; radial layout</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Find clusters, outliers, summarize</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Items: Up to a million. Categorical attribute levels: hundreds. Color quantitative attribute levels: 3 to 11</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/heatmap.html" target="_blank">D3 Graph Gallery - Heatmap</a></p>
-                    <p class="smallfont">Example: <a href="https://gym-tracker.data.gov.sg/" target="_blank">ActiveSG Gym Tracker</a></p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Scatterplot Matrix</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Table with a whole bunch of attributes</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Scatterplots in 2D matrix alignment</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Find corrletation, clusters, outliers</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Attributes: Up to a dozen. Items: up to hundreds</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/correlogram.html" target="_blank">D3 Graph Gallery - Scatterplot Matrix / Correlogram</a></p>
-                    <p class="smallfont">Reading: <a href="https://www.data-to-viz.com/graph/correlogram.html" target="_blank">Correlogram - variations, data-to-viz</a></p>
+                    <h3>Eye: Rods and Cones</h3>
+                    <img src="img/rods_cones_table.jpg"/>
+                    <img src="img/fovea_density.jpg"/>
                 </section>
                 
                 <section>
-                    <h3>Idiom: Radar</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Table with 3 to 12 quantitative attributes. 1 categorical key attribute (color)</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Scatterplots in 2D matrix alignment</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Comparison, find outliers</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Quantitative attributes: 3 to 12. Categorical key attribute: 2 to 5 (the less the better)</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/spider.html" target="_blank">D3 Graph Gallery - Radar</a></p>
-                    <p class="smallfont">Example: <a href="https://viz.vslashr.com/mci/results.html?id=5d11f61da51f48680555c79a" target="_blank">MCI radar</a></p>
-                </section>
-                
-                <section>
-                    <h3>A quick walkthrough:</h3>
-                    <h4>Other charts - tabular data</h4>
-                    <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg"/></a>
-                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
+                    <h3>Cones: photoreceptor wavelength</h3>
+                    <img src="img/photoreceptor_sensitivity.jpg"/>
+                    <p class="smallfont">Red cones, or L-cones. 64% of total cones, maximally sensitive to long-wave light</p>
+                    <p class="smallfont">Green cones, or M-cones. 32% of total cones, maximally sensitive to medium-wave light</p>
+                    <p class="smallfont">Blue cones, or S-cones. 2 – 7% of total cones, maximally sensitive to short-wave light</p>
                 </section>
 
                 <section>
-                    <h3>TR Examples</h3>
-                    <p>Area to Boxplot: <a href="https://www.temasekreview.com.sg/investor/12-month-returns-simulation.html#volatility-of-returns" target="_blank">Modified boxplot explorable</a></p>
-                    <p>Area Chart counterexample: <a href="https://www.temasekreview.com.sg/investor/12-month-returns-simulation.html#volatility-of-returns" target="_blank">Value Since Inception Explorable</a></p>
+                    <h3>Cones: distribution</h3>
+                    <img src="img/conemosaics.jpg"/>
+                    <p class="smallfont">Left: Illustration of distribution of cones in fovea of human with normal color vision.</p>
+                    <p class="smallfont">Right: Illustration of distribution of cones in fovea of human with protanopic vision, i.e. no L-cones (red cones)</p>
+                </section>
+                
+                <section>
+                    <h3>Color blindness</h3>
+                    <img src="img/color_blindness_chart.jpg"/>
+                    <p class="smallfont">Color blindness is genetically inherited. About 8% men, 0.5% women around the world</p>
+                    <p class="smallfont">Red-green color blindness is passed down on the X chromosome, of which men have only 1 X chromosome (women have 2).</p>
+                    <p class="smallfont">Common: red-green deficiency, deuteronomaly. Uncommon: protonomaly.</p>
+                    <p class="smallfont">Rare: blue-yellow deficiency, tritanomaly.</p>
+                    <p class="smallfont">More info on <a href="https://en.wikipedia.org/wiki/Color_blindness" target="_blank">color blindness</a></p>
+                </section>
+                
+                <section>
+                    <h3>Color blindness 2</h3>
+                    <img src="img/color_blindness_balloons.jpg" target="_blank"/>
+                    <p class="smallfont"><a href="http://vischeck.com/" target="_blank">Vischeck</a>: color blindness simulation and correction</p>
+                </section>
+                
+                <section>
+                    <h3>Colorspace</h3>
+                    <p>A colorspace is a system for describing color numerically.</p>
+                    <ul>
+                        <li>RGB</li>
+                        <li>CMYK</li>
+                        <li>HSV/HSL</li>
+                        <li>CIE Lab</li>
+                        <li>CIE HCL</li>
+                    </ul>
+                    <p>There are many more: XYZ, Munsell, CMS, etc.</p>
+                </section>
+                
+                <section>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/RGB_color_model" target="_blank">RGB</a></h3>
+                    <img src="img/monitor_magnified.jpg"/>
+                    <img src="img/rgbcube.png"/>
+                    <p class="smallfont">Left: Magnification of pixels on a screen. Right: RGB color cube.</p>
+                    <p class="smallfont">RGB colorspace is additive.</p>
+                    <p class="smallfont">Problems: Not intuitive, not <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/" target="_blank">perceptually uniform</a>.</p>
+                    <p class="smallfont">Reading: <a href="https://observablehq.com/@mattdesl/perceptually-smooth-multi-color-linear-gradients" target="_blank">Perceptually Smooth Multi-Color Linear Gradients</a></p>
+                </section>
+
+                <section>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/RGB_color_model" target="_blank">CMYK</a></h3>
+                    <img src="img/CMYK-vs-RGB.jpg"/>
+                    <p class="smallfont">CMYK colorspace is subtractive. For print only.</p>
+                    <p class="smallfont">Reading: <a href="https://www.printplace.com/blog/reasons-for-cmyk-printing/" target="_blank">Why printing uses CMYK</a></p>
+                </section>
+
+
+                <section>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/HSL_and_HSV" target="_blank">HSV/HSL</a></h3>
+                    <p>H = Hue, S = Saturation (vividness of color), V/L = Value / Lightness</p>
+                    <img src="img/colorWheel.jpeg"/>
+                    <img src="img/HSV_cylinder.png"/>
+                    <p class="smallfont">Left: Hue described radially. Right: HSV color cylinder</p>
+                    <p class="smallfont">Problems: More intuitive, but also not <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/" target="_blank">perceptually uniform</a>.</p>
+                </section>
+
+                <section>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/CIELAB_color_space" target="_blank">CIE Lab</a> (or Lab)</h3>
+                    <p>L = Lightness, a = red-green scale, b = yellow-blue scale</p>
+                    <img src="img/CIELab_model.jpg"/>
+                    <p class="smallfont">CIE (Commission internationale de l'éclairage, or International Commission on Illumination) - international authority on light, illumination, colour, and colour spaces.</p>
+                    <p class="smallfont">Designed to better approximate human perception of color.</p>
+                    <p class="smallfont">Perceptually linear (or close).</p>
+                </section>
+
+                <section>
+                    <h3>Colorspace: <a href="https://en.wikipedia.org/wiki/HCL_color_space" target="_blank">CIE HCL</a> (or HCL)</h3>
+                    <p>H = Hue, C = Chroma, L = Luminance</p>
+                    <p class="smallfont">H and C are transformations of a and b in the Lab model.</p>
+                    <img src="img/CIEHCL_model.jpg"/>
+                    <img src="img/CIEHCL_circle.jpg"/>
+                    <p class="smallfont">Perceptually linear, and more intuitive.</p>
+                </section>
+
+                <section>
+                    <h3>Recap: Color channels</h3>
+                    <p>Magnitude channel (quantitative) or identity (qualitative)?</p>
+                    <img src="img/ordering_direction.jpg"/>
+                    <img src="img/hue-saturation-luminance.jpg"/>
+                    <p>4th channel: Transparency (used as layer for interaction)</p>
+                    <p><a href="https://github.com/d3/d3-scale-chromatic" target="_blank">D3: Color scales (aka as a channel)</a></p>
+                    <p><a href="https://github.com/d3/d3-color" target="_blank">D3: Colorspace</a></p>
+                </section>
+
+                <section>
+                    <h3>Viridis color palette</h3>
+                    <p>Recap: color blindness</p>
+                    <ul>
+                    <li>Colorful (spans wide palette)</li>
+                    <li>Perceptually uniform</li>
+                    <li>Robust to color blindness</li>
+                    <li>Pretty!</li>
+                    </ul>
+                    <p><a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html" target="_blank">Viridis color palette</a></p>
+                    <p class="smallfont">Reading: <a href="https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" target="_blank">5 tips on designing colorblind-friendly visualizations</a></p>
+                    <p class="smallfont">Redundantly encode channels - shape, tooltip, etc.</p>
+                </section>
+
+                <section>
+                    <h3>Color Tools</h3>
+                    <p>Recap: Channel effectiveness: Discriminability.</p>
+                    <p>Not too many color bins. Perceptually distinct colors.</p>
+                    <p><a href="http://medialab.github.io/iwanthue/" target="_blank">I want hue</a></p>
+                    <p><a href="https://colorbrewer2.org/" target="_blank">Color Brewer 2.0</a></p>
+                </section>
+
+                <section>
+                    <h3>Color: Channel Implications</h3>
+                    <p>Channel: separability - luminance and saturation are not the most separable. Also not separable from transparency. For separability, pick hue vs saturation / luminance.</p>
+                    <p>Channel: salience (popout) - small number of bins.</p>
+                    <p>Rainbow color maps: <a href="https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html" target="_blank">Pros</a> and <a href="https://agilescientific.com/blog/2017/12/14/no-more-rainbows" target="_blank">cons</a></p>
+                    <p>Reading: <a href="https://cambridge-intelligence.com/choosing-colors-for-your-data-visualization/" target="_blank">Choosing colors for your visualization</a></p>
+                    <p>Reading: <a href="https://colorusage.arc.nasa.gov/index.php" target="_blank">Using color in Information Display Graphics</a></p>
+                </section>
+
+                <section>
+                    <h3>Color: Contrast</h3>
+                    <p>Color is perceived differently depending on how it is contrasted with other colors. It is relative and not absolute.</p>
+                    <p><a href="https://en.wikipedia.org/wiki/Bezold_effect" target="_blank">Bezold Effect</a> and <a href="https://en.wikipedia.org/wiki/White%27s_illusion" target="_blank">White's Illusion</a></p>
+                    <p>Reading: <a href="https://colorusage.arc.nasa.gov/guidelines_lum_cont.php" target="_blank">Luminance contrast</a></p>
+                    <p>Reading: <a href="https://colorusage.arc.nasa.gov/Simult_and_succ_cont.php" target="_blank">Simultaneous and successive contrast</a></p>
+                </section>
+
+                <section>
+                    <h3>Color Theory</h3>
+                    <p>Color theory is the collection of rules and guidelines which designers use to communicate with users through appealing color schemes in visual interfaces.</p>
+                    <p><a href="https://www.canva.com/colors/color-wheel/" target="_blank">Color theory and the color wheel</a></p>
+                    <p><a href="https://www.toptal.com/designers/ux/color-in-ux" target="_blank">Role of color in UX</a></p>
                 </section>
 
                 <section>
