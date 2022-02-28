@@ -38,7 +38,7 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">5a: Marks, Channels</h1>
+                    <h1 class="shadowfont white">6a: Marks, Channels</h1>
                     <h3>Applied Perception</h3>
                 </section>
                 
@@ -119,8 +119,7 @@
                 <section>
                     <h3>Human perception</h3>
                     <h5><a href="https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law" target="_blank">Weber-Fechner Law</a></h5>
-                    <p>The amount of change that is necessary to be noticed is systematically related to the size of the stimulus.</p>
-                    <p>The stronger the initial stimulus, the greater a change must be for it to be noticed.</p>
+                    <p>The amount of change that is necessary to be noticed is proportionally related to the size of the stimulus.</p>
                     <img src="img/weber-law-formula.jpg"/>
                 </section>
 
@@ -140,7 +139,7 @@
                 <section>
                     <h4>Graphical Perception: Cleveland and McGill</h4>
                     <img src="img/cleveland_and_mcgill.jpg"/>
-                    <p class="smallfont">Reading: <a href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1984.10478080" target="_blank">Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods</a></p>
+                    <p class="smallfont">Reading: <a href="https://priceonomics.com/how-william-cleveland-turned-data-visualization/" target="_blank">How William Cleveland Turned Data Visualization Into a Science</a></p>
                     <p class="smallfont">Reading: <a href="https://visualthinking.psych.northwestern.edu/publications/Harrison-weberlaw-infovis2014.pdf" target="_blank">Ranking Visualizations of Correlation Using Weber's Law</a></p>
                 </section>
                 
@@ -148,6 +147,9 @@
                     <h3>Channel effectiveness: Accuracy</h3>
                     <p>Pick higher ranking channels (with reason).</p>
                     <p>E.g. Position > length, Angles > area</p>
+                    <p class="smallfont">Discussion on data / color: <a href="https://covidsitrep.moh.gov.sg/" target="_blank">Covid Sitrep MOH</a></p>
+                    <p class="smallfont">Counterexamples: <a href="https://chi-loong.github.io/HASS02.526/solutions/assignment4.html" target="_blank">SG choropleth</a></p>
+                    <p class="smallfont"><a href="https://xkcd.com/1138/" target="_blank">xkcd: Heatmap</a></p>
                 </section>
 
                 <section>
@@ -171,7 +173,7 @@
                 
                 <section>
                     <h3>Channel effectiveness: Separability</h3>
-                    <p>This ranges from the <b>seperable</b> (e.g. channels: position and hue) to the <b>integral</b> (e.g. channels: red and green color scales)</p>
+                    <p>Channels range from the <b>seperable</b> (e.g. position and hue) to the <b>integral</b> (e.g. multiple color scales)</p>
                     <img src="img/trivariate_map.jpg"/>
                 </section>
 
@@ -187,8 +189,7 @@
                         <img src="img/threes2.jpg"/>
                         <p class="smallfont">Far easier, right? Using the color channel to popout elements.</p>
                         <p><a href="https://www.csc2.ncsu.edu/faculty/healey/PP/" target="_blank">Perception in visualization, Healey</a></p>
-                        <p class="smallfont">Concepts: Pre-attention in vision, change blindness</p>
-                        <p class="smallfont"><a href="https://www.youtube.com/watch?v=bh_9XFzbWV8" target="_blank">Change blindness demo</a></p>
+                        <p class="smallfont">Concepts: Pre-attention in vision (200 to 250 ms)</p>
                         <p class="smallfont">Many pairs of channels do not support popout, and 3 or more channels definitely do not. As a general rule, use popout for one channel only.</p>
                     </section>
                 </section>
@@ -198,12 +199,30 @@
                     <img src="img/color_preattention.jpg"/>
                     <p class="smallfont"><i>Storytelling with Data: A Data Visualization Guide for Business Professionals, chapter 4, Nussbaumer</i></p>
                 </section>
+                
+                <section>
+                    <h3>Concept: Change blindness</h3>
+                    <p>A phenomenon of visual perception that occurs when a stimulus undergoes a change without this being noticed by its observer.</p>
+                    <p class="smallfont"><a href="https://www.youtube.com/watch?v=bh_9XFzbWV8" target="_blank">Change blindness demo</a></p>
+                    <p class="smallfont"><a href="https://www.youtube.com/watch?v=5O71iuTPTTI" target="_blank">Change blindness in User Interfaces</a></p>
+                    <p class="smallfont">So how to deal with this? Minimize changes, keep changes in the focal view, or use animations / transitions (we'll talk more about animations in later lectures)</p>
+                    <p class="smallfont">Example: <a href="https://elections.viz.sg/" target="_blank">Elections SG</a></p>
+                </section>
 
                 <section>
-                    <h3>Channel effectiveness: Grouping</h3>
-                    <p><a href="https://en.wikipedia.org/wiki/Principles_of_grouping" target="_blank">Gestalt principles of grouping</a></p>
-                    <img src="img/gestalt_principles.jpg"/>
-                    <p class="smallfont">Reading: <a href="http://driftlessdata.space/post/income-gestalt/" target="_blank">Gestalt principles and income inequality, Silas Bergen</a></p>
+                    <section>
+                        <h3>Channel effectiveness: Grouping</h3>
+                        <p><a href="https://en.wikipedia.org/wiki/Principles_of_grouping" target="_blank">Gestalt principles of grouping</a></p>
+                        <p>A classification on how we group similar elements and recognize patterns.</p>
+                        <img src="img/gestalt_principles.jpg"/>
+                    </section>
+                    
+                    <section>
+                        <h3>Channel effectiveness: Grouping</h3>
+                        <p>Color channel violation of gestalt similarity principle:</p>
+                        <a href="https://www.eld.gov.sg/elections_map_electoral.html" target="_blank"><img src="img/eld_bad.jpg"></a>
+                        <p class="smallfont">Reading: <a href="http://driftlessdata.space/post/income-gestalt/" target="_blank">Gestalt principles and income inequality, Silas Bergen</a></p>
+                    </section>
                 </section>
 
                 <section>
