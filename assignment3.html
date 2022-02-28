@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Assignment 1</title>
+        <title>Assignment 3</title>
 
-        <meta name="description" content="Assignmnent 1">
+        <meta name="description" content="Assignment 3">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -37,59 +37,67 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Assignment 1</h1>
+                    <h1 class="shadowfont white">Assignment 3</h1>
+                    <h3>Tabular data viz</h3>
                 </section>
-
+				
                 <section>
                     <h3>Setup</h3>
-                    <p>To be completed by <b>24-2-2021</b>(Thurs) 1200hrs</p>
+                    <p>To be completed before <b>31-3-2021</b>(Thurs) 1200hrs</p>
                     <ul>
-                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment1</li>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment3</li>
                     <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
                     <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
                     </ul>
                 </section>
-                
+
                 <section>
-                    <h3>The Problem</h3>
+                    <h3>What: Dataset</h3>
                     <ul>
-                    <li>Connect to the data.gov.sg PSI API and get the realtime dataset. It is detailed <a href="https://data.gov.sg/dataset/psi">here</a>.</li>
-                    <li>The URI for the API is: <a href="https://api.data.gov.sg/v1/environment/psi">https://api.data.gov.sg/v1/environment/psi</a></li>
-                    <li>Print out all <b>readings data</b> into a table. There are 12 readings, from o3_sub_index to psi_twenty_four_hourly.</li>
+                    <li>We'll be looking at HDB's <a href="https://data.gov.sg/dataset/resale-flat-prices" target="_blank">Resale flat prices</a>.</li>
+                    <li>Connect to the dataset &mdash; via API, or download the CSV &mdash; up to you.</li>
+                    <li>You probably have to do some data manipulation. Whether it is in the CSV or via code or via API query, it's up to you.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Extra Challenge</h3>
+                    <h4>Why: Framing is up to you</h4>
                     <ul>
-                    <li>Theme the layout of the table nicely. Tweak the CSS to your liking, or use some CSS framework!</li>
-                    <li>Print out the timestamp of when the data in the reading was updated.</li>
+                    <li>The dataset is huge, so frame <b>one</b> <i>simple</i> hypothesis that you are interested in.</li>
+                    <li>E.g. What are transactions in only Ang Mo Kio like in the last 6 months?</li>
+                    <li>E.g. I want to sell my flat. Pick that block and maybe a few other blocks to analyze.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Screenshot</h3>
-                    <img src="img/assignment1_screenshot.jpg"/>
-                </section>
-
-                <section>
-                    <h3>More details</h3>
+                    <h3>How: Encoding</h3>
                     <ul>
-                    <li>This portion is not a design challenge.</li>
-                    <li>It is to show you can connect to an API, pull out and understand/read the JSON data, and list the table.</li>
-                    <li>Be sure you know what you are manipulating in the JSON schema. <b>Console.log</b> to inspect the JSON structure.</li>
-                    <li>You can use JQuery to append the HTML elements you need. Or just write in plain ES5/ES6 javascript. Or whatever JS framework you prefer.</li>
+                    <li>Up to you. Do you want to put everything into one scatterplot chart? Do a simple boxplot?</li>
+                    <li>Feel free to come up with derived columns, and/or filter away data that is not relevant to your hypothesis.</li>
+                    <li>If you are doing summary statistics, D3 has functions like D3.group to make your life easier. Or use an external library like tidyr.</li>
+                    <li>Have a very, very simple writeup (a few lines) to explain your hypothesis and choice.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>More help please!</h3>
+                    <h3>How: Execution / Expectations</h3>
                     <ul>
-                    <li>If you can, write from scratch. <img src="img/smile.svg" width="20" /></li>
-                    <li>But here's a basic starter <a href="assignments/assignment1-starter.html">template</a> if you need one.</li>
+                    <li>I'm expecting one chart (if D3), but you are free to do more than one (esp. if not using D3).</li>
+                    <li>You may prefer not to use D3 and that is fine. However, please don't just use Excel and then screenshot an image.</li>
+                    <li>Up to you how much interactivity you want to put into the piece (if D3). Good interactivity takes a ton of work.</li>
+                    <li>We'll be doing small code assignments for this course, so I'm not expecting anything complicated. Save it for the project.</li>
                     </ul>
                 </section>
 
+                <section>
+                    <h3>Tips</h3>
+                    <ul>
+                    <li>Frame your hypothesis carefully so that you don't have to kill yourself doing this assignment.</li>
+					<li>With higher order libraries like Vega-lite (or Plots) you can churn out exploratory charts a lot faster.</li>
+					<li>The point of this assignment is to think about how to approach a bigger dataset (data), frame your hypothesis (task abstraction), then execute it (idiom).</li>
+                    </ul>
+                </section>				
+				
                 <section>
                     <h2>Questions?</h2>
                     <div class="plain">
