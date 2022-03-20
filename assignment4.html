@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Assignment 4</title>
+
+        <meta name="description" content="Assignment 4">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 4</h1>
+                    <h3>Singapore population choropleth</h3>
+                </section>
+                
+                <section>
+                    <h3>Setup</h3>
+                    <p>To be completed before <b>7-4-2022</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment4</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Setup</h3>
+                    <p>To be completed before <b>15-4-2021</b>(Thurs) 1200hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/HASS-assignment4</li>
+                    <li>In the forked repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What: Dataset</h3>
+                    <ul>
+                    <li>We'll be looking at the Singstat <a href="https://www.singstat.gov.sg/publications/population/population-trends" target="_blank">Population Geospatial Timeseries</a>.</li>
+                    <li>We'll also be looking at the Data.gov <a href="https://data.gov.sg/dataset/master-plan-2019-subzone-boundary-no-sea" target="_blank">Master Plan 2019 Subzone Boundary</a>.</li>
+                    <li>There is going to be a lot of data manipulation and preperation. I'll walk through this in class.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Why: Task</h3>
+                    <p class="smallfont">A choropleth visualization shows off which subsdistricts have the most population in SG.</p>
+                    <img src="img/SGassignment4.jpg"/>
+                </section>
+
+                <section>
+                    <h3>How: Encoding</h3>
+                    <p>The main visualization encoding has been chosen - a choropleth map.</p>
+                    <p>However, feel free to add in a legend, a title and any interaction tooltips as you prefer.</p>
+                    <p class="smallfont">I have gone through in class building a choropleth in D3, but you can build this in whatever platform you choose as long as the result is visible in your assignment repository.</p>
+                    <p class="smallfont">For example, purely in Leaflet, ArcGIS, Mapbox, etc.</p>
+                </section>
+
+                <section>
+                    <h3>Template starter</h3>
+                    <p>I've given links to both the datasets used so you can feel free to take the data from there.</p>
+                    <p>However, I've also cleaned the dataset on both the <a href="assignments/sgmap.json" target="_blank">GeoJSON data</a> and also the <a href="assignments/population2021.csv" target="_blank">2021 population data</a>.</p>
+                    <p>I've also included a simple <a href="assignments/assignment4-starter.html" target="_blank">template D3 starter</a>.</p>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
