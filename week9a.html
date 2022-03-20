@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>9a: Chart Types - Network / Geospatial data</title>
+        <title>9a: Chart Types - Tabular / Hierarchical data</title>
 
-        <meta name="description" content="02.526 Chart Types - network / geospatial data">
+        <meta name="description" content="02.526 Chart types - tabular / hierarchical data">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -50,7 +50,7 @@ tr:nth-child(even) {
 
                 <section data-state="alert" data-transition="zoom">
                     <h1 class="shadowfont white">9a: Chart types</h1>
-                    <h3>Spatial / Geospatial data</h3>
+                    <h3>Tabular / hierarchical data</h3>
                 </section>
 
                 <section>
@@ -70,206 +70,365 @@ tr:nth-child(even) {
                 </section>
 
                 <section>
-                    <h3>Spatial</h3>
-                    <img src="img/arrange_spatial.jpg"/>
+                    <h3>Tabular data</h3>
+                    <img src="img/arrange_tables.jpg"/>
                 </section>
-                
-                <section>
-                    <h3>Geospatial data</h3>
-                    <p><a href="https://en.wikipedia.org/wiki/GeoJSON" target="_blank">GeoJSON / TopoJSON</a> (<a href="https://geojson.org/" target="_blank">GeoJSON spec</a>) (<a href="https://github.com/topojson/topojson" target="_blank">TopoJSON spec</a>)</p>
-                    <p><a href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language" target="_blank">KML</a> (<a href="https://www.ogc.org/standards/kml" target="_blank">spec</a>)</p>
-                    <p><a href="https://en.wikipedia.org/wiki/Shapefile" target="_blank">Shapefile (SHP)</a> (<a href="https://www.esri.com/content/dam/esrisites/sitecore-archive/Files/Pdfs/library/whitepapers/pdfs/shapefile.pdf" target="_blank">spec</a>)</p>
-                    <p><a href="https://en.wikipedia.org/wiki/CityGML" target="_blank">CityGML</a> (<a href="https://www.ogc.org/standards/citygml" target="_blank">spec</a>)</p>
-                    <p>There are a ton of <a href="https://en.wikipedia.org/wiki/GIS_file_formats" target="_blank">GIS file formats</a>.</p>
-                </section>
-                
+
                 <section>
                     <h3>D3 Graph Gallery</h3>
-                    <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg"/></a>
+                    <p>But there are other ways to categorize charts.</p>
+                    <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg" width="400"/></a>
                     <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
+                    <p><a href="https://www.data-to-viz.com/" target="_blank">Data to Viz</a></p>
+                    <p><a href="https://datavizcatalogue.com/blog/chart-selection-guide/" target="_blank">Dataviz Catalogue: Chart Selection Guide</a></p>
+                    <p><a href="https://flowingdata.com/chart-types/" target="_blank">Flowing Data: Chart Types</a></p>
                 </section>
 
                 <section>
-                    <h3>Geospatial (2D)</h3>
-                    <p>Libraries</p>
-                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a></p>
-                    <p><a href="https://openlayers.org/" target="_blank">Open Layers</a></p>
-                    <hr/>
-                    <p>Map Tiles</p>
-                    <p><a href="https://www.openstreetmap.org/" target="_blank">Open street map</a></p>
-                    <p><a href="https://openmaptiles.org/" target="_blank">Open map tiles</a></p>
-                    <p><a href="https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3" target="_blank">SLA OneMap API</a></p>
-                </section>
-
-                <section>
-                    <h3>Geospatial (2D)</h3>
-                    <p>Tools</p>
-                    <p><a href="https://mapshaper.org/" target="_blank">Mapshaper</a></p>
-                    <p><a href="https://geojson.io/#map=2/20.0/0.0" target="_blank">GeoJSON.io</a></p>
-                    <p><a href="https://www.qgis.org/en/site/about/index.html" target="_blank">QGIS</a></p>
-                    <hr/>
-                    <p>Platforms</p>
-                    <p><a href="https://carto.com/" target="_blank">Carto</a> (formerly cartoDB)</p>
-                    <p><a href="https://www.esri.com/en-us/arcgis/products/arcgis-online/overview" target="_blank">ArcGIS</a>, Esri</p>
-                    <p><a href="https://developers.google.com/maps/documentation/javascript/overview" target="_blank">Google Maps API</a></p>
-                </section>
-
-                <section>
-                    <h3>Geospatial (3D)</h3>
-                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a>, MapboxGL</p>
-                    <p><a href="https://deck.gl/" target="_blank">deck.gl</a></p>
-                    <p><a href="https://cesium.com/" target="_blank">Cesium</a></p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Map Markers (e.g. Leaflet)</h3>
+                    <h3>Idiom: Bar Chart</h3>
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>Geographic geometry data. Points, polygons, etc. Additional qualitative / quantitative fields.</p></td>
+                        <td><p>1 quantitative value attribute, 1 categorical key attribute</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
-                        <td><p>Area and point marks on a geographic map. Often allows for zoom, pan and rotate functions.</p></td>
+                        <td><p>Encode bar marks, express value attribute with aligned vertical position, separate key attribute with horizontal position</p></td>
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
-                        <td><p>Task: Lookup, compare values, find spatial trends</p></td>
+                        <td><p>Task lookup and compare values</p></td>
                     </tr>
                     <tr>
                         <td>Scale</td>
-                        <td>Color channel: If quantitative up to 8, if categorical up to 12.</td>
+                        <td>Key attribute: Up to hundreds</td>
                     </tr>
                     </table>
-                    <p><a href="https://www.d3-graph-gallery.com/backgroundmap.html" target="_blank">D3 Graph Gallery - Leaflet</a></p>
-                    <p><a href="https://viz.sg/viz/dengue/" target="_blank">SG Dengue</a></p>
+                    <p><a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - Barplots</a></p>
                 </section>
 
                 <section>
-                    <h3>Idiom: Choropleth Map</h3>
+                    <h3>Idiom: Stacked Bar Chart</h3>
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>Geographic geometry data. Table with one quantitative attribute per region</p></td>
+                        <td><p>Multidimensional table: 1 quantitative value attribute, 2 categorical key attributes</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
-                        <td><p>Space: use given geometry for area mark boundaries. Color: sequential (or divergent) segmented colormap</p></td>
+                        <td><p>Bar glyph with length-coded subcomponents of value attribute for each category of secondary key attribute (typically using color as an identity channel). Separate bars by category of primary key attribute.</p></td>
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
-                        <td><p>Task: Lookup, compare values, find spatial trends</p></td>
+                        <td><p>Part-to-whole relationship, lookup values, find trends.</p></td>
                     </tr>
                     <tr>
                         <td>Scale</td>
-                        <td>Color channel: If quantitative up to 8, if categorical up to 12.</td>
+                        <td>Key attribute (main axis): dozens to hundreds of levels. Key attribute (stacked glyph axis): several to one dozen</td>
                     </tr>
                     </table>
-                    <p><a href="https://www.d3-graph-gallery.com/choropleth.html" target="_blank">D3 Graph Gallery - Choropleth Map</a></p>
-                    <p><a href="https://viz.sg/viz/map_age_gender/" target="_blank">SG Population by Subzone</a> vs <a href="https://popquery.onemap.sg/" target="_blank">OneMap Population Query</a></p>
-                    <p><a href="https://elections.viz.sg/" target="_blank">SG Elections</a></p>
-                    <p><a href="https://viz.vslashr.com/telco/transactions.html" target="_blank">Telco transactions</a></p>
+                    <p><a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - Stacked Barplots</a></p>
                 </section>
 
                 <section>
-                    <h3>Idiom: Hexbin Maps</h3>
+                    <section>
+                        <h3>Recap: which viz?</h3>
+                        <img src="img/accuracy_implications1.jpg"/>
+                    </section>
+
+                    <section>
+                        <img src="img/accuracy_implications2.jpg"/>
+                        <p>Part-of-whole relationship: <a href="https://www.d3-graph-gallery.com/barplot.html" target="_blank">D3 Graph Gallery - 100% Stacked Barplots</a></p>
+                        <p class="smallfont">Reading: <a href="https://www.smashingmagazine.com/2017/03/understanding-stacked-bar-charts/" target="_blank">Understanding Stacked Bar Charts: The Worst Or The Best?</a></p>
+                    </section>
+                </section>
+
+
+                <section>
+                    <h3>Idiom: Pie Chart / Donut Chart</h3>
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>Geographic data: lat/lon points, quantitative count attribute.</p></td>
+                        <td><p>Table: one quantitative attribute, one categorical attribute</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
-                        <td><p>Encode Use given geographic data geometry of points, overlay on hexbin map depening on zoom value.</p></td>
+                        <td><p>Encode Area marks (wedges) with angle channel; radial layout</p></td>
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
-                        <td><p>Task: Find spatial trends, esp at different zoom values</p></td>
+                        <td><p>Part-to-whole relationship</p></td>
                     </tr>
                     <tr>
                         <td>Scale</td>
-                        <td>Color channel: Quantitative (up to 8)</td>
+                        <td>One dozen categories</td>
                     </tr>
                     </table>
-                    <p><a href="https://www.d3-graph-gallery.com/graph/density2d_hexbin.html" target="_blank">D3 Graph Gallery - Hexbin Charts</a></p>
-                    <p><a href="https://yongquanben.github.io/sg_taxi_availability/" target="_blank">SG Taxi Availbility</a>, Yong Quan (<a href="https://github.com/yongquanben/sg_taxi_availability" target="_blank">repo</a>) </p>
-                    <p><a href="http://bl.ocks.org/tnightingale/4668062" target="_blank">Leaflet + D3.js</a>, Tom Nightingale</p>
+                    <p><a href="https://www.d3-graph-gallery.com/pie.html" target="_blank">D3 Graph Gallery - Pie Chart</a></p>
+                    <p class="smallfont">Example: <a href="https://medium.com/@clmentviguier/the-hate-of-pie-charts-harms-good-data-visualization-cc7cfed243b6" target="_blank">The hate of pie charts harms good data visualization</a></p>
                 </section>
 
                 <section>
-                    <h3>Idiom: Iscocontours</h3>
+                    <h3>Idiom: Stacked Area / Streamgraph</h3>
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>2D spatial field; geographic data. Derived Geometry: set of isolines computed from field.</p></td>
+                        <td><p>Multidimensional table: one quantitative value attribute (often counts / amount), one orindal key attribute (often time), one categorical key attribute</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
-                        <td><p>Encode Use given geographic data geometry of points, lines, and region marks. Use derived geometry as line marks.</p></td>
+                        <td><p>Use derived geometry to show layers across time, layer height encodes counts.</p></td>
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
-                        <td><p>Task: Get a sense of spatial shape</p></td>
+                        <td><p>Show holistic view, part-to-whole relationship, trends.</p></td>
                     </tr>
                     <tr>
                         <td>Scale</td>
-                        <td>Dozens of contour levels.</td>
+                        <td>Key attributes (time): up to hundreds of time points. Key attributes (each area): several to one dozen</td>
                     </tr>
                     </table>
-                    <p><a href="https://medium.com/two-n/an-alternative-to-choropleth-contour-density-maps-in-d3-js-93e1fdbdc4e" target="_blank">D3: Contour density maps</a></p>
-                    <p><a href="https://docs.mapbox.com/help/tutorials/get-started-isochrone-api/" target="_blank">Mapbox - Isochrone Maps</a></p>
+                    <p><a href="https://www.d3-graph-gallery.com/stackedarea.html" target="_blank">D3 Graph Gallery - Stacked Area</a></p>
+                    <p class="smallfont">Example: <a href="https://flourish.studio/blog/streamgraphs/" target="_blank">Flourish: Streamgraph</a></p>
                 </section>
 
                 <section>
-                    <h3>Idiom: Vector Fields</h3>
+                    <h3>Idiom: Scatterplot</h3>
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>2D spatial field: geographic data. Each grid square - vector values (e.g. wind speeds, u and v)</p></td>
+                        <td><p>Table: 2 quantitative value attributes</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
-                        <td><p>Encode vectors as arrow marks on a 2D spatial field</p></td>
+                        <td><p>Express values with horizontal and vertical spatial position and point marks.</p></td>
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
-                        <td><p>Task: Get a holistic sense of both direction and maginitude of the vectors. (e.g. wind speed and direction)</p></td>
+                        <td><p>Task Find trends, outliers, distribution, correlation; locate clusters.</p></td>
                     </tr>
                     <tr>
                         <td>Scale</td>
-                        <td>Hundreds of thousands of marks.</td>
+                        <td>Items: Hundreds</td>
                     </tr>
                     </table>
-                    <p><a href="https://observablehq.com/@d3/vector-field" target="_blank">ObservableHQ - Vector Fields</a></p>
+                    <p><a href="https://www.d3-graph-gallery.com/scatter.html" target="_blank">D3 Graph Gallery - Scatterplot</a></p>
+                    <p class="smallfont">You can add in a 3rd quantitative attribute (size of mark). You can also add in categorical attributes (color, shape of mark).</p>
+                    <p class="smallfont">Example: <a href="https://www.visualcinnamon.com/2015/07/voronoi/" target="_blank">Using a d3 voronoi grid for better interactive experience</a>, Visual Cinnamon (Nadieh Bremmer)</p>
                 </section>
 
                 <section>
-                    <h3>3D Volume Rendering</h3>
+                    <h3>Idiom: Heatmap</h3>
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>3D spatial field</td>
+                        <td><p>Table: two categorical key attributes. One quantitative value attribute</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
-                        <td><p>A model of how light rays are absorbed, emitted, and scattered by the medium.</p></td>
+                        <td><p>Encode length channel along radial spokes; radial layout</p></td>
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
-                        <td><p>Task: Find anomalies, inspect 3D structure</p></td>
+                        <td><p>Find clusters, outliers, summarize</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Items: Up to a million. Categorical attribute levels: hundreds. Color quantitative attribute levels: 3 to 11</td>
                     </tr>
                     </table>
-                    <p><a href="https://www.willusher.io/webgl/2019/01/13/volume-rendering-with-webgl" target="_blank">Volume Rendering in webgl</a>, Will Usher</p>
-                    <p class="smallfont">For 3D scientific viz, probably good to work with a 3D library, like three.js</p>
+                    <p><a href="https://www.d3-graph-gallery.com/heatmap.html" target="_blank">D3 Graph Gallery - Heatmap</a></p>
+                    <p class="smallfont">Example: <a href="https://gym-tracker.data.gov.sg/" target="_blank">ActiveSG Gym Tracker</a></p>
+                    <p class="smallfont">Example: <a href="https://flowingdata.com/2021/06/02/where-chess-pieces-are-most-often-captured/" target="_blank">Where chess pieces are most often captured</a> (<a href="https://i.redd.it/nd0yop158n271.png">image</a>)</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Scatterplot Matrix</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table with a whole bunch of attributes</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Scatterplots in 2D matrix alignment</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Find corrletation, clusters, outliers</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Attributes: Up to a dozen. Items: up to hundreds</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/correlogram.html" target="_blank">D3 Graph Gallery - Scatterplot Matrix / Correlogram</a></p>
+                    <p class="smallfont">Reading: <a href="https://www.data-to-viz.com/graph/correlogram.html" target="_blank">Correlogram - variations, data-to-viz</a></p>
                 </section>
                 
                 <section>
-                    <h3>3D Viz (examples)</h3>
-                    <p><a href="https://www.onemap3d.gov.sg/main/3dwebclient/" target="_blank">One Map 3D</a>, SLA Singapore, (Cesium - I think)</p>
-                    <p><a href="https://nationalmap.gov.au/" target="_blank">National Map</a> Australia, (Cesium)</p>
-                    <p><a href="https://viz.vslashr.com/earth/" target="_blank">Urban City Visualization</a>, (three.js)</p>
+                    <h3>Idiom: Radar</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table with 3 to 12 quantitative attributes. 1 categorical key attribute (color)</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Layout attributes radially in a spider-like plot</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Comparison, find outliers</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Quantitative attributes: 3 to 12.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/spider.html" target="_blank">D3 Graph Gallery - Radar</a></p>
+                    <p class="smallfont"><a href="https://www.data-to-viz.com/caveat/spider.html" target="_blank">Radar Charts and its Caveats</a></p>
+                    <p class="smallfont">Example: <a href="https://public.tableau.com/app/profile/ellen4268/viz/WhichSportistheToughest/sheet1" target="_blank">Which Sport is the toughest?</a></p>
+                    <p class="smallfont">Example: <a href="https://flowingdata.com/2019/08/06/best-burger-ranks/" target="_blank">Fast food burger ranks</a></p>
+                    <p class="smallfont">Example: <a href="https://viz.vslashr.com/mci/results.html?id=5d11f61da51f48680555c79a" target="_blank">MCI radar</a></p>
                 </section>
+
+                <section>
+                    <h3>Idiom: Parallel Lines</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Table with 3 to 12 quantitative attributes. 1 categorical key attribute (color)</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Layout quantitative attributes along spaced out guide lines</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Comparison, find outliers</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Quantitative attributes: 3 to 12</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://d3-graph-gallery.com/parallel.html" target="_blank">D3 Graph Gallery - Parallel Lines</a></p>
+                    <p class="smallfont">Example: <a href="https://www.theguardian.com/sport/ng-interactive/2016/aug/14/how-nafissatou-thiam-beat-the-odds-to-claim-the-heptathlon-gold-in-rio" target="_blank">How Nafissatou Thiam beat the odds to claim the heptathlon gold in Rio</a>, Guardian</p>
+                </section>
+
+
                 
+                <section>
+                    <h3>Hierarchical data</h3>
+                    <p>A classic example is <a href="https://github.com/d3/d3-hierarchy/blob/master/test/data/flare.json" target="_blank">flare.json</a>, which is JSON with a tree-like structure.</p>
+                    <hr/>
+                    <p class="smallfont">Flare.json is commonly seen in D3 examples. This dataset is based on an ancestor of D3.</p>
+                    <p class="smallfont">Each leaf node represents a source file while each internal node represents a folder. The leaf node’s value is the size of the file in bytes.</p>
+                    <p class="smallfont"><a href="https://treevis.net/">Treevis.net</a> A Visual Bibliography of Tree Visualization 2.0</p>
+                    <p class="smallfont"><a href="https://flourish.studio/blog/hierarchy-diagrams-sunburst-packed-circle/">How to visualize hierarchical data: zoomable sunbursts, packed circles and treemaps</a>, Flourish Studio</p>
+                    
+                </section>
+
+                <section>
+                    <h3>Idiom: Treemap</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Area marks and containment, with rectilinear layout.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/treemap.html" target="_blank">D3 Graph Gallery - Treemap</a></p>
+                    <p class="smallfont"><a href="https://observablehq.com/@d3/treemap" target="_blank">Treemap</a>, ObservableHQ, flare.json </p>
+                    <p class="smallfont"><a href="https://treemapart.wordpress.com/" target="_blank">Treemap Art</a>, Ben Schneiderman</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Sunburst / Icicle</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Marks laid out in a circular or rectangular fashion.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://observablehq.com/@d3/zoomable-sunburst" target="_blank">Sunburst</a>, ObservableHQ, flare.json </p>
+                    <p><a href="https://observablehq.com/@d3/icicle" target="_blank">Icicle</a>, ObservableHQ, flare.json </p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Packed circles</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Area marks and containment, with circular layout.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/circularpacking.html" target="_blank">D3 Graph Gallery - Packed Circles</a></p>
+                    <p class="smallfont"><a href="https://observablehq.com/@d3/zoomable-circle-packing" target="_blank">Zoomable packed circles</a>, ObservableHQ, flare.json </p>
+                    <p class="smallfont"><a href="https://viz.vslashr.com/uiwork/circlepacking.html" target="_blank">Circle Packing UI</a>, V/R</p>
+                    <p class="smallfont">Example: <a href="https://kontinentalist.com/stories/sexual-assault-and-abuse-in-singapore-need-more-than-the-law" target="_blank">Sexual violence in Singapore: a crisis</a>, Kontinentalist</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Dendogram</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Tree-like structure.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/dendrogram.html" target="_blank">D3 Graph Gallery - Dendogram</a></p>
+                    <p><a href="https://observablehq.com/@d3/cluster-dendrogram" target="_blank">Cluster Dendogram</a>, ObservableHQ, flare.json </p>
+                </section>
+
                 <section>
                     <h2>Questions?</h2>
                     <div class="plain">
