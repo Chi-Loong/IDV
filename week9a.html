@@ -75,6 +75,11 @@ tr:nth-child(even) {
                 </section>
 
                 <section>
+                    <h3>Recap: Data scales</h3>
+                    <img src="img/carpark_table.jpg"/>
+                </section>
+
+                <section>
                     <h3>D3 Graph Gallery</h3>
                     <p>But there are other ways to categorize charts.</p>
                     <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg" width="400"/></a>
@@ -149,7 +154,7 @@ tr:nth-child(even) {
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>Table: one quantitative attribute, one categorical attribute</p></td>
+                        <td><p>Table: 1 quantitative attribute, 1 categorical attribute</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
@@ -169,11 +174,34 @@ tr:nth-child(even) {
                 </section>
 
                 <section>
+                    <h3>Idiom: Linechart</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Multidimensional table: 1 quantitative value attribute (often counts / amount), 1 ordindal key attribute (often time / percentage), 1 categorical key attribute (color)</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Show counts (aligned vertical position) changing across an ordinal dimension (aligned horizontal position).</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Show trends, comparisons</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Key attributes (time): up to hundreds of time points. Key attributes (each area): several to one dozen</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://d3-graph-gallery.com/line.html" target="_blank">D3 Graph Gallery - Line Chart</a></p>
+                </section>
+
+                <section>
                     <h3>Idiom: Stacked Area / Streamgraph</h3>
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>Multidimensional table: one quantitative value attribute (often counts / amount), one orindal key attribute (often time), one categorical key attribute</p></td>
+                        <td><p>Multidimensional table: 1 quantitative value attribute (often counts / amount), 1 ordindal key attribute (often time), 1 categorical key attribute (color)</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
@@ -189,6 +217,7 @@ tr:nth-child(even) {
                     </tr>
                     </table>
                     <p><a href="https://www.d3-graph-gallery.com/stackedarea.html" target="_blank">D3 Graph Gallery - Stacked Area</a></p>
+                    <p class="smallfont">Example: <a href="https://namerology.com/baby-name-grapher/" target="_blank">Namegrapher</a></p>
                     <p class="smallfont">Example: <a href="https://flourish.studio/blog/streamgraphs/" target="_blank">Flourish: Streamgraph</a></p>
                 </section>
 
@@ -205,7 +234,7 @@ tr:nth-child(even) {
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
-                        <td><p>Task Find trends, outliers, distribution, correlation; locate clusters.</p></td>
+                        <td><p>Find trends, outliers, distribution, correlation; locate clusters.</p></td>
                     </tr>
                     <tr>
                         <td>Scale</td>
@@ -214,6 +243,7 @@ tr:nth-child(even) {
                     </table>
                     <p><a href="https://www.d3-graph-gallery.com/scatter.html" target="_blank">D3 Graph Gallery - Scatterplot</a></p>
                     <p class="smallfont">You can add in a 3rd quantitative attribute (size of mark). You can also add in categorical attributes (color, shape of mark).</p>
+                    <p class="smallfont">Example: <a href="" target="_blank">Connected scatterplot</a>, Observable HQ</p>
                     <p class="smallfont">Example: <a href="https://www.visualcinnamon.com/2015/07/voronoi/" target="_blank">Using a d3 voronoi grid for better interactive experience</a>, Visual Cinnamon (Nadieh Bremmer)</p>
                 </section>
 
@@ -317,7 +347,54 @@ tr:nth-child(even) {
                     <p class="smallfont">Example: <a href="https://www.theguardian.com/sport/ng-interactive/2016/aug/14/how-nafissatou-thiam-beat-the-odds-to-claim-the-heptathlon-gold-in-rio" target="_blank">How Nafissatou Thiam beat the odds to claim the heptathlon gold in Rio</a>, Guardian</p>
                 </section>
 
+                <section>
+                    <h4>Idiom: Histogram / Density plot (frequency distribution)</h4>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>1 quantitative attribute, typically count/amount.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Quantize distribution into bins for bar chart (histogram) or show it as a line curve (frequency distribution)</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Show distribution, find outliers</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Scale</p></td>
+                        <td><p>This is chart that aggregates and presents summary data. Will cover more under manipulate / facet /reduce lecture. Scale like bar chart / line chart.</p></td>
+                    </tr>
+                    </table>
+                    <p><a href="https://d3-graph-gallery.com/histogram.html" target="_blank">D3 Graph Gallery - Histogram</a></p>
+                    <p><a href="https://d3-graph-gallery.com/density.html" target="_blank">D3 Graph Gallery - Density</a></p>
+                </section>
 
+                <section>
+                    <h4>Idiom: Boxplot / Violin plot / Beeswarm</h4>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>1 quantitative attribute, typically count/amount.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Compact summary / aggregated view that shows distribution - median, quartiles, outliers.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Show distribution, find outliers</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Scale</p></td>
+                        <td><p>This is chart that aggregates and presents summary data. Will cover more under manipulate / facet /reduce lecture.</p></td>
+                    </tr>
+                    </table>
+                    <p><a href="https://d3-graph-gallery.com/boxplot.html" target="_blank">D3 Graph Gallery - Boxplot</a></p>
+                    <p><a href="https://d3-graph-gallery.com/violin.html" target="_blank">D3 Graph Gallery - Violin</a></p>
+                    <p><a href="https://flowingdata.com/charttype/beeswarm/" target="_blank">Flowing Data - Beeswarm</a></p>
+                </section>
                 
                 <section>
                     <h3>Hierarchical data</h3>
