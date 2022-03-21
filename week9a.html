@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>9a: Chart Types - Tabular / Hierarchical data</title>
+        <title>9a: Chart Types - Tabular data</title>
 
         <meta name="description" content="02.526 Chart types - tabular / hierarchical data">
         <meta name="author" content="Chan Chi-Loong, V/R">
@@ -50,7 +50,7 @@ tr:nth-child(even) {
 
                 <section data-state="alert" data-transition="zoom">
                     <h1 class="shadowfont white">9a: Chart types</h1>
-                    <h3>Tabular / hierarchical data</h3>
+                    <h3>Tabular data</h3>
                 </section>
 
                 <section>
@@ -85,7 +85,6 @@ tr:nth-child(even) {
                     <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg" width="400"/></a>
                     <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
                     <p><a href="https://www.data-to-viz.com/" target="_blank">Data to Viz</a></p>
-                    <p><a href="https://datavizcatalogue.com/blog/chart-selection-guide/" target="_blank">Dataviz Catalogue: Chart Selection Guide</a></p>
                     <p><a href="https://flowingdata.com/chart-types/" target="_blank">Flowing Data: Chart Types</a></p>
                 </section>
 
@@ -243,7 +242,7 @@ tr:nth-child(even) {
                     </table>
                     <p><a href="https://www.d3-graph-gallery.com/scatter.html" target="_blank">D3 Graph Gallery - Scatterplot</a></p>
                     <p class="smallfont">You can add in a 3rd quantitative attribute (size of mark). You can also add in categorical attributes (color, shape of mark).</p>
-                    <p class="smallfont">Example: <a href="" target="_blank">Connected scatterplot</a>, Observable HQ</p>
+                    <p class="smallfont">Example: <a href="https://observablehq.com/@d3/connected-scatterplot" target="_blank">Connected scatterplot</a>, Observable HQ</p>
                     <p class="smallfont">Example: <a href="https://www.visualcinnamon.com/2015/07/voronoi/" target="_blank">Using a d3 voronoi grid for better interactive experience</a>, Visual Cinnamon (Nadieh Bremmer)</p>
                 </section>
 
@@ -252,11 +251,11 @@ tr:nth-child(even) {
                     <table width="100%">
                     <tr>
                         <td><p>What: Data</p></td>
-                        <td><p>Table: two categorical key attributes. One quantitative value attribute</p></td>
+                        <td><p>Table: two categorical key attributes. One quantitative value attribute (color)</p></td>
                     </tr>
                     <tr>
                         <td><p>How: Encoding</p></td>
-                        <td><p>Encode length channel along radial spokes; radial layout</p></td>
+                        <td><p>Dense encoding of data, typically as small boxes aligned in a huge grid, with color used as a quantitative magnitude channel.</p></td>
                     </tr>
                     <tr>
                         <td><p>Why: Task</p></td>
@@ -394,116 +393,6 @@ tr:nth-child(even) {
                     <p><a href="https://d3-graph-gallery.com/boxplot.html" target="_blank">D3 Graph Gallery - Boxplot</a></p>
                     <p><a href="https://d3-graph-gallery.com/violin.html" target="_blank">D3 Graph Gallery - Violin</a></p>
                     <p><a href="https://flowingdata.com/charttype/beeswarm/" target="_blank">Flowing Data - Beeswarm</a></p>
-                </section>
-                
-                <section>
-                    <h3>Hierarchical data</h3>
-                    <p>A classic example is <a href="https://github.com/d3/d3-hierarchy/blob/master/test/data/flare.json" target="_blank">flare.json</a>, which is JSON with a tree-like structure.</p>
-                    <hr/>
-                    <p class="smallfont">Flare.json is commonly seen in D3 examples. This dataset is based on an ancestor of D3.</p>
-                    <p class="smallfont">Each leaf node represents a source file while each internal node represents a folder. The leaf node’s value is the size of the file in bytes.</p>
-                    <p class="smallfont"><a href="https://treevis.net/">Treevis.net</a> A Visual Bibliography of Tree Visualization 2.0</p>
-                    <p class="smallfont"><a href="https://flourish.studio/blog/hierarchy-diagrams-sunburst-packed-circle/">How to visualize hierarchical data: zoomable sunbursts, packed circles and treemaps</a>, Flourish Studio</p>
-                    
-                </section>
-
-                <section>
-                    <h3>Idiom: Treemap</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Tree</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Area marks and containment, with rectilinear layout.</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Query attributes at leaf nodes.</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Leaf nodes: thousands. Links: thousands.</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/treemap.html" target="_blank">D3 Graph Gallery - Treemap</a></p>
-                    <p class="smallfont"><a href="https://observablehq.com/@d3/treemap" target="_blank">Treemap</a>, ObservableHQ, flare.json </p>
-                    <p class="smallfont"><a href="https://treemapart.wordpress.com/" target="_blank">Treemap Art</a>, Ben Schneiderman</p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Sunburst / Icicle</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Tree</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Marks laid out in a circular or rectangular fashion.</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Query attributes at leaf nodes.</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Leaf nodes: thousands. Links: thousands.</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://observablehq.com/@d3/zoomable-sunburst" target="_blank">Sunburst</a>, ObservableHQ, flare.json </p>
-                    <p><a href="https://observablehq.com/@d3/icicle" target="_blank">Icicle</a>, ObservableHQ, flare.json </p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Packed circles</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Tree</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Area marks and containment, with circular layout.</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Query attributes at leaf nodes.</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Leaf nodes: thousands. Links: thousands.</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/circularpacking.html" target="_blank">D3 Graph Gallery - Packed Circles</a></p>
-                    <p class="smallfont"><a href="https://observablehq.com/@d3/zoomable-circle-packing" target="_blank">Zoomable packed circles</a>, ObservableHQ, flare.json </p>
-                    <p class="smallfont"><a href="https://viz.vslashr.com/uiwork/circlepacking.html" target="_blank">Circle Packing UI</a>, V/R</p>
-                    <p class="smallfont">Example: <a href="https://kontinentalist.com/stories/sexual-assault-and-abuse-in-singapore-need-more-than-the-law" target="_blank">Sexual violence in Singapore: a crisis</a>, Kontinentalist</p>
-                </section>
-
-                <section>
-                    <h3>Idiom: Dendogram</h3>
-                    <table width="100%">
-                    <tr>
-                        <td><p>What: Data</p></td>
-                        <td><p>Tree</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>How: Encoding</p></td>
-                        <td><p>Tree-like structure.</p></td>
-                    </tr>
-                    <tr>
-                        <td><p>Why: Task</p></td>
-                        <td><p>Query attributes at leaf nodes.</p></td>
-                    </tr>
-                    <tr>
-                        <td>Scale</td>
-                        <td>Leaf nodes: thousands. Links: thousands.</td>
-                    </tr>
-                    </table>
-                    <p><a href="https://www.d3-graph-gallery.com/dendrogram.html" target="_blank">D3 Graph Gallery - Dendogram</a></p>
-                    <p><a href="https://observablehq.com/@d3/cluster-dendrogram" target="_blank">Cluster Dendogram</a>, ObservableHQ, flare.json </p>
                 </section>
 
                 <section>
