@@ -49,13 +49,27 @@
                 </section>
 
                 <section>
+                    <h2>What is Leaflet?</h2>
+                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a> is the leading open-source JavaScript library for mobile-friendly interactive maps. Weighing just about 39 KB of JS, it has all the mapping features most developers ever need.</p>
+                </section>
+
+                <section>
                     <h3>Installing Leaflet</h3>
-                    <p>Let's use week 9's SG choropleth <a href="assignments/assignment3-starter" target="_blank">assignment 3 starter</a> as a base template.</p>
+                    <p>Let's use the <a href="assignments/assignment4-starter.html" target="_blank">assignment 4 starter</a> as a base template.</p>
                     <p>We'll also need the SG <a href="assignments/sgmap.json" target="_blank">GeoJSON dataset</a>.</p>
-                    <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a CDN.</p>
+                    <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a <a href="https://cdnjs.com/libraries/leaflet/1.7.1" target="_blank">CDN</a>.</p>
                     <pre><code>
-&lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-&lt;script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js">&lt;/script>
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js">&lt;/script>
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Installing open street map tiles`</h3>
+                    <p>For many base maps (especially those by OSM) you need to include this script.</p>
+                    <p><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet providers</a> Git Repo</p>
+                    <pre><code>
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.3.0/leaflet-providers.min.js">&lt;/script>
                     </code></pre>
                 </section>
                 
@@ -110,12 +124,42 @@ let map = new L.Map("map", {
                 </section>
 
                 <section>
-                    <h3>Leaflet ideas</h3>
-                    <p>You can already do a lot of things within Leaflet and base map tiles.</p>
-                    <p><a href="https://leafletjs.com/examples.html" target="_blank">Leaflet Examples</a></p>
-                    <p>But of course it would be perfect to overlay your own SVG layers so you have 100% custom control.</p>
-                    <hr/>
-                    <p class="smallfont">Can you add a marker location at the SUTD campus on your map?</p>
+                    <h3>Other basemaps: Google Tiles</h3>
+                    <pre><code>
+let tiles = new L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Other basemaps: ESRI ArcGISOnline</h3>
+                    <pre><code>
+let tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri'
+});
+                    </code></pre>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h3>Leaflet ideas</h3>
+                        <p>You can already do a lot of things within Leaflet and base map tiles.</p>
+                        <p><a href="https://leafletjs.com/examples.html" target="_blank">Leaflet Examples</a></p>
+                        <p>You can do the choropleth assignment 4 entirely in Leaflet.</p>
+                        <p>But of course it would be perfect to overlay your own SVG layers so you have 100% custom control.</p>
+                        <hr/>
+                        <p class="smallfont">Can you add a marker location at the SUTD campus on your map?</p>
+                    </section>
+
+                    <section>
+                        <pre><code>
+    let marker = L.marker([1.34128961848499, 103.96340773679763]).addTo(map);
+    marker.bindPopup("<b>SUTD campus</b>");
+                        </code></pre>
+                    </section>
                 </section>
 
                 <section>
@@ -133,19 +177,28 @@ let svg = d3.select(map.getPanes().overlayPane)
                     <p class="smallfont">The leaflet-zoom-hide class is so that when you use Leaflet zoom, it turns of the layer temporarily during the zooming animation.</p>
                     <p class="smallfont">You can try what happens when you don't include this in the final instance.</p>
                 </section>
+                
+                <section>
+                    <h3>D3 + Leaflet integration</h3>
+                    <p>Great ObservableHQ on how to use <a href="https://observablehq.com/@sfu-iat355/intro-to-leaflet-d3-interactivity" target="_blank">D3 with Leaflet</a>.</p>
+                </section>
 
                 <section>
                     <h3>D3 - use Leaflet Projection</h3>
                     <p class="smallfont">Leaflet uses its own geo projection, and we're going to make D3 sync with that.</p>
                     <p class="smallfont">Recall that D3 projection is simply taking a lat/lon coordinate and turning it into a SVG x, y point.</p>
                     <pre><code>
-function projectPoint(x, y) {
-  var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-  this.stream.point(point.x, point.y);
-}
-
-let projection = d3.geoTransform({point: projectPoint});
-let geopath = d3.geoPath().projection(projection);
+  // Use Leaflets projection API for drawing svg path (creates a stream of projected points)
+  const projectPoint = function(x, y) {
+    const point = map.latLngToLayerPoint(new L.LatLng(y, x))
+    this.stream.point(point.x, point.y)
+  }
+  
+  
+  // Use d3's custom geo transform method to implement the above
+  const projection = d3.geoTransform({point: projectPoint})
+  // creates geopath from projected points (SVG)
+  const pathCreator = d3.geoPath().projection(projection)                    
                     </code></pre>
                 </section>
 
@@ -154,41 +207,23 @@ let geopath = d3.geoPath().projection(projection);
                     <p class="smallfont">Notice that panning and zooming does not properly translate / scale the SVG.</p>
                     <p class="smallfont">Add in onZoom hook.</p>
                     <pre><code>
-map.on('zoomend', onZoom);
-
-function onZoom() {
-    var bounds = geopath.bounds(data),
-        topLeft = bounds[0],
-        bottomRight = bounds[1];
-
-    var svg = d3.select(map.getPanes().overlayPane).select("svg");
-        
-    svg.attr("width", bottomRight[0] - topLeft[0])
-       .attr("height", bottomRight[1] - topLeft[1])
-       .style("left", topLeft[0] + "px")
-       .style("top", topLeft[1] + "px");
-       
-    svg.select("g").attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
-    d3.select("g#districts").selectAll("path")
-       .attr("d", geopath);
-}
-                    </code></pre>
-                    <p class="smallfont">Original <a href="https://bost.ocks.org/mike/leaflet/" target="_blank">code snippet</a> by Mike Bostock.</p>
-                </section>
-
-                <section>
-                    <h3>Dynamic sizing</h3>
-                    <p class="smallfont">Just CSS tweaks and some basic calculation to set initial width/height for SVG overlay.</p>
-                    <pre><code>
-body { margin: 0 }
-#map {
-    width: 100vw;
-    height: 100vh;
-}
-
-...
-.attr("width", window.innerWidth)
-.attr("height", window.innerHeight)
+svg.append("g")
+    .attr("id", "districts");
+    
+let areaPaths = d3.select("g#districts")
+    .selectAll("path")
+    .data(data[0].features)
+    .enter()
+    .append("path")
+    .attr("d", geopath)
+    .attr("fill", "black");
+    
+  // Function to place svg based on zoom
+  const onZoom = () => areaPaths.attr('d', geopath)
+  // initialize positioning
+  onZoom();
+  // reset whenever map is moved
+  map.on('zoomend', onZoom);
                     </code></pre>
                 </section>
 
