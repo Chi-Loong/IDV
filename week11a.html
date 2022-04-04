@@ -81,18 +81,19 @@ tr:nth-child(even) {
 
 
                 <section>
-                    <h3>Change encoding (over time)</h3>
-                    <p>Basically change how the viz idiom is constructed. E.g:</p>
+                    <h3>Change over time</h3>
+                    <p>Basically animation tweening / transitions over time.</p>
                     <ul>
-                        <li>Change the chart encoding (e.g. bar chart to line chart)</li>
+                        <li>Change the chart idiom entirely (e.g. bar chart to line chart)</li>
                         <li>Change specific channel encodings (e.g. color schemes, symbol marks)</li>
-                        <li>Change the arrangement</li>
+                        <li>Change the layout arrangement</li>
                         <li>Change dataset</li>
                         <li>Reorder the data</li>
                     </ul>
                     <p><a href="https://bost.ocks.org/mike/miserables/" target="_blank">Adjacency matrix</a>, Mike Bostock, Les Miserables dataset</p>
                     <p><a href="https://observablehq.com/@d3/projection-transitions" target="_blank">Projection transitions</a>, Mike Bostock</p>
                     <p><a href="https://bl.ocks.org/veltman/bd8d6a2f57dd8729da3437492fb9debd" target="_blank">Sunburst to icicle</a>, Noah Veltman</p>
+                    <p><a href="https://flowingdata.com/2018/11/09/how-i-made-that-animated-difference-charts-in-r/" target="_blank">Bivariate animation chart (in R, video)</a>, Nathan Yao</p>
                 </section>
 
                 <section>
@@ -104,6 +105,7 @@ tr:nth-child(even) {
                         <li>Brushing</li>
                     </ul>
                     <p>Blo.cks.org: <a href="https://bl.ocks.org/d3noob/6eb506b129f585ce5c8a" target="_blank">Complex tooltip (SVG)</a>, d3noob</p>
+                    <p>Blo.cks.org: <a href="http://bl.ocks.org/feyderm/6bdbc74236c27a843db633981ad22c1b" target="_blank">Scatterplot + brush</a>, Michael Feyder</p>
                     <p>D3 Graph Gallery: <a href="https://www.d3-graph-gallery.com/interactivity.html" target="_blank">Interactivity, Brushing</a></p>
                     <p>ObservableHQ: <a href="https://observablehq.com/collection/@d3/d3-brush" target="_blank">Brushing Collection</a></p>
                 </section>
@@ -117,6 +119,7 @@ tr:nth-child(even) {
                     <li>Guided (constrained) navigation</li>
                     </ul>
                     <p>We've gone through examples in the geospatial space, but this can also be applied to other types of charts.</p>
+                    <p><a href="https://observablehq.com/@d3/zoomable-scatterplot" target="_blank">Zoomable scatterplot</a> Obeservable HQ, Mike Bostock</p>
                     <p><a href="http://lifemap.univ-lyon1.fr/explore.html" target="_blank">Lifemap</a> (Leaflet + raster tiles), University of Lyon</p>
                     <p><a href="https://htwins.net/scale2/" target="_blank">Scale of the Universe 2</a></p>
                 </section>
@@ -140,7 +143,7 @@ tr:nth-child(even) {
 
                 <section>
                     <h3>Why facet?</h3>
-                    <p>Multiple views juxtaposed side by side (instead of presented over time!) allow us to compare two views simultaneously.</p>
+                    <p>Multiple views juxtaposed side by side (instead of presented one after another over time!) allow us to compare two views simultaneously.</p>
                     <p>Drawback is of course display space and working memory constraints.</p>
                 </section>
 
@@ -148,7 +151,7 @@ tr:nth-child(even) {
                     <h3>Multiform Visualizations</h3>
                     <p>Showing the data (all or subset) through different chart encodings.</p>
                     <p>Usage of linked highlighting shows how one view is linked to another.</p>
-                    <p><a href="https://population.io/#/1976/02/14/female/Singapore/home" target="_blank">Population.io</a>, World Data Bank</p>
+                    <p><a href="https://population.io/" target="_blank">Population.io</a>, World Data Bank</p>
                     <p><a href="https://nssac.bii.virginia.edu/covid-19/dashboard/" target="_blank">Covid19 Surveillance Dashboard</a>, University of Virginia</p>
                 </section>
 
@@ -159,13 +162,13 @@ tr:nth-child(even) {
                     <p><a href="https://medium.com/pew-research-center-decoded/how-pew-research-center-uses-small-multiple-charts-2531bfc06419" target="_blank">How Pew Research Center uses small multiple charts</a>, Peter Bell</p>
                     <p><a href="https://www.bloomberg.com/graphics/global-technology-companies/" target="_blank">Global Technology Tracker</a>, Bloomberg (Sparklines!)</p>
                     <p><a href="https://www.theguardian.com/politics/2016/may/06/holyrood-elections-see-rise-of-team-ruth-and-demise-of-labour-vision" target="_blank">Scottish politics</a>, The Guardian</p>
+                    <p><a href="https://www.visualcapitalist.com/history-of-pandemics-deadliest/" target="_blank">Visualizing the History of Pandemics</a>, VisualCapitalist</p>
                 </section>
 
                 <section>
                     <h3>Layering</h3>
                     <p>Superimposing layers of data on top of one another.</p>
                     <p><a href="https://www.marinetraffic.com/" target="_blank">MarineTraffic</a></p>
-                    <p><a href="https://www.onemap.gov.sg/main/v2/" target="_blank">Onemap.gov.sg</a></p>
                 </section>
 
                 <section>
@@ -182,14 +185,17 @@ tr:nth-child(even) {
                     <h3>Filtering (item or attribute)</h3>
                     <p>Use an interface option to show/hide a data items or attributes.</p>
                     <p><a href="https://www.shipmap.org/" target="_blank">Shipmap.org</a></p>
+                    <p><a href="https://www.onemap.gov.sg/main/v2/trafficquery" target="_blank">Onemap.gov.sg traffic query</a></p>
                 </section>
 
                 <section>
                     <h3>Aggregate</h3>
                     <p>Group data elements to create new derived attributes.</p>
-                    <p>D3 Graph Gallery: <a href="https://www.d3-graph-gallery.com/histogram.html" target="_blank">Histogram</a></p>
-                    <p>D3 Graph Gallery: <a href="https://www.d3-graph-gallery.com/boxplot.html" target="_blank">Boxplot</a></p>
-                    <p>ObservableHQ: <a href="https://observablehq.com/@d3/hexbin-map?collection=@d3/d3-hexbin" target="_blank">Hexbin example</a></p>
+                    <p>E.g. Histogram, density plots, beewswam, hexbin, ridgelines, etc.</p>
+                    <p><a href="https://flowingdata.com/2021/09/30/age-and-occupation/" target="_blank">Age and occupation</a>, Nathan Yau (boxplot)</p>
+                    <p><a href="https://flowingdata.com/2021/03/25/income-in-each-state-adjusted-for-cost-of-living/" target="_blank">Income in Each State, Adjusted for Cost of Living</a>, Nathan Yau (histogram, faceted)</p>
+                    <p><a href="https://www.visualcapitalist.com/cp/how-many-humans-have-ever-lived/" target="_blank">How many humans have ever lived</a>, VisualCapitalist</p>
+                    <p><a href="https://www.visualcapitalist.com/mapped-all-the-worlds-military-personnel/" target="_blank">Mapped: All the world's military personnel</a>, VisualCapitalist</p>
                 </section>
 
                 <section>
@@ -204,6 +210,7 @@ tr:nth-child(even) {
                     <p>Elide - ObservableHQ: <a href="https://observablehq.com/@d3/focus-context?collection=@d3/d3-brush" target="_blank">Focus + context</a>, Mike Bostock</p>
                     <p>Superimpose - Reading: <a href=" https://medium.com/@sadowskiseb/top-5-learnings-for-visualizing-data-in-augmented-reality-7103f5caf12f" target="_blank">Top 5 learnings for visualizing data in Augmented Reality (AR)</a>, Sebastian Sadowski</p>
                     <p>Distort - <a href="https://bost.ocks.org/mike/fisheye/" target="_blank">Fisheye distortion</a>, Mike Bostock</p>
+                    <p>Distort - <a href="https://worldmapper.org/" target="_blank">Worldmapper.org</a>, (geospatial distortions)</p>
                 </section>
                 
                 <section>
