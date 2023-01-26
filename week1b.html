@@ -6,7 +6,7 @@
 
         <title>1b: The big picture</title>
 
-        <meta name="description" content="02.526 Interactive Data Viz, Introduction">
+        <meta name="description" content="02.526 Interactive Data Viz, The big picture">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -44,9 +44,9 @@
                     <ul>
                     <li>Why have a human in the decsision making loop?</li>
                     <li>Why have a computer in the loop?</li>
-                    <li>Why use an external representation?</li>
+                    <li>Why use an interface / external representation?</li>
                     <li>Why depend on vision?</li>
-                    <li>Why show data in detail?</li>
+                    <li>Why visualize data in detail?</li>
                     <li>Why use interactivity?</li>
                     </ul>
                 </section>
@@ -55,11 +55,11 @@
                     <h2>Big picture questions 2</h2>
                     <ul>
                     <li>Why is the viz idiom design space huge?</li>
-                    <li>Why focus on tasks?</li>
-                    <li>Why focus on effectiveness?</li>
+                    <li>Why focus on tasks (why) over data (what) and idioms (how)?</li>
+                    <li>Why focus on viz effectiveness?</li>
                     <li>Why are most designs ineffective?</li>
                     <li>Why is validation difficult?</li>
-                    <li>Why are there resource limitations?</li>
+                    <li>What resource limitations are there?</li>
                     </ul>
                 </section>
 
@@ -72,6 +72,7 @@
                     <section>
                         <p>Visualizations allow people to analyze data when they don't know exactly what questions need to be asked in advance.</p>
                         <p>Machine learning allows for automation of repeated tasks, but these tasks need to specified (to a certain extent).</p>
+                        <p>However, with the advent of AI tools, this relationship will probably <a href="https://www.savantlabs.io/blog/data-viz-made-easy-with-chatgpt" target="_blank">change in the future</a>.</p>
                     </section>
                     
                     <section>
@@ -93,11 +94,11 @@
                 
                 <section>
                     <section>
-                        <h3>Why use an external representation?</h3>
+                        <h3>Why use an interface / external representation?</h3>
                     </section>
 
                     <section>
-                        <p>Duh. Human beings have been using maps and diagrams for millenia to surpass our own internal cognition and memory.</p>
+                        <p>Human beings have been using maps and diagrams for millenia to surpass our own internal cognition and memory.</p>
                     </section>
                 </section>
 
@@ -116,11 +117,11 @@
 
                 <section>
                     <section>
-                        <h3>Why show data in detail?</h3>
+                        <h3>Why visualize data in detail?</h3>
                     </section>
 
                     <section>
-                        <p>Visualization helps people understand the dataset structure better than only seeing a brief summary of it.</p>
+                        <p>For exploratory analysis, visualization helps people understand the dataset structure better. If you only rely on summary statistics, you could be get a wrong understanding.</p>
                         <p><a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet" target="_blank">Anscombe's Quartet</a> is an extremely powerful example why.</p>
                         <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Frank_Anscombe" target="_blank">Francis John Abscombe</a> (1918-2001)</p>
                     </section>
@@ -141,6 +142,11 @@
                         <p>A more recent example: <a href="https://www.autodesk.com/research/publications/same-stats-different-graphs" target="_blank">Datasaurus dozen</a></p>
                         <p class="smallfont">"Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing" (Justin Matejka, George Fitzmaurice, 2017)</p>
                     </section>
+                    
+                    <section>
+                        <p>For storytelling, giving your users an ability to deeply dive into your dataset (navigate the ladder of abstraction) can engender trust.</p>
+                    </section>
+                    
                 </section>
 
                 <section>
@@ -168,11 +174,11 @@
 
                 <section>
                     <section>
-                        <h3>Why focus on tasks?</h3>
+                        <h3>Why focus on tasks (why) over data (what) and idioms (how)?</h3>
                     </section>
 
                     <section>
-                        <p>Because <b>why</b> the user is interacting with the data is important.</p>
+                        <p>Because <b>why</b> the user is interacting with the data greatly changes the final result.</p>
                         <p>Visualizations for exploratory analysis vs for presentation / enjoyment is vastly different.</p>
                         <p>Are you creating a visualization that is a once-off (to get an idea of the data), putting together a nice presentation to explain insights, or building a tool to automate this process?</p>
                     </section>
@@ -180,7 +186,7 @@
                 
                 <section>
                     <section>
-                        <h3>Why focus on effectiveness?</h3>
+                        <h3>Why focus on viz effectiveness?</h3>
                     </section>
 
                     <section>
@@ -197,7 +203,7 @@
                     </section>
 
                     <section>
-                        <p>I feel Tamara's position here is a little pedantic, but I understand her point of view.</p>
+                        <p>Tamara's position here may be is a little pessimistic, but I understand her point of view.</p>
                         <p>Because there are so many ways to mash-up data and viz idioms, the likelihood you'll get a bad design far outstrips a good one.</p>
                         <p>Like in the music analogy, you can randomly throw notes together, but it most likely won't make a good song.</p>
                     </section>
@@ -210,18 +216,18 @@
 
                     <section>
                         <p>Tamara's argument is that there could be many ways to ask if the visualization has met your user's needs.</p>
-                        <p>Whilst labels like <i>effective communication</i> and <i>insight engagement</i> are not hard science, I believe that this can still be measured (via surveys).</p>
+                        <p>Whilst labels like <i>effective communication</i> and <i>insight engagement</i> are not hard science, UX can still be measured (via interviews, surveys, etc.).</p>
                         <p>A good user-centric experience design process can help with validating some of these issues. We'll look into this in later parts of the course.</p>
                     </section>
                 </section>
 
                 <section>
                     <section>
-                        <h3>Why are there resource limitations?</h3>
+                        <h3>What resource limitations are there?</h3>
                     </section>
 
                     <section>
-                        <p>Of course there are resource limitations. Tamara states three: Human perceptual / cognitive capacity, computational capacity and display capacity.</p>
+                        <p>Of course there are resource limitations. Human perceptual / cognitive capacity, computational capacity and display capacity.</p>
                         <p>Interaction helps solve some of the perceptual / cognitive load, but we're still vulnerable to human quirks like <b>change blindness</b>.</p>
                         <p>On the technical front, we will be going through some of the limitations of drawing for the web later in the course.</p>
                     </section>
