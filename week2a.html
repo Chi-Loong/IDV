@@ -66,7 +66,7 @@
                 </section>
 
                 <section>
-                    <h2>Data Types</h2>
+                    <h2>Data Types (tabular)</h2>
                     <p><b>Items</b></p>
                     <ul>
                         <li>An item is an individual discrete entity</li>
@@ -91,7 +91,7 @@
                 </section>
 
                 <section>
-                    <h2>Data Types 2</h2>
+                    <h2>Data Types 2 (networks)</h2>
                     <p><b>Nodes</b></p>
                     <ul>
                         <li>Synonym for item but in the context of networks (graphs)</li>
@@ -106,7 +106,7 @@
                 </section>
 
                 <section>
-                    <h2>Data Types 3</h2>
+                    <h2>Data Types 3 (spatial)</h2>
                     <p><b>Position / Regions</b></p>
                     <ul>
                         <li>A position is a location in space (typically 2D or 3D)</li>
@@ -119,12 +119,7 @@
                         <li>Necessary for sampling continuous data</li>
                         <li>E.g. Earth map tiling, CT map scans</li>
                     </ul>
-                </section>
-
-                <section>
-                    <h3>Geographic positions / grids</h3>
-                    <p><a href="https://www.d3indepth.com/geographic/" target="_blank">D3 Geographic</a></p>
-                    <p><a href="https://developers.google.com/maps/documentation/ios-sdk/tiles" target="_blank">Google Map tiles</a></p>
+                    <p class="smallfont"><a href="https://stackoverflow.com/questions/15965166/what-are-the-lengths-of-location-coordinates-latitude-and-longitude" target="_blank">Orders of magnitude (lat/lng)</a></>
                 </section>
                 
                 <section>
@@ -136,13 +131,8 @@
                         <li>A <b>cluster</b> is a grouping based on attribute similarity, where items within a cluster are more similar to each other than to ones in another cluster.</li>
                     </ul>
                     <hr/>
-                    <p class="smallfont">Sample <a href="https://bl.ocks.org/mbostock/7882658" target="_blank">cluster force diagram (circles)</a> and <a href="https://showcase.vslashr.com/virus/" target="_blank">simulation (time cluster)</a></p>
+                    <p class="smallfont">Sample <a href="https://observablehq.com/@d3/clustered-bubbles" target="_blank">cluster force diagram (circles)</a> and <a href="https://showcase.vslashr.com/virus/" target="_blank">simulation (time cluster)</a></p>
                     <p class="smallfont">We'll talk more about specific visualization idioms in a later lecture.</p>
-                </section>
-
-                <section>
-                    <h3>Data types &rarr; dataset types</h3>
-                    <img src="img/dataset_types.jpg"/>
                 </section>
 
                 <section>
@@ -155,15 +145,17 @@
                     <p>More on <a href="https://github.com/d3/d3-hierarchy" target="_blank">hierarchies</a> in D3</p>
                     <p>Hierarchical datasets lend themselves very well to visualizations like dendrograms, trees, treemaps, packed circles.</p>
                     <hr/>
-                    <p class="smallfont">Sample <a href="https://bl.ocks.org/mbostock/e9ba78a2c1070980d1b530800ce7fa2b" target="_blank">dendrogram</a> and <a href="https://bl.ocks.org/mbostock/7607535">packed circle</a> (flare.json)</p>
+                    <p class="smallfont">Sample <a href="https://observablehq.com/@d3/cluster" target="_blank">dendrogram</a> and <a href="https://observablehq.com/@d3/zoomable-circle-packing">packed circle</a> (flare.json)</p>
                     <p class="smallfont">We'll talk more about specific visualization idioms in a later lecture.</p>
                 </section>
 
                 <section>
                     <h2>Data scales</h2>
+                    <p>Categorical (nominal) vs quantitative (interval/ratio)</p>
                     <img src="img/data_scales.jpg"/>
                     <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Level_of_measurement" target="_blank">Levels of measurement</a> (or scale of measure, or data scales), a proposed typology by psychologist Stanley Smith Stevens(1906-1973). Still widely used framework, esp. now in data science.</p>
-                    <p class="smallfont">More reading: <a href="https://www.scribbr.com/statistics/levels-of-measurement/" target="_blank">Levels of measurement: Nominal, ordinal, interval, ratio</a>, Scribbr, Prita Bandari</p>
+                    <p class="smallfont">More reading: <a href="https://www.scribbr.com/statistics/levels-of-measurement/" target="_blank">Levels of measurement: Nominal, ordinal, interval, ratio</a>, Scribbr</p>
+                    <p class="smallfont">More reading: <a href="https://www.kyleads.com/blog/nominal-ordinal-interval-ratio-scales/" target="_blank">Levels of measurement: Nominal, ordinal, interval, ratio scales</a>, Kyleads</p>
                 </section>
 
                 <section>
@@ -210,7 +202,7 @@
                 </section>
 
                 <section>
-                    <h3>Ordering: Sequential, diverging, cyclic</h3>
+                    <h3>Ordering: color example</h3>
                     <img src="img/ordering_direction.jpg"/>
                     <p class="smallfont">Like qualitative data variables, qualitative graphic variables (e.g., shape or color hue) have no intrinsic ordering.</p>
                     <p class="smallfont">In contrast, quantitative graphic variables (e.g., size or color intensity) can have different ordering directions, such as sequential, diverging, or cyclic</p>
@@ -220,7 +212,7 @@
                 <section>
                     <h3>So what scale of measure is each attribute?</h3>
                     <img src="img/carpark_table.jpg"/>
-                    <p class="smallfont">More reading: <a href="https://statisticalanalysisconsulting.com/is-time-nominal-ordinal-interval-or-ratio-is-it-categorical-or-continuous/" target="_blank">Is time nominal, ordinal, interval or ratio? Is it categorical or continuous?</a> Peter Flom, Statistical Analysis Consulting</p>
+                    <p class="smallfont">Is time nominal, ordinal, interval or ratio?</p>
                 </section>
 
                 <section>
@@ -237,7 +229,7 @@
                         <img src="img/ArcGIS-screenshot.png">
                     </section>
                     <section>
-                        <p><a href="https://viz.vslashr.com/mogul/" target="_blank">Mogul UX tests</p>
+                        <p><a href="https://chi-loong.github.io/mogultests/scatterplottest-1a.html" target="_blank">Scatterplot version</a></p>
                     </section>
                 </section>
 
