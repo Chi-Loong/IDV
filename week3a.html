@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>4a: Why do data viz?</title>
+        <title>3a: Why do data viz?</title>
 
         <meta name="description" content="02.526 Why do data viz?">
         <meta name="author" content="Chan Chi-Loong, V/R">
@@ -38,7 +38,7 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">4a: Task abstraction</h1>
+                    <h1 class="shadowfont white">3a: Task abstraction</h1>
                     <h3>Why do data viz?</h3>
                 </section>
                 
@@ -72,8 +72,8 @@
                 </section>
                 
                 <section>
-                    <h4>Exploratory vs Explainatory</h4>
-                    <a href="img/ticket-trends.jpg" target="_blank"><img src="img/ticket-trends.jpg"></a>
+                    <h4>Exploratory Analysis vs Presentation</h4>
+                    <img src="img/ticket-trends.jpg">
                     <p class="smallfont"><i>Storytelling with data, chapter 1, Nussbaumer</i></p>
                 </section>
 
@@ -81,8 +81,52 @@
                     <h3>3-levels of actions</h3>
                     <a href="img/3-levels-actions.jpg" target="_blank"><img src="img/3-levels-actions.jpg"></a>
                     <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
+                </section>
+
+                <section>
+                    <h3>Actions</h3>
+                    <p>The framework give us a way to think about how and why we do tasks, from the high level (<b>how we analyze</b>) to mid-level (<b>how we search</b>) to the low level (<b>query structure</b>).</p>
+                </section>
+
+                <section>
+                    <h3>Consume vs produce (information)</h3>
+                    <p>Most visualizations are used to consume information in many domain contexts.</p>
+                    <p>Typically it is either for <b>exploratory</b> analysis or for <b>presentation</b>.
+                    <p>When we talk about producing we're talking about generating new artefacts - e.g. through annotations and recordings.</p>
+                    <p>For example, annotating outliers, or tagging clusters in open ended text queries.</p>
+                </section>
+
+                <section>
+                    <h3>Search</h3>
+                    <table width="100%">
+                    <tr>
+                        <td></td>
+                        <td><b>Target known</b></td>
+                        <td><b>Target unknown</b></td>
+                    </tr>
+                    <tr>
+                        <td><b>Location known</b></td>
+                        <td>Lookup</td>
+                        <td>Browse</td>
+                    </tr>
+                    <tr>
+                        <td><b>Location unknown</b></td>
+                        <td>Locate</td>
+                        <td>Explore</td>
+                    </tr>
+                    </table>
                     <hr/>
-                    <p class="smallfont">For more specifics read up her white paper linked <a href="week4a.html#/3">here</a>.</p>
+                    <p><b>Location:</b> Where does this data exist in?</p>
+                    <p><b>Target:</b> What do you want to query?</p>
+                    <p class="smallfont">Let's use the carpark example.</p>
+                    <img src="img/carpark_table.jpg">
+                </section>
+
+                <section>
+                    <h3>Query</h3>
+                    <p>If a search queries known targets (lookup or locate), identify returns their <b>characteristics</b> (the column).</p>
+                    <p>If a search queries references based on characteristics (browse or explore), identify returns <b>references</b> (rows).</p>
+                    <p><b>Identify &mdash; Compare &mdash; Summarize</b> is just a scale of the progression of the search query and data returned.</p>
                 </section>
 
                 <section>
@@ -91,6 +135,40 @@
                     <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
                 </section>
                 
+                <section>
+                    <h3>What is the target we're returning?</h3>
+                    <ul>
+                    <li><b>Data:</b> are we looking for trends? Outliers? Specific features?</li>
+                    <li><b>Attributes:</b> are we looking for one attribute or many? Comparison, distribution, correlation?</li>
+                    <li><b>Network Data:</b> are we looking at the topology of the network?</li>
+                    <li><b>Spatial Data:</b> are we looking at the shape of a feature? Distribution or clustering of points?</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <section>
+                    <h3>All together: task breakdown</h3>
+                    <p>Example: Which carpark is the one with the highest utilization in SG on Monday mornings?</p>
+                    <ul>
+                        <li>Analyze: Exploratory analysis</li>
+                        <li>Search: Browse</li>
+                        <li>Query: Identify</li>
+                        <li>Target: One attribute, utilization</li>
+                    </ul>
+                    </section>
+                    
+                    <section>
+                    <h3>All together: task breakdown 2</h3>
+                    <p>Example: <a href="https://elections.viz.sg/" target="_blank">SG election</a>. What interesting trends can we see overall?</p>
+                    <ul>
+                        <li>Analyze: Presentation</li>
+                        <li>Search: Explore</li>
+                        <li>Query: Compare, Summarization</li>
+                        <li>Target: Trend, Outliers</li>
+                    </ul>
+                    </section>
+                </section>
+
                 <section>
                     <h3>Industry perspective on why data viz</h3>
                     <table width="100%">
@@ -131,29 +209,17 @@
                     </tr>
                     </table>
                 </section>
+
+                <section>
+                    <h3>Viz Tools recapped</h3>
+                    <img src="img/viztools.jpg"/>
+                </section>
                 
                 <section>
                     <h4>How: An overview</h4>
                     <a href="img/how-idioms.jpg" target="_blank"><img src="img/how-idioms.jpg"></a>
                     <hr/>
                     <p class="smallfont">We'll cover definitions and sample idioms later in the course.</p>
-                </section>
-
-                <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">On the project</h1>
-                </section>
-
-                <section>
-                    <h4>Project: pointers</h4>
-                    <ul>
-                    <li>Look at <b>what</b> data you have, and decide <b>why</b> you are doing the visualization, before you start work.</li>
-                    <li><b>How</b> you build the visualization is typically an iterative process. <a href="https://viz.vslashr.com/attilatech/ target="_blank">Example</a>.</li>
-                    <li>The <b>process</b> is often more interesting than the final outcome in terms of learning. Do share that.</li>
-                    <li>What steps did you take (or not take) in order to reach your final product?</li>
-                    <li>What lessons did you take away? Anything you wished to do for the project but didn't have time / resources to complete?</li>
-                    </ul>
-                    <hr/>
-                    <p class="smallfont">I wish it wasn't the case but the course needs to be graded. However, I seriously don't care as much as long as proof of work is done.</p>
                 </section>
 
                 
