@@ -52,7 +52,7 @@
                     <h3>Drawing for web</h3>
                     <ul>
                     <li><b>SVG</b>: Has a DOM-like structure, easy to register events for interaction, scale invariant, can be themed with CSS, and easy to manipulate. (<a href="https://elections.viz.sg/" target="_blank">example</a>)</li>
-                    <li><b>Canvas (2D)</b>: Is low level and event firing is far trickier. However, canvas is useful for code art work, when you need to draw lots of shapes on the screen and animate quickly. (<a href="http://bl.ocks.org/syntagmatic/fc62d1de6ada1e06b803" target="_blank">example</a>)</li>
+                    <li><b>Canvas (2D)</b>: Is low level and event firing is far trickier. However, canvas is useful for code art work, when you need to draw lots of shapes on the screen and animate quickly. (<a href="https://esri.github.io/wind-js/" target="_blank">example</a>)</li>
                     <li><b>HTML elements</b>: Elements like divs and imgs can be used, but more painful to manipulate. (<a href="https://www.alexandrakhoo.com/2020-census-gender-roles/" target="_blank">example</a>)</li>
                     <li><b>WebGL (3D)</b>: Use libraries like three.js or babylon.js rather than native as they have really useful design patterns (camera, lighting, etc.) (<a href="https://www.washingtonpost.com/graphics/2019/local/school-diversity-data/" target="_blank">example</a>, <a href="https://observablehq.com/@emamd/animating-lots-and-lots-of-circles-with-regl-js" target="_blank">explaination</a>)</li>
                     </ul>
@@ -119,7 +119,7 @@
                     <h3>Lines</h3>
                     <p>Line syntax</p>
                     <pre><code>
-&lt;line x1="50" y1="50 x2="900" y2="900" stroke="#0f0">&lt;/line>
+&lt;line x1="50" y1="50" x2="900" y2="900" stroke="#0f0">&lt;/line>
                     </code></pre>
                 </section>
 
@@ -169,7 +169,7 @@ rect {
                     <h3>Path</h3>
                     <p>Path syntax</p>
                     <pre><code>
-&lt;path d="M100 200, L300 600, L500200Z">&lt;/path>
+&lt;path d="M100 200, L300 600, L500 200Z">&lt;/path>
                     </code></pre>
                     <hr/>
                     <p class="smallfont">This is a simple example to draw shapes using the path tag. There are lots of other commands in the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths" target="_blank">path</a> tag</p>
@@ -232,7 +232,7 @@ rect {
                     </code></pre>
                     <hr/>
                     <p class="smallfont">Translate, scale, rotate are probably some of the more common transforms you will probably use. You can also try out others like skew and matrix.</p>
-                    <p class="smallfont">Try setting the transform-origin attribute to "50% 50%". Otherwise by default it will transform from the top-left corner (i.e. "0% 0%").</p>
+                    <p class="smallfont">e.g. rotate(45deg). Try setting the transform-origin attribute to "50% 50%". Otherwise by default it will transform from the top-left corner (i.e. "0% 0%").</p>
                 </section>
 
                 <section>
@@ -248,9 +248,9 @@ rect {
                 <section>
                     <h3>Exercise 3</h3>
                     <ol>
-                    <li>Download a SVG icon from anywhere (e.g. flaticon)</li>
-                    <li>Open up the file in a text-editor, strip out erroneous tags, and add the code to an inline SVG.</li>
-                    <li>Rotate the entire icon 45 degrees in your SVG.</li>
+                    <li>Download a SVG icon from anywhere</li>
+                    <li>Open up the file in a text-editor, strip out erroneous tags.</li>
+                    <li>Rotate the entire icon 180 degrees in your SVG.</li>
                     <li>Feel free to tranfrom different elements any way you want to.</li>
                     </ol>
                 </section>
