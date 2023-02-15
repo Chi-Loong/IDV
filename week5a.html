@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
 
-        <title>5a: Visualization validation</title>
+        <title>5a: Marks, Channels: Applied Perception</title>
 
-        <meta name="description" content="02.526 Visualization validation">
+        <meta name="description" content="02.526 Marks, Channels and Color">
         <meta name="author" content="Chan Chi-Loong, V/R">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -38,121 +38,195 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">5a: Viz analysis</h1>
-                    <h3>4 levels of validation</h3>
+                    <h1 class="shadowfont white">5a: Marks, Channels</h1>
+                    <h3>Applied Perception</h3>
                 </section>
                 
                 <section>
-                    <h3>4 levels of validation: A framework</h3>
-                    <img src="img/validation_overview.jpg"/>
-                    <p>Domain - Data - Idiom - Tech</p>
-                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 4, Munzner</i></p>
+                    <h3>Marks</h3>
+                    <p><b>Marks</b> are your basic graphical geometric elements.</p>
+                    <p>E.g. points, bars, circles, lines, etc.</p>
+                    <img src="img/marks_primitives.jpg"/>
                 </section>
                 
                 <section>
-                    <h3>Threats to validity</h3>
-                    <img src="img/threats_validity.jpg"/>
-                    <ul>
-                        <li>Wrong problem: You've misunderstood the needs</li>
-                        <li>Wrong abstraction: You're showing the wrong thing.</li>
-                        <li>Wrong idiom: The way you show doesn't work</li>
-                        <li>Wrong algorithm: The code is too slow</li>
-                    </ul>
+                    <h3>Channels</h3>
+                    <h5> (aka <a href="https://en.wikipedia.org/wiki/Visual_variable" target="_blank">Visual variables</a>)</h5>
+                    <p><b>Channels</b> encode information as attributes / properties of a mark.</p>
+                    <p>E.g. Position, shape, size, color, etc.</p>
+                    <img src="img/channels.jpg"/>
                 </section>
                 
                 <section>
-                    <h3>Domain</h3>
-                    <p>Knowledge of an area that lets you frame problems from a <i>human-centric interaction (HCI) design</i> perspective.</p>
-                    <p class="smallfont">This is similar to UX design thinking, especially the needfinding / problem definition portions.</p>
-                    <p class="smallfont">In short, questions to validate why we are tackling the problems from the domain itself (Emphatize and Define).</p>
-                    <img src="img/design_thinking.jpg"/>
-                    <p class="smallfont"><i>Standford school of design thinking</i></p>
+                    <h3>Visualization:</h3>
+                    <h5>Collection of marks (expressed via channels)</h5>
+                    <p>A visualization represents data using a collection of graphical <b>marks</b> such as bars, lines, and point symbols.</p>
+                    <p>The attributes of a mark — such as its position, shape, size, or color — serve as <b>channels</b> in which we can encode underlying data values.</p>
+                </section>
+                
+                <section>
+                    <h3>Channel: Identity vs Magnitude</h3>
+                    <img src="img/channels-identity-magnitude.jpg"/>
                 </section>
 
                 <section>
-                    <h3>UX design thinking tools</h3>
-                    <p>Tools to help with user empathy / problem specification / prioritization</p>
+                    <img src="img/fruit-chart.jpg"/>
+                    <p>This fruit chart encodes two data attributes as bar marks.</p>
                     <ul>
-                        <li>Needfinding tools: Observations, interviews, surveys</li>
-                        <li>Personas: User audience</li>
-                        <li>Task analysis: Flowcharts and lists</li>
-                        <li>Mindmaps: Clustering needs and prioritization</li>
-                    </ul>
-                </section>
-                
-                <section>
-                    <h3>Data / task abstraction</h3>
-                    <p><b>What</b> is the data like? <b>Why</b> are we doing the visualization?</p>
-                </section>
-                
-                <section>
-                    <h3>Visual encoding / interaction</h3>
-                    <p><b>How</b> are we designing the visualization?</p>
-                    <p class="smallfont">Each of the main dataset types - tabular, networks, spatial (plus hierarchical) lead themselves to certain common visualization types.</p>
-                    <p class="smallfont">Concepts like marks and channels, color theory, view manipulation (interaction), faceting will all be discussed in their own lectures.</p>
-                </section>
-                
-                <section>
-                    <h3>Algorithmn / Technology</h3>
-                    <p>Execution of the visualization.</p>
-                    <p>What technology stack are you using? Web? Desktop?</p>
-                    <p>Are you using any 3rd party platform? Frontend stack? Backend stack?</p>
-                </section>
-
-                <section>
-                    <h3>Top-down or bottom up?</h3>
-                    <p>Typically either:</p>
-                    <ul>
-                        <li>Designing a viz to solve a problem (top down)</li>
-                        <li>Refining an existing solution (bottom-up)</li>
+                    <li>It encodes number of people - a quantitative data set - as a vertical spatial magnitude channel.</li>
+                    <li>It encodes type of fruit - a nominal data set - as a horizontal spatial identity channel.</li>
+                    <li>Type of fruit is also encoded as a redundant color identity channel.</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Validation approaches</h3>
-                    <img src="img/validation_approaches.jpg"/>
-                    <img src="img/design_thinking.jpg"/>
-                    <p class="smallfont">This is similar to the evaluation / testing phase of UX design thinking, where you iterate on a project.</p>
+                    <p>How many channels are there in this chart? What data scales are encoded?</p>
+                    <img src="img/scatterplot-channels.png"/>
                 </section>
 
-               <section>
-                    <h3>More UX design thinking tools</h3>
-                    <p>Tools to help with user evaluation / testing</p>
+                <section>
+                    <p>How many channels are there in this chart? What data scales are encoded?</p>
+                    <a href="https://viz.vslashr.com/attilatech/attila-force-6.html" target="_blank"><img src="img/network_diagram.jpg"/></a>
+                </section>
+
+                <section>
+                    <h3>Channel: Expressiveness</h3>
+                    <p>The <b>expressiveness</b> principle dictates that the visual encoding should express all of, and only, the information in the dataset attributes.</p>
+                    <p>Color channel violation of expressiveness principle:</p>
+                    <a href="https://www.eld.gov.sg/elections_map_electoral.html" target="_blank"><img src="img/eld_bad.jpg"></a>
+                </section>
+
+                <section>
+                    <h3>Channel: Effectiveness</h3>
+                    <p>The <b>effectiveness</b> principle dictates that the importance of the attribute should match the salience of the channel; that is, its noticeability.</p>
+                    <p>The most important attributes should be encoded with the most effective channels to be noticeable, and so on and so forth.</p>
+                    <p>Channel effectiveness can be described by these principles:</p>
                     <ul>
-                        <li>"Think aloud" usability evaluation</li>
-                        <li>Heuristic checklist (e.g. <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank">10 usability heuristics</a>, Jakcob Nielson)</li>
-                        <li>Shneiderman’s <a href="http://www.cs.umd.edu/~ben/goldenrules.html" target="_blank">Eight Golden Rules</a></li>
+                        <li>Accuracy</li>
+                        <li>Discriminability</li>
+                        <li>Separability</li>
+                        <li>Salience (pop-out)</li>
+                        <li>Grouping</li>
                     </ul>
                 </section>
+
+                <section>
+                    <h3>Channel ranking (based on effectiveness)</h3>
+                    <img src="img/channels-identity-magnitude.jpg"/>
+                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 5, Marks and Channels, Munzner</i></p>
+                </section>
+
+                <section>
+                    <h3>Human perception</h3>
+                    <h5><a href="https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law" target="_blank">Weber-Fechner Law</a></h5>
+                    <p>Weber: The minimum increase of stimulus which will produce a perceptible increase of sensation is proportional to the pre-existent stimulus.</p>
+                    <p>Fechner: The intensity of our sensation increases as the logarithm of an increase in energy.</p>
+                </section>
+
+                <section>
+                    <h3>Weber-Fechner Law</h3>
+                    <img src="img/weber-law-example.jpg"/>
+                    <p class="smallfont">Example of Weber's law using area</p>
+                </section>
                 
-                <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Case studies</h1>
-                    <h3>Stories and experiences</h3>
+                <section>
+                    <h3>Weber-Fechner Law 2</h3>
+                    <img src="img/fechner-law-chart.jpg"/>
+                    <p><a href="https://www.youtube.com/watch?v=hHG8io5qIU8" target="_blank">Numberphile's video on Weber's Law</a></p>
+                </section>
+                
+
+                <section>
+                    <h3><a href="https://en.wikipedia.org/wiki/Stevens%27s_power_law" target="_blank">Steven's Power Law</a></h3>
+                    <p class="smallfont"><b>Psychophysics</b>: the subfield of psychology devoted to the systematic measurement of general human perception.</p>
+                    <img src="img/steven-psychophysical-power-law.jpg"/>
+                </section>
+                
+                <section>
+                    <h4>Graphical Perception: Cleveland and McGill</h4>
+                    <img src="img/cleveland_and_mcgill.jpg"/>
+                    <p class="smallfont">Reading: <a href="https://priceonomics.com/how-william-cleveland-turned-data-visualization/" target="_blank">How William Cleveland Turned Data Visualization Into a Science</a></p>
+                    <p class="smallfont">Reading: <a href="http://euclid.psych.yorku.ca/www/psy6135/papers/ClevelandMcGill1984.pdf" target="_blank">Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods</a></p>
+                    <p class="smallfont">Reading: <a href="https://visualthinking.psych.northwestern.edu/publications/Harrison-weberlaw-infovis2014.pdf" target="_blank">Ranking Visualizations of Correlation Using Weber's Law</a></p>
+                </section>
+                
+                <section>
+                    <h3>Channel effectiveness: Accuracy</h3>
+                    <p>Pick higher ranking channels (with reason).</p>
+                    <p>E.g. Position > length > angles > area</p>
                 </section>
 
                 <section>
-                    <h2>Domain case studies</h2>
-                    <h4>Maritime Maps / Transport Rail</h4>
+                    <section>
+                        <h3>Channel effectiveness: Accuracy</h3>
+                        <p>Example: Analyze profit over time for 3 categories</p>
+                        <img src="img/accuracy_implications1.jpg"/>
+                    </section>
+
+                    <section>
+                        <img src="img/accuracy_implications2.jpg"/>
+                    </section>
+                </section>
+                
+                <section>
+                    <h3>Channel effectiveness: Discriminability</h3>
+                    <p>Must be able to discriminate between a reasonable number of bins (typically max 5 to 7)</p>
+                    <img src="img/flawed-piechart.jpg"/>
+                    <p class="smallfont">So how to deal with lots of data? You use techniques like grouping, filtering or faceting (we'll cover in later lectures)</p>
+                </section>
+                
+                <section>
+                    <h3>Channel effectiveness: Separability</h3>
+                    <p>Channels range from the <b>seperable</b> (e.g. position and hue) to the <b>integral</b> (e.g. multiple color scales)</p>
+                    <img src="img/trivariate_map.jpg"/>
                 </section>
 
                 <section>
-                    <h2>Data case studies</h2>
-                    <h4>Cybersecurity</h4>
+                    <section>
+                        <h3>Channel effectiveness: Salience (popout)</h3>
+                        <p>Many visual channels provide visual <b>popout</b>, where a distinct item stands out from many others immediately.</p>
+                        <img src="img/threes1.jpg"/>
+                        <p class="smallfont">Count the number of threes</p>
+                    </section>
+                    
+                    <section>
+                        <img src="img/threes2.jpg"/>
+                        <p class="smallfont">Far easier, right? Using the color channel to popout elements.</p>
+                        <p><a href="https://www.csc2.ncsu.edu/faculty/healey/PP/" target="_blank">Perception in visualization, Healey</a></p>
+                        <p class="smallfont">Concepts: Pre-attention in vision (200 to 250 ms)</p>
+                        <p class="smallfont">Many pairs of channels do not support popout, and 3 or more channels definitely do not. As a general rule, use popout for one channel only.</p>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>Idiom case studies</h2>
-                    <h4>Area to Boxplot</h4>
+                    <h3>Channel effectiveness: Salience (popout)</h3>
+                    <img src="img/color_preattention.jpg"/>
+                    <p class="smallfont"><i>Storytelling with Data: A Data Visualization Guide for Business Professionals, chapter 4, Nussbaumer</i></p>
+                </section>
+                
+                <section>
+                    <h3>Concept: Change blindness</h3>
+                    <p>A phenomenon of visual perception that occurs when a stimulus undergoes a change without this being noticed by its observer.</p>
+                    <p class="smallfont"><a href="https://www.youtube.com/watch?v=bh_9XFzbWV8" target="_blank">Change blindness demo</a></p>
+                    <p class="smallfont"><a href="https://www.youtube.com/watch?v=5O71iuTPTTI" target="_blank">Change blindness in User Interfaces</a></p>
+                    <p class="smallfont">So how to deal with this? Minimize changes, keep changes in the focal view, or use animations / transitions (we'll talk more about animations in later lectures)</p>
+                    <p class="smallfont">Example: <a href="https://elections.viz.sg/" target="_blank">Elections SG</a></p>
                 </section>
 
                 <section>
-                    <h2>Tech case studies</h2>
-                    <h4>Fashion start-up</h4>
-                </section>
-
-                <section>
-                    <h2>Project walkthrough</h2>
-                    <h4>Covid contact-tracing viz</h4>
+                    <section>
+                        <h3>Channel effectiveness: Grouping</h3>
+                        <p><a href="https://en.wikipedia.org/wiki/Principles_of_grouping" target="_blank">Gestalt principles of grouping</a></p>
+                        <p>A classification on how we group similar elements and recognize patterns.</p>
+                        <img src="img/gestalt_principles.jpg"/>
+                    </section>
+                    
+                    <section>
+                        <h3>Channel effectiveness: Grouping</h3>
+                        <p>Color channel violation of gestalt similarity principle:</p>
+                        <a href="https://www.eld.gov.sg/elections_map_electoral.html" target="_blank"><img src="img/eld_bad.jpg"></a>
+                        <p class="smallfont">Reading: <a href="http://driftlessdata.space/post/income-gestalt/" target="_blank">Gestalt principles and income inequality, Silas Bergen</a></p>
+                    </section>
                 </section>
 
                 <section>

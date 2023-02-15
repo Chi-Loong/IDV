@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>4a: Visualization validation</title>
+
+        <meta name="description" content="02.526 Visualization validation">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">4a: Viz analysis</h1>
+                    <h3>4 levels of validation</h3>
+                </section>
+                
+                <section>
+                    <h3>4 levels of validation: A framework</h3>
+                    <img src="img/validation_overview.jpg"/>
+                    <p>Domain - Data - Idiom - Tech</p>
+                    <p class="smallfont"><i>Visualization Analysis and Design, chapter 4, Munzner</i></p>
+                </section>
+                
+                <section>
+                    <h3>Threats to validity</h3>
+                    <img src="img/threats_validity.jpg"/>
+                    <ul>
+                        <li>Wrong problem: You've misunderstood the needs</li>
+                        <li>Wrong abstraction: You're showing the wrong thing.</li>
+                        <li>Wrong idiom: The way you show doesn't work</li>
+                        <li>Wrong algorithm: The code is too slow</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Domain</h3>
+                    <p>Knowledge of an area that lets you frame problems from a <i>human-centric interaction (HCI) design</i> perspective.</p>
+                    <p class="smallfont">This is similar to UX design thinking, especially the needfinding / problem definition portions.</p>
+                    <p class="smallfont">In short, questions to validate why we are tackling the problems from the domain itself (Emphatize and Define).</p>
+                    <img src="img/design_thinking.jpg"/>
+                    <p class="smallfont"><i>Standford school of design thinking</i></p>
+                </section>
+
+                <section>
+                    <h3>UX design thinking tools</h3>
+                    <p>Tools to help with user empathy / problem specification / prioritization</p>
+                    <ul>
+                        <li>Needfinding tools: Observations, interviews, surveys</li>
+                        <li>Personas: User audience</li>
+                        <li>Task analysis: Flowcharts and lists</li>
+                        <li>Mindmaps: Clustering needs and prioritization</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Data / task abstraction</h3>
+                    <p><b>What</b> is the data like? <b>Why</b> are we doing the visualization?</p>
+                </section>
+                
+                <section>
+                    <h3>Visual encoding / interaction</h3>
+                    <p><b>How</b> are we designing the visualization?</p>
+                    <p class="smallfont">Each of the main dataset types - tabular, networks, spatial (plus hierarchical) lead themselves to certain common visualization types.</p>
+                    <p class="smallfont">Concepts like marks and channels, color theory, view manipulation (interaction), faceting will all be discussed in their own lectures.</p>
+                </section>
+                
+                <section>
+                    <h3>Algorithmn / Technology</h3>
+                    <p>Execution of the visualization.</p>
+                    <p>What technology stack are you using? Web? Desktop?</p>
+                    <p>Are you using any 3rd party platform? Frontend stack? Backend stack?</p>
+                </section>
+
+                <section>
+                    <h3>Top-down or bottom up?</h3>
+                    <p>Typically either:</p>
+                    <ul>
+                        <li>Designing a viz to solve a problem (top down)</li>
+                        <li>Refining an existing solution (bottom-up)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Validation approaches</h3>
+                    <img src="img/validation_approaches.jpg"/>
+                    <img src="img/design_thinking.jpg"/>
+                    <p class="smallfont">This is similar to the evaluation / testing phase of UX design thinking, where you iterate on a project.</p>
+                </section>
+
+               <section>
+                    <h3>More UX design thinking tools</h3>
+                    <p>Tools to help with user evaluation / testing</p>
+                    <ul>
+                        <li>"Think aloud" usability evaluation</li>
+                        <li>Heuristic checklist (e.g. <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank">10 usability heuristics</a>, Jakcob Nielson)</li>
+                        <li>Shneiderman’s <a href="http://www.cs.umd.edu/~ben/goldenrules.html" target="_blank">Eight Golden Rules</a></li>
+                    </ul>
+                </section>
+                
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Case studies</h1>
+                    <h3>Stories and experiences</h3>
+                </section>
+
+                <section>
+                    <h2>Domain case studies</h2>
+                    <h4>Maritime Maps / Transport Rail / Real Estate</h4>
+                </section>
+
+                <section>
+                    <h2>Data case studies</h2>
+                    <h4>Cybersecurity / Covid</h4>
+                </section>
+
+                <section>
+                    <h2>Idiom case studies</h2>
+                    <h4>Area to Boxplot / Event visualization</h4>
+                </section>
+
+                <section>
+                    <h2>Tech case studies</h2>
+                    <h4>Fashion start-up / Geospatial start-up</h4>
+                </section>
+
+                <section>
+                    <h2>Project walkthrough</h2>
+                    <h4>Covid network graphs</h4>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
