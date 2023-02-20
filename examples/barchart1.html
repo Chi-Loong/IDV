@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.svgRect {
+    stroke: none;
+    fill: #f00;
+}
+</style>
+</head>
+<body>
+
+<svg id="chart" viewBox="0 0 960 500">
+</svg>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+
+var data = [
+    {student: "Alfred", score: 65},
+    {student: "Bernard", score: 35},
+    {student: "Christine", score: 75}
+];
+
+var margin = {top: 20, right: 20, bottom: 40, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var chart = d3.select("#chart")
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    
+// Add scales
+var xScale = d3.scaleBand()
+    .domain(data.map(function(d) { return d.student; }))
+    .rangeRound([0, width])
+    .padding(0.1);
+
+var yScale = d3.scaleLinear()
+    .domain([0, 100])
+    .rangeRound([height, 0]);
+
+// Add x-axis
+chart.append("g")
+    .attr("class", "axis axis-x")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+
+// Add y-axis
+chart.append("g")
+    .attr("class", "axis axis-y")
+    .call(d3.axisLeft(yScale).ticks(10));
+
+// Append rectangles
+chart.selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("x", function(d) {return xScale(d.student);})
+    .attr("y", function(d) { return yScale(d.score); })
+    .attr("width", function(d) {return xScale.bandwidth();})
+    .attr("height", function(d) { return height - yScale(d.score); })
+    .attr("class", "svgRect");
+
+</script>
+</body>
+</html>
