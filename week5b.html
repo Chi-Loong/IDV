@@ -157,6 +157,7 @@
                     </code></pre>
                     <hr/>
                     <p class="smallfont">Notice the difference between the select and selectAll statements.</p>
+                    <p class="smallfont">It's similar to JQuery (or other modern frameworks) in that you can manipulate any DOM element. Try d3.select("body").style("background-color", "red")</p>					
                 </section>
                 
                 <section>
@@ -176,13 +177,34 @@ hellos.selectAll("p")
                 </section>
 
                 <section>
+                    <h3>Slightly more complex example</h3>
+                    <pre><code>
+let data = [
+    {text: "Hello World 1", size: 10},
+    {text: "Hello World 2", size: 20}
+]
+
+let hellos = d3.select("#hellos");
+
+hellos.selectAll("p")
+.data(data)
+.enter()
+.append("p")
+.style("font-size", d => d.size + "px")
+.text(d => d.text)
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Notice the use of arrow notation (ES6) to write anonymous functions.</p>
+                </section>
+				
+                <section>
                     <h3>Exercise 1</h3>
                     <pre><code>
 let data = [
-    {text: "Hello World 1", size: 10, color: "green"},
-    {text: "Hello World 2", size: 20, color: "blue"},
-    {text: "Hello World 3", size: 30, color: "red"},
-];                  
+    {text: "Hello World 1", size: 10, color: "green", font: "Courier New"},
+    {text: "Hello World 2", size: 20, color: "blue", font: "Arial"},
+    {text: "Hello World 3", size: 30, color: "red", font: "Times New Roman"}
+];
                     </code></pre>
                     <p class="smallfont">Given this dataset, can you print out each individual text, and style the elements?</p>
                 </section>
@@ -195,54 +217,81 @@ hellos.selectAll("p")
 .enter()
 .append("p")
 .text(d => d.text)
+
 .transition()
 .duration((d,i) => i * 1000)
+
 .style("font-size", d => d.size + "px")
 .style("color", d => d.color);
                     </code></pre>
                 </section>
 
-
                 <section>
+                    <section>
                     <h3>Recap: SVG</h3>
                     <h4>Exercise 1b</h4>
                     <p class="smallfont">Remember how to draw shapes using SVGs?</p>
                     <pre><code>
-&lt;svg width="800" height="800">&lt;/svg>
+&lt;svg width="1000" height="1000">&lt;/svg>
 let data = [
-    {x: 400, y: 700, r:150, color: "green"},
-    {x: 100, y: 300, r:50, color: "blue"},
-    {x: 850, y: 400, r:100, color: "red"}
+    {cx: 400, cy: 600, r:150, fill: "green", stroke: "black"},
+    {cx: 100, cy: 200, r:50, fill: "blue", stroke: "purple"},
+    {cx: 650, cy: 100, r:100, fill: "red", stroke: "orange"}
 ]
                     </code></pre>
-                    <p class="smallfont">Given this dataset, can you add these as circles, with the appropriate theming?</p>
+                    <p class="smallfont">Given this dataset, can you add these as circles to the svg, with the appropriate theming?</p>
+                    </section>
+                    
+                    <section>
+                        <h4>Exercise 1b hints</h4>
+                        
+                    <pre><code>
+                    d3.select("svg").selectAll("circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", d => d.cx)
+                    
+                    ...
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Fill in the rest.</p>
+                    <p class="smallfont">Set stroke-width to be 5 so the stroke is more visible.</p>
+                    </section>
+                </section>
+				
+                <section>
+                    <h3>Coordinate systems: Chart to SVG</h3>
+                    <img src="img/chart_to_svg.jpg">
                 </section>
 
                 <section>
                     <h3>Domains and ranges</h3>
-                    <p>How do we map our quantitative data scale to the SVG drawing scale? Use <b>domain / range</b>.</p>
+                    <p class="smallfont">Let's say we want to draw our 1000 x 1000 chart data size onto an SVG that is 600 x 600</p>
+                    <p class="smallfont">How do we map our quantitative data scale to the SVG drawing scale? Use <b>domain / range</b> to automatically calculate the mapping.</p>
                     <pre><code>
 let xScale = d3.scaleLinear()
     .domain([0,1000])
-    .range([0,800]);
+    .range([0,600]);
 
 let yScale = d3.scaleLinear()
     .domain([0,1000])
-    .range([800,0]);
+    .range([600,0]);
                     </code></pre>
                     <hr/>
-                    <p class="smallfont">Note that the y-axis (the range) is typically inverted.</p>
+                    <p class="smallfont">More on scales and domain/range <a href="https://medium.com/@sahilaug/line-graphs-using-d3-drawing-the-axes-8ffc0076a8be" target="_blank">here</a>.</p>
+                    <p class="smallfont">Note that the my yScale is inverted here. Because for standard charts, we draw from the bottom-left up rather than top-left down.</p>
                 </section>
-
+				
                 <section>
                     <h3>Setup Dimensions / Margins</h3>
                     <pre><code>
-let margin = {top: 20, right: 20, bottom: 60, left: 60},
-    width = 800 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+let margin = {top: 20, right: 20, bottom: 40, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
 let chart = d3.select("svg")
-    .attr("width", 800)
-    .attr("height", 800)
+    .attr("width", 600)
+    .attr("height", 600)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 let xScale = d3.scaleLinear()
@@ -256,10 +305,10 @@ chart.selectAll("circle")
     .data(data)
     .enter()
     .append("circle")
-    .attr("cx", d => xScale(d.x))
-    .attr("cy", d => yScale(d.y))
+    .attr("cx", d => xScale(d.cx))
+    .attr("cy", d => yScale(d.cy))
     .attr("r", d => d.r)
-    .attr("fill", d => d.color);
+    .attr("fill", d => d.fill);
                     </code></pre>
                 </section>
 
@@ -331,7 +380,7 @@ let colorScale = d3.scaleLinear()
     })
                     </code></pre>
                     <hr/>
-                    <p class="smallfont">Do note that this event firing is syntax for the latest D3 v6. <a href="https://observablehq.com/@d3/d3v6-migration-guide" target="_blank">Migration docs here</a>. Syntax for event firing is different for previous versions.</p>
+                    <p class="smallfont">Do note that this event firing is syntax for the latest D3 v7. <a href="https://observablehq.com/@d3/d3v6-migration-guide" target="_blank">Migration docs here</a>. Syntax for event firing is different for previous versions.</p>
                 </section>
 
                 <section>
@@ -356,6 +405,14 @@ let colorScale = d3.scaleLinear()
                     <h2>D3 bar chart 2</h2>
                     <p>Transitions. Enter, update and exit design pattern</p>
                     <a href="examples/barchart1.html" target="_blank"><img width="600" src="img/preview2.png"/></a>
+                </section>
+
+                <section>
+                    <h2>Final thoughts</h2>
+                    <p>D3 is probably a little overkill for standard charts, and there are tons of higher-order, easier to use libraries out there.</p>
+					<p>Please note that you can use any charting library to create the charts required for the project and assignments, and D3 is not specifically required.</p>
+                    <p>However, D3 gives you a ton of high-quality design patterns for interaction, data hierarchies and chart types.</p>
+					<p>From unusual chart types / interaction to code art pieces, D3 is useful. Here are <a href="https://showcase.vslashr.com/moire/" target="_blank">some</a> <a href="https://showcase.vslashr.com/virus/" target="_blank">samples</a>.</p>
                 </section>
 
                 <section>
