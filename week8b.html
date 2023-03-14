@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>8b: Choropleth Maps (D3)</title>
+        <title>5b: Choropleth Maps (D3)</title>
 
         <meta name="description" content="02.526 D3: Choropleth Maps">
         <meta name="author" content="Chan Chi-Loong, V/R">
@@ -37,7 +37,7 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">8b: Choropleth Maps in D3</h1>
+                    <h1 class="shadowfont white">5b: Choropleth Maps in D3</h1>
                 </section>
                 
                 <section>
@@ -142,7 +142,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
                     <p>The current projection that we're using is equirectangular.</p>
                     <p>There are many, many projections, and you can find a list in the <a href="https://github.com/d3/d3-geo-projection" target="_blank">D3 projections</a> module.</p>
                     <p>Try something like switching it to orthographic (i.e. globe) or some other projection.</p>
-                    <p>Bl.ocks.org: <a href="https://bl.ocks.org/d3indepth/f7ece0ab9a3df06a8cecd2c0e33e54ef" target="_blank">Projection explorer</a></p>
+                    <p><a href="https://www.geo-projections.com/" target="_blank">Geo-projections.com</a></p>
                 </section>
 
                 <section>
@@ -174,7 +174,6 @@ svg.append("path")
                 <section>
                     <h3>Projections</h3>
                     <h4>Scale, rotate, translate, center</h4>
-                    <p class="smallfont">Bl.ocks.org: <a href="https://bl.ocks.org/d3indepth/f7ece0ab9a3df06a8cecd2c0e33e54ef" target="_blank">Projection explorer</a></p>
                     <pre><code>
 d3.geoEquirectangular()
     .center([-0.118092, 51.509865]) // London's longitude / latitude;
@@ -207,6 +206,7 @@ svg.append("g")
 
                 <section>
                     <h3>Projecting a point</h3>
+                    <p class="smallfont">Recap: D3's projection function takes a longitude, latitude pair and translates it onto your drawing canvas.</p>
                     <pre><code>
 let singapore = [103.851959, 1.290270] // longitude = x, latitude = y
             
@@ -219,20 +219,35 @@ svg.append("circle")
                 </section>
 
                 <section>
-                    <h3>Exercise: Cities</h3>
-                    <pre><code>
-// List of cities
-var cities = [
-    {name: "Singapore", longitude: 103.851959, latitude: 1.290270},
-    {name: "London", longitude: -0.118092, latitude: 51.509865},
-    {name: "Tokyo", longitude: 139.839478, latitude: 35.652832}
-]
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">Given this list of cities, can you add them to the map as small coloured circles?</p>
-                    <p class="smallfont">Create a SVG group called cities, and put them there.</p>
+                    <section>
+                        <h3>Exercise: Cities</h3>
+                        <pre><code>
+    // List of cities
+    let cities = [
+        {name: "Singapore", longitude: 103.851959, latitude: 1.290270},
+        {name: "London", longitude: -0.118092, latitude: 51.509865},
+        {name: "Tokyo", longitude: 139.839478, latitude: 35.652832}
+    ]
+                        </code></pre>
+                        <hr/>
+                        <p class="smallfont">Given this list of cities, can you add them to the map as small coloured circles?</p>
+                        <p class="smallfont">Create a group called cities, and put them there.</p>
+                    </section>
+                    <section>
+                        <pre><code>
+    svg.append("g")
+      .attr("id", "cities")
+      .selectAll("circle")
+      .data(cities)
+      .enter()
+      .append("circle")
+      .attr("cx", d => projection([d.longitude, d.latitude])[0])
+      .attr("cy", d => projection([d.longitude, d.latitude])[1])
+      .attr("r", 5)
+      .attr("fill", "yellow");
+                        </code></pre>
+                    </section>
                 </section>
-
 
                 <section>
                     <h3>Animate the map</h3>
