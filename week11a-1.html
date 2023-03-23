@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>10a: Chart Types - Hierarchical / network data</title>
+
+        <meta name="description" content="02.526 Chart Types - hierarchical / network data">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <style>
+tr:nth-child(odd) {
+    background: #777;
+}
+
+tr:nth-child(even) {
+    background: #333;
+}
+
+.reveal td {
+  font-size: 0.8em;
+}
+        </style>
+        
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Chart types</h1>
+                    <h3>10a: Hierarchical / network data</h3>
+                </section>
+
+                <section>
+                    <h3>Recap: How to design viz idioms</h3>
+                    <img src="img/how-idioms.jpg"/>
+                </section>
+
+                <section>
+                    <h3>Recap: Data Types</h3>
+                    <ul>
+                        <li>Tabular data</li>
+                        <li>Networks</li>
+                        <li>Geographic / spatial</li>
+                        <li>Fields</li>
+                        <li>Hierarchical</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>D3 Graph Gallery</h3>
+                    <a href="https://www.d3-graph-gallery.com/" target="_blank"><img src="img/d3-graph-gallery.jpg" width="400"/></a>
+                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, by Yan Holtz</p>
+                    <p><a href="https://www.data-to-viz.com/" target="_blank">Data to Viz</a></p>
+                    <p><a href="https://flowingdata.com/chart-types/" target="_blank">Flowing Data: Chart Types</a></p>
+                </section>
+                
+                <section>
+                    <h3>Hierarchical data</h3>
+                    <p>A classic example is <a href="https://github.com/d3/d3-hierarchy/blob/master/test/data/flare.json" target="_blank">flare.json</a>, which is JSON with a tree-like structure.</p>
+                    <hr/>
+                    <p class="smallfont">Flare.json is commonly seen in D3 examples. This dataset is based on an ancestor of D3.</p>
+                    <p class="smallfont">Each leaf node represents a source file while each internal node represents a folder. The leaf node’s value is the size of the file in bytes.</p>
+                    <p class="smallfont"><a href="https://treevis.net/">Treevis.net</a> A Visual Bibliography of Tree Visualization 2.0</p>
+                    <p class="smallfont"><a href="https://flourish.studio/blog/hierarchy-diagrams-sunburst-packed-circle/">How to visualize hierarchical data: zoomable sunbursts, packed circles and treemaps</a>, Flourish Studio</p>
+                    
+                </section>
+                
+                <section>
+                    <h3>Idiom: Treemap</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Area marks and containment, with rectilinear layout.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/treemap.html" target="_blank">D3 Graph Gallery - Treemap</a></p>
+                    <p class="smallfont"><a href="https://observablehq.com/@d3/treemap" target="_blank">Treemap</a>, ObservableHQ, flare.json </p>
+                    <p class="smallfont"><a href="https://treemapart.wordpress.com/" target="_blank">Treemap Art</a>, Ben Schneiderman</p>
+                    <p class="smallfont"><a href="https://www.straitstimes.com/multimedia/graphics/2021/12/millennial-hdb-design-singapore/index.html" target="_blank">How have Singaporean homes changed over the decades?</a>, ST (Proportional map)</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Sunburst / Icicle</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Marks laid out in a circular or rectangular fashion.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://observablehq.com/@d3/zoomable-sunburst" target="_blank">Sunburst</a>, ObservableHQ, flare.json </p>
+                    <p><a href="https://observablehq.com/@d3/icicle" target="_blank">Icicle</a>, ObservableHQ, flare.json </p>
+                    <p><a href="https://www.visualcapitalist.com/cp/a-global-breakdown-of-greenhouse-gas-emissions-by-sector/" target="_blank">ENERGYA Global Breakdown of Greenhouse Gas Emissions by Sector</a>, World in Data</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Packed circles</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Area marks and containment, with circular layout.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/circularpacking.html" target="_blank">D3 Graph Gallery - Packed Circles</a></p>
+                    <p class="smallfont"><a href="https://observablehq.com/@d3/zoomable-circle-packing" target="_blank">Zoomable packed circles</a>, ObservableHQ, flare.json </p>
+                    <p class="smallfont"><a href="https://viz.vslashr.com/uiwork/circlepacking.html" target="_blank">Circle Packing UI</a>, V/R</p>
+                    <p class="smallfont">Example: <a href="https://kontinentalist.com/stories/sexual-assault-and-abuse-in-singapore-need-more-than-the-law" target="_blank">Sexual violence in Singapore: a crisis</a>, Kontinentalist</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Dendogram</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Tree</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Tree-like structure.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Query attributes at leaf nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/dendrogram.html" target="_blank">D3 Graph Gallery - Dendogram</a></p>
+                    <p><a href="https://observablehq.com/@d3/cluster-dendrogram" target="_blank">Cluster Dendogram</a>, ObservableHQ, flare.json </p>
+                    <p><a href="http://archive.nytimes.com/www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html" target="_blank">Paths to the White House</a>, NY Times</p>
+                </section>
+
+                <section>
+                    <h3>Network</h3>
+                    <img src="img/arrange_networks.jpg"/>
+                </section>
+
+                <section>
+                    <h3>Network data</h3>
+                    <img src="img/node_json_data.jpg"/>
+                    <p>Recap: A collection of nodes and links.</p>
+                </section>
+
+                <section>
+                    <h3>Idiom: Force directed layout</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Network. Derived: cluster hierarchy atop original network</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Point marks for nodes, connection marks for links.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Explore topology, locate paths and clusters.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Nodes: Hundreds. Links: Hundreds. Node/link density: L < 4N</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/network.html" target="_blank">D3 Graph Gallery - Force diagram</a></p>
+                    <p><a href="https://covid.viz.sg/" target="_blank">Covid.viz.sg</a></p>
+                    <p>Bl.ocks.org: <a href="https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03" target="_blank">D3-force testing ground</a>, Steve Haroz</p>
+                    <p>Bl.ocks.org: <a href="https://bl.ocks.org/mbostock/1062288" target="_blank">Collapsible force layout</a>, Mike Bostock</p>
+                </section>
+                
+                <section>
+                    <h3>Idiom: Adjacency Matrix</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Network. Derived data &mdash; table: network values as keys, link status between two nodes as values.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Area marks in 2D matrix alignment.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Small area marks allow for high information density to inspect network (clustering, frequency)</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Nodes: 1,000. Links: a million</td>
+                    </tr>
+                    </table>
+                    <p>Compare: <a href="https://bost.ocks.org/mike/miserables/" target="_blank">Adjacency matrix</a> vs <a href="https://observablehq.com/@d3/force-directed-graph" target="_blank">force diagram</a>, Mike Bostock, Les Miserables dataset.</p>
+                </section>
+                
+                <section>
+                    <h3>Idiom: Chord Diagram</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Network, where you want to show many-to-many relationships from nodes to other nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Radial arcs between nodes to show relationships.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>See holistic overview of relationships.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Not so many nodes that the chart gets too messy.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/chord" target="_blank">D3 Graph Gallery - Chord Diagram</a></p>
+                    <p><a href="https://www.data-to-viz.com/graph/chord.html" target="_blank">Data to Viz Chord Diagram</a></p>
+                    <p><a href="https://observablehq.com/@d3/chord-diagram" target="_blank">Chord Diagram</a>, ObservableHQ</p>
+                    <p><a href="https://www.visualcapitalist.com/visualizing-ukraines-top-trading-partners-and-products/" target="_blank">Visualizing Ukraine’s Top Trading Partners and Products</a>, Harrison Schell</p>
+                    <p><a href="http://circos.ca/" target="_blank">Circos.ca</a></p>
+                </section>
+                
+                <section>
+                    <h3>Idiom: Sankey</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Network, where you want to show paths (and especially a quantitative value in the links) from one class of input nodes to a class of output nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Point marks for nodes, scaled connection bands for links.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>See holistic overview of paths from the inputs to the outputs.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Not so many nodes that the chart gets too messy.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/sankey.html" target="_blank">D3 Graph Gallery - Sankey</a></p>
+                    <p><a href="https://observablehq.com/@d3/sankey-diagram" target="_blank">Sankey</a>, ObservableHQ</p>
+                    <p><a href="https://www.washingtonpost.com/world/interactive/2021/africa-cities/" target="_blank">Africa's Rising Cities</a>, Washington Post</p>
+                    <p><a href="https://www.straitstimes.com/multimedia/graphics/2021/12/covid19-travel-flights/index.html" target="_blank">Flying during Covid-19: When will Singapore’s air travel take off again?</a>, Straits Times</p>
+                </section>
+                
+                <section>
+                    <h3>Idiom: Arc Diagram</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Network. Useful if there is an ordering of nodes that makes the layout tidy.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Point marks for nodes, arcs for links.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Explore topology, locate paths and clusters.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Nodes: Hundreds. Links: Hundreds. Node/link density: L < 4N</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/arc" target="_blank">D3 Graph Gallery - Arc Diagram</a></p>
+                    <p><a href="https://observablehq.com/@d3/arc-diagram" target="_blank">Arc Diagram</a>, ObservableHQ</p>
+                </section>
+                
+                <section>
+                    <h3>Idiom: Edge Bundling</h3>
+                    <table width="100%">
+                    <tr>
+                        <td><p>What: Data</p></td>
+                        <td><p>Network of adjacency relationships organized in a hierarchy.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>How: Encoding</p></td>
+                        <td><p>Point marks for nodes, arcs for links.</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Why: Task</p></td>
+                        <td><p>Reduces visual clutter and also visualizes implicit adjacency edges between parent nodes.</p></td>
+                    </tr>
+                    <tr>
+                        <td>Scale</td>
+                        <td>Leaf nodes: thousands. Links: thousands.</td>
+                    </tr>
+                    </table>
+                    <p><a href="https://www.d3-graph-gallery.com/bundle" target="_blank">D3 Graph Gallery - Bundle</a></p>
+                    <p><a href="https://www.data-to-viz.com/graph/edge_bundling.html" target="_blank">Edge Bundling</a>, Data to Viz</p>
+                    <p><a href="https://observablehq.com/@d3/hierarchical-edge-bundling" target="_blank">Hierarchical Edge Bundling</a>, ObservableHQ</p>
+                    <p><a href="http://seekshreyas.github.io/beerviz/" target="_blank">Feeling Thirsty?</a>, BeerViz</p>
+                </section>
+                
+                <section>
+                    <h2>Questions?</h2>
+                    <div class="plain">
+                        <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
+                    </div>
+                    <p><small>Chi-Loong | V/R</small></p>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
