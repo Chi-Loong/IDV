@@ -35,7 +35,8 @@
             <div class="slides">
 
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Bootamp Day 1</h1>
+                    <h1 class="shadowfont white">Data collection</h1>
+                    <h3>Bootcamp day 1</h3>
                 </section>
 
                 <section>
@@ -73,6 +74,24 @@
                     <p>And thus, especially for your masters (MUSPP) which is not technically focused, the way I look at teaching tech is from a holistic perspective.</p>
                     <p>From low code / no code cloud platforms to programming languages / frameworks, what is important is exposure and a feel of what can be done.</p>
                 </section>
+                
+                <section>
+                    <h2>Survey time</h2>
+                    <p>Please complete this <a href="https://www.surveymonkey.com/r/R8L9XVS" target="_blank">survey</a> if you have not done it.</p>
+                    <p><a href="https://click.outbound.surveymonkey.com/f/a/idsOIlsrtEnUDhO2pdU2GA~~/AAAAAQA~/RgRngpwuP0TCaHR0cHM6Ly93d3cuc3VydmV5bW9ua2V5LmNvbS9zdW1tYXJ5L2lTMW9JeXFLUURVWUdqYkhBNXBNaDhFXzJCT2FXWlp2ZmplVmgyZTNid0pETV8zRD90cl9jdGFfbnVtYmVyPTEmdHJfbGlua19uYW1lPXNlZV9yZXNwb25zZXMmdXRfc291cmNlPWVtYWlsJnV0X3NvdXJjZTI9ZGFpbHlfc3VtbWFyeSZ1dF9zb3VyY2UzPXNlZV9yZXNwb25zZXNXDHN1cnZleW1vbmtleUIKZZ0uF6BlUGtZ-VIUY2hpbG9vbmdAdnNsYXNoci5jb21YBAAAAGY~" target="_blank">Survey results</a></p>
+                </section>
+
+                <section>
+                    <h2>Coding</h2>
+                    <p>It will take weeks to go through programming fundamentals.</p>
+                    <ul>
+                    <li>Conditionals, loops, variables</li>
+                    <li>Objects, arrays</li>
+                    <li>Functions and scoping</li>
+                    <li>Debugging</li>
+                    </ul>
+                    <p>That is <i>not</i> the scope of this course.</p>
+                </section>
 
                 <section>
                     <h2>Expectations</h2>
@@ -83,12 +102,112 @@
                 </section>
                 
                 <section>
-                    <h2><a href="https://www.surveymonkey.com/r/R8L9XVS" target="_blank">Survey time</a></h2>
-                    <p>Please complete this survey if you have not done it.</p>
+                    <h2>Javascript</h2>
+                    <p>I will only very lightly touch on coding, focusing more on low code / no code tools.</p>
+                    <p>When I code, my language of choice is <b>javascript</b>, because it can be used very simply without any tooling, plus it is native to working with web data.</p>
+                    <p>Other languages like Python or R typically need more tooling setup, and the use case is different (data science, machine learning).</p>
+                    <p class="smallfont"><a href="https://javascript.info/">Comprehensive Resource: javascript.info</a></p>
+                </section>
+                       
+                <section>
+                    <h2>Editor</h2>
+                    <p>For an editor I will often be using <b>notepad++</b>. I am old-school and like simple editors.</p>
+                    <p>But I can suggest <b>Visual Studio Code</b>(by Microsoft) because it works well with things like Github, which Microsoft has bought.</p>
+                    <p>As long as you have any text editor (atom, emacs, vi, etc.), it is sufficient.</p>
                 </section>
                        
                 <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Data : APIs</h1>
+                    <h1 class="shadowfont white">Data formats and APIs</h1>
+                </section>
+
+                <section>
+                    <h2>CSV</h2>
+                    <p>CSV (comma separated values) is a text-based file format.</p>
+                    <p>As compared to binary-file format XSL (Excel) files, CSV is just text and can be opened up with any text editor.</p>
+                    <p>Example of <a href="data/data2023.csv" target="_blank">CSV file</a></p>
+                </section>
+
+                <section>
+                    <h2>JSON</h2>
+                    <p>JSON (Javascript Object Notation) is also a text-based file format.</p>
+                    <p>It is structured data in javascript notation. Can encapsulate hierarchical data in a tree-like structure rather than just a flat table.</p>
+                    <p>Example of <a href="data/flare.json" target="_blank">JSON file</a></p>
+                </section>
+
+                <section>
+                    <h2>JSON, continued</h2>
+                    <p>JSON comprises of <i>key-value pairs</i>, and is a combination of objects and arrays to describe a data structure.</p>
+                    <ul>
+                    <li>Objects are denoted by curly braces <b>{ }</b></li>
+                    <li>Arrays by straight braces <b>[ ]</b></li>
+                    </ul>
+                    <p>Use online JSON validators to see double check structure.</p>
+                </section>
+
+                <section>
+                    <h2>APIs</h2>
+                    <p>APIs are <i>application programming interfaces</i>. They are basically how software "talk" to each other.</p>
+                    <p>A large percentange of the web use JSON as the data format for exchanging information.</p>
+                    <p>For example, data.gov.sg <a href="https://api.data.gov.sg/v1/environment/pm25" target="_blank">API</a> on hourly PM2.5 readings (<a href="https://beta.data.gov.sg/collections/1394/datasets/d_9b2d180c92c4a3c45b5c671937bd1b5d/view" target="_blank">Schema</a>)</p>
+                </section>
+
+                <section>
+                    <h2>Getting API data (non code)</h2>
+                    <p>Some APIs are more complicated and require you to send headers or authenticate.</p>
+                    <p>There are tons and tons of tools out there that can do this that we'll discuss later.</p>
+                </section>
+
+                <section>
+                    <h2>HTML</h2>
+                    <p>A very, very simple basic HTML template.</p>
+                    <pre><code>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+  &lt;meta charset="UTF-8">
+  &lt;title>Hello World&lt;/title>
+  &lt;style>&lt;/style>
+&lt;/head>
+&lt;body>
+  &lt;h1>Hello World!&lt;/h1>
+  &lt;script>&lt;/script>
+&lt;/body>
+&lt;/html>
+                    </code></pre>
+                    <p class="smallfont">Hopefully you have seen this before.</p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>JS: Fetch</h2>
+                        <p class="smallfont">Simple code snippet for HTML fetch:</p>
+                        <pre><code>
+    fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
+      .then(response => response.json())
+      .then(data => console.log(data))
+                        </code></pre>
+                        <p class="smallfont">Going to traverse the JSON</p>
+                    </section>
+                    
+                    <section>
+                        <h2>Python: requests</h2>
+                        <p class="smallfont">Simple code snippet for requests:</p>
+                        <pre><code>
+    import requests
+
+    r = requests.get("https://api.data.gov.sg/v1/transport/carpark-availability")
+    print(r.json())
+                        
+                        </code></pre>
+                        <p class="smallfont">Not going to go through Python's tooling</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Example Youtube: API</h2>
+                    <p>Often APIs are a lot more complicated, e.g. <a href="https://developers.google.com/youtube/v3/docs/search/list" target="_blank">Youtube's API</a>.</p>
+                    <p>One of the easiest method to test is using <b>curl</b>, a command line tool in Windows and Linux.</p>
+                    <p>You can of course access the API using code, or even cloud-based tools like Swagger and Postbox (more for API testing)</p>
                 </section>
 
                 <section data-state="alert" data-transition="zoom">
@@ -109,7 +228,7 @@
                 <section>
                     <h2>Example 2: Property Listings</h2>
                     <p>Let's go to simpler examples.</p>
-                    <p>If it was a simple <a href="https://schoolbell.sg/jc-cut-off-points/ target="_blank">table</a>, collecting it is easy. You could in fact cut and paste the text into an editor., and use the editor to format.</p>
+                    <p>If it was a simple <a href="https://schoolbell.sg/jc-cut-off-points/ target="_blank">table</a>, collecting it is easy. You could in fact cut and paste the text into an editor, and use the editor to format.</p>
                     <p>But if I asked you to collect data from a more complicated example, would you know how to do so?</p>
                     <p><a href="https://www.propertylimbrothers.com/listings/?type=HDB" target="_blank">Property Lim Brothers</a></p>
                 </section>
@@ -117,22 +236,27 @@
                 <section>
                     <h2>ParseHub</h2>
                     <p><a href="https://www.parsehub.com/" target="_blank">ParseHub</a> is only one of many <a href="https://nanonets.com/blog/top-web-scraping-tools/" target="_blank">cloud-based low code/no code scraping tools</a> out there that you can use to scrape websites.</p>
-                    <p>Please download a free version of the ParseHub</p>
+                    <p>Please download a free version of the ParseHub.</p>
                 </section>
                 
                 <section>
                     <h2>ParseHub 2</h2>
-                    <p>ParseHub has an extremely well thought out beautiful tutorial (and user interface) on how to use their tool to scrape a mock movie listing site.</p>
+                    <p>ParseHub has an extremely well thought out beautiful tutorial (and user interface) on how to use their tool to scrape their mock movie listing site.</p>
                     <p>Please go through this.</p>
                 </section>
 
                 <section>
                     <h2>Putting it together</h2>
-                    <p>And now, we'll go back to the previous examples and scrape the sites.</p>
+                    <p>And now, we'll go back to the previous examples and scrape the previous sites.</p>
                 </section>
-                
-                <section data-state="alert" data-transition="zoom">
-                    <h1 class="shadowfont white">Data manipulation</h1>
+
+                <section>
+                    <h2>Code vs low code/no code</h2>
+                    <ul>
+                    <li>coding is way more powerful, but requires you to understand the code structure of the site</li>
+                    <li>the more javascript the webpage has, the more likely low code tools will run into issues</li>
+                    <li>server setup and scheduling - you want to pass off as typical browsing traffic</li>
+                    </ul>
                 </section>
 
                 <section>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Code bootcamp exercise</title>
+    <style></style>
+</head>
+<body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+// Load external data and boot
+Promise.all([d3.json("sgmap.json"), d3.csv("population2022.csv")]).then(data => {
+
+    let mapData = data[0].features;
+    let popData = data[1];
+
+    console.log(mapData);
+    console.log(popData);
+
+    mapData.forEach(d => {
+      //console.log(d.properties.Name);
+      let subzone = popData.find(e => e.Subzone.toUpperCase() == d.properties.Name);
+      if (subzone != undefined) {
+        d.properties.Population = parseInt(subzone.Population);
+      } else {
+        d.properties.Population = 0;
+      }
+    })
+
+    console.log(mapData);
+
+})
+
+</script>
+
+</body>
+</html>
