@@ -40,6 +40,137 @@
                 </section>
 
                 <section>
+                    <h2>What's Git</h2>
+                    <p>Git is a mature, actively maintained open source revision control system used by thousands of developers around the world.</p>
+                    <p>Created by <a href="https://en.wikipedia.org/wiki/Linus_Torvalds" target="_blank">Linus Torvalds</a>, the father of Linux.</p>
+                </section>
+
+                <section>
+                    <h2>Why Git</h2>
+                    <p>Because in a real-world scenario you don't code by yourself.</p>
+                    <p>You need tools in a team to efficiently collaborate on code.</p>
+                    <p>Git allows you to rollback changes, branch out on different forks to test code ideas, whilst making it easy for people to share code.</p>
+                </section>
+
+                <section>
+                    <h2>GitHub</h2>
+                    <p>Git repository hosters like GitHub also serve as a cloud-based backup for your code, and also to easily deploy them.</p>
+                    <p>There are tons of other Git hosters like Bitbucket, GitLab amongst <a href="https://www.git-tower.com/blog/git-hosting-services-compared/" target="_blank">many others</a>.</p>
+                </section>
+                
+                <section>
+                    <h2>GitHub Account</h2>
+                    <p><a href="https://github.com/" target="_blank">GitHub</a> is one of the most popular free Git repository sites (now owned by Microsoft)</p>
+                    <p>It is a sort of Linked-in for developers, but also way more than that.</p>
+                    <p>For this bootcamp we'll be using GitHub to show how to collaborate and deploy projects.</p>
+                    <p>Please go to the web platform and sign up for an account.</p>
+                </section>
+                
+                <section>
+                    <h2>Git command line</h2>
+                    <p>For your local development machine, you can install Git for the <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">command line</a>.</p>
+                    <p>The Git functions that you need to know are probably just <b>clone</b>, <b>fork</b>, <b>pull</b>, <b>push</b> and <b>commit</b>.</p>
+                    <p>However, in this bootcamp we're going to use an even easier to use higher order GUI (graphical user interface).</p>
+                </section>
+                
+                <section>
+                    <h2>GitHub Desktop</h2>
+                    <p>We'll be using <a href="https://desktop.github.com/" target="_blank">Github desktop</a>, just one of many GUI Git clients out there.</p>
+                    <p>GitHub Desktop integrates well with Visual Studio Code editor. Please download a version of GitHub desktop.</p>
+                    <p>Documentation for GitHub Desktop is excellent, and you can find it <a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop">here</a>.</p>
+                </section>
+
+                <section>
+                    <h2>Cloning a repository</h2>
+                    <p>The bootcamp materials and my visualization course is in a <a href="https://github.com/Chi-Loong/HASS02.526" target="_blank">publicly accessible GitHub repo</a>.</p>
+                    <p>Going to step through on how to clone this using GitHub desktop.</p>
+                </section>
+                
+                <section>
+                    <h3>Why clone instead of download?</h3>
+                    <p>Because if the repository is constantly updated and worked upon, you will get a notification that there are new commits or changes to the project.</p>
+                    <p>This might be useful if you're tracking a project or repository that is constantly updated (like my module during the semester!)</p>
+                    <p>Another common use case is if you're working with other people on a project together.</p>
+                </section>
+                
+                <section>
+                    <h2>Permissions</h2>
+                    <p>You can download and <b>read</b> from this open repo.</p>
+                    <p>You do not have <b>write</b> permisions though to commit to and change the repo.</p>
+                    <p>We'll step through a collaborative project later, but let's tackle a solo repo first.</p>
+                </section>
+                
+                <section>
+                    <h2>Test project</h2>
+                    <p>Create a test repo on the GitHub platform and clone it.</p>
+                    <p>On your local machine, create an text file called helloworld.txt and commit this to the cloud version of your repo.</p>
+                    <p>Stepping through the nuances of the local client.</p>
+                </section>
+
+                <section>
+                    <h2>Exercise</h2>
+                    <ul>
+                    <li>Partner up with a friend.</p>
+                    <li>Change permissions on your project repo and invite this friend with write permissions.</li>
+                    <li>You should get an email saying you got an invite. Clone your friend's repo.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Exercise 2</h2>
+                    <ul>
+                    <li>Commit a text file with your name into your own repo.</p>
+                    <li>Commit a text file with your name into your friend's repo.</li>
+                    <li>Your repo (and your friend's repo) should have at least 2 text files. One created by you, and one created by him / her.</li>
+                    <li>If you commit, push and pull correctly, you should see this across both your local and cloud versions.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Conflict resolution</h2>
+                    <p>As long as you work on different files, Git automatically merges them into the repo.</p>
+                    <p>But there is not one version of truth - what if two of you work on the same file and push different content?</p>
+                    <p>Let's step through conflict merge resolution.</p>
+                </section>
+                
+                <section>
+                    <h2>Git Pages</h2>
+                    <p>GitHub allows deployment of projects using their feature Git Pages.</p>
+                    <p>This is just a webhook that does automatic deployment after commit.</p>
+                    <p>There's lots you can do with webhooks - trigger scripts to run servers, do testing, etc.</p>
+                    <p>This is known as <i>CI/CD</i>, or continuous integration / continuous deployment in the industry parlance.</p>
+                </section>
+                
+                <section>
+                    <h2>Publishing exercise</h2>
+                    <p>Let's try a simple version!</p>
+                    <ul>
+                    <li>Create a simple HTML file in your test repo (you can use <a href="camp1.html#/20" target="_blank">this</a> on Day 1) and name it <i>index.html</i></li>
+                    <li>Commit this to the root of the main branch</li>
+                    <li>Turn on the Git Pages function</li>
+                    </ul>
+                    <hr/>
+                    <p class="smallfont">Deployment of projects is one main reason why I wanted to use GitHub, beyond a plethora of other good ones.</p>
+                </section>
+                
+                <section>
+                    <h2>Forking</h2>
+                    <p>Another really useful function is forking branches from the main code tree.</p>
+                    <p>The idea is that you can create a walled fork of the tree to try out new ideas. Now when people work on the main trunk or other branches, your fork is not affected.</p>
+                    <p>Eventually the idea is that you merge the fork back to the main trunk when ready.</p>
+                    <hr/>
+                    <p class="smallfont">All these features become a lot more useful when you scale developer teams.</p>
+                </section>
+                
+                <section>
+                    <h2>Alternative Git UIs</h2>
+                    <p>I also like <a href="https://www.sourcetreeapp.com/">Sourcetree</a>, which is another free Git GUI client.</p>
+                    <p>It has some useful functions, notably a graph view of the repo changes.</p>
+                    <img src="img/hero-mac-screenshot.png"/>
+                    <p class="smallfont">There are tons of other Git GUIs like TortoiseGit, GitKraken, etc. Pick one that you like!</p>
+                </section>
+
+                <section>
                     <h2>Questions?</h2>
                     <div class="plain">
                         <div class="rotate-icon"><a href="http://www.vslashr.com"><img width="100" src="img/VslashR_logo_white.svg"></a></div>
