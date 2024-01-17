@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Choropleth Tutorial - Leaflet</title>
+    
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .leaflet-container {
+            height: 400px;
+            width: 600px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+
+    <style>#map { width: 800px; height: 500px; }
+.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
+</head>
+<body>
+
+<div id='map'></div>
+<script type="text/javascript">
+
+Promise.all([d3.json("sgmap.json"), d3.csv("population2022.csv")]).then(data => {
+
+    let mapData = data[0];
+    let popData = data[1];
+
+    // Merge pop data with map data
+    mapData.features.forEach(d => {
+      let subzone = popData.find(e => e.Subzone.toUpperCase() == d.properties.Name);
+      d.properties.popdata = (subzone != undefined) ? parseInt(subzone.Population) : 0;
+    })
+
+    console.log(mapData);
+    
+    const map = L.map('map').setView([1.35, 103.851959], 11);
+
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // control that shows state info on hover
+    const info = L.control();
+
+    info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
+    };
+
+    info.update = function (props) {
+        const contents = props ? `<b>${props.Name}</b><br />${d3.format(",")(props.popdata)} people` : 'Hover over a subdistrict';
+        this._div.innerHTML = `<h4>SG Population</h4>${contents}`;
+    };
+
+    info.addTo(map);
+
+
+    // get color depending on population density value
+    function getColor(d) {
+        return d > 35000 ? '#800026' :
+            d > 30000  ? '#BD0026' :
+            d > 25000  ? '#E31A1C' :
+            d > 20000  ? '#FC4E2A' :
+            d > 15000   ? '#FD8D3C' :
+            d > 10000   ? '#FEB24C' :
+            d > 5000   ? '#FED976' :
+            d > 10   ? '#FFEDA0' : '#333';
+    }
+
+    function style(feature) {
+        return {
+            weight: 1,
+            opacity: 1,
+            color: 'grey',
+            fillOpacity: 0.7,
+            fillColor: getColor(feature.properties.popdata)
+        };
+    }
+
+    function highlightFeature(e) {
+        const layer = e.target;
+
+        layer.setStyle({
+            weight: 5,
+            color: '#666',
+            dashArray: '',
+            fillOpacity: 0.7
+        });
+
+        layer.bringToFront();
+
+        info.update(layer.feature.properties);
+    }
+
+    /* global statesData */
+    const geojson = L.geoJson(mapData, {
+        style,
+        onEachFeature
+    }).addTo(map);
+
+    function resetHighlight(e) {
+        geojson.resetStyle(e.target);
+        info.update();
+    }
+
+    function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+    }
+
+    function onEachFeature(feature, layer) {
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+        });
+    }
+
+    const legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function (map) {
+
+        const div = L.DomUtil.create('div', 'info legend');
+        const grades = [0, 10, 5000, 10000, 15000, 20000, 25000, 30000, 35000];
+        const labels = [];
+        let from, to;
+
+        for (let i = 0; i < grades.length; i++) {
+            from = grades[i];
+            to = grades[i + 1];
+
+            labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`);
+        }
+
+        div.innerHTML = labels.join('<br>');
+        return div;
+    };
+
+    legend.addTo(map);
+})
+</script>
+
+
+
+</body>
+</html>
