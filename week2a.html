@@ -110,16 +110,17 @@
                     <p><b>Position / Regions</b></p>
                     <ul>
                         <li>A position is a location in space (typically 2D or 3D)</li>
-                        <li>May be subject to projections</li>
+                        <li>May be subject to <a href="https://observablehq.com/@d3/projection-transitions" target="_blank">projections</a></li>
                         <li>E.g. a district on a map, a 3D architectural diagram</li>
                     </ul>
                     <p><b>Fields / Grids</b></p>
                     <ul>
                         <li>A <a href="https://en.wikipedia.org/wiki/Regular_grid" target="_blank">grid</a> specifies how data is sampled geometrically / topologically</li>
                         <li>Necessary for sampling continuous data</li>
-                        <li>E.g. Earth map tiling, CT map scans</li>
+                        <li>E.g. <a href="https://maps.google.com/" target="_blank">Earth map</a> tiling, CT map scans</li>
                     </ul>
-                    <p class="smallfont"><a href="https://stackoverflow.com/questions/15965166/what-are-the-lengths-of-location-coordinates-latitude-and-longitude" target="_blank">Orders of magnitude (lat/lng)</a></>
+                    <hr/>
+                    <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Decimal_degrees" target="_blank">Decimal degree precision</a></>
                 </section>
                 
                 <section>
@@ -130,9 +131,6 @@
                         <li>A <b>list</b> is a group of items with a specified ordering.</li>
                         <li>A <b>cluster</b> is a grouping based on attribute similarity, where items within a cluster are more similar to each other than to ones in another cluster.</li>
                     </ul>
-                    <hr/>
-                    <p class="smallfont">Sample <a href="https://observablehq.com/@d3/clustered-bubbles" target="_blank">cluster force diagram (circles)</a> and <a href="https://showcase.vslashr.com/virus/" target="_blank">simulation (time cluster)</a></p>
-                    <p class="smallfont">We'll talk more about specific visualization idioms in a later lecture.</p>
                 </section>
 
                 <section>
@@ -145,18 +143,23 @@
                     <p>More on <a href="https://github.com/d3/d3-hierarchy" target="_blank">hierarchies</a> in D3</p>
                     <p>Hierarchical datasets lend themselves very well to visualizations like dendrograms, trees, treemaps, packed circles.</p>
                     <hr/>
-                    <p class="smallfont">Sample <a href="https://observablehq.com/@d3/cluster" target="_blank">dendrogram</a> and <a href="https://observablehq.com/@d3/zoomable-circle-packing">packed circle</a> (flare.json)</p>
+                    <p class="smallfont">Sample <a href="https://observablehq.com/@d3/cluster" target="_blank">dendrogram</a> and <a href="https://observablehq.com/@d3/zoomable-circle-packing" target="_blank">packed circle</a> (flare.json)</p>
                     <p class="smallfont">We'll talk more about specific visualization idioms in a later lecture.</p>
                 </section>
 
                 <section>
                     <h2>Data scales</h2>
-                    <p>Categorical (nominal) vs quantitative (interval/ratio)</p>
-                    <img src="img/data_scales.jpg"/>
-                    <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Level_of_measurement" target="_blank">Levels of measurement</a> (or scale of measure, or data scales), a proposed typology by psychologist Stanley Smith Stevens(1906-1973). Still widely used framework, esp. now in data science.</p>
-                    <p class="smallfont">More reading: <a href="https://www.scribbr.com/statistics/levels-of-measurement/" target="_blank">Levels of measurement: Nominal, ordinal, interval, ratio</a>, Scribbr</p>
-                    <p class="smallfont">More reading: <a href="https://www.kyleads.com/blog/nominal-ordinal-interval-ratio-scales/" target="_blank">Levels of measurement: Nominal, ordinal, interval, ratio scales</a>, Kyleads</p>
+                    <img src="img/four-levels-of-measurement-data.jpg"/ width="800" />
+                    <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Level_of_measurement" target="_blank">Levels of measurement</a> (or scale of measure, or data scales), a proposed typology by psychologist Stanley Smith Stevens(1906-1973). Still widely used framework, especially in data science.</p>
                 </section>
+
+                <section>
+                    <h2>Data scales</h2>
+                    <img src="img/data_scales.jpg"/ width="800" />
+                    <p class="smallfont">More reading: <a href="https://careerfoundry.com/en/blog/data-analytics/data-levels-of-measurement/" target="_blank">4 Levels of measurement: Nominal, ordinal, interval, ratio</a>, Careerfoundry</p>
+                    <p class="smallfont">More reading: <a href="https://www.scribbr.com/statistics/levels-of-measurement/" target="_blank">Levels of measurement: Nominal, ordinal, interval, ratio</a>, Scribbr</p>
+                </section>
+
 
                 <section>
                     <h3>Why are data scales important?</h3>
@@ -217,10 +220,12 @@
 
                 <section>
                     <h3>Elections example</h3>
-                    <a href="https://elections.viz.sg/" target="_blank"><img src="img/SGelections.jpg"></a>
-                    <p>Elections SG2020</p>
                     <a href="https://www.eld.gov.sg/elections_map_electoral.html" target="_blank"><img src="img/eld_bad.jpg"></a>
                     <p>Electoral Divisions</p>
+                    <a href="https://elections.viz.sg/" target="_blank"><img src="img/SGelections.jpg"></a>
+                    <p>Elections SG2020</p>
+                    <hr/>
+                    <p class="smallfont">Viz not working 100% because of <a href="img/mapbox_elections.jpg" target="_blank">mapbox API issues</a></p>
                 </section>
 
                 <section>
