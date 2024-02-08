@@ -84,20 +84,20 @@
                 </section>
 
                 <section>
-                    <h3>Actions</h3>
+                    <h3>Actions (verbs)</h3>
                     <p>The framework give us a way to think about how and why we do tasks, from the high level (<b>how we analyze</b>) to mid-level (<b>how we search</b>) to the low level (<b>query structure</b>).</p>
                 </section>
 
                 <section>
-                    <h3>Consume vs produce (information)</h3>
+                    <h3>Analyze (high level)</h3>
                     <p>Most visualizations are used to consume information in many domain contexts.</p>
                     <p>Typically it is either for <b>exploratory</b> analysis or for <b>presentation</b>.
-                    <p>When we talk about producing we're talking about generating new artefacts - e.g. through annotations and recordings.</p>
+                    <p>When we talk about producing we're talking about generating new data / artefacts - e.g. through annotations and derived columns.</p>
                     <p>For example, annotating outliers, or tagging clusters in open ended text queries.</p>
                 </section>
 
                 <section>
-                    <h3>Search</h3>
+                    <h3>Search (mid level)</h3>
                     <table width="100%">
                     <tr>
                         <td></td>
@@ -118,19 +118,39 @@
                     <hr/>
                     <p><b>Location:</b> Where does this data exist in?</p>
                     <p><b>Target:</b> What do you want to query?</p>
-                    <p class="smallfont">Let's use the carpark example.</p>
-                    <img src="img/carpark_table.jpg">
                 </section>
 
                 <section>
-                    <h3>Query</h3>
+                    <p>Let's use the carpark example.</p>
+                    <img src="img/carpark_table.jpg">
+                    <ol>
+                        <li>What's the utilization of carpark BM29 now?</li>
+                        <li>Which carparks have lot type 'C'? List them.</li>
+                        <li>Which housing estate is carpark BM29 in?</li>
+                        <li>Which housing estate has the highest carpark utilization?</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>Search Query</h3>
                     <p>If a search queries known targets (lookup or locate), identify returns their <b>characteristics</b> (the column).</p>
                     <p>If a search queries references based on characteristics (browse or explore), identify returns <b>references</b> (rows).</p>
-                    <p><b>Identify &mdash; Compare &mdash; Summarize</b> is just a scale of the progression of the search query and data returned.</p>
                 </section>
 
                 <section>
-                    <h3>Targets</h3>
+                    <h3>Query Structure (low level)</h3>
+                    <p><b>Identify &mdash; Compare &mdash; Summarize</b> is a scale of progression of what to do with the data returned via the query.</p>
+                    <hr/>
+                    <p>E.g. Which carparks have utilization more than 90%?</p>
+                    <ul>
+                        <li><b>Identify:</b> Just list the data</li>
+                        <li><b>Compare:</b> Perhaps sort by utilization so we can more easily compare</li>
+                        <li><b>Summarize:</b> Group carparks by some other metric, e.g. time, area.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Targets (nouns)</h3>
                     <a href="img/why-targets.jpg" target="_blank"><img src="img/why-targets.jpg"></a>
                     <p class="smallfont"><i>Visualization Analysis and Design, chapter 3, Munzner</i></p>
                 </section>
@@ -146,27 +166,38 @@
                 </section>
                 
                 <section>
-                    <section>
-                    <h3>All together: task breakdown</h3>
-                    <p>Example: Which carpark is the one with the highest utilization in SG on Monday mornings?</p>
-                    <ul>
-                        <li>Analyze: Exploratory analysis</li>
-                        <li>Search: Browse</li>
-                        <li>Query: Identify</li>
-                        <li>Target: One attribute, utilization</li>
-                    </ul>
-                    </section>
-                    
-                    <section>
-                    <h3>All together: task breakdown 2</h3>
-                    <p>Example: <a href="https://elections.viz.sg/" target="_blank">SG election</a>. What interesting trends can we see overall?</p>
-                    <ul>
-                        <li>Analyze: Presentation</li>
-                        <li>Search: Explore</li>
-                        <li>Query: Compare, Summarization</li>
-                        <li>Target: Trend, Outliers</li>
-                    </ul>
-                    </section>
+                <h3>All together: task breakdown</h3>
+                <p>Example: Which carpark is the one with the highest utilization in SG on Monday mornings?</p>
+                <ul>
+                    <li>Analyze: Exploratory analysis</li>
+                    <li>Search: Browse</li>
+                    <li>Query: Identify</li>
+                    <li>Target: One attribute, utilization</li>
+                </ul>
+                </section>
+                
+                <section>
+                <h3>All together: task breakdown 2</h3>
+                <p>Example: <a href="https://elections.viz.sg/" target="_blank">SG election</a>. How did the opposition fare in 2020 compared to 2015?</p>
+                <ul>
+                    <li>Analyze: Presentation</li>
+                    <li>Search: Explore</li>
+                    <li>Query: Compare, Summarization</li>
+                    <li>Target: Trend, Outliers</li>
+                </ul>
+                </section>
+
+                <section>
+                <h3>Thought exercise</h3>
+                <p>How would you frame all these queries?</p>
+                <ul>
+                    <li>How do I get from SUTD to Sembawang?</li>
+                    <li>Which countries in the world have the highest taxes?</li>
+                    <li>What is the current PSI like in Singapore? In the region?</li>
+                    <li>Is Changi a sustainable district?</li>
+                </ul>
+                <hr/>
+                <p>Think about how you would frame your final capstone project query.</p>
                 </section>
 
                 <section>
