@@ -16,7 +16,7 @@ let svg = d3.select("svg")
     .attr("viewBox", "0 0 " + width + " " + height)
 
 // Load external data and boot
-Promise.all([d3.json("sgmap.json"), d3.csv("population2022.csv")]).then(data => {
+Promise.all([d3.json("sgmap.json"), d3.csv("population2023.csv")]).then(data => {
 
 let mapData = data[0].features;
 let popData = data[1];
