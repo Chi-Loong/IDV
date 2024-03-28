@@ -58,18 +58,11 @@
                     <p>Let's use the <a href="assignments/assignment4-starter.html" target="_blank">assignment 4 starter</a> as a base template.</p>
                     <p>We'll also need the SG <a href="assignments/sgmap.json" target="_blank">GeoJSON dataset</a>.</p>
                     <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a <a href="https://cdnjs.com/libraries/leaflet/1.7.1" target="_blank">CDN</a>.</p>
-                    <pre><code>
+                    <pre><code style="color:cyan">
 &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js">&lt;/script>
                     </code></pre>
-                </section>
-
-                <section>
-                    <h3>Installing open street map tiles`</h3>
-                    <p>For many base maps (especially those by OSM) you need to include this script.</p>
-                    <p><a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet providers</a> Git Repo</p>
-                    <pre><code>
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-providers/1.3.0/leaflet-providers.min.js">&lt;/script>
+                    <pre><code style="color:lightgreen">
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js">&lt;/script>
                     </code></pre>
                 </section>
                 
@@ -78,78 +71,72 @@
                     <p class="smallfont">Ignore / comment out the D3 code for now.</p>
                     <p class="smallfont">You'll need to create a map container for Leaflet to hook to.</p>
                     <p class="smallfont">Make sure you can get Leaflet and the base map tiles to load.</p>
-                    <pre><code>
+                    <pre><code style="color:cyan">
 #map {
     width: 1000px;
     height: 600px;
 }
+                    </code></pre>
+                    <pre><code style="color:lightgreen">
 &lt;div id="map">&lt;/div>
                     </code></pre>
-                    <pre><code>
-let map = new L.Map("map", {center: [1.347833, 103.809357], zoom: 12})
-    .addLayer(new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"));
-                    </code></pre>
-                    <hr/>
-                    <p class="smallfont">We're using openstreetmap tiles here.</p>
-                    <p class="smallfont">Can you load <a href="https://docs.onemap.sg/" target="_blank">SLA's OneMap</a> base map tile? Do this.</p>
-                </section>
-
-                <section>
-                    <h3>Attribution, Zoom limits</h3>
-                    <p>Add attribution</p>
-                    <pre><code>
-let tiles = new L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
-  detectRetina: true,
-  maxZoom: 18,
-  minZoom: 11,
-  //Do not remove this attribution
-  attribution: '<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/>' +
-               'New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+                    <pre><code style="color:gold">
+let tiles = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: 'Tiles &copy; OpenStreeMaps'
 });
-                    </code></pre>
-                    <p class="smallfont">Taken from official <a href="https://docs.onemap.sg/maps/" target="_blank">SLA OneMap Map Docs</a>.</p>
-                </section>
 
-                <section>
-                    <h3>Add maxBounds</h3>
-                    <p>SLA OneMap map tiles don't extend much past our borders.</p>
-                    <pre><code>
 let map = new L.Map("map", {
-    center: [1.347833, 103.809357], 
-    zoom: 11,
-    maxBounds: L.latLngBounds(L.latLng(1.1, 103.5), L.latLng(1.5, 104.3))
+        center: [1.347833, 103.809357], 
+        zoom: 11,
     })
     .addLayer(tiles);
                     </code></pre>
                 </section>
 
                 <section>
+                    <h3>Add maxBounds</h3>
+                    <pre><code style="color:gold">
+let map = new L.Map("map", {
+        center: [1.347833, 103.809357], 
+        zoom: 11,
+        maxBounds: L.latLngBounds(L.latLng(1.1, 103.5), L.latLng(1.5, 104.3))
+    })
+    .addLayer(tiles);
+                    </code></pre>
+                <hr/>
+                <p class="smallfont">Try adding in parameters like maxZoom and minZoom. Find out more on the <a href="https://leafletjs.com/" target="_blank">Leaflet</a> docs.</p>
+                </section>
+
+                <section>
                     <h3>Other basemaps: Google Tiles</h3>
-                    <pre><code>
+                    <pre><code style="color:gold">
 let tiles = new L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
+    subdomains:['mt0','mt1','mt2','mt3'],
+    attribution: 'Tiles &copy; Google'
 });
                     </code></pre>
                 </section>
 
                 <section>
                     <h3>Other basemaps: ESRI ArcGISOnline</h3>
-                    <pre><code>
+                    <pre><code style="color:gold">
 let tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri'
 });
                     </code></pre>
                 </section>
 
+                <section>
+                    <h3>Map styles</h3>
+                    <p>For many base maps you need to register or install their script.</p>
+                    <p>Here's a small list of <a href="https://github.com/leaflet-extras/leaflet-providers" target="_blank">Leaflet providers</a></p>
+                </section>
 
                 <section>
                     <section>
                         <h3>Leaflet ideas</h3>
                         <p>You can already do a lot of things within Leaflet and base map tiles.</p>
                         <p><a href="https://leafletjs.com/examples.html" target="_blank">Leaflet Examples</a></p>
-                        <p>You can do the choropleth assignment 4 entirely in Leaflet.</p>
-                        <p>But of course it would be perfect to overlay your own SVG layers so you have 100% custom control.</p>
                         <hr/>
                         <p class="smallfont">Can you add a marker location at the SUTD campus on your map?</p>
                     </section>
@@ -163,9 +150,9 @@ let tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Wo
                 </section>
 
                 <section>
-                    <h3>D3 - create SVG layer</h3>
+                    <h3>Hook D3 with Leaflet</h3>
                     <p>Hook a SVG layer into Leaflet's overlayPane.</p>
-                    <pre><code>
+                    <pre><code style="color:gold">
 let svg = d3.select(map.getPanes().overlayPane)
     .append("svg")
     .attr("width", 1000)
@@ -179,52 +166,57 @@ let svg = d3.select(map.getPanes().overlayPane)
                 </section>
                 
                 <section>
-                    <h3>D3 + Leaflet integration</h3>
-                    <p>Great ObservableHQ on how to use <a href="https://observablehq.com/@sfu-iat355/intro-to-leaflet-d3-interactivity" target="_blank">D3 with Leaflet</a>.</p>
-                </section>
-
-                <section>
-                    <h3>D3 - use Leaflet Projection</h3>
+                    <h3>Set SVG projection to use Leaflet</h3>
+                    <p class="smallfont">You cannot use the Mercator projection. The projection needs to be the same as Leaflet's.</p>
                     <p class="smallfont">Leaflet uses its own geo projection, and we're going to make D3 sync with that.</p>
                     <p class="smallfont">Recall that D3 projection is simply taking a lat/lon coordinate and turning it into a SVG x, y point.</p>
-                    <pre><code>
-  // Use Leaflets projection API for drawing svg path (creates a stream of projected points)
-  const projectPoint = function(x, y) {
-    const point = map.latLngToLayerPoint(new L.LatLng(y, x))
-    this.stream.point(point.x, point.y)
-  }
-  
-  
-  // Use d3's custom geo transform method to implement the above
-  const projection = d3.geoTransform({point: projectPoint})
-  // creates geopath from projected points (SVG)
-  const pathCreator = d3.geoPath().projection(projection)                    
+                    <pre><code style="color:gold">
+function projectPoint(x, y) {
+  var point = map.latLngToLayerPoint(new L.LatLng(y, x));
+  this.stream.point(point.x, point.y);
+}
+
+let projection = d3.geoTransform({point: projectPoint})
+let geopath = d3.geoPath().projection(projection);
                     </code></pre>
                 </section>
-
+                
                 <section>
-                    <h3>D3 - use Leaflet Projection</h3>
-                    <p class="smallfont">Notice that panning and zooming does not properly translate / scale the SVG.</p>
-                    <p class="smallfont">Add in onZoom hook.</p>
-                    <pre><code>
-svg.append("g")
-    .attr("id", "districts");
-    
-let areaPaths = d3.select("g#districts")
-    .selectAll("path")
-    .data(data[0].features)
-    .enter()
-    .append("path")
-    .attr("d", geopath)
-    .attr("fill", "black");
-    
-  // Function to place svg based on zoom
-  const onZoom = () => areaPaths.attr('d', geopath)
-  // initialize positioning
-  onZoom();
-  // reset whenever map is moved
-  map.on('zoomend', onZoom);
+                    <h3>Update D3 redraw</h3>
+                    <p class="smallfont">Looks good. But zooming and scaling breaks the visualization.</p>
+                    <p class="smallfont">We're going to write a function recalculate the bounds and redraw the SVG when moved...</p>
+                    <pre><code style="color:gold">
+function redrawLeafletLayer() {
+    // d3.geo.bounds takes a single Feature or a FeatureCollection as argument
+    let bounds = geopath.bounds(data[0]),
+        topLeft = bounds[0],
+        bottomRight = bounds[1];
+
+    let svg = d3.select(map.getPanes().overlayPane).select("svg");
+        
+    svg.attr("width", bottomRight[0] - topLeft[0])
+       .attr("height", bottomRight[1] - topLeft[1])
+       .style("left", topLeft[0] + "px")
+       .style("top", topLeft[1] + "px");
+       
+    svg.select("g").attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+        
+    d3.select("#map svg g#districts").selectAll("path")
+       .attr("d", geopath);
+}                    
                     </code></pre>
+                </section>
+                
+                <section>
+                    <h3>Update Leaflet zoomend hook</h3>
+                    <p class="smallfont">...Then we're going to call this function every time Leaflet is zoomed.</p>
+                    <pre><code style="color:gold">
+  redrawLeafletLayer();
+  // reset whenever map is moved
+  map.on('zoomend', redrawLeafletLayer);
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">ObservableHQ on how to use <a href="https://observablehq.com/@sfu-iat355/intro-to-leaflet-d3-interactivity" target="_blank">D3 with Leaflet</a>.</p>
                 </section>
 
                 <section>
@@ -240,27 +232,6 @@ let areaPaths = d3.select("g#districts")
                     <p>Please go get your own <a href="https://www.mapbox.com/" target="_blank">mapbox</a> API key - it's free for low amount of usage.</p>
                     <p>We're going to run this <a href="https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/" target="_blank">example</a> from mapbox.</p>
                     <p>All 2.5D mapbox code will be run using your own API key!</p>
-                </section>
-
-                <section>
-                    <h3>Mapbox - transition</h3>
-                    <p>Really easy to add a pan and zoom transition.</p>
-                    <pre><code>
-    map.flyTo({
-    center: [103.849702, 1.278078],
-    zoom: 17.5,
-    bearing: 0,
-     
-    // These options control the flight curve, making it move
-    // slowly and zoom out almost completely before starting
-    // to pan.
-    speed: 0.8, // make the flying decently fast
-    curve: 1, // change the speed at which it zooms out
-          
-    // this animation is considered essential with respect to prefers-reduced-motion
-    essential: true
-    });
-                    </code></pre>
                 </section>
 
                 <section>
