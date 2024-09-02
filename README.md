@@ -1,6 +1,4 @@
-# HASS 02.526
-
-Module name: Interactie Data Visualization
+# HASS 02.526 Interactive Data Visualization
 
 Learning Outcomes
 
