@@ -38,7 +38,6 @@
 
                 <section data-state="alert" data-transition="zoom">
                     <h1 class="shadowfont white">2b: HTML, CSS, JS</h1>
-                    <h3>Plus a Git refresher</h3>
                 </section>
                 
                 <section>
@@ -276,7 +275,9 @@ classroom.forEach(function(ele) {
     console.log(ele);
 });
                     </code></pre>
+                    <p class="smallfont">Anonymous functions in JS is similar to lambda functions in Python</p>
                     <p>OR you can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow notation</a> (ES6):</p>
+                    <hr/>
                     <pre><code>
 classroom.forEach(ele => console.log(ele));
                     </code></pre>
@@ -311,7 +312,7 @@ fetch('https://api.data.gov.sg/v1/transport/carpark-availability')
                         <h2>Callbacks, promises, async / await</h2>
                         <p>Design patterns for handling the asynchronous nature of JS.</p>
                         <p class="smallfont">More detail: <a href="https://javascript.info/callbacks">Callbacks</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a>(ES6), <a href="https://javascript.info/async-await">Async / Await</a> (ES6)</p>
-                        <p class="smallfont">You will mainly encounter asynchronous errors typically when you do get / post operations.</p>
+                        <p class="smallfont">You may encounter asynchronous errors when you do get / post operations on APIs.</p>
                         <p class="smallfont">For example:</p>
                         <pre><code>
 let myData = {};
@@ -338,6 +339,9 @@ fetchdata().then(data => {
     console.log(myData);
 })
                         </code></pre>
+                        <hr/>
+                        <p class="smallfont">Python is normally a language that is natively synchronous.</p>
+                        <p class="smallfont">Designing your backend is where you typically encounter the most async problems.</p>
                     </section>
                 </section>
 

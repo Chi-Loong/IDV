@@ -28,7 +28,7 @@
     </tr>
 </table>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 
 fetch('https://api.data.gov.sg/v1/environment/psi')
@@ -44,7 +44,7 @@ fetch('https://api.data.gov.sg/v1/environment/psi')
     console.log(timestamp);
     console.log(readings);
     
-    $("#timestring").text(timestamp);
+    d3.select("#timestring").text(timestamp);
   
   });
 
