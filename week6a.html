@@ -80,15 +80,16 @@
                     <h3>Cones: distribution</h3>
                     <img src="img/conemosaics.jpg"/>
                     <p class="smallfont">Left: Illustration of distribution of cones in fovea of human with normal color vision.</p>
-                    <p class="smallfont">Right: Illustration of distribution of cones in fovea of human with protanopic vision, i.e. no L-cones (red cones)</p>
+                    <p class="smallfont">Right: Illustration of distribution of cones in fovea of human with protanopia (green-red color blind), with no red cones</p>
                 </section>
                 
                 <section>
                     <section>
-                    <h4>What color does the human eye see the most?</h4>
+                    <h4>What color does the human eye see the most shades of?</h4>
                     </section>
                     
                     <section>
+                    <p><a href="https://vision-boutique.com/why-can-the-human-eye-see-more-shades-of-green/" target="_blank">Why can the human eye see more shades of green</a></p>
                     <p><a href="https://edition.cnn.com/2017/06/05/health/colorscope-green-environment-calm/index.html" target="_blank">Why we need green in our lives</a></p>
                     </section>
                 </section>
@@ -142,7 +143,7 @@
                     <h3>Chromaticity and Color Gamut</h3>
                     <p>Video: <a href="https://www.youtube.com/watch?v=O0nYJ0Mjx10" target="_blank">CIE 1931 Chromaticity Diagram</a></p>
                     <p>Video: <a href="https://www.youtube.com/watch?v=fh7mi9qRXdU" target="_blank">Color Gamuts</a></p>
-                    <p>Wiki: <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 space</a> and <a href="https://en.wikipedia.org/wiki/Chromaticity" target="_blank">chromaticity</a></p>
+                    <p>Wiki: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/vision/cie.html" target="_blank">CIE 1931 space</a> and <a href="https://en.wikipedia.org/wiki/Chromaticity" target="_blank">chromaticity</a></p>
                     <p>Reading: <a href="https://www.androidauthority.com/color-gamuts-guide-3035782/" target="_blank">What are display color gamuts? sRGB, DCI-P3, Rec. 2020 explained</a></p>
                     <hr/>
                     <p class="smallfont">CIE (Commission internationale de l'éclairage, or International Commission on Illumination) - international authority on light, illumination, colour, and colour spaces.</p>
@@ -195,9 +196,15 @@
                     <p>Magnitude channel (quantitative) or identity (qualitative)?</p>
                     <img src="img/ordering_direction.jpg"/>
                     <img src="img/hue-saturation-luminance.jpg"/>
-                    <p>4th channel: Transparency (used as layer for interaction)</p>
-                    <p><a href="https://github.com/d3/d3-scale-chromatic" target="_blank">D3: Color scales (aka as a channel)</a></p>
-                    <p><a href="https://github.com/d3/d3-color" target="_blank">D3: Colorspace</a></p>
+                    <hr/>
+                    <p class="smallfont">Hue and saturation (purity of color) affects luminance (brightness of color)</p>
+                    <p class="smallfont"><a href="http://www.workwithcolor.com/color-luminance-2233.htm" target="_blank">Color Luminance</a></p>
+                </section>
+                
+                <section>
+                    <h3>D3 Color</h3>
+                    <p><a href="https://d3js.org/d3-scale-chromatic" target="_blank">D3: Color scales</a></p>
+                    <p><a href="https://d3js.org/d3-color" target="_blank">D3: Colorspace</a></p>
                 </section>
 
                 <section>
@@ -229,23 +236,27 @@
                     <p>Channel: separability - luminance and saturation are not the most separable. Also not separable from transparency. For separability, pick hue vs saturation / luminance.</p>
                     <p>Channel: salience (popout) - small number of bins.</p>
                     <p>Rainbow color maps: <a href="https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html" target="_blank">Pros</a> and <a href="https://agilescientific.com/blog/2017/12/14/no-more-rainbows" target="_blank">cons</a></p>
-                    <p>Reading: <a href="https://cambridge-intelligence.com/choosing-colors-for-your-data-visualization/" target="_blank">Choosing colors for your visualization</a></p>
-                    <p>Reading: <a href="https://colorusage.arc.nasa.gov/index.php" target="_blank">Using color in Information Display Graphics</a> (NASA color usage research lab)</p>
+                    <hr/>
+                    <p class="smallfont"><a href="https://cambridge-intelligence.com/choosing-colors-for-your-data-visualization/" target="_blank">Choosing colors for your visualization</a></p>
+                    <p class="smallfont"><a href="https://colorusage.arc.nasa.gov/index.php" target="_blank">Using color in Information Display Graphics</a> (NASA color usage research lab)</p>
                 </section>
 
                 <section>
                     <h3>Color: Contrast</h3>
                     <p>Color is perceived differently depending on how it is contrasted with other colors. It is relative and not absolute.</p>
                     <p><a href="https://en.wikipedia.org/wiki/Bezold_effect" target="_blank">Bezold Effect</a> and <a href="https://en.wikipedia.org/wiki/White%27s_illusion" target="_blank">White's Illusion</a></p>
-                    <p>Reading: <a href="https://colorusage.arc.nasa.gov/guidelines_lum_cont.php" target="_blank">Luminance contrast</a></p>
-                    <p>Reading: <a href="https://colorusage.arc.nasa.gov/Simult_and_succ_cont.php" target="_blank">Simultaneous and successive contrast</a></p>
+                    <hr/>
+                    <p class="smallfont"><a href="https://colorusage.arc.nasa.gov/guidelines_lum_cont.php" target="_blank">Luminance contrast guidelines (NASA)</a></p>
+                    <p class="smallfont"><a href="https://www.otm.sg/luminance-contrast-calculator" target="_blank">Luminance contrast calculator</a></p>
+                    <p class="smallfont"><a href="https://colorusage.arc.nasa.gov/Simult_and_succ_cont.php" target="_blank">Simultaneous and successive contrast</a></p>
                 </section>
 
                 <section>
-                    <h3>Color Theory</h3>
+                    <h3>Color Theory & UX</h3>
                     <p>Color theory is the collection of rules and guidelines which designers use to communicate with users through appealing color schemes in visual interfaces.</p>
                     <p><a href="https://www.canva.com/colors/color-wheel/" target="_blank">Color theory and the color wheel</a></p>
                     <p><a href="https://www.toptal.com/designers/ux/color-in-ux" target="_blank">Role of color in UX</a></p>
+                    <p><a href="https://uxdesign.cc/the-power-of-colour-in-ux-1748c16491f3" target="_blank">The power of color in UX</a></p>
                 </section>
 
                 <section>
