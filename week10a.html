@@ -90,10 +90,11 @@ tr:nth-child(even) {
                 </section>
 
                 <section>
-                    <h3>Geospatial (2D)</h3>
-                    <p>Libraries</p>
+                    <h3>Geospatial maps(2D)</h3>
+                    <p>Map Layer</p>
                     <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a></p>
                     <p><a href="https://openlayers.org/" target="_blank">Open Layers</a></p>
+                    <p><a href="https://kartograph.vis4.net/" target="_blank">Kartograph</a></p>
                     <hr/>
                     <p>Map Tiles</p>
                     <p><a href="https://www.openstreetmap.org/" target="_blank">Open street map</a></p>
@@ -102,23 +103,39 @@ tr:nth-child(even) {
                 </section>
 
                 <section>
-                    <h3>Geospatial (2D)</h3>
-                    <p>Tools</p>
-                    <p><a href="https://mapshaper.org/" target="_blank">Mapshaper</a></p>
-                    <p><a href="https://geojson.io/#map=2/20.0/0.0" target="_blank">GeoJSON.io</a></p>
-                    <p><a href="https://www.qgis.org/en/site/about/index.html" target="_blank">QGIS</a></p>
+                    <h3>Geospatial maps (3D)</h3>
+                    <p>Map Layer</p>
+                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox GL</a></p>
+                    <p><a href="https://maplibre.org/" target="_blank">MapLibre GL</a></p>
                     <hr/>
-                    <p>Platforms</p>
-                    <p><a href="https://carto.com/" target="_blank">Carto</a> (formerly cartoDB)</p>
-                    <p><a href="https://www.esri.com/en-us/arcgis/products/arcgis-online/overview" target="_blank">ArcGIS</a>, Esri</p>
-                    <p><a href="https://developers.google.com/maps/documentation/javascript/overview" target="_blank">Google Maps API</a></p>
+                    <p><a href="https://deck.gl/" target="_blank">deck.gl</a></p>
+                    <p><a href="https://kepler.gl/" target="_blank">kepler.gl</a></p>
                 </section>
 
                 <section>
-                    <h3>Geospatial (3D)</h3>
-                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a>, MapboxGL</p>
-                    <p><a href="https://deck.gl/" target="_blank">deck.gl</a></p>
+                    <h3>Geospatial libraries</h3>
+                    <p>Analytics</p>
+                    <p><a href="https://turfjs.org/" target="_blank">Turf</a></p>
+                    <hr/>
+                    <p>Conversions</p>
+                    <p><a href="https://gdal3.js.org/docs/" target="_blank">Gdal3</a></p>
+                    <p><a href="https://geotiffjs.github.io/" target="_blank">Geotiff</p>
+                </section>
+
+                <section>
+                    <h3>Geospatial apps /tools</h3>
+                    <p><a href="https://mapshaper.org/" target="_blank">Mapshaper</a></p>
+                    <p><a href="https://geojson.io/#map=2/20.0/0.0" target="_blank">GeoJSON.io</a></p>
+                    <p><a href="https://www.qgis.org/en/site/about/index.html" target="_blank">QGIS</a></p>
+                </section>
+                
+                <section>
+                    <h3>Geospatial platforms</h3>
+                    <p><a href="https://carto.com/" target="_blank">Carto</a> (formerly cartoDB)</p>
+                    <p><a href="https://www.esri.com/en-us/arcgis/products/arcgis-online/overview" target="_blank">ArcGIS</a>, Esri</p>
+                    <p><a href="https://developers.google.com/maps/documentation/javascript/overview" target="_blank">Google Maps API</a></p>
                     <p><a href="https://cesium.com/" target="_blank">Cesium</a></p>
+                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a></p>
                 </section>
 
                 <section>
@@ -192,7 +209,6 @@ tr:nth-child(even) {
                     </tr>
                     </table>
                     <p><a href="https://www.d3-graph-gallery.com/graph/density2d_hexbin.html" target="_blank">D3 Graph Gallery - Hexbin Charts</a></p>
-                    <p><a href="https://bl.ocks.org/tnightingale/4668062" target="_blank">Leaflet + D3.js</a>, Tom Nightingale</p>
                     <p class="smallfont"><a href="https://yongquanben.github.io/sg_taxi_availability/" target="_blank">SG Taxi Availbility</a>, Yong Quan (<a href="https://github.com/yongquanben/sg_taxi_availability" target="_blank">repo</a>) </p>
                     <p class="smallfont"><a href="https://viz.vslashr.com/geotwin/" target="_blank">GeoTwin work</a></p>
                 </section>
@@ -218,7 +234,7 @@ tr:nth-child(even) {
                     </tr>
                     </table>
                     <p><a href="https://datavizcatalogue.com/blog/chart-combinations-tile-grid-maps/" target="_blank">Tile Cartograms</a></p>
-                    <p><a href="https://www.straitstimes.com/multimedia/graphics/2020/07/singapore-general-election-ge2020-live-results/index.html" target="_blank">Straits TImes Elections 2020</a></p>
+                    <p><a href="https://www.straitstimes.com/multimedia/graphics/2020/07/singapore-general-election-ge2020-live-results/index.html" target="_blank">Straits Times Elections 2020</a></p>
                 </section>
 
 
@@ -288,13 +304,16 @@ tr:nth-child(even) {
                     </tr>
                     </table>
                     <p><a href="https://www.willusher.io/webgl/2019/01/13/volume-rendering-with-webgl" target="_blank">Volume Rendering in webgl</a>, Will Usher</p>
-                    <p class="smallfont">For 3D scientific viz, probably good to work with a 3D library, like three.js</p>
+                    <hr/>
+                    <p class="smallfont">For 3D geospatial, use something like cesium, etc.</p>
+                    <p class="smallfont">For 3D scientific viz, you need a 3D library, like three.js, open3D, PyVista, etc.</p>
                 </section>
                 
                 <section>
-                    <h3>3D Viz (examples)</h3>
+                    <h3>Viz examples</h3>
                     <p><a href="https://www.onemap3d.gov.sg/main/" target="_blank">One Map 3D</a>, SLA Singapore, (Cesium - I think)</p>
-                    <p><a href="https://nationalmap.gov.au/" target="_blank">National Map</a> Australia, (Cesium)</p>
+                    <p><a href="https://nationalmap.gov.au/" target="_blank">National Map</a> Australia, (Cesium - I think)</p>
+                    <p><a href="https://geoportal.statistics.gov.uk/" target="_blank">Open Geography Portal</a>, UK</p>
                     <p><a href="https://viz.vslashr.com/earth/" target="_blank">Urban City Visualization</a>, (three.js)</p>
                 </section>
                 
