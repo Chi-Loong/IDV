@@ -1,0 +1,40 @@
+<html>
+<head>
+  <style>
+    #map {
+        width: 1000px;
+        height: 600px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script>
+    d3.json("https://raw.githubusercontent.com/Chi-Loong/IDV/master/assignments/sgmap.json").then(data => {
+
+    let tiles = new L.TileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: 'Tiles &copy; OpenStreeMaps'
+    });
+
+    let map = new L.Map("map", {
+        center: [1.347833, 103.809357], 
+        zoom: 11,
+      })
+    .addLayer(tiles);
+
+    let myStyle = {
+      "color": "black",
+      "weight": 3,
+    };    
+
+    const geojson = L.geoJson(data, {
+        style: myStyle,
+    }).addTo(map);
+
+  })
+  </script>
+</body>
+</html>

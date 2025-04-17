@@ -43,45 +43,47 @@
                 <section>
                     <h2>Objectives</h2>
                     <ul>
-                    <li>Integrate D3 layers with Leaflet and a map tiling platform (e.g. Open Street Maps)</li>
-                    <li>Look at a simple 3D example using Mapbox.</li>
+                    <li>Using Leaflet and a map tiling platform (e.g. Open Street Maps)</li>
+                    <li>Look at a simple 3D example using Maplibre (the open source fork of Mapbox).</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2>What is Leaflet?</h2>
-                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a> is the leading open-source JavaScript library for mobile-friendly interactive maps. Weighing just about 39 KB of JS, it has all the mapping features most developers ever need.</p>
+                    <p><a href="https://leafletjs.com/" target="_blank">Leaflet</a> is the leading open-source JavaScript library for mobile-friendly interactive maps. Weighing just about 42 KB of JS, it has all the mapping features most developers ever need.</p>
                 </section>
 
                 <section>
                     <h3>Installing Leaflet</h3>
-                    <p>Let's use the <a href="assignments/assignment4-starter.html" target="_blank">assignment 4 starter</a> as a base template.</p>
-                    <p>We'll also need the SG <a href="assignments/sgmap.json" target="_blank">GeoJSON dataset</a>.</p>
-                    <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a <a href="https://cdnjs.com/libraries/leaflet/1.7.1" target="_blank">CDN</a>.</p>
-                    <pre><code style="color:cyan">
-&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
-                    </code></pre>
-                    <pre><code style="color:lightgreen">
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js">&lt;/script>
+<!--                    <p>We'll need the SG <a href="assignments/sgmap.json" target="_blank">GeoJSON dataset</a> in assignment 4.</p>-->
+                    <p>We're going to add <a href="https://leafletjs.com/" target="_blank">Leaflet</a> CSS and JS via a <a href="https://cdnjs.com/libraries/leaflet/1.9.4" target="_blank">CDN</a>.</p>
+                    <pre><code>
+&lt;html>
+&lt;head>
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  &lt;style>&lt;/style>
+&lt;/head>
+&lt;body>
+  &lt;div id="map">&lt;/div>
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js">&lt;/script>
+  &lt;script>&lt;/script>
+&lt;/body>
+&lt;/html>
                     </code></pre>
                 </section>
                 
                 <section>
                     <h3>Load Leaflet basemap</h3>
-                    <p class="smallfont">Ignore / comment out the D3 code for now.</p>
-                    <p class="smallfont">You'll need to create a map container for Leaflet to hook to.</p>
-                    <p class="smallfont">Make sure you can get Leaflet and the base map tiles to load.</p>
+                    <p class="smallfont">We're using openstreetmap tiles here.</p>
+                    <p class="smallfont">Note that Leaflet is hooked onto the map container defined previously.</p>
                     <pre><code style="color:cyan">
 #map {
     width: 1000px;
     height: 600px;
 }
                     </code></pre>
-                    <pre><code style="color:lightgreen">
-&lt;div id="map">&lt;/div>
-                    </code></pre>
                     <pre><code style="color:gold">
-let tiles = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+let tiles = new L.TileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: 'Tiles &copy; OpenStreeMaps'
 });
 
@@ -94,7 +96,7 @@ let map = new L.Map("map", {
                 </section>
 
                 <section>
-                    <h3>Add maxBounds</h3>
+                    <h3>Add bounds and zoom parameters</h3>
                     <pre><code style="color:gold">
 let map = new L.Map("map", {
         center: [1.347833, 103.809357], 
@@ -104,7 +106,24 @@ let map = new L.Map("map", {
     .addLayer(tiles);
                     </code></pre>
                 <hr/>
-                <p class="smallfont">Try adding in parameters like maxZoom and minZoom. Find out more on the <a href="https://leafletjs.com/" target="_blank">Leaflet</a> docs.</p>
+                <p>More on <a href="https://leafletjs.com/examples/zoom-levels/" target="_blank">zoom</a> levels</p>
+                <p class="smallfont">Try adding in parameters like maxZoom and minZoom</p>
+                </section>
+
+                <section>
+                    <h3>Scale control</h3>
+                <p class="smallfont">Add in the Leaflet scale control so we can see the zoom.</p>
+                    <pre><code style="color:gold">
+L.control.scale().addTo(map);
+                    </code></pre>
+                <hr/>
+                <p class="smallfont">You can control the zoom / pan using code rather than using interface</p>
+                <p class="smallfont">Example: <a href="https://kontinentalist.com/stories/forest-degradation-deforestation-and-conservation-in-asia" target="_blank">Exploring the lungs of Asia</a>, Kontinentalist</p>
+                    <pre><code style="color:gold">
+    setTimeout(function(){
+      map.flyTo([1.34141372, 103.963757], 15)
+    }, 2000);
+                    </code></pre>
                 </section>
 
                 <section>
@@ -129,24 +148,44 @@ let tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Wo
                 <section>
                     <h3>Map styles</h3>
                     <p>For many base maps you need to register or install their script.</p>
-                    <p>Here's a small list of <a href="https://github.com/leaflet-extras/leaflet-providers" target="_blank">Leaflet providers</a></p>
+                    <p>Here's a small list of <a href="https://github.com/leaflet-extras/leaflet-providers" target="_blank">map providers</a></p>
                 </section>
 
                 <section>
                     <section>
-                        <h3>Leaflet ideas</h3>
-                        <p>You can already do a lot of things within Leaflet and base map tiles.</p>
+                        <h3>Leaflet markers</h3>
+                        <p>You can do a lot of things within Leaflet and base map tiles.</p>
                         <p><a href="https://leafletjs.com/examples.html" target="_blank">Leaflet Examples</a></p>
                         <hr/>
                         <p class="smallfont">Can you add a marker location at the SUTD campus on your map?</p>
                     </section>
 
                     <section>
-                        <pre><code>
-    let marker = L.marker([1.34128961848499, 103.96340773679763]).addTo(map);
+                        <pre><code style="color:gold">
+    let marker = L.marker([1.34128961, 103.96340773]).addTo(map);
     marker.bindPopup("<b>SUTD campus</b>");
                         </code></pre>
+                        <hr/>
+                        <p class="smallfont">Try adding lines and circles to the Leaflet map!</p>
                     </section>
+                </section>
+
+                <section>
+                    <h3>Leaflet: geojson</h3>
+                    <p>Useful reading: Leaflet <a href="https://leafletjs.com/examples/geojson/" target="_blank">GeoJSON tutorial</a>.</p>
+                    <p>Let's go through this <a href="assignments/leaflet-geojson.html" target="_blank">snippet of code</a>.</p>
+                </section>
+
+                <section>
+                    <h3>Leaflet: choropleth</h3>
+                    <p>You can do Assignment 4 using Leaflet instead.</p>
+                    <p>Useful reading: Leaflet <a href="https://leafletjs.com/examples/choropleth/" target="_blank">Choropleth tutorial</a>.</p>
+                    <p>Bootcamp Day 3 final project is assignment 4 done in Leaflet instead.</p>
+                </section>
+
+                <section>
+                    <h3>Can we integrate Leaflet and D3?</h3>
+                    <p>Of course you can!</p>
                 </section>
 
                 <section>
@@ -167,7 +206,7 @@ let svg = d3.select(map.getPanes().overlayPane)
                 
                 <section>
                     <h3>Set SVG projection to use Leaflet</h3>
-                    <p class="smallfont">You cannot use the Mercator projection. The projection needs to be the same as Leaflet's.</p>
+                    <p class="smallfont">You cannot use D3's Mercator projection. The projection needs to be the same as Leaflet's.</p>
                     <p class="smallfont">Leaflet uses its own geo projection, and we're going to make D3 sync with that.</p>
                     <p class="smallfont">Recall that D3 projection is simply taking a lat/lon coordinate and turning it into a SVG x, y point.</p>
                     <pre><code style="color:gold">
@@ -226,27 +265,52 @@ function redrawLeafletLayer() {
                 </section>
 
                 <section>
-                    <h3>2.5D maps using Mapbox</h3>
-                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a> isn't a true 3D solution, say unlike <a href="https://cesium.com/" target="_blank">Cesium</a>.</p>
+                    <h3>2.5D (2D shapes + height) vs 3D</h3>
+                    <p><a href="https://www.mapbox.com/" target="_blank">Mapbox</a> (2.5D) isn't a true 3D solution, say unlike <a href="https://cesium.com/" target="_blank">Cesium</a> (3D).</p>
                     <p>Comparison <a href="https://blog.logrocket.com/cesium-vs-mapbox-which-mapping-service-is-best/" target="_blank">here</a>.</p>
-                    <p>Please go get your own <a href="https://www.mapbox.com/" target="_blank">mapbox</a> API key - it's free for low amount of usage.</p>
-                    <p>We're going to run this <a href="https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/" target="_blank">example</a> from mapbox.</p>
-                    <p>All 2.5D mapbox code will be run using your own API key!</p>
                 </section>
-
+                
                 <section>
-                    <h3>Mapbox - embed 3D object</h3>
-                    <p>We're going to embed a 3D object. We'll use three.js to load it, then render it using mapboxGL canvas renderer.</p>
-                    <p>We'll run this <a href="https://docs.mapbox.com/mapbox-gl-js/example/add-3d-model/" target="_blank">example</a> from mapbox.</p>
-                    <p>Extra: Will demo an example locally, using three.js code to load animation.</p>
+                    <h3>MapLibre 3D model example</h3>
+                    <p><a href="https://maplibre.org/" target="_blank">MapLibre</a> is a free open-source fork of MapboxGL</p>
+                    <p>We're going to embed a 3D model onto a basemap, using this <a href="https://maplibre.org/maplibre-gl-js/docs/examples/add-3d-model/" target="_blank">snippet of code</a>.</p>
+                    <p>Please download it and try to run it.</p>
+                    <p>The code loads a 3D object using three.js and places it on a map using MapLibre.</p>
+                </section>
+                
+                <section>
+                    <h3>Replace base map</h3>
+                    <p class="smallfont">If you want a glassy, fast basemap, you have to pay for it. E.g. Maptiller, Mapbox, etc.</p>
+                    <p class="smallfont">The API code given in the code snippet for maptiller will not work (of course). Let's just use openstreemaps.</p>
+                    <hr/>
+                    <pre><code style="color:gold">
+        style: {
+          version: 8,
+          sources: {
+              osm: {
+                  type: 'raster',
+                  tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+                  tileSize: 256,
+                  attribution: '&copy; OpenStreetMap Contributors',
+              }
+          },
+          layers: [
+              {
+                  id: 'osm',
+                  type: 'raster',
+                  source: 'osm'
+              }
+          ]
+        },
+                    </code></pre>
                 </section>
 
                 <section>
                     <h3>3D - future perspectives</h3>
-                    <p><a href="https://medium.com/vis-gl/deckgl-and-mapbox-better-together-47b29d6d4fb1" target="_blank">deck.gl and Mapbox GL JS: Better Together</a>, Xiao Ji Chen</p>
-                    <p><a href="https://carto.com/blog/our-thoughts-as-mapboxgl-js-2-goes-proprietary/" target="_blank">Our Thoughts as MapboxGL JS v2.0 Goes Proprietary</a>, Carto</p>
-                    <p><a href="https://sandcastle.cesium.com/" target="_blank">Cesium Sandcastle</a></p>
-                    <p><a href="https://deck.gl/examples" target="_blank">deck.gl Examples</a></p>
+                    <p><a href="https://elections.viz.sg/" target="_blank">SG elections</a>, D3 + OSM + mapLibre</p>
+                    <p><a href="https://medium.com/vis-gl" target="_blank">Viz.gl</a>, Uber viz open-source framework</p>
+                    <p><a href="https://sandcastle.cesium.com/" target="_blank">Cesium</a> Sandcastle examples</p>
+                    <p><a href="https://deck.gl/examples" target="_blank">deck.gl</a> examples</p>
                 </section>
 
                 <section>

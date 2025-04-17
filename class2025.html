@@ -36,6 +36,7 @@
   <div class="row">
     <div class="col-md-12">
         <h4 class="py-3">Final Projects 2024</h4>
+        <p>Please link your assignment 5 presentation / document / site &mdash; project ideas and specifications &mdash; in your final project. Thanks.</p>
     </div>
   </div>
   
@@ -68,8 +69,7 @@ Papa.parse("data/data2025.csv", {
                 { title: "Assignment1", orderable: false },
                 { title: "Assignment2", orderable: false },
                 { title: "Assignment3", orderable: false },
-                { title: "Assignment4", orderable: false },
-                { title: "Assignment5", orderable: false }
+                { title: "Assignment4", orderable: false }
             ],
             pageLength: 20,
             order: [[0, "asc"]],
@@ -100,13 +100,6 @@ Papa.parse("data/data2025.csv", {
                 data: "Assignment4",
                 render: function ( data, type, row, meta ) {
                   return '<a href="https://' + row[2] + '.github.io/IDV-assignment4/">Assignment 4</a>';
-                }
-            },
-            {
-                targets: 7,
-                data: "Assignment5",
-                render: function ( data, type, row, meta ) {
-                  return '<a href="https://' + row[2] + '.github.io/IDV-assignment5/">Assignment 5</a>';
                 }
             }
             ]
